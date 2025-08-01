@@ -1,0 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.ambassador.json",
+  "context": {
+    "market": "united-kingdom"
+  },
+  "sections": {
+    "pbj_form_embed_AzkcJT": {
+      "settings": {},
+      "blocks": {
+        "form_embed_iLACdc": {
+          "settings": {
+            "form_code": "<div class=\"globo-formbuilder\" data-id=\"Njc2NDE=\"></div>"
+          }
+        }
+      }
+    },
+    "custom_liquid_zyxLJ": {
+      "type": "custom-liquid",
+      "disabled": false,
+      "settings": {
+        "custom_liquid": "<script>window.location.replace('{{ routes.root_url }}');</script>",
+        "color_scheme": "",
+        "header-a5c072912fb1a40491af56266df22790": null,
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_KWmBVx",
+    "custom_liquid_zyxLJ",
+    "pbj_rich_text_Wc7NHf",
+    "ambasadot_point_GLMaMn",
+    "pbj_image_with_text_rmbmNY",
+    "pbj_image_with_text_UbqBdj",
+    "pbj_image_with_text_XiirpJ",
+    "pbj_video_mziUQe",
+    "pbj_rich_text_EncV3j",
+    "pbj_multicolumn_dTAXV4",
+    "image_banner_E8aQcT",
+    "pbj_form_embed_AzkcJT",
+    "pbj_rich_text_4KyPym",
+    "pbj_multicolumn_TbMRiV",
+    "pbj_featured_blog_Jq4gHD",
+    "pbj_collapsible_content_xfjghC"
+  ]
+}

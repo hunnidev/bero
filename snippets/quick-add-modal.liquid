@@ -1,0 +1,82 @@
+{% comment %}
+  Renders product quick add modal
+
+  Accepts:
+  - product: {Object} Product object
+  - color_scheme {Object} Color scheme object
+  - back_text {String} Text for the back button
+
+  Usage:
+  {% render 'quick-add-modal',
+    product: product,
+    color_scheme: section.settings.color_scheme,
+    back_text: 'Back to products'
+  %}
+{% endcomment %}
+
+{% if template.name == 'index' %}
+<style>
+
+.button-text.quick-add__return {
+  top: initial !important;
+  bottom: calc(100% + 10px);
+  position: absolute;
+  left: 0 !important;
+}
+
+  .product__info-wrapper label.form__label {
+    display: none;
+}
+
+  @media only screen and (max-width: 600px) {
+  .button-text.quick-add__return {
+    left: 64px;
+    position: relative;
+    top: 46px;
+}
+}
+@media (max-width: 767px ) {
+#QuickAdd-{{ product.id }} {
+  display: none;
+}
+}
+
+  </style>
+  {% endif %}
+
+<quick-add-modal
+  id="QuickAdd-{{ product.id }}"
+  class="quick-add-modal{% if color_scheme %} color-{{ section.settings.color_scheme }}{% endif %}"
+>
+  <div
+    role="dialog"
+    aria-label="{{ 'products.product.choose_product_options' | t: product_name: product.title | escape }}"
+    aria-modal="true"
+    class="quick-add-modal__content global-settings-popup"
+    tabindex="-1"
+  >
+    {%- if back_text -%}
+      <button
+        id="ModalClose-{{ product.id }}"
+        type="button"
+        class="button-text quick-add__return "
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icons', icon: 'arrow' %}
+        {{ back_text }}
+      </button>
+
+    {%- else -%}
+      <button
+        id="ModalClose-{{ product.id }}"
+        type="button"
+        class="quick-add-modal__toggle"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icon-close' %}
+      </button>
+    {%- endif -%}
+
+    <div id="QuickAddInfo-{{ product.id }}" class="quick-add-modal__content-info"></div>
+  </div>
+</quick-add-modal>

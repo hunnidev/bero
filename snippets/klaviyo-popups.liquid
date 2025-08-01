@@ -1,0 +1,433 @@
+{% if localization.country.iso_code contains 'GB' %}
+  {% liquid
+    assign uk_page_hide = []
+    assign uk_collection_hide = []
+    assign uk_product_hide = []
+    assign uk_article_hide = []
+    assign uk_hide_pages = settings.klaviyo_popup_hide_pages_uk | split: ','
+    for target in uk_hide_pages
+      if target contains 'pages'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign uk_page_hide = uk_page_hide | append: adding_target
+      elsif target contains 'collections'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign uk_collection_hide = uk_collection_hide | append: adding_target
+      elsif target contains 'products'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign uk_product_hide = uk_product_hide | append: adding_target
+      elsif target contains 'articles'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign uk_article_hide = uk_article_hide | append: adding_target
+      endif
+    endfor
+    assign page_hide = false
+    assign collection_hide = false
+    assign product_hide = false
+    assign article_hide = false
+    assign uk_page_hide = uk_page_hide | split: ', '
+    assign uk_collection_hide = uk_collection_hide | split: ', '
+    assign uk_product_hide = uk_product_hide | split: ', '
+    assign uk_article_hide = uk_article_hide | split: ', '
+    for target in uk_page_hide
+      if page.handle contains uk_page_hide
+        assign page_hide = true
+        break
+      endif
+    endfor
+    for target in uk_collection_hide
+      if collection.handle contains uk_collection_hide
+        assign collection_hide = true
+        break
+      endif
+    endfor
+    for target in uk_product_hide
+      if product.handle contains uk_product_hide
+        assign product_hide = true
+        break
+      endif
+    endfor
+    for target in uk_article_hide
+      if article.handle contains uk_article_hide
+        assign article_hide = true
+        break
+      endif
+    endfor
+  %}
+  {% unless page_hide or collection_hide or product_hide or article_hide %}
+    <aside id="kl_custom_popup" class="kl_custom_popup uk color-{{ settings.klaviyo_popup_color_scheme }} no-show" style="transform: translateX(100%);">
+        {% if settings.klaviyo_popup_uk_image != blank %}
+            <div class="img-wrapper">
+                <img src="{{ settings.klaviyo_popup_uk_image | image_url: width: 1000 }}" alt="Klaviyo Popup Image">
+            </div>
+        {% endif %}
+        <form id="kl-custom-popup-form" class="kl-custom-popup-form" action="/myformaction">
+            <button class="kl-custom-popup-close" aria-label="Close popup">
+                <span>
+                    {% render 'icon-close-darker' %}
+                </span>
+            </button>
+
+            {% if settings.klaviyo_popup_uk_logo != blank %}
+                <img class="logo" src="{{ settings.klaviyo_popup_uk_logo | image_url: width: 500 }}" alt="BERO logo">
+            {% endif %}
+            {% if settings.klaviyo_popup_uk_title != blank %}
+                <h2 class="h4">{{ settings.klaviyo_popup_uk_title }}</h2>
+            {% endif %}
+
+            {% if settings.klaviyo_popup_uk_text != blank %}
+                <p>{{ settings.klaviyo_popup_uk_text }}</p>
+            {% endif %}
+
+            <input type="hidden" name="kl_list_id" value="{{ settings.klaviyo_popup_uk_id }}">
+            <!-- Real fields -->
+            <label for="emaillkjkl">Your E-mail</label>
+            <input type="text" id="emaillkjkl" name="emaillkjkl" placeholder="Email*" pattern=".*@.*"  required>
+                
+            <!-- H o n e y p o t -->
+            <label class="ohnohoney" tabindex="-1" for="name"></label>
+            <input class="ohnohoney" tabindex="-1" autocomplete="off" type="text" id="name" name="name" placeholder="Your name here">
+            <label class="ohnohoney" tabindex="-1" for="email"></label>
+            <input class="ohnohoney" tabindex="-1" autocomplete="off" type="email" id="email" name="email" placeholder="Your e-mail here">
+
+            <!-- Submit -->
+
+            <button class="kl-custom-popup-submit button" type="submit">{{ settings.klaviyo_popup_uk_button_text |  default: "SUBMIT" }}</button>
+
+            <small><a href="/pages/privacy-policy" target="_blank">Data privacy policy</a></small>
+        </form>
+            {% comment %} Thank you {% endcomment %}
+
+        <form id="kl-custom-popup-form-thankyou" class="kl-custom-popup-form thankyou" action="/myformaction" style="display: none;">
+            <button class="kl-custom-popup-close" aria-label="Close popup">
+                <span>
+                    {% render 'icon-close-darker' %}
+                </span>
+            </button>
+            {% if settings.klaviyo_popup_uk_logo != blank %}
+                <img class="logo" src="{{ settings.klaviyo_popup_uk_logo | image_url: width: 500 }}" alt="BERO logo">
+            {% endif %}
+            {% if settings.klaviyo_popup_uk_title2 != blank %}
+                <h3 class="h4 thankyou">{{ settings.klaviyo_popup_uk_title2 }}</h3>
+            {% endif %}
+
+            {% if settings.klaviyo_popup_uk_text2 != blank %}
+                <p>{{ settings.klaviyo_popup_uk_text2 }}</p>
+            {% endif %}
+
+            {% if settings.klaviyo_popup_uk_small_text2 != blank %}
+                <small class="no-underline">{{ settings.klaviyo_popup_uk_small_text2 }}</small>
+            {% endif %}
+
+        </form>
+    </aside>
+  {% else %}
+    <div data-hide-uk-popup style="display: none;">UK Popup Disabled</div>
+  {% endunless %}
+{% elsif localization.country.iso_code contains 'US' %}
+  {% liquid
+    assign us_page_hide = []
+    assign us_collection_hide = []
+    assign us_product_hide = []
+    assign us_article_hide = []
+    assign us_hide_pages = settings.klaviyo_popup_hide_pages_us | split: ','
+    for target in us_hide_pages
+      if target contains 'pages'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign us_page_hide = us_page_hide | append: adding_target
+      elsif target contains 'collections'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign us_collection_hide = us_collection_hide | append: adding_target
+      elsif target contains 'products'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign us_product_hide = us_product_hide | append: adding_target
+      elsif target contains 'articles'
+        assign adding_target = target | split: '/' | last | append: ', '
+        assign us_article_hide = us_article_hide | append: adding_target
+      endif
+    endfor
+    assign page_hide = false
+    assign collection_hide = false
+    assign product_hide = false
+    assign article_hide = false
+    assign us_page_hide = us_page_hide | split: ', '
+    assign us_collection_hide = us_collection_hide | split: ', '
+    assign us_product_hide = us_product_hide | split: ', '
+    assign us_article_hide = us_article_hide | split: ', '
+    
+    for target in us_page_hide
+      if us_page_hide contains page.handle
+        assign page_hide = true
+        break
+      endif
+    endfor
+    for target in us_collection_hide
+      if collection.handle contains us_collection_hide
+        assign collection_hide = true
+        break
+      endif
+    endfor
+    for target in us_product_hide
+      if product.handle contains us_product_hide
+        assign product_hide = true
+        break
+      endif
+    endfor
+    for target in us_article_hide
+      if article.handle contains us_article_hide
+        assign article_hide = true
+        break
+      endif
+    endfor
+  %}
+  {% unless page_hide or collection_hide or product_hide or article_hide %}
+    {% comment %} US Popup Form {% endcomment %}
+    <aside id="kl_custom_popup" class="kl_custom_popup us color-{{ settings.klaviyo_popup_color_scheme }} no-show" style="transform: translateX(100%);">
+        {% if settings.klaviyo_popup_us_image != blank %}
+            <div class="img-wrapper">
+                <img src="{{ settings.klaviyo_popup_us_image | image_url: width: 1000 }}" alt="Klaviyo Popup Image">
+            </div>
+        {% endif %}
+
+        <form id="kl-custom-popup-form" class="kl-custom-popup-form" action="/myformaction">
+
+            <button class="kl-custom-popup-close" aria-label="Close popup">
+                <span>
+                    {% render 'icon-close-darker' %}
+                </span>
+            </button>
+
+            {% if settings.klaviyo_popup_us_logo != blank %}
+                <img class="logo" src="{{ settings.klaviyo_popup_us_logo | image_url: width: 500 }}" alt="BERO logo">
+            {% endif %}
+            {% if settings.klaviyo_popup_us_title != blank %}
+                <h2 class="h4">{{ settings.klaviyo_popup_us_title }}</h2>
+            {% endif %}
+
+            {% if settings.klaviyo_popup_us_text != blank %}
+                <p>{{ settings.klaviyo_popup_us_text }}</p>
+            {% endif %}
+
+            <input type="hidden" name="kl_list_id" value="{{ settings.klaviyo_popup_us_id }}">
+            <!-- Real fields -->
+            <label for="emaillkjkl">Your E-mail</label>
+            <input type="text" id="emaillkjkl" name="emaillkjkl" placeholder="Email*" pattern=".*@.*"  required>
+            <label for="zipkjkl">Country</label>
+            <input id="zipkjkl" name="zipkjkl" placeholder="Zip Code*" required>
+                
+                
+            <!-- H o n e y p o t -->
+            <label class="ohnohoney" tabindex="-1" for="name"></label>
+            <input class="ohnohoney" tabindex="-1" autocomplete="off" type="text" id="name" name="name" placeholder="Your name here">
+            <label class="ohnohoney" tabindex="-1" for="email"></label>
+            <input class="ohnohoney" tabindex="-1" autocomplete="off" type="email" id="email" name="email" placeholder="Your e-mail here">
+
+            <!-- Submit -->
+
+            <button class="kl-custom-popup-submit button" type="submit">{{ settings.klaviyo_popup_us_button_text |  default: "SUBMIT" }}</button>
+
+            <small><a href="/pages/privacy-policy" target="_blank">Data privacy policy</a></small>
+        </form>
+
+        {% comment %} SMS {% endcomment %}
+
+        <form id="kl-custom-popup-form-sms" class="kl-custom-popup-form sms" action="/myformaction" style="display: none;">
+            <button class="kl-custom-popup-close" aria-label="Close popup">
+                <span>
+                    {% render 'icon-close-darker' %}
+                </span>
+            </button>
+            {% if settings.klaviyo_popup_us_logo != blank %}
+                <img class="logo" src="{{ settings.klaviyo_popup_us_logo | image_url: width: 500 }}" alt="BERO logo">
+            {% endif %}
+            {% if settings.klaviyo_popup_us_title2 != blank %}
+                <h2 class="h4">{{ settings.klaviyo_popup_us_title2 }}</h2>
+            {% endif %}
+
+            {% if settings.klaviyo_popup_us_text2 != blank %}
+                <p>{{ settings.klaviyo_popup_us_text2 }}</p>
+            {% endif %}
+
+            <input type="hidden" name="kl_list_id2" value="{{ settings.klaviyo_popup_us_id2 }}">
+
+            <div class="sms-form-control">
+                <select class="kl-custom-popup-country-select-sms" id="country-code" name="country-code" required>
+                    <option value="+1" selected>US (+1)</option>
+                </select>
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" 
+                    pattern="[0-9]{3}[0-9]{3}[0-9]{4}" 
+                    placeholder="Phone Number" maxlength="15" required> 
+                <label for="country-code">Country</label>
+            </div>
+
+            <small class="no-underline sms">{{ settings.klaviyo_popup_us_small_text2 }}</small>
+            
+
+            <!-- Submit -->
+
+            <button class="kl-custom-popup-submit sms button" type="submit">TEXT ME</button>
+            <button class="kl-custom-popup-close sms" aria-label="Close popup">
+                No thanks
+            </button>
+
+        </form>
+
+        {% comment %} Thank you {% endcomment %}
+
+        <form id="kl-custom-popup-form-thankyou" class="kl-custom-popup-form thankyou" action="/myformaction" style="display: none;">
+            <button class="kl-custom-popup-close" aria-label="Close popup">
+                <span>
+                    {% render 'icon-close-darker' %}
+                </span>
+            </button>
+            {% if settings.klaviyo_popup_us_logo != blank %}
+                <img class="logo" src="{{ settings.klaviyo_popup_us_logo | image_url: width: 500 }}" alt="BERO logo">
+            {% endif %}
+            {% if settings.klaviyo_popup_us_title3 != blank %}
+                <h3 class="h4 thankyou">{{ settings.klaviyo_popup_us_title3 }}</h3>
+            {% endif %}
+
+            {% if settings.klaviyo_popup_us_text3 != blank %}
+                <p>{{ settings.klaviyo_popup_us_text3 }}</p>
+            {% endif %}
+
+            {% if settings.klaviyo_popup_us_small_text3 != blank %}
+                <small class="no-underline">{{ settings.klaviyo_popup_us_small_text3 }}</small>
+            {% endif %}
+
+        </form>
+    </aside>
+  {% else %}
+    <div data-hide-us-popup style="display: none;">Hide US Popup</div>
+  {% endunless %}
+{% endif %}
+{% liquid
+  assign int_page_hide = []
+  assign int_collection_hide = []
+  assign int_product_hide = []
+  assign int_article_hide = []
+  assign int_hide_pages = settings.klaviyo_popup_hide_pages_int | split: ','
+  for target in int_hide_pages
+    if target contains 'pages'
+      assign adding_target = target | split: '/' | last | append: ', '
+      assign int_page_hide = int_page_hide | append: adding_target
+    elsif target contains 'collections'
+      assign adding_target = target | split: '/' | last | append: ', '
+      assign int_collection_hide = int_collection_hide | append: adding_target
+    elsif target contains 'products'
+      assign adding_target = target | split: '/' | last | append: ', '
+      assign int_product_hide = int_product_hide | append: adding_target
+    elsif target contains 'articles'
+      assign adding_target = target | split: '/' | last | append: ', '
+      assign int_article_hide = int_article_hide | append: adding_target
+    endif
+  endfor
+  assign page_hide = false
+  assign collection_hide = false
+  assign product_hide = false
+  assign article_hide = false
+  assign int_page_hide = int_page_hide | split: ', '
+  assign int_collection_hide = int_collection_hide | split: ', '
+  assign int_product_hide = int_product_hide | split: ', '
+  assign int_article_hide = int_article_hide | split: ', '
+  for target in int_page_hide
+    if page.handle contains target
+      assign page_hide = true
+      break
+    endif
+  endfor
+  for target in int_collection_hide
+    if collection.handle contains target
+      assign collection_hide = true
+      break
+    endif
+  endfor
+  for target in int_product_hide
+    if product.handle contains target
+      assign product_hide = true
+      break
+    endif
+  endfor
+  for target in int_article_hide
+    if article.handle contains target
+      assign article_hide = true
+      break
+    endif
+  endfor
+%}
+{% unless page_hide or collection_hide or product_hide or article_hide %}
+  {% comment %} International Popup form {% endcomment %}
+  <aside id="kl_custom_popup_int" class="kl_custom_popup color-{{ settings.klaviyo_popup_color_scheme }} no-show" style="transform: translateX(100%);">
+      {% if settings.klaviyo_popup_international_image != blank %}
+          <div class="img-wrapper">
+              <img src="{{ settings.klaviyo_popup_international_image | image_url: width: 1000 }}" alt="Klaviyo Popup Image">
+          </div>
+      {% endif %}
+  
+      <form id="kl-custom-popup-form" class="kl-custom-popup-form" action="/myformaction">
+          <button class="kl-custom-popup-close" aria-label="Close popup">
+              <span>
+                  {% render 'icon-close-darker' %}
+              </span>
+          </button>
+          {% if settings.klaviyo_popup_international_logo != blank %}
+              <img class="logo" src="{{ settings.klaviyo_popup_international_logo | image_url: width: 500 }}" alt="BERO logo">
+          {% endif %}
+          {% if settings.klaviyo_popup_international_title != blank %}
+              <h2 class="h4">{{ settings.klaviyo_popup_international_title }}</h2>
+          {% endif %}
+  
+          {% if settings.klaviyo_popup_international_text != blank %}
+              <p>{{ settings.klaviyo_popup_international_text }}</p>
+          {% endif %}
+  
+          <input type="hidden" name="kl_list_id" value="{{ settings.klaviyo_popup_international_id }}">
+          <!-- Real fields -->
+          <label for="emaillkjkl">Your E-mail</label>
+          <input type="text" id="emaillkjkl" name="emaillkjkl" placeholder="Email*" pattern=".*@.*" required>
+          <label for="countrykjkl">Country</label>
+          <select class="kl-custom-popup-country-select" id="countrykjkl" name="countrykjkl" required>
+              <option value="" selected disabled>Select a country</option>
+          </select>
+              
+          <!-- H o n e y p o t -->
+          <label class="ohnohoney" tabindex="-1" for="name"></label>
+          <input class="ohnohoney" tabindex="-1" autocomplete="off" type="text" id="name" name="name" placeholder="Your name here">
+          <label class="ohnohoney" tabindex="-1" for="email"></label>
+          <input class="ohnohoney" tabindex="-1" autocomplete="off" type="email" id="email" name="email" placeholder="Your e-mail here">
+  
+          <!-- Submit -->
+  
+          <button class="kl-custom-popup-submit button" type="submit">{{ settings.klaviyo_popup_international_button_text |  default: "SUBMIT" }}</button>
+  
+          <small><a href="/pages/privacy-policy" target="_blank">Data privacy policy</a></small>
+      </form>
+  
+      {% comment %} Thank you {% endcomment %}
+  
+      <form id="kl-custom-popup-form-thankyou" class="kl-custom-popup-form thankyou" action="/myformaction" style="display: none;">
+          <button class="kl-custom-popup-close" aria-label="Close popup">
+              <span>
+                  {% render 'icon-close-darker' %}
+              </span>
+          </button>
+          {% if settings.klaviyo_popup_international_logo != blank %}
+              <img class="logo" src="{{ settings.klaviyo_popup_international_logo | image_url: width: 500 }}" alt="BERO logo">
+          {% endif %}
+          {% if settings.klaviyo_popup_international_title2 != blank %}
+              <h3 class="h4 thankyou">{{ settings.klaviyo_popup_international_title2 }}</h3>
+          {% endif %}
+  
+          {% if settings.klaviyo_popup_international_text2 != blank %}
+              <p>{{ settings.klaviyo_popup_international_text2 }}</p>
+          {% endif %}
+  
+          {% if settings.klaviyo_popup_international_small_text2 != blank %}
+              <small class="no-underline">{{ settings.klaviyo_popup_international_small_text2 }}</small>
+          {% endif %}
+  
+      </form>
+  </aside>
+{% else %}
+  <div data-hide-int-popup style="display: none;">Hide INT Popup</div>
+{% endunless %}

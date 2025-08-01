@@ -1,0 +1,157 @@
+{%- assign customer_rivo_data = customer.metafields.custom.rivo.value -%}
+{%- assign credits_balance = customer_rivo_data.credits_balance | plus: 0.0 -%}
+{%- assign credits_balance_money = credits_balance | times: 100.0 | money_without_currency | prepend: '$' -%}
+<div
+  class="loyalty-modal-wrapper"
+  x-show="modalOpen"
+  @click="closeModal($event)"
+  data-close-modal
+  x-cloak
+>
+  <div class="loyalty-modal credits-redeem gradient color-{{ settings.loyalty_credits_modal_color_scheme }}" id="loyalty-credits-redeem-{{ section.id }}"
+    aria-modal="true"
+    role="dialog"
+    aria-labelledby="loyalty-credits-redeem-title"
+  >
+    <button
+      class="loyalty-modal__close"
+      @click="closeModal()"
+      data-close-modal-id="loyalty-credits-redeem-{{ section.id }}"
+    >
+      {%- render 'icons', icon: 'close' -%}
+    </button>
+    <div class="loyalty-modal__svg">
+      {{ settings.loyalty_credits_modal_logo_svg_code }}
+    </div>
+    <template x-if="!redemptionSuccess">
+      <div class="loyalty-modal__inner">
+        <h2 class="h2" id="loyalty-credits-redeem-title">
+          {{ settings.loyalty_credits_modal_title | replace: '[AMOUNT]', credits_balance_money }}
+        </h2>
+        <p class="loyalty-modal__text">
+          {{ settings.loyalty_credits_modal_text }}
+        </p>
+
+        <div
+          class="loyalty-modal__quantity"
+          x-bind:class="{'loyalty-modal__quantity--disabled': loading }"
+        >
+          <button
+            class="loyalty-modal__quantity-button"
+            @click="decreaseQuantity"
+            :disabled="redeemAmount === 1"
+          >
+            {%- render 'icons', icon: 'minus-large' -%}
+          </button>
+          <div class="loyalty-modal__quantity-input-wrapper">
+            <span class="loyalty-modal__quantity-currency">
+              {% if cart.currency.iso_code != 'USD' %}
+                {% for currency in shop.enabled_currencies %}
+                  {% if currency.iso_code == 'USD' %}
+                    {{ currency.symbol }}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {{ cart.currency.symbol }}
+              {% endif %}
+            </span>
+            <input
+              type="number"
+              x-model="redeemAmount"
+              min="1"
+              :max="availableCredits"
+              class="loyalty-modal__quantity-input"
+              @keyup="validateQuantity"
+            >
+          </div>
+          <button
+            class="loyalty-modal__quantity-button"
+            @click="increaseQuantity"
+            :disabled="redeemAmount === availableCredits "
+          >
+            {%- render 'icons', icon: 'plus-large' -%}
+          </button>
+        </div>
+        <button
+          @click="redeemCredits"
+          class="button button--primary"
+          :disabled="redeemAmount > availableCredits || loading"
+        >
+          {{ settings.loyalty_credits_modal_button_text }}
+        </button>
+        <div
+          x-show="loading"
+          class="flex justify-center items-center m-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#004f3c80]"
+          role="dialog"
+          aria-labelledby="loading-text"
+          aria-hidden="true"
+          tabindex="-1"
+        >
+          <img 
+            src="/cdn/shop/files/3dgifmaker37498.gif?v=1728139011&width=400" 
+            alt="Loading" 
+            srcset="/cdn/shop/files/3dgifmaker37498.gif?v=1728139011&width=200 200w, /cdn/shop/files/3dgifmaker37498.gif?v=1728139011&width=352 352w" 
+            width="200"
+            height="200"
+            loading="eager"
+          >
+          <p id="loading-text" class="sr-only" aria-live="assertive">
+            Loading, please wait...
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <template x-if="redemptionSuccess && !discountCodeApplied">
+      <div class="loyalty-modal__inner">
+        <h2 class="h2" id="loyalty-credits-redeem-title">
+          {{ settings.loyalty_credits_modal_discount_code_title }}
+        </h2>
+        <div class="loyalty-modal__discount-code">
+          <input
+            type="text"
+            readonly
+            x-bind:value="successData.code"
+          >
+          <button
+            @click="copyDiscountCode"
+            class="loyalty-modal__discount-code-copy"
+          >
+            <template x-if="!discountCodeCopied">
+              {%- render 'icons', icon: 'copy' -%}
+            </template>
+            <template x-if="discountCodeCopied">
+              {%- render 'icons', icon: 'tick-2' -%}
+            </template>
+          </button>
+        </div>
+        {% comment %}
+          <button
+            @click="applyDiscountCode"
+            class="button button--primary"
+          >
+            {{ settings.loyalty_credits_modal_discount_code_button_text }}
+          </button>
+        {% endcomment %}
+        <p class="loyalty-modal__text">
+          {{ settings.loyalty_credits_modal_discount_code_text }}
+        </p>
+      </div>
+    </template>
+
+    <template x-if="redemptionSuccess && discountCodeApplied">
+      <div class="loyalty-modal__inner">
+        <h2 class="h2" id="loyalty-credits-redeem-title">
+          {{ settings.loyalty_credits_modal_success_title }}
+        </h2>
+        <a
+          :href="cartLink"
+          class="button button--primary"
+        >
+          {{ settings.loyalty_credits_modal_success_button_text }}
+        </a>
+      </div>
+    </template>
+  </div>
+</div>

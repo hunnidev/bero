@@ -1,0 +1,78 @@
+.tour_tip {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000000b0;
+    z-index: 99900;
+    top: -60px;
+}
+
+  .tour_tip_inner {
+    padding: 64px 24px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #d4b890;
+}
+
+.tour_tip_inner img {
+    max-width: 130px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.tour_tip_inner h2 {
+    color: var(--Text-Icon-secondary, #EAE5DA);
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+
+/* H3*/
+    D */
+font-family: var(--Font-Family-Primary-Heading, "ABC Arizona Flare");
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 105%; /* 46.2px */
+    letter-spacing: 0.88px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+p.tour_tip_subtitle {
+    color: var(--Brand-Colors-Bero-Gold, #D3B890);
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+
+/* H6/M */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+p.tour_tip_text {
+    color: var(--Text-Icon-secondary, #EAE5DA);
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+
+/* Body Medium/Normal* */
+    font-size: var(--Units-18, 18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+    margin-bottom: 40px;
+}
+
+  @media only screen and (max-width: 600px) {
+  .tour_tip_inner {
+    width: 90%;
+}
+}

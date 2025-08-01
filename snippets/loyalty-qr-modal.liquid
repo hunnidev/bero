@@ -1,0 +1,41 @@
+<div
+  class="loyalty-modal-wrapper"
+  x-show="helpModalVisible"
+  @click="closeHelpModal($event)"
+  data-close-modal
+  x-cloak
+>
+  <div class="loyalty-modal loyalty-modal--qr gradient color-{{ section.settings.help_modal_color_scheme }}"
+    aria-modal="true"
+    role="dialog"
+    aria-labelledby="dialog_label">
+    <button
+      class="loyalty-modal__close"
+      @click="closeHelpModal()"
+    >
+      {%- render 'icons', icon: 'close' -%}
+    </button>
+    <div class="loyalty-modal__svg">
+      {%- render 'icons', icon: 'fish' -%}
+    </div>
+    <div class="loyalty-modal__inner">
+      <h2 id="dialog_label" class="h3">
+        {{ section.settings.help_modal_title }}
+      </h2>
+      {%- if section.settings.help_modal_svg != blank -%}
+        <div class="loyalty-modal__qr-icon">
+          {{ section.settings.help_modal_svg }}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.help_modal_serial != blank -%}
+        <p class="qr-claim__landing-qr-code-text loyalty-modal__serial text-body-medium">
+          {{ section.settings.help_modal_serial }}
+        </p>
+      {%- endif -%}
+      <div class="loyalty-modal__text">
+        {{ section.settings.help_modal_text }}
+      </div>
+    </div>
+  </div>
+</div>
+

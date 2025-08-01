@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.json",
+  "context": {
+    "market": "united-kingdom"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "preorder_P8NGwC": {
+          "settings": {
+            "preorder_text": "Pre-order: this item will ship as soon as it becomes available"
+          }
+        },
+        "shipping_JLNjtA": {
+          "settings": {
+            "text_heading": "<strong>Free shipping on £50+</strong>"
+          }
+        },
+        "collapsible_tab_qRPbYL": {
+          "settings": {
+            "content": "<p>Ingredients: {{ product.metafields.custom.ingredients | metafield_tag }}</p><p>{{ product.metafields.custom.nutrition_subtext | metafield_tag }}</p><p><strong>Note: </strong>Some cans mistakenly list salt content as 6g instead of the correct 6mg. Rest assured, the actual content is 6mg and corrected cans are on the way!</p>"
+          }
+        }
+      }
+    }
+  }
+}

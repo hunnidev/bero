@@ -1,0 +1,165 @@
+{%- unless customer -%}
+  <div class="loading-screen__inner gradient color-{{ section.settings.color_scheme }}">
+    <div class="loading-screen__screen-1-wrapper">
+      <div class="loading-screen__svg loading-screen__svg--logo">
+        <div class="inner">
+          {{ section.settings.logo_svg | replace: 'id="Layer_1"', 'id="loading-logo-end"' }}
+          {{ section.settings.pre_logo_svg | replace: 'id="Layer_1"', 'id="loading-logo-start"' }}
+        </div>
+      </div>
+
+      <div class="loading-screen__svg loading-screen__svg--subtitle">
+        {{ section.settings.subtitle_svg | replace: 'id="Layer_1"', 'id="loading-subtitle"' }}
+      </div>
+
+      <div class="loading-screen__svg loading-screen__svg--waves">
+        {{ section.settings.wave_svg | replace: 'id="Layer_1"', 'id="loading-wave-1"' }}
+        {{ section.settings.wave_svg | replace: 'id="Layer_1"', 'id="loading-wave-2"' }}
+        {{ section.settings.wave_svg | replace: 'id="Layer_1"', 'id="loading-wave-3"' }}
+      </div>
+    </div>
+
+    <div class="loading-screen__screen-2-wrapper">
+      <div class="loading-screen__svg loading-screen__svg--title">
+        {{ section.settings.title_svg_1 | replace: '<svg ', '<svg id="loading-title-1" ' }}
+        {{ section.settings.title_svg_2 | replace: '<svg ', '<svg id="loading-title-2" ' }}
+        {{ section.settings.title_svg_3 | replace: '<svg ', '<svg id="loading-title-3" ' }}
+      </div>
+    </div>
+  </div>
+  <script>
+    let initialAnimationsComplete = false;
+    window.onload = function () {
+      // Ensure the window is scrolled to the top
+      window.scrollTo(0, 0);
+
+      // Defer the scroll check to give the browser time to apply the scroll position
+      setTimeout(() => {
+        if (window.scrollY === 0) {
+          // Start the animation if the window is at the top
+          document.body.classList.add('show-loading-animation');
+          document.querySelector('html').classList.add('overflow-hidden');
+
+          // End the animation after a delay
+          setTimeout(() => {
+            document.querySelector('html').classList.remove('overflow-hidden');
+            document.body.classList.add('end-loading-animation');
+            initialAnimationsComplete = true;
+          }, 5000);
+        } else {
+          // Force scroll to the top again and delay animation start
+          window.scrollTo(0, 0);
+          setTimeout(() => {
+            document.body.classList.add('show-loading-animation');
+            document.querySelector('html').classList.add('overflow-hidden');
+
+            setTimeout(() => {
+              document.querySelector('html').classList.remove('overflow-hidden');
+              document.body.classList.add('end-loading-animation');
+              initialAnimationsComplete = true;
+            }, 5000);
+          }, 100); // Delay slightly to ensure scroll is applied
+        }
+      }, 100); // Delay to ensure scroll is applied (can be adjusted)
+    };
+
+    if (window.innerWidth > 767) {
+      let animationCompleted = false;
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50 && initialAnimationsComplete) {
+          if (window.scrollY <= 400 && !animationCompleted) {
+            animationCompleted = true;
+            document.body.classList.add('animation-scrolled');
+          }
+          if (window.scrollY > 600) {
+            document.body.classList.remove('animation-scrolled', 'show-loading-animation', 'end-loading-animation');
+            document.body.classList.add('loading-animations-completed');
+          }
+        }
+      });
+    }
+  </script>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Loading Screen",
+  "tag": "section",
+  "class": "loading-screen relative",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "SVG's"
+    },
+    {
+      "type": "paragraph",
+      "content": "You can get the SVG code from your logo file. Open the SVG file in a text editor and copy the code."
+    },
+    {
+      "type": "html",
+      "id": "pre_logo_svg",
+      "label": "Logo SVG Code 1",
+      "info": "Paste your logo SVG code here"
+    },
+    {
+      "type": "html",
+      "id": "logo_svg",
+      "label": "Logo SVG Code 2",
+      "info": "Paste your logo SVG code here"
+    },
+    {
+      "type": "html",
+      "id": "subtitle_svg",
+      "label": "Subtitle SVG Code",
+      "info": "Paste your subtitle SVG code here"
+    },
+    {
+      "type": "html",
+      "id": "wave_svg",
+      "label": "Wave SVG Code",
+      "info": "Paste your wave SVG code here"
+    },
+    {
+      "type": "html",
+      "id": "title_svg_1",
+      "label": "Title Line 1 SVG Code 1",
+      "info": "Paste your title line 1 SVG code here"
+    },
+    {
+      "type": "html",
+      "id": "title_svg_2",
+      "label": "Title Line 2 SVG Code 2",
+      "info": "Paste your title line 2 SVG code here"
+    },
+    {
+      "type": "html",
+      "id": "title_svg_3",
+      "label": "Title Line 3 SVG Code 3",
+      "info": "Paste your title line 3 SVG code here"
+    },
+    {
+      "type": "checkbox",
+      "id": "animate_into_next_section",
+      "label": "Animate into next section",
+      "default": true,
+      "info": "Next section must be product carousel section for this to work"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Loading Screen",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.loyalty-landing.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "loyalty_faqs_9hUjyK": {
+      "settings": {},
+      "blocks": {
+        "faq_b86Cnj": {
+          "settings": {
+            "text": "<ul><li>Free membership is for life and does not expire. </li><li>BEROMASTER membership is a one-year membership that will auto-renew.</li><li>Credits will remain active for 12 months from earning them. But, don’t worry. All members will be notified of credit expiration timelines in advance.</li></ul>"
+          }
+        },
+        "faq_fdmAqe": {
+          "settings": {
+            "text": "<p>While BEROMASTER memberships are non-refundable—given the immediate value you receive upon purchase—you can cancel at any time by emailing cancelmembership@berobrewing.com, so your membership does not renew. Access to your BEROMASTER benefits will remain active until the end of the billing cycle.</p>"
+          }
+        }
+      }
+    }
+  }
+}

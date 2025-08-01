@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.shipping.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "pbj_rich_text_gLcBbH": {
+      "settings": {},
+      "blocks": {
+        "text_LmHpPV": {
+          "settings": {
+            "text": "<p>You can expect your order to arrive within 5-8 business days in all contiguous US states. Orders to Hawaii and Alaska ship with USPS Ground Advantage and arrive within 15 business days.<br/></p><p>Orders of more than 24 beers will be shipped in split shipments. Please check the tracking information contained in your order notifications (email/SMS) for additional packages under the same tracking number.</p>"
+          }
+        }
+      }
+    }
+  }
+}

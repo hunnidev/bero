@@ -1,0 +1,170 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <div id="Details-HeaderMenu-{{ forloop.index }}">
+            <button
+              id="HeaderMenu-{{ link.handle }}"
+              class="header__menu-item list-menu__item link focus-inset"
+              data-megamenu-id="MegaMenu-Content-{{ forloop.index }}"
+            >
+              <h2>
+                {{- link.title | escape -}}
+              </h2>
+              {% render 'icons', icon: 'chevron-down', stroke: color_scheme.settings.text %}
+            </button>
+
+            {% render "header-megamenu", link: link, index: forloop.index %}
+          </div>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span>
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // If DOM has already loaded
+    if (window.megaMenuDOMLoaded != undefined) return;
+    window.megaMenuDOMLoaded = true;
+
+    // Get Nav Menu
+    const navMenu = document.querySelector('.header__inline-menu');
+    navMenu.addEventListener('click', function (event) {
+      const button = event.target.closest('button.header__menu-item');
+
+      if (!button) return; // Exit if the click wasn't on a button
+
+      // Toggle button class and open menu on click
+      const isOpen = button.classList.toggle('header__menu-item--open');
+      toggleMegamenu(isOpen, button);
+
+      // If open, then set handler
+      if (isOpen) {
+
+        // When scroll happens, remove menu, remove listener
+        function scrollHandler (e) {
+          const megaMenu = document.getElementById(button.dataset.megamenuId);
+          const header = megaMenu.closest('.header');
+
+          const megaMenuFromTop = megaMenu.getBoundingClientRect().top;
+          const headerQuarterHeight = header.getBoundingClientRect().height * 0.25;
+          const threshold = megaMenuFromTop + headerQuarterHeight;
+
+          if (threshold <= 0) {
+            window.removeEventListener('scroll', scrollHandler);
+            button.classList.remove('header__menu-item--open');
+            toggleMegamenu(false, button);
+          }
+        };
+
+        // Apply scroll listener
+        window.addEventListener('scroll', scrollHandler);
+      }
+    });
+
+    //Close megamenu on focusing next button
+    navMenu.addEventListener('focusin', function (event) {
+      const button = event.target.closest('button.header__menu-item') || event.target.closest('a.header__menu-item');
+
+      if (!button) return; // Exit if the click wasn't on a button
+
+      // Close all other megamenus
+      document.querySelectorAll('.header__menu-item').forEach((element) => {
+        if (element !== button) {
+          element.classList.remove('header__menu-item--open');
+          toggleMegamenu(false, element);
+        }
+      });
+
+      // Close account dropdown
+      document.body.classList.remove('account-dropdown-open');
+    });
+    
+
+    function toggleMegamenu(isOpen, button) {
+      // Handle the body class for megamenu state
+      document.body.classList.toggle('megamenu-open', isOpen);
+
+      if (!isOpen) {
+        document.body.classList.add('megamenu-closing');
+        setTimeout(() => {
+          document.body.classList.remove('megamenu-closing');
+        }, 1000);
+      }
+
+      const megamenuId = button.dataset.megamenuId;
+      const megamenu = document.getElementById(megamenuId);
+
+      if (megamenu) {
+        megamenu.setAttribute('aria-hidden', !isOpen)
+
+        if (isOpen) {
+          megamenu.classList.add('is-visible');
+          setTimeout(() => {
+            megamenu.classList.add('megamenu-wrapper--open');
+          })
+        } else {
+          megamenu.classList.remove('megamenu-wrapper--open');
+
+          setTimeout(() => {
+            megamenu.classList.remove('is-visible');
+          }, 500)
+        }
+
+        // Close all other megamenus
+        document.querySelectorAll('.megamenu-wrapper').forEach((element) => {
+          if (element.id !== megamenuId) {
+            element.classList.remove('megamenu-wrapper--open');
+            element.classList.remove('is-visible')
+
+            element.setAttribute('aria-hidden', true)
+          }
+        });
+
+        // Remove open state from all other buttons
+        document.querySelectorAll('.header__menu-item').forEach((element) => {
+          if (element.dataset.megamenuId !== megamenuId) {
+            element.classList.remove('header__menu-item--open');
+          }
+        });
+
+        // Close account dropdown
+        document.body.classList.remove('account-dropdown-open');
+      }
+    }
+
+    if (document.querySelector('button.header__icon--account')) {
+      const accountDropdownTrigger = document.querySelector('button.header__icon--account');
+
+      accountDropdownTrigger.addEventListener('click', function () {
+        if (document.querySelector('.header__menu-item--open')) {
+          document.querySelector('.header__menu-item--open').click();
+        }
+
+        document.body.classList.toggle('account-dropdown-open');
+      });
+    }
+  });
+</script>

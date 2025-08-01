@@ -1,0 +1,57 @@
+<div class="collection__text-banner {% if block.settings.show_on_top %}on-top{% endif %} text-banner gradient color-{{ block.settings.color_scheme }} {{ block.settings.display_on }}" {{ block.shopify_attributes }}>
+  <div class="banner-content">
+    {%- if block.settings.pre_heading != blank -%}
+      <h2 class="h6 {% if block.settings.pre_heading_mobile != blank %}max-md:hidden{% endif %}">
+        {{ block.settings.pre_heading }}
+      </h2>
+      {% if block.settings.pre_heading_mobile != blank %}
+        <h2 class="h6 md:hidden">
+          {{ block.settings.pre_heading_mobile }}
+        </h2>
+      {% endif %}
+    {%- endif -%}
+    {%- if block.settings.title != blank -%}
+      <h3 class="h2 normal-case {% if block.settings.title_mobile != blank %}max-md:hidden{% endif %}">
+        {{ block.settings.title }}
+      </h3>
+      
+      {% if block.settings.title_mobile != blank %}
+        <h3 class="h2 normal-case md:hidden">
+          {{ block.settings.title_mobile }}
+        </h3>
+      {% endif %}
+    {%- endif -%}
+  
+    {%- if block.settings.cta_text != blank and block.settings.cta_url != blank -%}
+      <a
+        href="{{ block.settings.cta_url }}"
+        class="button button--primary {% if block.settings.cta_text_mobile != blank and block.settings.cta_url_mobile != blank %}max-md:!hidden{% endif %}"
+      >
+        {{ block.settings.cta_text }}
+      </a>
+      {% if block.settings.cta_text_mobile != blank and block.settings.cta_url_mobile != blank %}
+        <a
+          href="{{ block.settings.cta_url_mobile }}"
+          class="button button--primary md:hidden"
+        >
+          {{ block.settings.cta_text_mobile }}
+        </a>
+      {% endif %}
+    {%- endif -%}
+  </div>
+  {% assign main_image = block.settings.image %}
+  {% assign mobile_image = block.settings.image_mobile %}
+  {% assign show_mobile_image = block.settings.show_mobile_image %}
+
+  {% if main_image != blank or mobile_image != blank and show_mobile_image %}
+    <div class="image-wrapper">
+      {% if main_image != blank %}
+        <img src="{{ main_image | image_url: width: 1000 }}" alt="{{ main_image.alt }}" class="text-banner__image  {% if show_mobile_image and mobile_image != blank %}hidden md:block{% elsif show_mobile_image %}block{% else %}hidden md:block{% endif %}">
+      {% endif %}
+
+      {% if show_mobile_image and mobile_image != blank %}
+        <img src="{{ mobile_image | image_url: width: 1000 }}" alt="{{ mobile_image.alt }}" class="text-banner__image mobile block md:hidden">
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,210 @@
+{%- style -%}
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: max-content;
+    {% if template.name == 'account' %}
+      margin: auto 20px;
+    {% endif %}
+  }
+
+  main section.pbj-link-list {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+  }
+  
+  main section.pbj-link-list ~ section {
+    grid-row: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  main section.pbj-link-list .nav-container {
+    margin-bottom: 40px;
+  }
+
+  main section:last-of-type {
+    padding-bottom: 15px;
+  }
+
+  /* if there are elements before the link list is full width */
+  main section {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }  
+  
+  @media screen and (min-width: 768px) {
+    main {
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: unset;
+      align-items: start;
+      grid-column-gap: 20px;
+    }
+
+    main section.pbj-link-list {
+      grid-row: unset;
+    }
+
+    main section.pbj-link-list {
+      grid-column: 1 / 2;
+      padding: 64px 0 0 34px;
+      max-width: calc((var(--page-width) * 3) /10 );
+      width: 100%;
+      margin-left: calc((100vw - var(--page-width)) / 2 );
+      justify-self: end;
+    }
+
+    main section.pbj-link-list + section {
+      padding-top: 64px;
+    }
+
+    main section.pbj-link-list ~ section {
+      grid-column: 2 / 3;
+      padding-right: 20px;
+      padding-left: unset;
+      max-width: calc((var(--page-width) * 7) /10 );
+      width: 100%;
+      margin-right: calc((100vw - var(--page-width)) / 2 );
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    main {
+      grid-template-columns: 1fr 4fr;
+      grid-column-gap: 40px;
+    }
+     main section.pbj-link-list {
+      padding: 64px 0 0 34px;
+     }
+     main section.pbj-link-list ~ section {
+      padding-right: 44px;
+     }
+  }
+
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  
+{%- endstyle -%}
+
+<div class="pbj-link-list-container section-{{ section.id }}-padding {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} color-{{ section.settings.color_scheme }}">
+  
+  {% if section.settings.show_user_info %}
+  <div class="user-info-container">
+    <div>
+      <p class="welcome-msg">{{ 'customer.dashboard.welcome_back' | t }}</p>
+      <p class="h4 customer-name">{{ customer.first_name }} {{ customer.last_name }}</p>
+    </div>
+    
+    <div class="sign-out-container">
+      <a href="{{ routes.account_logout_url }}">{{ 'customer.dashboard.sign_out' | t }}</a>
+    </div>
+  </div>
+  {% endif %}
+  
+  <div class="nav-container" x-data="{ selectOpen: false}">
+  {% if section.settings.menu != blank %}
+    <nav>
+      <ul>
+        {% for link in section.settings.menu.links %}
+          <li>
+            <a
+              id="HeaderMenu-{{ link.handle }}"
+              href="{{ link.url }}"
+              class="list-menu__item link link--text focus-inset"
+            >
+              <span>
+                {{- link.title | escape -}}
+              </span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <select @click="selectOpen = !selectOpen" pbj-link-list>
+      {% for link in section.settings.menu.links %}
+        <option value="{{ link.url }}">{{ link.title | escape }}</option>        
+      {% endfor %}
+    </select>
+    
+      {% comment %} <span class="plus-minus-toggle md:hidden" x-show="!selectOpen">
+        {% render 'icon-plus' %}
+      </span>
+      <span class="plus-minus-toggle inline-flex md:hidden" x-show="selectOpen">
+        {% render 'icon-minus' %}
+      </span> {% endcomment %}
+    
+      {% render 'icon-caret' %}
+    
+  {% endif %}
+  </div>
+
+</div>
+
+<script src="{{ 'pbj-link-list.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Link List - pbj",
+  "tag": "section",
+  "class": "section pbj-link-list",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_user_info",      
+      "default": false,
+      "label": "Show user info?"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Link List - pbj",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

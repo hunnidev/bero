@@ -1,0 +1,115 @@
+{%- if customer -%}
+  {%- assign customer_rivo_data = customer.metafields.custom.rivo.value -%}
+  {%- assign credits_balance = customer_rivo_data.credits_balance | plus: 0.0 -%}
+  {%- assign credits_balance_money = credits_balance | times: 100.0 | money_without_currency |  prepend: '$'  -%}
+  {%- if credits_balance > 0 -%}
+    <div
+      x-data="
+        rivo({
+          customerId: '{{ customer.id }}',
+          availableCredits: {{ credits_balance }},
+          cartUrl: '{{ routes.cart_url }}',
+          modalID: 'loyalty-credits-redeem-{{ section.id }}',
+        })
+      "
+      x-init="init"
+    >
+      <div
+        class="page-width"
+      >
+        <div class="customer-credits-block color-{{ section.settings.color_scheme }}">
+          {%- if section.settings.image != blank -%}
+            <img
+              srcset="
+                {%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+                {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+                {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+                {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+                {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+                {{ section.settings.image | image_url }} {{ section.settings.image.width }}w
+              "
+              sizes="100vw"
+              src="{{ section.settings.image | image_url: width: 1500 }}"
+              loading="lazy"
+              alt="{{ section.settings.image.alt | escape }}"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+            >
+            {%- endif -%}
+
+          {%- if section.settings.title != blank -%}
+            <h2 class="customer-credits-block__title h6 h6--primay">
+              {{ section.settings.title }}
+            </h2>
+          {%- endif -%}
+          <div class="md:flex justify-between items-center">
+            <p class="h2">
+              {{ section.settings.credits_text | replace: '[CREDIT]', credits_balance_money }}
+            </p>
+            {%- if credits_balance >= 1 -%}
+              <button
+                class="button button--primary redeem"
+                @click="openModal($event)"
+                data-modal-id="loyalty-credits-redeem-{{ section.id }}"
+              >
+                {{ section.settings.redeem_cta_text }}
+              </button>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      {%- render 'loyalty-credits-redeem-modal' -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Customer Credits",
+  "tag": "section",
+  "class": "customer-credits-block-wrapper relative",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Club bero"
+    },
+    {
+      "type": "text",
+      "id": "credits_text",
+      "label": "Credits text",
+      "default": "You have [CREDIT] in credits",
+      "info": "Use [CREDIT] to display the customer's credit balance"
+    },
+    {
+      "type": "text",
+      "id": "redeem_cta_text",
+      "label": "Redeem CTA text",
+      "default": "Redeem today"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Credits",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

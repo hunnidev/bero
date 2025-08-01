@@ -1,0 +1,255 @@
+<div
+  class="gradient color-{{ section.settings.color_scheme }}"
+  id="{{ section.settings.section_id }}"
+>
+  <div
+    class="loyalty-price-comparison page-width"
+    x-data="
+      membershipComparison({
+        memberships: [
+            {%- for block in section.blocks -%}
+                {
+                    title: '{{ block.settings.title }}',
+                    price: {{ block.settings.price | json }},
+                    creditsMultiplier: {{ block.settings.credits_multiplier | json }},
+                    freeShipping: {{ block.settings.free_shipping | json }},
+                    productDiscount: {{ block.settings.product_discount | json }},
+                    ctaUrl: '{{ block.settings.cta_url }}',
+                    ctaText: '{{ block.settings.cta_text }}',
+                    deductMembershipFee: {{ block.settings.deduct_membership_fee | json }},
+                    savings: '{{ 0 | money }}'
+                }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+        ],
+        dragSteps: {{ section.settings.drag_steps | json }},
+        shippingPrice: {{ section.settings.shipping_price | json  }},
+        productPrice: {{ all_products[section.settings.comparison_product].selected_or_first_available_variant.price | json }},
+        creditPerProductPurchase: '{{ section.settings.credit_per_product_purchase }}'
+      })
+    "
+  >
+    <div class="loyalty-price-comparison__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.title != blank -%}
+        <h2 class="h3">
+          {{ section.settings.title | remove: '<p>' | remove: '</p>' }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="loyalty-price-comparison__text rte">
+          {{ section.settings.text }}
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="loyalty-price-comparison__compare text-center">
+      {%- if section.settings.drag_title != blank -%}
+        <label for="range-membership" class="text-body-medium{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {{ section.settings.drag_title }}
+        </label>
+
+        <div
+          class="loyalty-price-comparison__range{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          style=""
+          :style="`--range-slider-progress: ${progressWidth}; --range-slider-image: url('{{ section.settings.drag_icon | image_url: width: 292 }}'); --range-slider-image-mobile: url('{{ section.settings.mobile_drag_icon | image_url: width: 292 }}')`"
+        >
+          <input
+            type="range"
+            id="range-membership"
+            min="1"
+            max="{{ section.settings.drag_steps }}"
+            x-model="quantity"
+            @input="updateSavings()"
+          >
+          <div class="flex justify-between">
+            {%- for i in (1..section.settings.drag_steps) -%}
+              <span>
+                {{ i }}
+              </span>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <div class="loyalty-price-comparison__memberships{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <template x-for="membership in memberships">
+            <div class="loyalty-price-comparison__membership">
+              <h3
+                class="loyalty-price-comparison__membership-title"
+                x-text="membership.title"
+              ></h3>
+
+              <div>
+                <p class="oyalty-price-comparison__membership-subtitle">You'll save</p>
+                <p class="flex items-center gap-[4px] mt-[12px]">
+                  <span
+                    class="loyalty-price-comparison__membership-saving h2"
+                    x-text="membership.savings"
+                  >
+                    {{ 0 | money }}
+                  </span>
+                  <span>/ Year</span>
+                </p>
+              </div>
+
+              <template x-if="membership.ctaUrl && membership.ctaText">
+                <a
+                  :href="membership.ctaUrl"
+                  class="button button--primary button--full-width"
+                  x-text="membership.ctaText"
+                >
+                </a>
+              </template>
+            </div>
+          </template>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Membership Price Compare",
+  "tag": "section",
+  "class": "section-membership-price-comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "membership-price-comparison",
+      "info": "Used for linking to this section"
+    },
+
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "drag_icon",
+      "label": "Drag icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_drag_icon",
+      "label": "Mobile drag icon"
+    },
+    {
+      "type": "text",
+      "id": "drag_title",
+      "label": "Drag title"
+    },
+    {
+      "type": "number",
+      "id": "drag_steps",
+      "label": "Drag steps",
+      "default": 6
+    },
+    {
+      "type": "number",
+      "id": "shipping_price",
+      "label": "Shipping price",
+      "default": 3,
+      "info": "Shipping price in dollars. Used to calculate savings where free shipping is included"
+    },
+    {
+      "type": "product",
+      "id": "comparison_product",
+      "label": "Comparison product",
+      "info": "Product to calculate % discount savings where applicable"
+    },
+    {
+      "type": "text",
+      "id": "credit_per_product_purchase",
+      "label": "Credit per product purchase",
+      "default": "0.25"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "membership",
+      "type": "Membership",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Membership details"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "number",
+          "id": "price",
+          "label": "Price",
+          "default": 0
+        },
+        {
+          "type": "checkbox",
+          "id": "deduct_membership_fee",
+          "label": "Deduct membership fee from savings",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Perks"
+        },
+        {
+          "type": "number",
+          "id": "credits_multiplier",
+          "label": "Credits multiplier",
+          "default": 1
+        },
+        {
+          "type": "checkbox",
+          "id": "free_shipping",
+          "label": "Free shipping",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "product_discount",
+          "label": "Product discount",
+          "default": 0,
+          "info": "Discount percentage"
+        },
+        {
+          "type": "header",
+          "content": "CTA"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Membership Price Compare",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

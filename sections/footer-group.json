@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "custom_klaviyo_footer_form_rixFYY": {
+      "type": "custom-klaviyo-footer-form",
+      "settings": {
+        "color_scheme": "scheme-5",
+        "us_list": "WGUCAr",
+        "international_list": "Vxj5XK",
+        "us_title": "FANCY KEEPING IN TOUCH?",
+        "us_subtitle": "BERO NEWSLETTER",
+        "us_title2": "THANKS FOR SIGNING UP!",
+        "us_text2": "We’re honored to have you with us and will be in touch soon. Thank you."
+      }
+    },
+    "17262273233c7999d0": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_tt6igg": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "WxiccD"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_tt6igg"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "footer": {
+      "type": "pbj-footer",
+      "blocks": {
+        "link_list_bR8xNq": {
+          "type": "link_list",
+          "settings": {
+            "h2_first": true,
+            "heading": "",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_bR8xNq"
+      ],
+      "settings": {
+        "enable_back_to_top": true,
+        "color_scheme": "scheme-3c04087a-847f-465e-a462-a2d28c439f38",
+        "image": "shopify://shop_images/Footer-logo.svg",
+        "image_width": 235,
+        "image_alignment": "justify-center",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": true,
+        "policies_menu": "policies-menu",
+        "legal_copy": "© 2025, BERO and BERO BREWING are trademarks of Bero Brewing, Inc. All rights reserved.",
+        "margin_top": 0,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "custom_klaviyo_footer_form_rixFYY",
+    "17262273233c7999d0",
+    "footer"
+  ]
+}

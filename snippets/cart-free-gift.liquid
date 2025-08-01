@@ -1,0 +1,12 @@
+{%- assign free_gift_product = all_products[settings.loyalty_free_gift_product] -%}
+
+{% if free_gift_product != blank %}
+  <div class="cart__free-gift flex items-center">
+    <div class="cart__free-gift-image">
+      {{ free_gift_product | image_url: width: 100 | image_tag: width: 50, srcset: none }}
+    </div>
+    <p>
+      {{ 'sections.cart.free_gift' | t }}
+    </p>
+  </div>
+{% endif %}

@@ -1,0 +1,371 @@
+{%- if section.settings.background_image != blank -%}
+  {{ section.settings.background_image | image_url: width: 2880 | image_tag: width: 1440, loading: 'lazy' }}
+{%- endif -%}
+
+<div
+  class="page-width"
+  id="{{ section.settings.section_id }}"
+>
+  <div class="membership-comparison color-{{ section.settings.color_scheme }}">
+    {%- if section.settings.title != blank -%}
+      <h2 class="h3 title-eyebrow text-center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.title }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="membership-comparison__table{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {% comment %}
+          Table header
+        {% endcomment %}
+        <div>
+          <span class="visually-hidden"> Membership features </span>
+        </div>
+        <div class="membership-comparison__table-title">
+          <h3 class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {%- if section.settings.tier_1_title_mobile != blank -%}
+              <span class="hidden md:inline">
+                {{ section.settings.tier_1_title }}
+              </span>
+              <span class="md:hidden">
+                {{ section.settings.tier_1_title_mobile }}
+              </span>
+            {%- else -%}
+              {{ section.settings.tier_1_title }}
+            {%- endif -%}
+          </h3>
+        </div>
+        <div class="membership-comparison__table-title color-{{ section.settings.preferred_membership_color_scheme }}">
+          <h3 class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {%- if section.settings.tier_2_title_mobile != blank -%}
+              <span class="hidden md:inline">
+                {{ section.settings.tier_2_title }}
+              </span>
+              <span class="md:hidden">
+                {{ section.settings.tier_2_title_mobile }}
+              </span>
+            {%- else -%}
+              {{ section.settings.tier_2_title }}
+            {%- endif -%}
+          </h3>
+        </div>
+
+        {%- comment -%}
+          Table body
+        {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="membership-comparison__table-feature">
+            <h4 class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ block.settings.title }}
+            </h4>
+          </div>
+          <div class="membership-comparison__table-feature-check">
+            {%- if block.settings.tier_1_text_mobile != blank or block.settings.tier_1_tick_mobile -%}
+              <div class="hidden md:block{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {%- if block.settings.tier_1_text != blank -%}
+                  <div>
+                    {{ block.settings.tier_1_text }}
+                  </div>
+                {%- elsif block.settings.tier_1_tick -%}
+                  {%- render 'icons', icon: 'tick-small', fill: section.settings.color_scheme.settings.text -%}
+                {%- else -%}
+                  <span class="visually-hidden"> none </span>
+                {%- endif -%}
+              </div>
+              <div class="md:hidden flex justify-center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {%- if block.settings.tier_1_text_mobile != blank -%}
+                  <div>
+                    {{ block.settings.tier_1_text_mobile }}
+                  </div>
+                {%- elsif block.settings.tier_1_tick_mobile -%}
+                  {%- render 'icons', icon: 'tick-small', fill: section.settings.color_scheme.settings.text -%}
+                {%- endif -%}
+              </div>
+            {%- else -%}
+              {%- if block.settings.tier_1_text != blank -%}
+                <div
+                  {% if settings.animations_reveal_on_scroll %}
+                    scroll-trigger animate--slide-in
+                  {% endif %}
+                >
+                  {{ block.settings.tier_1_text }}
+                </div>
+              {%- elsif block.settings.tier_1_tick -%}
+                {%- render 'icons', icon: 'tick-small', fill: section.settings.color_scheme.settings.text -%}
+              {%- else -%}
+                <span class="visually-hidden"> none </span>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+          <div class="membership-comparison__table-feature-check color-{{ section.settings.preferred_membership_color_scheme }}">
+            {%- if block.settings.tier_2_text_mobile != blank or block.settings.tier_2_tick_mobile -%}
+              <div class="hidden md:block{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {%- if block.settings.tier_2_text != blank -%}
+                  <div>
+                    {{ block.settings.tier_2_text }}
+                  </div>
+                {%- elsif block.settings.tier_2_tick -%}
+                  {%- render 'icons',
+                    icon: 'tick-small',
+                    fill: section.settings.preferred_membership_color_scheme.settings.text
+                  -%}
+                {%- else -%}
+                  <span class="visually-hidden"> none </span>
+                {%- endif -%}
+              </div>
+              <div class="md:hidden flex justify-center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {%- if block.settings.tier_2_text_mobile != blank -%}
+                  <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                    {{ block.settings.tier_2_text_mobile }}
+                  </div>
+                {%- elsif block.settings.tier_2_tick_mobile -%}
+                  {%- render 'icons',
+                    icon: 'tick-small',
+                    fill: section.settings.preferred_membership_color_scheme.settings.text
+                  -%}
+                {%- endif -%}
+              </div>
+            {%- else -%}
+              {%- if block.settings.tier_2_text != blank -%}
+                <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                  {{ block.settings.tier_2_text }}
+                </div>
+              {%- elsif block.settings.tier_2_tick -%}
+                {%- render 'icons',
+                  icon: 'tick-small',
+                  fill: section.settings.preferred_membership_color_scheme.settings.text
+                -%}
+              {%- else -%}
+                <span class="visually-hidden"> none </span>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+        {%- comment -%}
+          CTAs
+        {%- endcomment -%}
+        <div class="hidden !md:block"></div>
+        <div class="hidden md:block membership-comparison__table-cta">
+          {%- if section.settings.tier_1_cta_text != blank and section.settings.tier_1_cta_url != blank -%}
+            <a
+              href="{{ section.settings.tier_1_cta_url }}"
+              class="button button--primary button--full-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            >
+              {{ section.settings.tier_1_cta_text }}
+            </a>
+          {%- endif -%}
+        </div>
+        <div class="hidden md:block membership-comparison__table-cta color-{{ section.settings.preferred_membership_color_scheme }}">
+          {%- if section.settings.tier_2_cta_text != blank and section.settings.tier_2_cta_url != blank -%}
+            <a
+              href="{{ section.settings.tier_2_cta_url }}"
+              class="button button--primary button--full-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            >
+              {{ section.settings.tier_2_cta_text }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="flex md:hidden gap-[5px] mt-[45px]{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.tier_1_cta_text != blank and section.settings.tier_1_cta_url != blank -%}
+        <a
+          href="{{ section.settings.tier_1_cta_url }}"
+          class="button button--primary button--full-width text-center px-[12px] py-[9px] leading-normal"
+        >
+          {{ section.settings.tier_1_cta_text }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.tier_2_cta_text != blank and section.settings.tier_2_cta_url != blank -%}
+        <a
+          href="{{ section.settings.tier_2_cta_url }}"
+          class="button button--primary button--inverse button--full-width text-center px-[12px] py-[9px] leading-normal"
+        >
+          {{ section.settings.tier_2_cta_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Membership Comparison",
+  "tag": "section",
+  "class": "section-membership-comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "membership-comparison",
+      "info": "Used for linking to this section"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "preferred_membership_color_scheme",
+      "label": "Preferred Membership Color Scheme",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Brilliant perks. Bar none."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Tier 1"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_title",
+      "label": "Tier 1 Title"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_title_mobile",
+      "label": "Tier 1 Title - Mobile",
+      "info": "Optional"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_cta_text",
+      "label": "Tier 1 CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "tier_1_cta_url",
+      "label": "Tier 1 CTA URL"
+    },
+    {
+      "type": "header",
+      "content": "Tier 2"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_title",
+      "label": "Tier 2 Title"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_title_mobile",
+      "label": "Tier 2 Title - Mobile",
+      "info": "Optional",
+      "default": "BERO-MASTER"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_cta_text",
+      "label": "Tier 2 CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "tier_2_cta_url",
+      "label": "Tier 2 CTA URL"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Benefits",
+      "type": "benefits",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "header",
+          "content": "Tier 1"
+        },
+        {
+          "type": "paragraph",
+          "content": "Please either add text, tick or leave blank if this tier does not have this benefit"
+        },
+        {
+          "type": "text",
+          "id": "tier_1_text",
+          "label": "Text",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "tier_1_text_mobile",
+          "label": "Mobile text",
+          "info": "Optional"
+        },
+        {
+          "type": "checkbox",
+          "id": "tier_1_tick",
+          "label": "Tick",
+          "default": false,
+          "info": "Optional"
+        },
+        {
+          "type": "checkbox",
+          "id": "tier_1_tick_mobile",
+          "label": "Mobile tick",
+          "default": false,
+          "info": "Optional. Use this if the benefit text is too long to fit on mobile"
+        },
+        {
+          "type": "header",
+          "content": "Tier 2"
+        },
+        {
+          "type": "paragraph",
+          "content": "Please either add text, tick or leave blank if this tier does not have this benefit"
+        },
+        {
+          "type": "text",
+          "id": "tier_2_text",
+          "label": "Text",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "tier_2_text_mobile",
+          "label": "Mobile text",
+          "info": "Optional"
+        },
+        {
+          "type": "checkbox",
+          "id": "tier_2_tick",
+          "label": "Tick",
+          "default": false,
+          "info": "Optional"
+        },
+        {
+          "type": "checkbox",
+          "id": "tier_2_tick_mobile",
+          "label": "Mobile tick",
+          "default": false,
+          "info": "Optional. Use this if the benefit text is too long to fit on mobile"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Membership Comparison",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

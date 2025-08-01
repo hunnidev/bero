@@ -1,0 +1,68 @@
+<div
+  class=" expandable-section"
+  x-data="handleScroll"
+  x-init="firstScroll = true; hasScrolledPast = false; init()"
+  :class="{'expandable-section--expanded': hasScrolledPast }"
+>
+  <div
+    class="color-{{ section.settings.color_scheme }}"
+    aria-aria-label="{{ section.settings.accessible_text }}"
+  >
+    <div class="text-svg-animation page-width">
+      {%- for block in section.blocks -%}
+        {{ block.settings.svg }}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(() => {
+      document.querySelector('#shopify-section-{{ section.id }}').classList.add('animation-ready');
+    }, 100);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Text SVG Animation",
+  "tag": "section",
+  "class": "section-text-svg-animation",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "text",
+      "id": "accessible_text",
+      "label": "Accessible text",
+      "default": "Born in London, crafted in America, enjoyed worldwide"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "SVG",
+      "type": "svg",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg",
+          "label": "SVG"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text SVG Animation",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

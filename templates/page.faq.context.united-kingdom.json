@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.faq.json",
+  "context": {
+    "market": "united-kingdom"
+  },
+  "sections": {
+    "pbj_collapsible_content_8FaULY": {
+      "settings": {},
+      "blocks": {
+        "collapsible_row_ncqNhA": {
+          "settings": {
+            "row_content": "<ul><li>Kingston Golden Pils: 25 kcal per 100 mL</li><li>Edge Hill Hazy IPA: 20 kcal per 100 mL</li><li>Noon Wheat: 20 kcal per 100 mL</li><li>Double Tasty West Coast Style IPA: 25 kcal per 100 mL</li></ul>"
+          }
+        },
+        "collapsible_row_KL49AR": {
+          "disabled": false,
+          "settings": {
+            "row_content": "<ul><li>Kingston Golden Pils: 5 g per 100 mL </li><li>Edge Hill Hazy IPA: 4 g per 100 mL</li><li>Noon Wheat: 4 g per 100 mL</li><li>Double Tasty West Coast Style IPA: 5 g per 100 mL </li></ul>"
+          }
+        },
+        "collapsible_row_9ECmBL": {
+          "settings": {
+            "row_content": "<p>Whenever possible, store your beer cold / cool—below 10 degrees Celsius is the sweet spot. Never expose your beer to hot temperatures or heat sources.</p>"
+          }
+        },
+        "collapsible_row_JmHMgL": {
+          "settings": {
+            "row_content": "<p>BERO is best enjoyed between 2-4 degrees Celsius.</p>"
+          }
+        }
+      }
+    },
+    "pbj_collapsible_content_pJNJbM": {
+      "settings": {},
+      "blocks": {
+        "collapsible_row_9QcNjA": {
+          "settings": {
+            "row_content": "<p>We want to make it easy for people to find and enjoy BERO. We will continue working hard to add more locations to our <a href=\"/pages/where-to-find-us\" target=\"_blank\" title=\"Where to find us\">store locator</a>, so our consumers are able to purchase BERO at their favorite stores, restaurants, and bars. Keep an eye out for updates on our website and social (<a href=\"https://instagram.com/berobrewing\" target=\"_blank\"><span style=\"text-decoration:underline\">@berobrewing</span></a>).</p>"
+          }
+        },
+        "collapsible_row_bGK7z9": {
+          "disabled": true,
+          "settings": {}
+        },
+        "collapsible_row_Y7jhAe": {
+          "settings": {
+            "row_content": "<p>In order to buy alcohol in stores, you must be able to produce identification which bears a photograph, date of birth proving you are over 18, and either a holographic mark or ultraviolet feature.</p>"
+          }
+        }
+      }
+    },
+    "pbj_collapsible_content_N49mm6": {
+      "settings": {},
+      "blocks": {
+        "collapsible_row_BiDpXg": {
+          "settings": {
+            "row_content": "<p>You can sign up as a Free Member with as little as your name, email, and address, or join our BEROMASTER tier for a £55 annual membership fee. Visit our Club BERO page to <a href=\"/pages/loyalty\" target=\"_blank\" title=\"Loyalty\"><span style=\"text-decoration:underline\">sign up</span>.</a></p>"
+          }
+        },
+        "collapsible_row_diUe3Q": {
+          "settings": {
+            "row_content": "<ul><li>All credits are earned in USD.</li><li>When credits are redeemed, they will be against the current conversion rate.</li><li>By purchasing any BERO 6-pack or Variety Pack online or in-store. Club BERO Free Members receive $0.25 credit for each 6-pack purchased. BEROMASTER members receive double the credit at $0.50 credit for each 6-pack purchase. </li><li>There are other ways to earn credits if you are a Club BERO member—such as referrals, reviews, social follows, and more. Members can see a full list of credit-earning actions in their dashboard.</li></ul>"
+          }
+        },
+        "collapsible_row_t86jrP": {
+          "settings": {
+            "row_content": "<p>Here are the steps to redeem your credits:</p><ul><li>Log in to your Club BERO account dashboard (you don’t have to be a paid member to redeem credits). <a href=\"/pages/account-club-bero\" target=\"_blank\">Sign in here</a></li><li>Click on “redeem credits”</li><li>Enter the amount of credits you want to redeem from your available credit balance</li><li>A unique discount code for that amount will be generated and can be automatically applied to your cart if you choose to do so</li><li>Fill your cart with all your favorite BERO beers and checkout with your savings applied</li></ul>"
+          }
+        },
+        "collapsible_row_3FmD8g": {
+          "settings": {
+            "heading": "What happens to my credits if I cancel a BERO order?",
+            "row_content": "<ul><li>If you placed an order on <a href=\"https://www.berobrewing.com\">www.berobrewing.com</a> and:</li><li><strong>Cancel the order</strong> OR <strong>get a full refund for your order</strong>, your Club BERO credits earned for that specific order will no longer be applied to your account. </li><li><strong>Get a partial refund for your order</strong>, only the equivalent Club BERO credits will be deducted from your account.</li></ul><p>Please reach out to our customer service team at <a href=\"mailto:support@bero.com\" target=\"_blank\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>. if you have any questions. </p>"
+          }
+        }
+      }
+    },
+    "pbj_collapsible_content_WybYU4": {
+      "settings": {},
+      "blocks": {
+        "collapsible_row_9HxfRY": {
+          "settings": {
+            "row_content": "<p>The last thing we want to do is be a bother and we work hard to limit the number of messages we send. However, if you do wish to unsubscribe, you can use the “unsubscribe” link at the bottom of our emails at any time or login to your account and adjust your communication preferences.</p>"
+          }
+        }
+      }
+    },
+    "pbj_collapsible_content_PKf76R": {
+      "settings": {},
+      "blocks": {
+        "collapsible_row_j4kEa8": {
+          "disabled": true,
+          "settings": {}
+        },
+        "collapsible_row_PWhxjF": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    },
+    "main": {
+      "settings": {
+        "show_page_title": false
+      },
+      "blocks": {}
+    }
+  }
+}

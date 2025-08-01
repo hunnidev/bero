@@ -1,0 +1,20 @@
+{% assign currency_symbol    = '' %}
+{% assign total_original_net = 0 %}
+{% assign total_net_text     = order.total_net_amount | money %}
+
+{% case order.currency %}
+  {% when 'USD' %} {% assign currency_symbol = '$' %}
+  {% when 'GBP' %} {% assign currency_symbol = '£' %}
+{% endcase %}
+
+{% for line_item in order.line_items %}
+  {% assign line_net           = line_item.original_line_price | minus: line_item.total_discount %}
+  {% assign total_original_net = total_original_net | plus: line_net %}
+{% endfor %}
+
+{% if total_original_net != 0 %}
+  {% assign total_original_net = total_original_net | plus: order.shipping_price | minus: order.total_discounts %}
+  {% assign total_net_text     = total_original_net | money_without_currency | prepend: currency_symbol %}
+{% endif %}
+
+{{ total_net_text }}

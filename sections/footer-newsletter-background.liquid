@@ -1,0 +1,36 @@
+<style>
+  main ~ section.shopify-section-group-footer-group {
+      background-color: {{ section.settings.background_color }};
+      padding-top: {{ section.settings.padding }}px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Newsletter Background",
+  "class": "newsletter-bg-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#004F3C"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Background",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

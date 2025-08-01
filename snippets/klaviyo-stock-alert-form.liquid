@@ -1,0 +1,43 @@
+<div id="kl_stock_alert-form-container" class="flex flex-col gap-[24px]">
+  <form id="kl_stock_alert" class="flex flex-col gap-[24px]">
+    <p class="oos-copy">{{ 'products.product.oos_alert' | t }}</p>
+    <input
+      name="user_email"
+      placeholder="Email address"
+      type="email"
+      value="{% if customer.email %}{{ customer.email }}{% endif %}"
+      aria-required="true"
+      required
+    >
+
+    <label class="ool_list_subscribe flex items-center">
+      <input name="list_subscribe" type="checkbox">
+      {%- render 'icon-checkmark' -%}
+      <span>{{ 'products.product.oos_alert_join_mailing' | t }}</span>
+    </label>
+
+    <input name="variant" type="hidden" value="{{ product.selected_or_first_available_variant.id }}">
+    {% if localization.market.handle == 'us' %}
+      <input name="kl_list" type="hidden" value="WGUCAr">
+      <input name="mkt_custom_property_name" type="hidden" value="$us_bis_subscribed">
+    {% elsif localization.market.handle == 'united-kingdom' %}
+      <input name="kl_list" type="hidden" value="TaQRwK">
+      <input name="mkt_custom_property_name" type="hidden" value="$uk_bis_subscribed">
+    {% else %}
+      <input name="kl_list" type="hidden" value="SECTBG">
+      <input name="mkt_custom_property_name" type="hidden" value="$us_bis_subscribed">
+    {% endif %}
+  
+  </form>
+  <button id="kl_stock_alert-btn" class="product-form__submit button button--full-width button--primary">
+    {{ 'products.product.oos_alert_btn' | t }}
+  </button>
+  <div class="oos_notifications">
+    <p
+      class="h5 kl_stock_alert-error hidden {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    ></p>
+    <p class="h5 kl_stock_alert-success hidden {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {{ 'products.product.oos_alert_success' | t }}
+    </p>
+  </div>
+</div>

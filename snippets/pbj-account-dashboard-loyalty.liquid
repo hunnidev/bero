@@ -1,0 +1,43 @@
+{%- assign customer_rivo_data = customer.metafields.custom.rivo.value -%}
+{%- assign credits_balance = customer_rivo_data.credits_balance | plus: 0.0 -%}
+{%- assign credits_balance_money = credits_balance | times: 100.0 | money_without_currency | prepend: '$' -%}
+
+<div
+  class="account-loyalty-header"
+>
+  <div class="account-loyalty-header__content color-{{ section.settings.loyalty_color_scheme }}">
+    {%- if section.settings.loyalty_icon != blank -%}
+      {{ section.settings.loyalty_icon }}
+    {%- endif -%}
+
+    <div class="flex justify-between items-center flex-wrap gap-[12px]">
+      <p class="h5 h5--primary uppercase">{{ credits_balance_money }} credits</p>
+      {%- if credits_balance >= 1 -%}
+        <button
+          class="button button--primary button--narrow dashboard-redeem-btn"
+          @click="openModal($event)"
+          data-modal-id="loyalty-credits-redeem-{{ section.id }}"
+        >
+          {{ section.settings.loyalty_redeem_button_text }}
+        </button>
+      {%- endif -%}
+    </div>
+    <div class="account-loyalty-header__footer">
+      <div>
+        <h2 class="account-loyalty-header__subtitle">
+          {{ section.settings.loyalty_membership_title }}
+        </h2>
+        <p class="text-body-small font-normal">
+          {{ customer_rivo_data.vip_tier }}
+        </p>
+      </div>
+      <a
+        href="{{ section.settings.loyalty_view_account_url }}"
+        class="account-loyalty-header__footer__cta"
+      >
+        {{ section.settings.loyalty_view_account_text }}
+      </a>
+    </div>
+  </div>
+  {% render 'pbj-account-dashboard-novel', section: section %}
+</div>

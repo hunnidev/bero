@@ -1,0 +1,41 @@
+{%- assign customer_rivo_data = customer.metafields.custom.rivo.value -%}
+{%- assign credits_balance = customer_rivo_data.credits_balance | plus: 0.0 -%}
+{%- assign credits_balance_money = credits_balance | times: 100.0 | money_without_currency | prepend: '$' -%}
+
+{%- if customer.tags contains 'vip' -%}
+  <div class="loyalty-redeem-cta gradient color-{{ settings.loyalty_redeem_cta_color_scheme }}">
+    {% comment %} pb+j beromaster code is now automatically added through custom app extension {% endcomment %}
+     {% comment %} <div class="loyalty-redeem-cta__beromaster-code">
+      {{ settings.loyalty_redeem_beromaster_code_text }}
+    </div> {% endcomment %}
+    {%- if credits_balance >= 1 and cart.cart_level_discount_applications.size == 0 -%}
+      <div class="flex items-center">
+        <p>{{ settings.loyalty_redeem_cta_title | replace: '[AMOUNT]', credits_balance_money }}</p>
+        <button
+          class="button button--primary"
+          @click="openModal($event)"
+        >
+          {{ settings.loyalty_redeem_cta_button_text }}
+        </button>
+      </div>
+    {%- else -%}
+      <p>{{ settings.loyalty_redeem_cta_title | replace: '[AMOUNT]', credits_balance_money }}</p>
+    {%- endif -%}
+  </div>
+{%- else -%}
+  {%- if credits_balance > 0 and cart.cart_level_discount_applications.size == 0 -%}
+    <div class="loyalty-redeem-cta gradient color-{{ settings.loyalty_redeem_cta_color_scheme }}">
+      {%- if settings.loyalty_redeem_cta_title -%}
+        <h3 class="loyalty-redeem-cta__title h5 h5--primary">
+          {{ settings.loyalty_redeem_cta_title | replace: '[AMOUNT]', credits_balance_money }}
+        </h3>
+      {%- endif -%}
+      <button
+        class="button button--primary"
+        @click="openModal($event)"
+      >
+        {{ settings.loyalty_redeem_cta_button_text }}
+      </button>
+    </div>
+  {%- endif -%}
+{%- endif -%}

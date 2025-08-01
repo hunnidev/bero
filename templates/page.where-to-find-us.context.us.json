@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.where-to-find-us.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "pbj_image_list_hA9hhr": {
+      "settings": {},
+      "blocks": {
+        "image_aLwJmg": {
+          "settings": {
+            "link": "https://www.target.com/b/bero-brewing/-/N-q643le7uo71"
+          }
+        },
+        "image_bTdjnx": {
+          "settings": {
+            "link": "https://www.amazon.com/berobrewing"
+          }
+        },
+        "image_3ed8zJ": {
+          "settings": {
+            "link": "https://shop.sprouts.com/store/sprouts/products/63494588-noon-wheat-nonalcoholic-beer-6-pack-6-ct"
+          }
+        }
+      }
+    }
+  }
+}

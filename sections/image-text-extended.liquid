@@ -1,0 +1,104 @@
+{%- if section.blocks.size > 0 -%}
+  {%- for block in section.blocks -%}
+    {%- liquid
+      assign odd_number = false
+      assign odd_even = forloop.index0 | modulo: 2
+      if odd_even == 1
+        assign odd_number = true
+      endif
+    -%}
+    <div class="flex flex-col-reverse md:items-center {% if odd_number %} lg:flex-row-reverse{% else %} lg:flex-row{% endif %} gradient color-{{ block.settings.color_scheme }}">
+      <div class="image-text-extended__content">
+        {%- if block.settings.pre_heading != blank -%}
+          <p class="image-text-extended__pre-heading h6 text-green">
+            {{ block.settings.pre_heading }}
+          </p>
+        {%- endif -%}
+        {%- if block.settings.title != blank -%}
+          <h2 class="h2 normal-case">
+            {{ block.settings.title }}
+          </h2>
+        {%- endif -%}
+        {%- if block.settings.text != blank -%}
+          <div class="image-text-extended__text rte text-body-medium">
+            {{ block.settings.text }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="image-text-extended__image">
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1440 | image_tag: loading: 'lazy', width: 720 }}
+        {%- endif -%}
+
+        {%- if block.settings.image_caption != blank -%}
+          <div class="image-text-extended__caption rte">
+            {{ block.settings.image_caption }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Image with Text Extended",
+  "tag": "section",
+  "class": "image-text-extended",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section is used to allow the content to come from unique metafields"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Content block",
+      "type": "content_block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pre_heading",
+          "label": "Preheading"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "image_caption",
+          "label": "Image caption"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "scheme-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text Extended",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

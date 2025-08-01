@@ -1,0 +1,187 @@
+<div class="section-slider pbj-slide-scroll {% unless section.settings.full_width %} page-width{% endunless %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div class="swiper-container swiper swiper--{{ section.id }} relative" aria-label="{{ section.settings.ada_title }}" aria-roledescription="carousel" role="region">
+    <div id="SlidesScroll-{{ section.id }}" class="swiper-wrapper" aria-live="polite">
+      {% for block in section.blocks %}
+        <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}">
+          {% if block.settings.background_image or block.settings.mobile_background_image %}
+            <picture class="pbj-slide-scroll__image {% if block.settings.background_image == blank %}md:hidden{% endif %}">
+              {% if block.settings.mobile_background_image %}
+                <source
+                  media="(max-width: 1024px)"
+                  srcset="{{ block.settings.mobile_background_image | image_url: width: '400x' }} 400w, {{ block.settings.mobile_background_image | image_url: width: '600x' }} 600w, {{ block.settings.mobile_background_image | image_url: width: '800x' }} 800w, {{ block.settings.mobile_background_image | image_url: width: '1000x' }} 1000w"
+                  width="{{ block.settings.mobile_background_image.width }}"
+                  height="{{ block.settings.mobile_background_image.height }}"
+                >
+              {% endif %}
+
+              {% assign background_image = block.settings.background_image
+                | default: block.settings.mobile_background_image
+              %}
+
+              {{
+                background_image
+                | image_url: width: background_image.width
+                | image_tag:
+                  widths: '200,300,400,500,600,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000',
+                  class: 'slides-scroll__image-background'
+              }}
+            </picture>
+          {% endif %}
+          <div class="pbj-slide-scroll__text">
+            <div class="pre-heading">{{ block.settings.preheading }}</div>
+            <h3 class="heading h2">{{ block.settings.heading }}</h3>
+            <div class="description">{{ block.settings.description }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_arrows %}
+      <div class="arrow-container {% if section.settings.mobile_show_arrows == false %} max-md:hidden{% endif %}">
+        <button type="button" class="slider-button slider-button--prev swiper-button-prev" name="previous" aria-label="Slide left" aria-controls="SlidesScroll-{{ section.id }}">
+          {% render 'icon-arrow-wide' %}
+        </button>
+        <button type="button" class="slider-button slider-button--next swiper-button-next" name="next" aria-label="Slide right" aria-controls="SlidesScroll-{{ section.id }}">
+          {% render 'icon-arrow-wide' %}
+        </button>
+      </div>
+    {% endif %}
+
+    {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
+  </div>
+</div>
+
+
+<script type="module">
+  (async () => {
+    if (typeof window.Swiper === 'undefined') {
+      const { default: Swiper } = await import('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs');
+      window.Swiper = Swiper;
+    }
+
+    const swiper = new window.Swiper('.swiper--{{ section.id }}', {
+      loop: false,
+      speed: 500,
+      breakpoints: {
+        0: {
+          direction: 'horizontal',
+          slidesPerView: 1,
+          spaceBetween: 0,
+          centeredSlides: true,
+          initialSlide: 0,
+          allowTouchMove: true,
+        },
+        1024: {
+          direction: 'vertical',
+          slidesPerView: 'auto',
+          spaceBetween: 0,
+          centeredSlides: true,
+          allowTouchMove: true,
+          autoHeight: true,
+          initialSlide: 0,
+        },
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+       navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      }
+    });
+
+
+    const swiperContainer = document.querySelector('.swiper--{{ section.id }}');
+
+    if (swiperContainer) {
+      const focusableElements = swiperContainer.querySelectorAll('a');
+      const lastFocusable     = focusableElements[focusableElements.length - 1];
+
+      swiperContainer.addEventListener('keydown', (event) => {
+        if (event.key === 'Tab') {
+          if (!event.shiftKey) {
+            if (document.activeElement === lastFocusable) {
+              document.querySelector('.product-carousel__cta').focus();
+              event.preventDefault();
+            }
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Slides Scroll - pbj",
+  "tag": "section",
+  "class": "pbj-slides-scroll",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "ada_title",
+      "label": "Accessibility Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": false,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "default": true,
+      "label": "Show Navigation Arrows"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_show_arrows",
+      "default": true,
+      "label": "Show Navigation Arrows on mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_background_image",
+          "label": "Mobile image"
+        },
+        {
+          "type": "text",
+          "id": "preheading",
+          "label": "Pre-heading"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slides Scroll - pbj"
+    }
+  ]
+}
+{% endschema %}

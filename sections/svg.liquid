@@ -1,0 +1,48 @@
+{%- if section.settings.svg_code_desktop != blank -%}
+  <div class="svg-section__inner gradient color-{{ section.settings.color_scheme }}">
+    <div
+      {% if section.settings.svg_code_mobile != blank %}
+        class="hidden md:block"
+      {% endif %}
+    >
+      {{ section.settings.svg_code_desktop }}
+    </div>
+    {% if section.settings.svg_code_mobile != blank %}
+      <div class="md:hidden">
+        {{ section.settings.svg_code_mobile }}
+      </div>
+    {% endif %}
+  </div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "SVG",
+  "tag": "section",
+  "class": "svg-section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "Inner color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "html",
+      "id": "svg_code_desktop",
+      "label": "SVG Code (desktop)"
+    },
+    {
+      "type": "html",
+      "id": "svg_code_mobile",
+      "label": "SVG Code (mobile)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SVG",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

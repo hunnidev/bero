@@ -1,0 +1,418 @@
+{% if section.settings.section_background != blank and section.settings.section_background != 'rgba(0,0,0,0)' %}
+    {% style %}
+        #shopify-section-{{ section.id }} {
+            background: {{ section.settings.section_background }};
+        }
+    {% endstyle %}
+{% endif %}
+
+{% if template.suffix == 'retail-partners' %}
+  <style>
+  .form-embed-section {
+    background-image: url({{ section.settings.back | img_url: 'master' }}) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+  </style>
+  {% endif %}
+<div class="color-{{ section.settings.color_scheme }} {{ section.settings.text_alignment }} relative pb-20 pt-[1px] pbj-form-embed {% if section.settings.overlap_section %}overlap_section{% endif %}" id="form-embed-section">
+    <div class="page-width">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'heading' %}
+                    <h2
+                        class="mt-20 rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if block.settings.show_title_eyebrow %} title-eyebrow{% endif %}{% if block.settings.left_eyebrow %} left-eyebrow{% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                        {{ block.shopify_attributes }}
+                        {% if settings.animations_reveal_on_scroll %}
+                          data-cascade
+                          style="--animation-order: {{ forloop.index }};"
+                        {% endif %}
+                      >
+                        {{ block.settings.heading }}
+                      </h2>
+    
+                {%- when 'text' -%}
+                    <div
+                        class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} mt-8"
+                        {{ block.shopify_attributes }}
+                        {% if settings.animations_reveal_on_scroll %}
+                        data-cascade
+                        style="--animation-order: {{ forloop.index }};"
+                        {% endif %}
+                    >
+                        {{ block.settings.text }}
+                    </div>
+                
+                {% when 'image' %}
+                    <div class="form-img flex justify-center mt-20">
+                        <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.image.alt | escape }}">
+                    </div>
+    
+                {% when 'form_embed' %}
+                    <div class="form-embed-container mt-20" {{ block.shopify_attributes }}>
+                        {{ block.settings.form_code }}
+                        {% if block.settings.show_ambassador_button %}
+                          {% style %}
+                            .ambassador-button {
+                              display: flex;
+                              align-items: center;
+                              justify-content: flex-start;
+                              gap: 2rem;
+                            }
+                            .ambassador-button span {
+                              font-size: 1.4rem;
+                              color: white;
+                            }
+                            .ambassador-button button {
+                              background: transparent;
+                              color: white;
+                              width: fit-content;
+                              padding: 2rem 6rem;
+                              font-size: 1.4rem;
+                            }
+                            .ambassador-consent .globo-form-input {
+                              border: 0 !important;
+                            }
+                            .ambassador-button button:hover {
+                              background-color: #D3B890;
+                            }
+                            .globo-formbuilder-wizard .gfb__footer.wizard__footer {
+                              display: none !important;
+                            }
+                          {% endstyle %}
+                          <div
+                            style="max-width: 590px;margin: 0 auto;"
+                            x-data="ambassadorForm({})"
+                            class="manual-form-footer"
+                          >
+                            <input type="hidden" name="customer-email" value="{{ customer.email }}">
+                            <div class="ambassador-button"
+                            >
+                              <button
+                                id="ambassador-form-submit"
+                                class="button button--primary w-full submit"
+                                @click="ambassadorFormSubmit"
+                              >
+                                SUBMIT
+                              </button>
+                              <span>*Required</span>
+                            </div> 
+                          </div>
+                        {% elsif block.settings.show_wholesale_button %}
+                          {% style %}
+                            .wholesale-button {
+                              display: flex;
+                              align-items: center;
+                              justify-content: flex-start;
+                              gap: 2rem;
+                            }
+                            .wholesale-button span {
+                              font-size: 1.4rem;
+                              color: black;
+                            }
+                            .wholesale-button button {
+                              background: black;
+                              color: white;
+                              width: fit-content;
+                              padding: 2rem 6rem;
+                              font-size: 1.4rem;
+                            }
+                            .wholesale-consent .globo-form-input {
+                              border: 0 !important;
+                            }
+                            .wholesale-button button:hover {
+                              background-color: #004f3c;
+                            }
+                            .globo-formbuilder-wizard .gfb__footer.wizard__footer {
+                              display: none !important;
+                            }
+                          {% endstyle %}
+                          <div
+                            style="max-width: 590px;margin: 0 auto;"
+                            x-data="wholesaleForm({})"
+                            class="manual-form-footer"
+                          >
+                            <input type="hidden" name="customer-email" value="{{ customer.email }}">
+                            <div class="wholesale-button"
+                            >
+                              <button
+                                id="wholesale-form-submit"
+                                class="button button--primary w-full submit"
+                                @click="wholesaleFormSubmit"
+                              >
+                                SUBMIT
+                              </button>
+                              <span>*Required</span>
+                            </div> 
+                          </div>
+                        {% endif %}
+                    </div>
+    
+                {% when 'columns' %}
+                    <div class="pbj-multicolumn mt-20" {{ block.shopify_attributes }}>
+                        <ul
+                            class="multicolumn-list contains-content-container grid--flex  {% if block.settings.show_divider %}show_divider{% endif %} %}"
+                            role="list"
+                        >
+                            {% if block.settings.column_1_text != blank %}
+                                <li
+                                    class="md:p-9 multicolumn-list__item grid__item{% if block.settings.column_alignment == 'center' %} justify-center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                                    {% if settings.animations_reveal_on_scroll %}
+                                    data-cascade
+                                    style="--animation-order: {{ forloop.index }};"
+                                    {% endif %}
+                                >
+                                    {{ block.settings.column_1_text }}
+                                </li>
+                            {% endif %}
+                            {% if block.settings.column_2_text != blank %}
+                                <li
+                                    class="md:p-9 multicolumn-list__item grid__item{% if block.settings.column_alignment == 'center' %} justify-center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                                    {% if settings.animations_reveal_on_scroll %}
+                                    data-cascade
+                                    style="--animation-order: {{ forloop.index }};"
+                                    {% endif %}
+                                >
+                                    {{ block.settings.column_2_text }}
+                                </li>
+                            {% endif %}
+                            {% if block.settings.column_3_text != blank %}
+                                <li
+                                    class="md:p-9 multicolumn-list__item grid__item{% if block.settings.column_alignment == 'center' %} justify-center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                                    {% if settings.animations_reveal_on_scroll %}
+                                    data-cascade
+                                    style="--animation-order: {{ forloop.index }};"
+                                    {% endif %}
+                                >
+                                    {{ block.settings.column_3_text }}
+                                </li>
+                            {% endif %}
+                        
+                        </ul>
+                    </div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Form Embed - pbj",
+    "tag": "section",
+    "class": "section form-embed-section",
+    "settings": [
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "t:sections.all.colors.label",
+            "default": "scheme-1"
+        },
+        {
+            "type": "color",
+            "id": "section_background",
+            "label": "Section background color"
+        },
+        {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text Alignment",
+            "options": [
+                {
+                    "value": "text-left",
+                    "label": "Left"
+                },
+                {
+                    "value": "text-center",
+                    "label": "Center"
+                },
+                {
+                    "value": "text-right",
+                    "label": "Right"
+                }
+            ],
+            "default": "text-center"
+        },
+        {
+            "type": "checkbox",
+            "id": "overlap_section",
+            "default": false,
+            "label": "Overlap section",
+            "info": "Overlap with above section, only on desktop"
+        },
+      {
+            "type": "image_picker",
+            "id": "back",
+            "label": "Bakground Image"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "heading",
+            "name": "t:sections.rich-text.blocks.heading.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "inline_richtext",
+                    "id": "heading",
+                    "default": "t:sections.rich-text.blocks.heading.settings.heading.default",
+                    "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+                },
+                {
+                    "type": "select",
+                    "id": "heading_size",
+                    "options": [
+                        {
+                            "value": "h5",
+                            "label": "t:sections.all.heading_size.options__1.label"
+                        },
+                        {
+                            "value": "h4",
+                            "label": "t:sections.all.heading_size.options__2.label"
+                        },
+                        {
+                            "value": "h3",
+                            "label": "t:sections.all.heading_size.options__3.label"
+                        },
+                        {
+                            "value": "h2",
+                            "label": "t:sections.all.heading_size.options__4.label"
+                        },
+                        {
+                            "value": "h1",
+                            "label": "t:sections.all.heading_size.options__5.label"
+                        }
+                    ],
+                    "default": "h1",
+                    "label": "t:sections.all.heading_size.label"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_title_eyebrow",
+                    "default": false,
+                    "label": "Show title eyebrow"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "left_eyebrow",
+                    "default": false,
+                    "label": "Align eyebrow to the left"
+                }
+            ]
+        },
+        {
+            "type": "image",
+            "name": "Image",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "name": "t:sections.rich-text.blocks.text.name",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "default": "t:sections.rich-text.blocks.text.settings.text.default",
+                    "label": "t:sections.rich-text.blocks.text.settings.text.label"
+                }
+            ]
+        },
+        {
+            "type": "form_embed",
+            "name": "Form Embed",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "liquid",
+                    "id": "form_code",
+                    "label": "Form Code"
+                },
+                {
+                  "type": "checkbox",
+                  "id": "show_ambassador_button",
+                  "label": "Show Ambassador Button",
+                  "default": false
+                },
+                {
+                  "type": "checkbox",
+                  "id": "show_wholesale_button",
+                  "label": "Show Wholesale Button",
+                  "default": false
+                }
+            ]
+        },
+        {
+            "type": "columns",
+            "name": "Columns",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "inline_richtext",
+                    "id": "column_1_text",
+                    "label": "Column 1 Text",
+                    "default": "Sample text"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "column_2_text",
+                    "label": "Column 2 Text",
+                    "default": "Sample text"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "column_3_text",
+                    "label": "Column 3 Text",
+                    "default": "Sample text"
+                },
+                {
+                    "type": "select",
+                    "id": "column_alignment",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "t:sections.multicolumn.settings.column_alignment.options__1.label"
+                        },
+                        {
+                            "value": "center",
+                            "label": "t:sections.multicolumn.settings.column_alignment.options__2.label"
+                        }
+                    ],
+                    "default": "left",
+                    "label": "t:sections.multicolumn.settings.column_alignment.label"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_divider",
+                    "default": false,
+                    "label": "Show divider"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Form Embed - pbj",
+            "blocks": [
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "heading"
+                },
+                {
+                    "type": "text"
+                },
+                {
+                    "type": "form_embed"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

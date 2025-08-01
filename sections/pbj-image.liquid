@@ -1,0 +1,52 @@
+<section class="color-{{ section.settings.color_scheme }} {{ section.settings.display }} pbj-image-section">
+    <img class="block object-cover mx-auto" style="width: {{ section.settings.image_width }}%;"  src="{{ section.settings.image | image_url: width: 1900 }}" alt="{{ section.settings.image.alt | default: 'Image' }}">
+</section>
+
+{% schema %}
+{
+    "name": "pbj - Image",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "This section is used to display an image on cover object fit. Simple one, that's necessary sometimes."
+        },
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "Color Scheme",
+            "default": "color-background-1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "range",
+            "id": "image_width",
+            "label": "Image width",
+            "min": 10,
+            "max": 100,
+            "step": 5,
+            "default": 50
+        },
+        {
+            "type": "select",
+            "id": "display",
+            "label": "Display",
+            "options": [
+                { "label": "All", "value": "" },
+                { "label": "Desktop Only", "value": "max-md:hidden" },
+                { "label": "Mobile Only", "value": "md:hidden" }
+            ],
+            "default": ""
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image - pbj",
+            "settings": {}
+        }
+    ]
+}
+{% endschema %}

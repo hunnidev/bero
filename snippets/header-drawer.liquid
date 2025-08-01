@@ -1,0 +1,296 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+
+<header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary
+      class="header__icon header__icon--menu header__icon--summary link focus-inset"
+      aria-label="{{ 'sections.header.menu' | t }}"
+    >
+      <span>
+        {% render 'icon-hamburger' %}
+        {% comment %} {% render 'icon-close' %} {% endcomment %}
+        <div class="icon icon-close" aria-label="close">
+          {%- render 'icons', icon: 'close' -%}
+        </div>
+      </span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          <nav class="menu-drawer__navigation">
+            <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              {%- for link in section.settings.menu.links -%}
+                <li>
+                  {%- if link.links != blank -%}
+                    <div
+                      id="Details-menu-drawer-menu-item-{{ forloop.index }}"
+                      x-data="{ open: false }"
+                    >
+                      <h2
+                        id="HeaderDrawer-{{ link.handle }}"
+                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %} accordion-item__title"
+                        x-bind:class="{ 'menu-drawer__menu-item--open': open }"
+                        @click="open = !open"
+                        @keydown.enter="open = !open"
+                        tabindex="0"
+                        role="button"
+                      >
+                        {{ link.title | escape }}
+                        {% comment %}
+                          {% render 'icon-arrow' %}
+                          {% render 'icon-caret' %}
+                        {% endcomment %}
+                        {%- render 'icons', icon: 'minus' -%}
+                        {%- render 'icons', icon: 'plus' -%}
+                      </h2>
+                      <div
+                        id="link-{{ link.handle | escape }}"
+                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                        tabindex="-1"
+                        x-show="open"
+                        x-collapse.duration.500ms
+                      >
+                        <div class="menu-drawer__inner-submenu">
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- for childlink in link.links -%}
+                              <li>
+                                {%- if childlink.links == blank -%}
+                                  <a
+                                    id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                    href="{{ childlink.url }}"
+                                    class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    {% if childlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {%- if childlink.object.featured_image
+                                      or childlink.object.metafields.custom.megamenu_image
+                                    -%}
+                                      {%- assign image = childlink.object.metafields.custom.megamenu_image
+                                        | default: childlink.object.featured_image
+                                      -%}
+                                      <a
+                                        href="{{ childlink.url }}"
+                                        class="megamenu__item-image megamenu__item-image--{{ childlink.object.featured_image.src | split: '.' | last | split: '?' | first }}"
+                                        aria-label="{{ childlink.title | escape }}"
+                                      >
+                                        {{
+                                          image
+                                          | image_url: width: 864
+                                          | image_tag: loading: 'lazy', width: 432, height: 288
+                                        }}
+                                      </a>
+                                    {%- endif -%}
+                                    <h3 class="mobile-menu__submenu-item-title">
+                                      <a
+                                        href="{{ childlink.url }}"
+                                        {% if childlink.current %}
+                                          aria-current="page"
+                                        {% endif %}
+                                      >
+                                        {{ childlink.title | escape }}
+                                      </a>
+                                    </h3>
+                                  </a>
+                                {%- else -%}
+                                  <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
+                                    <summary
+                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                      class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
+                                    >
+                                      {{ childlink.title | escape }}
+                                      {% render 'icon-arrow' %}
+                                      {% render 'icon-caret' %}
+                                    </summary>
+                                    <div
+                                      id="childlink-{{ childlink.handle | escape }}"
+                                      class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                                    >
+                                      <button
+                                        class="menu-drawer__close-button link link--text focus-inset"
+                                        aria-expanded="true"
+                                      >
+                                        {% render 'icon-arrow' %}
+                                        {{ childlink.title | escape }}
+                                      </button>
+                                      <ul
+                                        class="menu-drawer__menu list-menu"
+                                        role="list"
+                                        tabindex="-1"
+                                      >
+                                        {%- for grandchildlink in childlink.links -%}
+                                          <li>
+                                            <a
+                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                              href="{{ grandchildlink.url }}"
+                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              {% if grandchildlink.current %}
+                                                aria-current="page"
+                                              {% endif %}
+                                            >
+                                              {{ grandchildlink.title | escape }}
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </div>
+                                  </details>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  {%- else -%}
+                    <a
+                      id="HeaderDrawer-{{ link.handle }}"
+                      href="{{ link.url }}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      {% if link.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ link.title | escape }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+
+            {%- if settings.secondary_mobile_menu != blank -%}
+              <div class="mobile-secondary-menu">
+                <ul class="menu-drawer__menu menu-drawer__menu--secondary">
+                  {%- for link in linklists[settings.secondary_mobile_menu].links -%}
+                    <li x-data="{open:false}">
+                      {%- if link.links != blank -%}
+                        <div
+                          class="menu-drawer__menu-item list-menu__item link link--text focus-inset accordion-item__title"
+                          x-bind:class="{ 'menu-drawer__menu-item--open': open }"
+                          .
+                          @click="open = !open"
+                          @keydown.enter="open = !open"
+                          tabindex="0"
+                        >
+                          {{ link.title }}
+                          {%- render 'icons', icon: 'minus' -%}
+                          {%- render 'icons', icon: 'plus' -%}
+                        </div>
+                        <ul
+                          x-show="open"
+                          x-collapse
+                        >
+                          {%- for link in link.links -%}
+                            <li>
+                              <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- else -%}
+                        <a
+                          href="{{ link.url }}"
+                          class="menu-drawer__menu-item list-menu__item link link--text focus-inset accordion-item__title"
+                        >
+                          {{- link.title -}}
+                        </a>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </nav>
+
+          <div class="menu-drawer__utility-links">
+            {%- if shop.customer_accounts_enabled -%}
+              <p class="menu-drawer__menu-item list-menu__item link link--text focus-inset menu-drawer__account-header">{{ 'customer.account.title' | t }}</p>
+
+              {% if customer %}
+                <a href="{{ routes.account_url }}" class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide account-icon-header-anchor-mobile block w-full">
+                  {%- assign customer_rivo_data = customer.metafields.custom.rivo.value -%}
+                  {%- assign credits_balance = customer_rivo_data.credits_balance | plus: 0.0 -%}
+                  {%- assign credits_balance_money = credits_balance | times: 100.0 | money_without_currency | prepend: '$' -%}
+
+                  <div class="header__logged-in-cta !p-0 w-full">
+                    <div class="mr-auto">
+                      <h3>{{ 'sections.header.account.logged_in_title' | t: first_name: customer.first_name }}</h3>
+                      {%- if credits_balance > 0 -%}
+                        <p>{{ 'sections.header.account.has_credits_text' | t: credits: credits_balance_money }}</p>
+                      {%- else -%}
+                        <p>{{ 'sections.header.account.has_no_credits_text' | t }}</p>
+                      {%- endif -%}
+                    </div>
+                    {%- render 'icons', icon: 'chevron-down' -%}
+                  </div>
+                </a>
+
+              {% else %}
+
+                <a href="{{ routes.account_login_url }}" class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide account-icon-header-anchor-mobile block w-full">
+                  <span class="underline inline-block">{{ 'customer.account.sign_in' | t }}</span>
+                </a>
+
+                <a href="{{ routes.account_register_url }}" class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide account-icon-header-anchor-mobile block w-full">
+                  <span class="underline inline-block">{{ 'customer.account.sign_up' | t }}</span>
+                </a>
+              {% endif %}
+
+              {%- if customer -%}
+                <a href="{{ routes.account_logout_url }}" class="underline !font-normal block">{{ 'customer.dashboard.sign_out' | t }}</a>
+              {%- endif -%}
+            {% endif %}
+
+            {%- if localization.available_countries or localization.available_languages -%}
+              <div class="menu-drawer__localization header-localization">
+                {%- if localization.available_countries and localization.available_countries.size > 1 -%}
+                  <localization-form>
+                    {%- form 'localization', id: 'HeaderCountryMobileForm', class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderCountryMobileLabel">
+                          {{ 'localization.country_label' | t }}
+                        </h2>
+                        {%- render 'country-localization', localPosition: 'HeaderCountryMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {% endif %}
+
+                {%- if localization.available_languages and localization.available_languages.size > 1 -%}
+                  <localization-form>
+                    {%- form 'localization', id: 'HeaderLanguageMobileForm', class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderLanguageMobileLabel">
+                          {{ 'localization.language_label' | t }}
+                        </h2>
+                        {%- render 'language-localization', localPosition: 'HeaderLanguageMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const drawer = document.querySelector('#Details-menu-drawer-container');
+
+    document.addEventListener('focusin', (event) => {
+      if (!drawer.contains(event.target)) {
+        drawer.removeAttribute('open');
+
+        document.body.classList.remove('mobile-menu-open', 'overflow-hidden-tablet')
+      }
+    });
+  })
+</script>

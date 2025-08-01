@@ -1,0 +1,270 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_mANaML": {
+      "type": "image-banner",
+      "custom_css": [
+        ".banner__box {max-width: 70rem;}",
+        "@media screen and (min-width: 992px) {.banner--medium:not(.banner--adapt) {min-height: 295px; } .banner__box {padding-bottom: 0 !important; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ratailer-banner.jpg",
+        "image_overlay_opacity": 30,
+        "transparent_header": true,
+        "back_btn": false,
+        "image_height": "medium",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "mobile_vertical_content_alignment": "banner-content-bottom-mobile",
+        "stack_images_on_mobile": true,
+        "show_text_below": false,
+        "mobile_image_height": 34,
+        "custom_mobile_image_height": false
+      }
+    },
+    "pbj_rich_text_FAAKTE": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_QFapNU": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h1",
+            "heading": "OUR LOCATIONS",
+            "heading_size": "h5",
+            "show_title_eyebrow": true,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "heading_wx7XmB": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "BERO NEAR YOU",
+            "heading_size": "h3",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_MREXq4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>BERO is crafted to be enjoyed anywhere. Find BERO in select stores near you—for those who wish to savor it at home—and in bars and restaurants around the globe—where stories are told and memories are made.<br/><br/>We have big things brewing and are adding new locations frequently.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QFapNU",
+        "heading_wx7XmB",
+        "text_MREXq4"
+      ],
+      "custom_css": [
+        "h2 {margin-bottom: 2rem;}"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": false,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_qMCWYM": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "stockist-store-locator {padding: 0 5rem;}",
+        "@media only screen and (max-width: 1024px) {stockist-store-locator {padding: 0 1.5rem; }}"
+      ],
+      "settings": {
+        "custom_liquid": "<!-- Start Stockist.co widget -->\n<div data-stockist-widget-tag=\"u24415\">Loading store locator\nfrom <a href=\"https://stockist.co\">Stockist store locator</a>...</div>\n<script>\n  (function(s,t,o,c,k){c=s.createElement(t);c.src=o;c.async=1;\n  k=s.getElementsByTagName(t)[0];k.parentNode.insertBefore(c,k);\n  })(document,'script','//stockist.co/embed/v1/widget.min.js');\n</script>\n<!-- End Stockist.co widget -->",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "pbj_image_list_hA9hhr": {
+      "type": "pbj-image-list",
+      "blocks": {
+        "image_a3b8Ra": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Soho_house_logo-removebg-preview.png",
+            "scale": 6,
+            "title": "",
+            "heading_tag": "h4",
+            "link": "https://www.sohohouse.com/"
+          }
+        },
+        "image_aLwJmg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Target_Bullseye-Logo_Red_transparent.png",
+            "scale": 6,
+            "title": "",
+            "heading_tag": "h4",
+            "link": "https://www.target.com/"
+          }
+        },
+        "image_bTdjnx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/amazon-logo-squid-ink-smile-orange.png",
+            "scale": 6,
+            "title": "",
+            "heading_tag": "h4",
+            "link": "https://www.amazon.com/"
+          }
+        },
+        "image_3ed8zJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Sprouts_Logo_4C.png",
+            "scale": 6,
+            "title": "",
+            "heading_tag": "h4",
+            "link": "https://www.sprouts.com/"
+          }
+        }
+      },
+      "block_order": [
+        "image_a3b8Ra",
+        "image_aLwJmg",
+        "image_bTdjnx",
+        "image_3ed8zJ"
+      ],
+      "custom_css": [
+        ".image-list .image-list__item:nth-child(2) {max-width: 240px;}",
+        ".h6--primary {margin-bottom: 0;}"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "content_alignment": "center",
+        "preheading": "Bero partners",
+        "h2_preheading": true,
+        "heading": "",
+        "use_flex_container": true,
+        "show_title_eyebrow": false,
+        "left_eyebrow": false,
+        "items_per_row": 4,
+        "image_max_width": 280,
+        "gap_column_mobile": 4,
+        "gap_row_mobile": 4,
+        "gap_column": 0,
+        "gap_row": 1,
+        "color_scheme": "",
+        "gray_img": true,
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_image_list_TMBxb6": {
+      "type": "pbj-image-list",
+      "blocks": {
+        "image_nEjPkK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Selfridges_logo.svg",
+            "scale": 10,
+            "title": "",
+            "heading_tag": "h4",
+            "link": ""
+          }
+        },
+        "image_9FXfwB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/02_DD_Logo_Linear_RGB_Standard.png",
+            "scale": 10,
+            "title": "",
+            "heading_tag": "h4",
+            "link": ""
+          }
+        },
+        "image_3hd6Tx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Erewhon.png",
+            "scale": 10,
+            "title": "",
+            "heading_tag": "h4",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_nEjPkK",
+        "image_9FXfwB",
+        "image_3hd6Tx"
+      ],
+      "name": "Image list - pbj",
+      "settings": {
+        "customer_status": "all",
+        "content_alignment": "center",
+        "preheading": "",
+        "heading": "",
+        "use_flex_container": false,
+        "show_title_eyebrow": false,
+        "left_eyebrow": false,
+        "items_per_row": 3,
+        "image_max_width": 280,
+        "gap_column_mobile": 2,
+        "gap_row_mobile": 1,
+        "gap_column": 2,
+        "gap_row": 1,
+        "color_scheme": "scheme-1",
+        "gray_img": true,
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 44
+      }
+    },
+    "loyalty_banner_YBR33d": {
+      "type": "loyalty-banner",
+      "settings": {
+        "customer_status": "not_logged_in",
+        "image": "shopify://shop_images/Frame_48097273.png",
+        "image_mobile": "shopify://shop_images/Frame_48097273mb.png",
+        "pre_title": "Exclusive",
+        "title_svg": "<svg width=\"196\" height=\"142\" viewbox=\"0 0 196 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_844_80247)\">\n<path d=\"M61.8453 45.8924L61.7509 47.0213C66.7217 47.0213 69.1608 50.5973 69.1608 55.1148C69.1608 65.1838 55.4662 75.537 43.0837 75.537C36.0495 75.537 32.6721 72.3378 32.6721 64.8088C32.6721 57.2797 36.1421 48.904 41.396 40.998C43.8351 41.5625 45.9929 41.75 48.7133 41.75C67.473 41.75 92.8006 28.4799 92.8006 14.9277C92.8006 11.0694 89.7989 8.33996 84.2655 8.33996C71.6961 8.33996 51.3411 22.362 38.6774 38.6437C31.9244 36.3859 28.9227 31.6791 28.9227 25.6559C28.9227 15.4921 37.4578 6.26969 53.0289 2.40958L52.842 1.09131C35.957 5.04429 25.921 16.337 25.921 26.3132C25.921 32.9956 30.0479 37.9828 37.4578 40.2424C31.1731 48.3359 27.2331 57.0885 27.2331 64.8051C27.2331 73.7453 33.7048 77.0391 43.2725 77.0391C56.2176 77.0391 71.6943 65.7465 71.6943 55.2058C71.6943 49.2772 67.66 45.8887 61.8453 45.8887V45.8924ZM84.2637 9.66004C88.3906 9.66004 90.2671 11.5428 90.2671 14.9295C90.2671 27.3529 67.1917 40.1513 48.9002 40.1513C46.6498 40.1513 44.492 40.0567 42.5211 39.4922C53.7766 23.6821 72.3494 9.65822 84.2619 9.65822L84.2637 9.66004ZM163.15 18.1286C154.201 18.1286 148.14 26.6664 140.454 38.3214C133.585 37.7078 127.787 35.1623 126.288 33.6583L125.538 34.2228C126.772 35.8743 132.556 38.7566 139.721 39.4394C139.102 40.3808 138.47 41.3403 137.826 42.3163L125.358 61.1526C122.201 65.091 114.157 75.2566 110.718 75.2566C109.499 75.2566 108.936 74.6921 108.936 73.5632C108.936 71.493 110.343 69.0458 115.783 61.047L126.476 45.2369H121.787L111.094 61.3292C108.468 64.9053 100.777 75.2584 96.4611 75.2584C94.2107 75.2584 93.2724 74.4117 93.6463 72.2468C94.022 70.1765 95.8041 68.0116 97.5863 65.4715L105.466 54.554C106.78 52.4837 107.343 50.7903 107.343 48.8129C107.343 46.2711 105.842 44.483 103.591 44.3902C99.7459 44.3902 95.9928 47.9663 92.8042 52.5784H94.2107C97.775 48.0609 100.59 45.7085 102.935 45.7085C103.873 45.8031 104.435 46.4604 104.435 47.4965C104.435 49.0023 103.31 51.0726 101.152 54.0842L93.9294 63.9657C92.1473 66.6004 90.8333 69.0476 90.8333 71.5895C90.8333 75.2602 92.8968 76.8589 95.4303 76.8589C100.308 76.8589 103.591 72.529 106.312 69.2352C106.031 70.1765 105.844 71.5876 105.844 72.4343C105.844 74.9762 107.72 76.9517 109.878 76.9517C113.092 76.9517 116.593 73.8163 119.859 70.06C119.596 70.8229 119.446 71.5895 119.446 72.3396C119.54 74.9743 120.947 76.8571 123.948 76.8571C132.202 76.8571 143.833 63.8692 146.554 58.9767C151.243 50.9779 149.461 44.6724 144.958 44.6724C143.214 44.6724 140.975 45.6684 138.815 47.329L142.144 42.3199C142.775 41.3713 143.387 40.4554 143.98 39.5687C154.648 39.1881 167.457 33.7421 169.627 25.756C171.128 20.2044 167.658 18.1323 163.156 18.1323L163.15 18.1286ZM144.579 46.3621C146.267 46.3621 146.737 47.3035 146.737 48.5271C146.737 51.0689 145.33 53.7965 142.986 57.6566C140.171 62.3616 130.511 75.4441 124.6 75.4441C122.818 75.4441 122.255 74.785 122.255 73.6561C122.161 72.1503 123.38 70.3622 125.444 67.4453L136.151 51.3311C138.36 48.4706 142.316 46.3639 144.579 46.3639V46.3621ZM168.404 25.847C166.627 32.5312 154.757 37.9482 144.741 38.4234C153.245 25.7633 157.849 19.8238 164.088 19.8238C166.622 19.8238 169.622 21.1421 168.404 25.847ZM83.7955 69.6084H85.2963C82.4816 73.4667 79.1986 76.8552 75.5417 76.8552C73.3839 76.8552 71.9774 74.9725 71.883 72.3378C71.883 70.5498 72.7269 68.6671 73.9465 66.9737L106.027 18.6949H110.343L77.8883 67.4435C75.8248 70.3604 74.6053 72.1485 74.6996 73.6543C74.6996 74.7832 75.2622 75.4423 76.3874 75.4423C78.7321 75.4423 81.7338 72.5254 83.7973 69.6066L83.7955 69.6084ZM169.475 85.6552C153.056 85.6552 143.158 98.5029 143.158 113.321C143.158 129.083 153.764 141.064 169.475 141.064C185.186 141.064 195.949 128.848 195.949 113.321C195.949 99.1329 186.601 85.6552 169.475 85.6552ZM169.475 135.86C157.455 135.86 150.935 125.693 150.935 113.319C150.935 100.945 157.691 90.8555 169.475 90.8555C181.966 90.8555 188.249 101.338 188.249 113.319C188.249 126.245 181.256 135.86 169.475 135.86ZM119.749 114.029C121.556 113.714 123.126 113.162 124.776 112.532C130.353 110.325 133.496 105.912 133.496 100.395C133.496 91.2524 125.326 86.602 114.956 86.602H96.4956V86.7605C97.5173 88.1006 98.1452 89.519 98.4592 91.3325C98.7732 93.146 98.931 95.5095 98.931 98.4264V128.14C98.931 131.214 98.7732 133.579 98.4592 135.234C98.1452 137.048 97.5173 138.466 96.4956 139.963V140.121H108.279V139.963C107.493 138.466 106.865 137.046 106.551 135.234C106.08 133.579 105.844 131.214 105.844 128.14V114.663H111.657L132.396 140.121H141.43V139.963L119.749 114.033V114.029ZM105.844 109.615V91.4873H113.62C120.377 91.4873 126.032 93.6941 126.032 100.551C126.032 107.408 120.141 109.615 113.62 109.615H105.844ZM49.3612 139.959C50.3049 138.619 51.0108 137.042 51.3248 135.387C51.7967 133.574 51.9527 131.525 51.9527 128.608V98.4209C51.9527 95.504 51.7948 93.1406 51.4809 91.327C51.009 89.5135 50.3031 88.0951 49.3594 86.755V86.5966H86.5177V95.1872H86.0458C85.0241 93.9253 83.7683 92.902 81.9607 92.4286C80.233 91.7986 77.7975 91.6402 74.4201 91.6402H58.8654V109.61H70.8068C73.7142 109.61 75.9918 109.451 77.6414 108.98C79.2131 108.506 80.5488 107.876 81.4907 106.931H81.8046V117.572H81.4907C80.5488 116.469 79.2131 115.839 77.7993 115.287C76.1497 114.814 73.7142 114.657 70.8068 114.657H58.8654V135.07H75.362C78.5833 135.07 81.0188 134.755 82.8246 134.125C84.7101 133.415 86.2019 132.155 87.1456 130.342H87.4596V140.116H49.3594V139.957L49.3612 139.959ZM36.6357 116.787C34.0441 114.344 30.273 112.847 25.794 112.215V111.9C32.1567 110.482 37.7355 106.305 37.7355 99.4479C37.7355 90.1472 29.0933 86.6002 19.3532 86.6002H-0.0507812V86.7586C0.891108 88.2553 1.59889 89.6756 1.91285 91.4873C2.22681 93.3008 2.3847 95.5076 2.3847 98.4227V128.295C2.3847 131.212 2.22681 133.419 1.91285 135.23C1.59889 137.044 0.891108 138.462 -0.0507812 139.959V140.117H21.0809C30.665 140.117 40.4849 135.626 40.4849 125.378C40.4849 121.909 39.2273 119.151 36.6357 116.787ZM9.29733 91.4873H18.1736C24.6144 91.4873 30.2711 93.9308 30.2711 100.236C30.2711 107.33 24.8503 109.774 18.1736 109.774H9.29733V91.4891V91.4873ZM18.8814 135.23H9.29733V114.659H18.3315C25.794 114.659 33.0224 117.024 33.0224 124.826C33.0224 132.628 26.6597 135.23 18.8814 135.23Z\" fill=\"#D3B890\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_844_80247\">\n<rect width=\"196\" height=\"140.789\" fill=\"white\" transform=\"translate(0 0.273682)\"></rect>\n</clippath>\n</defs>\n</svg>",
+        "subtitle": "LOYALTY PROGRAM",
+        "benefits": "Interviews, savings, events",
+        "cta_url": "shopify://pages/loyalty",
+        "cta_text": "Sign up now",
+        "color_scheme": "scheme-3"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_mANaML",
+    "pbj_rich_text_FAAKTE",
+    "custom_liquid_qMCWYM",
+    "pbj_image_list_hA9hhr",
+    "pbj_image_list_TMBxb6",
+    "loyalty_banner_YBR33d"
+  ]
+}

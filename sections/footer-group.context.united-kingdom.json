@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "parent": "footer-group.json",
+  "context": {
+    "market": "united-kingdom"
+  },
+  "sections": {
+    "17262273233c7999d0": {
+      "settings": {},
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_tt6igg": {
+          "settings": {
+            "formId": "U5zzSu"
+          }
+        }
+      }
+    },
+    "footer": {
+      "settings": {},
+      "blocks": {
+        "link_list_bR8xNq": {
+          "settings": {
+            "menu": "footer-menu-uk"
+          }
+        }
+      }
+    },
+    "custom_klaviyo_footer_form_rixFYY": {
+      "settings": {
+        "us_list": "TaQRwK"
+      },
+      "blocks": {}
+    }
+  }
+}

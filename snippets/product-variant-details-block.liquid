@@ -1,0 +1,5 @@
+{% for variant in product.variants %}
+    <div class="variant-details {% unless product.selected_or_first_available_variant.id == variant.id %}hide{% endunless %}" data-variant-id="{{ variant.id }}">
+        {{variant.metafields.custom.details |  metafield_tag}}
+    </div>
+{% endfor %}

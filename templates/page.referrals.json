@@ -1,0 +1,114 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_Kdp9rr": {
+      "type": "image-banner",
+      "custom_css": [
+        "@media screen and (min-width: 992px) {.banner--medium:not(.banner--adapt) {min-height: 295px; } .banner__box {padding-bottom: 0 !important; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Hero_Section-2.jpg",
+        "image_overlay_opacity": 0,
+        "transparent_header": true,
+        "back_btn": false,
+        "image_height": "medium",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "mobile_vertical_content_alignment": "banner-content-bottom-mobile",
+        "stack_images_on_mobile": true,
+        "show_text_below": false,
+        "mobile_image_height": 34,
+        "custom_mobile_image_height": false
+      }
+    },
+    "pbj_rich_text_YdPgzf": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_kT6K8V": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h1",
+            "heading": "REFER A FRIEND",
+            "heading_size": "h1",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_kT6K8V"
+      ],
+      "custom_css": [
+        ".rich-text__blocks {padding: 0 6.4rem;}",
+        "@media only screen and (max-width: 768px) {.rich-text__blocks {padding: 0 1.5rem; }}",
+        ".rich-text {margin-bottom: -2px;}"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 4
+      }
+    },
+    "172605765177751946": {
+      "type": "apps",
+      "blocks": {
+        "rivo_loyalty_referrals_lp_referral_campaign_rnfN7q": {
+          "type": "shopify://apps/rivo-loyalty-rewards-referrals/blocks/lp-referral-campaign/580e9665-b2cd-4dbc-b6ba-6445ac9e6871",
+          "settings": {
+            "background_color": "",
+            "referral_campaign_id": "32242"
+          }
+        }
+      },
+      "block_order": [
+        "rivo_loyalty_referrals_lp_referral_campaign_rnfN7q"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.app-section {padding: 0 6.4rem 6.4rem !important; max-width: 100% !important; background-color: #004f3c; }}",
+        "@media only screen and (max-width: 768px) {.app-section {margin-top: 3px; }}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "footer_newsletter_background_GDkMEy": {
+      "type": "footer-newsletter-background",
+      "settings": {
+        "background_color": "#004f3c",
+        "padding": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_Kdp9rr",
+    "pbj_rich_text_YdPgzf",
+    "172605765177751946",
+    "footer_newsletter_background_GDkMEy"
+  ]
+}

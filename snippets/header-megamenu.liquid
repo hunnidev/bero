@@ -1,0 +1,65 @@
+
+<div
+  id="MegaMenu-Content-{{ index }}"
+  class="megamenu-wrapper color-{{ section.settings.menu_color_scheme }}"
+  tabindex="-1"
+>
+  <div class="megamenu__inner">
+    <ul
+      class="megamenu megamenu--count-{{ link.links.size }} page-width"
+      role="list"
+    >
+      {%- for childlink in link.links -%}
+        <li
+          class="megamenu__item"
+          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+        >
+          <div class="megamenu__item--inner">
+            {%- if childlink.object.featured_image or childlink.object.metafields.custom.megamenu_image -%}
+              {%- assign image = childlink.object.metafields.custom.megamenu_image
+                | default: childlink.object.featured_image
+              -%}
+              <div
+                class="megamenu__item-image megamenu__item-image--{{ childlink.object.featured_image.src | split: '.' | last | split: '?' | first }}"
+              >
+                {{ image | image_url: width: 864 | image_tag: loading: 'lazy', width: 432, height: 288 }}
+              </div>
+            {%- endif -%}
+
+            <h3 class="text-product-name">
+              {{ childlink.title | escape }}
+            </h3>
+
+            <a
+              class="megamenu__item--link"
+              {% if childlink.current %}
+                aria-current="page"
+              {% endif %}
+              href="{{ childlink.url }}" aria-label="Open {{ childlink.title }}"
+            >&nbsp;</a>
+          </div>
+          {% comment %}
+            {%- if childlink.links != blank -%}
+              <ul class="list-unstyled" role="list">
+                {%- for grandchildlink in childlink.links -%}
+                  <li>
+                    <a
+                      id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                      href="{{ grandchildlink.url }}"
+                      class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                      {% if grandchildlink.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ grandchildlink.title | escape }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          {% endcomment %}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>

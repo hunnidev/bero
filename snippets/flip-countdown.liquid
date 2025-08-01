@@ -1,0 +1,55 @@
+<div class="password__countdown-bar">
+  launching in
+  <div class="tick" data-value="99" data-did-init="setupFlip">
+    <div data-repeat="true" aria-hidden="true">
+      <span data-view="flip"></span>
+    </div>
+  </div>
+  hours
+</div>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {});
+  function setupFlip(tick) {
+    const launchDate = new Date('{{ section.settings.launch_date_timestamp }}');
+    // Calculate the number of hours until launch
+    function getHoursUntilLaunch() {
+      const currentDate = new Date();
+      const timeDiff = launchDate.getTime() - currentDate.getTime();
+      return Math.ceil(timeDiff / (1000 * 60 * 60)); // Convert milliseconds to hours
+    }
+    // Start at 99 and animate down to the correct number of hours
+    const hoursUntilLaunch = getHoursUntilLaunch();
+    let currentValue = 99;
+    const duration = 4000; // Total animation time in milliseconds (2 seconds)
+    const frameRate = 30; // Update the value 30 times per second
+    const totalFrames = duration / (1000 / frameRate); // Total number of frames in the animation
+    const decrementPerFrame = (99 - hoursUntilLaunch) / totalFrames; // How much to decrement per frame
+    // Function to perform the animation with speed adjustments
+    function animateCountdown() {
+      if (currentValue > hoursUntilLaunch) {
+        // Slow down the decrement when reaching 10 hours
+        if (currentValue > 10) {
+          currentValue -= decrementPerFrame;
+        } else {
+          // Slow down by reducing the decrement and increasing frame duration
+          currentValue -= decrementPerFrame / 3; // Slow the decrement further near the end
+        }
+        let formattedCurrentValue = Math.ceil(currentValue);
+        if (formattedCurrentValue < 10) {
+          formattedCurrentValue = "0" + Math.ceil(currentValue);
+        }
+        tick.value = formattedCurrentValue; // Update tick value to the nearest whole number
+        // Adjust the frame rate when reaching below 10 to slow down the animation
+        const currentFrameRate = currentValue > 10 ? 1000 / frameRate : 1000 / (frameRate / 2); // Slow down by half when <= 10
+        setTimeout(animateCountdown, currentFrameRate); // Schedule the next frame
+      } else {
+        tick.value = hoursUntilLaunch; // Ensure it ends at the correct value
+      }
+    }
+    // Start the animation after a slight delay to trigger the transition
+    setTimeout(animateCountdown, 500);
+  }
+</script>

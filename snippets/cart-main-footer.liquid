@@ -1,0 +1,227 @@
+{%- liquid
+  assign paid_membership_order = false
+  for item in cart.items
+    if item.product.handle == settings.loyalty_paid_membership_product
+      if cart.item_count == 1
+        assign paid_membership_order = true
+      endif
+      break
+    endif
+  endfor
+
+  assign cart_contains_only_gift_card = false
+  assign gift_card_cart_items_count = 0
+  assign gift_card_cart_items = cart.items | where: 'gift_card'
+  for item in gift_card_cart_items
+    assign gift_card_cart_items_count = gift_card_cart_items_count | plus: item.quantity
+  endfor
+
+  if cart.item_count == gift_card_cart_items_count
+    assign cart_contains_only_gift_card = true
+  endif
+-%}
+
+<div
+  class="cart__grid-footer{% if cart == empty %} is-empty{% endif %}"
+  id="main-cart-footer"
+  data-id="{{ section.id }}"
+>
+  <div class="sticky top-[64px]">
+    {%- liquid
+      # if cart_contains_loyalty_membership
+      #  render 'loyalty-paid-membership-cta'
+      # else
+      render 'cart-credit-value'
+
+      if customer
+        comment 
+          unless paid_membership_order or cart_contains_only_gift_card
+            render 'loyalty-redeem-credits-cta'
+          endunless 
+        endcomment 
+      else
+        render 'loyalty-login-cta'
+      endif
+      # endif
+    -%}
+
+    <h2 class="h5 h5--primary uppercase">
+      {{ 'sections.cart.headings.summary' | t }}
+    </h2>
+    <div class="cart__footer isolate ">
+      <div class="cart__blocks !m-0 !w-full">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="js-contents--footer" {{ block.shopify_attributes }}>
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul
+                      class="discounts list-unstyled"
+                      role="list"
+                      aria-label="{{ 'customer.order.discount' | t }}"
+                    >
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--position">
+                          {%- render 'icon-discount' -%}
+                          {{ discount.title | escape }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
+                <div class="totals !justify-between">
+                  <h2 class="totals__total">{{ 'sections.cart.subtotal' | t }}</h2>
+                  <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                </div>
+
+                <small class="tax-note caption-large rte !text-right">
+                  {%- if cart.duties_included and cart.taxes_included -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.duties_and_taxes_included_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- elsif cart.duties_included == false and cart.taxes_included -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.taxes_included_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.taxes_included_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- elsif cart.duties_included and cart.taxes_included == false -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- elsif cart.duties_included == false and cart.taxes_included == false -%}
+                    {%- if shop.shipping_policy.body == blank -%}
+                      {{ 'sections.cart.taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{
+                        'sections.cart.taxes_at_checkout_shipping_at_checkout_with_policy_html'
+                        | t: link: shop.shipping_policy.url
+                      }}
+                    {%- endif -%}
+                  {%- endif -%}
+                </small>
+
+                <div class="cart__grand-total flex justify-between items-center">
+                  <h2 class="totals__total">{{ 'sections.cart.total' | t }}</h2>
+                  <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                </div>
+              </div>
+            {%- else -%}
+              {% render 'pbj-age-affirmation' %}
+              <div class="cart__ctas flex flex-col" {{ block.shopify_attributes }}>
+                <button
+                  type="submit"
+                  id="checkout"
+                  class="cart__checkout-button button button--narrow button--full-width !max-w-full"
+                  name="checkout"
+                  {% if cart == empty %}
+                    disabled
+                  {% endif %}
+                  form="cart"
+                >
+                  {{ 'sections.cart.proceed_to_checkout' | t }}
+                </button>
+
+                {% comment %} may 8th 2025 removing accelerated checkout buttons in cart slider and page {% endcomment %}
+                {% comment %} {%- if additional_checkout_buttons -%}
+                  <div class="cart__dynamic-checkout-buttons additional-checkout-buttons additional-checkout-buttons--vertical">
+                    {{ content_for_additional_checkout_buttons }}
+                  </div>
+                {%- endif -%} {% endcomment %}
+              </div>
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+
+        {%- if settings.cart_featured_collection != blank -%}
+          {%- assign featured_collection = collections[settings.cart_featured_collection] -%}
+          {%- if featured_collection.products.size > 0 -%}
+            <div class="cart__upsells" aria-roledescription="carousel" role="region" aria-label="{{ section.settings.ymal_title }}">
+              <div class="flex justify-between items-center">
+                {%- if section.settings.ymal_title != blank -%}
+                  <h2 class="cart__upsells-title">
+                    {{ section.settings.ymal_title }}
+                  </h2>
+                {%- endif -%}
+                <div class="flex gap-[24px]">
+                  <button
+                    class="swiper-button-prev product-carousel__arrow product-carousel__arrow--prev"
+                    aria-label="Slide left"
+                    aria-controls="cart-upsells-{{ section.id }}"
+                  >
+                    {%- render 'icons', icon: 'chevron-down' -%}
+                  </button>
+
+                  <button
+                    class="swiper-button-next product-carousel__arrow product-carousel__arrow--next"
+                    aria-label="Slide right"
+                    aria-controls="cart-upsells-{{ section.id }}"
+                  >
+                    {%- render 'icons', icon: 'chevron-down' -%}
+                  </button>
+                </div>
+              </div>
+              <div
+                x-data="
+                  carousel({
+                      spaceBetween: 8,
+                      loop: true,
+                      slidesPerView: 2,
+                  })
+                "
+                x-init="init()"
+              >
+                <div class="swiper-container swiper">
+                  <div class="swiper-wrapper mt-[24px]" id="cart-upsells-{{ section.id }}"
+                    aria-label="Slider"
+                    aria-live="polite"  
+                  >
+                    {% liquid
+                      assign cart_product_ids = cart.items | map: 'product_id'
+                      assign limit = 10
+                      assign count = 0
+                    %}
+
+                    {%- for product in featured_collection.products -%}
+                      {%- unless cart_product_ids contains product.id -%}
+                        <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}">
+                          {%- render 'card-product', card_product: product -%}
+                        </div>
+
+                        {% assign count = count | plus: 1 %}
+                        {% if count == limit %}
+                          {% break %}
+                        {% endif %}
+                      {%- endunless -%}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </div>
+
+              <a href="{{ featured_collection.url }}" class="underlined-cta mt-[40px] inline-block">Shop all</a>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{% if localization.country.iso_code == 'GB' %}
+  {% assign block_count = product.metafields.custom.nutrition_block_group_uk.value.block.value.count %}
+  {% assign nutrition_blocks = product.metafields.custom.nutrition_block_group_uk.value.block.value %}
+{% else %}
+  {% assign block_count = product.metafields.custom.nutrition_block_group.value.block.value.count %}
+  {% assign nutrition_blocks = product.metafields.custom.nutrition_block_group.value.block.value %}
+{% endif %}
+
+{% if block_count > 0 %}
+  <div class="nutrition-grid">
+    {%- for nutrition_block in nutrition_blocks -%}
+      <div class="nutrition-grid__item {% if block_count < 4 %}nutrition-grid__item--no-divider{% endif %}">
+        <p class="nutrition-grid__item-title h5">{{ nutrition_block.title }}</p>
+        <p class="nutrition-grid__item-text text-body-tiny leading-normal">{{ nutrition_block.subtitle }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+{% endif %}

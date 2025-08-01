@@ -1,0 +1,280 @@
+{%- liquid
+  assign show_section = false
+  if section.settings.customer_status == 'all'
+    assign show_section = true
+  elsif section.settings.customer_status == 'logged_in' and customer
+    assign show_section = true
+  elsif section.settings.customer_status == 'not_logged_in' and customer == blank
+    assign show_section = true
+  endif
+-%}
+
+{%- if show_section -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+
+  <div class="color-{{ section.settings.color_scheme }} text-center {% if section.settings.feature_section %} section-padding product-carousel-feature-section{% else %} section-padding--lg{% endif %}{% if section.settings.scroll_in_animation %} enable-scroll-in-animation{% endif %}">
+    {%- if section.settings.collection != blank -%}
+      {%- assign collection = collections[section.settings.collection] -%}
+
+      {%- if section.settings.title != blank-%}
+        <h2 class="product-carousel__title h3 title-eyebrow">{{ section.settings.title }}</h2>
+      {%- endif -%}
+
+      <div class="page-width">
+        <div class="swiper-container swiper swiper--{{ section.id }} product-carousel__carousel{% if section.settings.enlarge_middle_slide %} product-carousel__carousel--enlarge-effect{% endif %} relative" aria-roledescription="carousel" role="region" aria-label="{{ section.settings.title | default: 'Quick add beer' }}">
+
+          {%- if collection.products.size > 3 -%}
+            <button
+              class="swiper-button-prev product-carousel__arrow product-carousel__arrow--prev"
+              aria-label="Slide left"
+              aria-controls="ProductCarousel-{{ section.id }}"
+              type="button"
+            >
+              {%- render 'icons', icon: 'arrow', fill: section.settings.color_scheme.settings.text -%}
+            </button>
+            <button
+              class="swiper-button-next product-carousel__arrow product-carousel__arrow--next"
+              aria-label="Slide right"
+              aria-controls="ProductCarousel-{{ section.id }}"
+              type="button"
+            >
+              {%- render 'icons', icon: 'arrow', fill: section.settings.color_scheme.settings.text -%}
+            </button>
+          {%- endif -%}
+
+          <div id="ProductCarousel-{{ section.id }}" class="swiper-wrapper" aria-live="polite"  data-flickity='{ "cellAlign": "left", "contain": true }'>
+            {%- for product in collection.products -%}
+              {% assign product_form_id = 'quick-add-' | append: section.id | append: product.id %}
+
+              <div class="swiper-slide product-carousel__item" role="group"
+                aria-roledescription="Slide"
+                aria-label="{{ forloop.index }} of {{ forloop.length }}">
+                <a class="product-carousel__item-inner" href="{{ product.url }}">
+                  <div class="relative">
+                    <div class="product-carousel__item-image">
+                      <div class="product-carousel__item-image-inner">
+                        {{ product | image_url: width: 1000 | image_tag: loading: 'lazy', width: 250 }}
+                      </div>
+                    </div>
+                  </div>
+                  {%- if product.tags contains 'member-only' -%}
+                    <p class="product-carousel__item-tag text-body-small text-wheat">
+                      {{ 'products.product.members_only' | t }}
+                    </p>
+                  {%- endif -%}
+                  <h2 class="product-carousel__item-title text-product-name">{{ product.title }}</h2>
+                  {%- render 'price', product: product, price_class: 'product-carousel__item-price' -%}
+                  {% if product.first_available_variant %}
+                    <p class="product-carousel__item-variant-title">({% if section.settings.first_available_variant %}{{ product.selected_or_first_available_variant.title }}{% else %}{{ product.variants.first.title }}{% endif %})</p>
+                  {% endif %}
+                </a>
+                <modal-opener
+                  data-modal="#QuickAdd-{{ product.id }}"
+                  class="hidden md:block"
+                >
+                  <button
+                    id="{{ product_form_id }}-submit"
+                    type="submit"
+                    name="add"
+                    class="product-carousel__item-cta button button--primary button--inverse !absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    tabindex="0"
+                    role="button"
+                    aria-haspopup="dialog"
+                    aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
+                    data-product-url="{{ product.url }}"
+                  >
+                    {{ 'products.product.quick_add' | t }}
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                </modal-opener>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <div aria-label="Slides" role="tablist" class="swiper-pagination swiper-pagination--dots md:hidden"></div>
+        </div>
+        {%- if section.settings.cta_url != blank and section.settings.cta_text != blank -%}
+          <a
+            href="{{ section.settings.cta_url }}"
+            class="product-carousel__cta button"
+            tabindex="-1"
+          >
+            {{ section.settings.cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- for product in collection.products -%}
+      {%- render 'quick-add-modal',
+        product: product,
+        color_scheme: section.settings.color_scheme,
+        back_text: section.settings.quick_add_return_text
+      -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+
+<script type="module">
+  (async () => {
+    if (typeof window.Swiper === 'undefined') {
+      const { default: Swiper } = await import('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs');
+      window.Swiper = Swiper;
+    }
+
+    const swiper = new window.Swiper('.swiper--{{ section.id }}', {
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      initialSlide: 1,
+      speed: 500,
+      loop: false,
+      allowTouchMove: true,
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          loop: true,
+          spaceBetween: 10,
+          centeredSlides: false,
+          initialSlide: 0,
+          allowTouchMove: true,
+        }
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+
+    const swiperContainer = document.querySelector('.swiper--{{ section.id }}');
+
+    if (swiperContainer) {
+      const focusableElements = swiperContainer.querySelectorAll('.swiper-slide.product-carousel__item');
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      const lastFocusableBtn = lastFocusable.querySelector('button');
+
+      swiperContainer.addEventListener('keydown', (event) => {
+        if (event.key === 'Tab') {
+          if (!event.shiftKey) {
+            if (document.activeElement === lastFocusableBtn) {
+              // console.log('--- last item ---')
+              document.querySelector('.product-carousel__cta').focus();
+              event.preventDefault();
+            }
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Carousel",
+  "tag": "section",
+  "class": "product-carousel",
+  "settings": [
+    {
+      "type": "select",
+      "id": "customer_status",
+      "label": "Customer status",
+      "options": [
+        {
+          "value": "logged_in",
+          "label": "Logged in"
+        },
+        {
+          "value": "not_logged_in",
+          "label": "Not logged in"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        }
+      ],
+      "default": "all",
+      "info": "Display this section to all customers, logged in customers, or not logged in customers."
+    },
+
+    {
+      "type": "checkbox",
+      "id": "feature_section",
+      "label": "Feature section",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "scroll_in_animation",
+      "label": "Enable scroll in animation",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "checkbox",
+      "id": "enlarge_middle_slide",
+      "label": "Enlarge Middle Slide",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "quick_add_return_text",
+      "label": "Quick Add Return Text",
+      "default": "Back to featured brews"
+    },
+    {
+      "type": "checkbox",
+      "id": "first_available_variant",
+      "label": "Show first available variant, instead of first option",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Carousel",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

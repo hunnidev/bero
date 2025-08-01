@@ -1,0 +1,622 @@
+{%- assign customer_is_paid_member = false -%}
+{%- if customer.tags contains settings.loyalty_paid_membership_customer_tag -%}
+  {%- assign customer_is_paid_member = true -%}
+{%- endif -%}
+
+<div class="color-{{ section.settings.color_scheme }} qr-claim-page__inner">
+  <div class="page-width page-width--small">
+    <div class="qr-claim-page__grid lg:flex gap-[40px]">
+      <div class="qr-claim__image">
+        {{ section.settings.svg_code }}
+      </div>
+      <div
+        x-data="
+          qrClaim(
+            {
+              customerId: {{ customer.id | json }},
+              customerIsPaidMember: {{ customer_is_paid_member | json }},
+              paidMembershipMultiplier: {{ settings.loyalty_paid_membership_credits_multiplier | json }},
+              paidMembershipCustomerTag: '{{ settings.loyalty_paid_membership_customer_tag }}',
+              products: [
+                {%- for product in collections[section.settings.products].products -%}
+                  {%- assign credit_value = product.metafields.custom.loyalty_credit_value |  default: 0 -%}
+                  {
+                    creditValue: {{ credit_value | plus: 0.0 }},
+                    variants: [
+                      {%- for variant in product.variants -%}
+                        {
+                          sku: '{{ variant.sku }}',
+                        }{%- unless forloop.last -%},{%- endunless -%}
+                      {%- endfor -%}
+                      ]
+                  }{%- unless forloop.last -%},{%- endunless -%}
+                {%- endfor -%}
+              ]
+            }
+          )
+        "
+        x-cloak
+        class="qr-claim__content grow gradient color-{{ section.settings.inner_color_scheme }}"
+      >
+        {%- comment -%}
+          Error state
+        {%- endcomment -%}
+        <div x-show="errorState">
+          <h3 class="qr-claim__title h2">
+            {{ section.settings.error_message_title }}
+          </h3>
+
+          <ul>
+            <li x-text="errorMessages[0]"></li>
+          </ul>
+
+          <button
+            class="button button--primary qr-claim__cta button--full-width flex"
+            @click="checkNewSerial"
+          >
+            {{ section.settings.error_cta }}
+          </button>
+        </div>
+
+        {%- comment -%}
+          Landing
+        {%- endcomment -%}
+        <div
+          x-show="landingState"
+          class="qr-claim__landing-screen text-center"
+        >
+          <h1 class="qr-claim__title h2">
+            {{ section.settings.landing_title }}
+          </h1>
+
+          <div class="qr-claim__landing-grid">
+            {%- for i in (1..2) -%}
+              {%- liquid
+                assign svg_key = 'option_' | append: i | append: '_instructions_svg'
+                assign text_key = 'option_' | append: i | append: '_instructions_text'
+              -%}
+              <div>
+                {%- if section.settings[svg_key] -%}
+                  {{ section.settings[svg_key] }}
+                {%- endif -%}
+                {%- if section.settings[text_key] != blank -%}
+                  <h2 class="h6 text-[16px]">
+                    {{ section.settings[text_key] }}
+                  </h2>
+                {%- endif -%}
+                {%- if i == 1 -%}
+                  <div class="qr-claim__landing-qr-code">
+                    {{ section.settings.option_1_instructions_qr_svg }}
+                  </div>
+                  <p class="qr-claim__landing-qr-code-text text-body-medium">
+                    {{ section.settings.option_1_instructions_qr_code }}
+                  </p>
+                {%- else -%}
+                  <button
+                    class="qr-claim__help-cta"
+                    @click="openHelpModal()"
+                  >
+                    {%- render 'icons', icon: 'info' -%}
+                    {{ section.settings.instructions_help_cta_text }}
+                  </button>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <input
+            type="text"
+            x-model="serial"
+            placeholder="{{ section.settings.serial_input_placeholder }}"
+            class="qr-claim__input"
+            aria-label="{{ section.settings.serial_input_placeholder }}"
+            required
+          >
+          <p class="qr-claim__input-below-msg left">{{ section.settings.serial_input_case_below_msg }}</p>
+
+          <button
+            class="button button--primary button--full-width"
+            @click="checkSerial()"
+            x-show="!serial || !checked"
+          >
+            {{ section.settings.landing_cta_text }}
+          </button>
+        </div>
+
+        {%- comment -%}
+          Already claimed
+        {%- endcomment -%}
+        <div
+          x-show="alreadyClaimedState"
+          class="qr-claim__already-claimed-screen"
+        >
+          <h2 class="qr-claim__preheading h6 h6--primary">
+            {{ section.settings.already_claimed_preheading }}
+          </h2>
+          <h3 class="qr-claim__title h2">
+            {{ section.settings.already_claimed_title }}
+          </h3>
+          <p class="qr-claim__text h6 text-center">
+            {{ section.settings.already_claimed_text }}
+          </p>
+          <button
+            class="button button--primary qr-claim__cta mx-auto flex"
+            @click="checkNewSerial"
+          >
+            {{ section.settings.already_claimed_cta }}
+          </button>
+        </div>
+
+        {%- comment -%}
+          Unclaimed logged out
+        {%- endcomment -%}
+        <div
+          x-show="unclaimedLoggedOutState"
+          class="qr-claim__unclaimed-screen"
+        >
+          {%- capture credit_amount -%}
+              <span x-text="creditValueDisplay"></span>
+            {%- endcapture -%}
+          <h2 class="qr-claim__preheading h6 h6--primary">
+            {{ section.settings.unclaimed_logged_out_preheading }}
+          </h2>
+          <h3 class="qr-claim__title h2">
+            {{ section.settings.unclaimed_logged_out_title | replace: '[AMOUNT]', credit_amount }}
+          </h3>
+          {%- render 'loyalty-login-form' -%}
+          <h4 class="qr-claim__perks-title h6 h6--primary">
+            <a href="{{ section.settings.perks_link }}">
+              {{ section.settings.promo_title }}
+            </a>
+          </h4>
+          <ul class="qr-claim__perks md:flex flex-wrap justify-center">
+            {%- assign perks = section.settings.perks_list | split: '//' -%}
+            {%- for perk in perks -%}
+              <li class="qr-claim__perk">
+                {%- render 'icons', icon: 'tick-2' -%}
+                {{ perk }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        {%- comment -%}
+          Registering user
+        {%- endcomment -%}
+        <div
+          x-show="isRegisteringUser"
+          class="qr-claim__unclaimed-screen"
+        >
+          {%- capture credit_amount -%}
+              <span x-text="creditValueDisplay"></span>
+            {%- endcapture -%}
+          <h2 class="qr-claim__preheading h6 h6--primary">
+            {{ section.settings.unclaimed_logged_out_preheading }}
+          </h2>
+          <h3 class="qr-claim__title h2">
+            {{ section.settings.unclaimed_logged_out_title | replace: '[AMOUNT]', credit_amount }}
+          </h3>
+          {%- render 'loyalty-register-form' -%}
+          <h4 class="qr-claim__perks-title h6 h6--primary">
+            <a href="{{ section.settings.perks_link }}">
+              {{ section.settings.promo_title }}
+            </a>
+          </h4>
+          <ul class="qr-claim__perks md:flex flex-wrap justify-center">
+            {%- assign perks = section.settings.perks_list | split: '//' -%}
+            {%- for perk in perks -%}
+              <li class="qr-claim__perk">
+                {%- render 'icons', icon: 'tick-2' -%}
+                {{ perk }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        {%- comment -%}
+          Show where form
+        {%- endcomment -%}
+
+        <div
+            x-show="whereForm"
+            class="qr-claim__where-form-screen"
+        >
+        {%- capture credit_amount -%}
+          <span x-text="creditValueDisplay"></span>
+        {%- endcapture -%}
+      <h2 class="qr-claim__preheading h6 h6--primary">
+        {{ section.settings.unclaimed_logged_out_preheading }}
+      </h2>
+      <h3 class="qr-claim__title h2">
+        {{ section.settings.unclaimed_logged_out_title | replace: '[AMOUNT]', credit_amount }}
+      </h3>
+      {% comment %} Powerful form builder {% endcomment %}
+      {% comment %} US: Njk5Mjc= {% endcomment %}
+      {% comment %} UK: Nzg5MTY= {% endcomment %}
+      <div class="globo-formbuilder" data-id="{{ section.settings.powerful_form_builder_id }}"></div>
+      <input type="hidden" name="customer-email" value="{{ customer.email }}">
+    
+            <div class="whereDidYouBuy-button">
+                <button
+                class="button button--primary w-full"
+                @click="whereFormSubmit"
+              >
+              {{ section.settings.claim_code_cta }}
+              </button>
+            </div> 
+
+      </div>
+
+        <div
+          x-show="claimingState"
+          class="flex justify-center items-center h-full"
+        >
+          {%- if section.settings.loading_gif != blank -%}
+            {{ section.settings.loading_gif | image_url: width: 400 | image_tag: preload: true, width: 200 }}
+          {%- endif -%}
+        </div>
+
+        {%- comment -%}
+          Now claimed
+        {%- endcomment -%}
+        <div
+          x-show="nowClaimedState"
+          class="qr-claim__now-claimed-screen"
+        >
+          {%- capture credit_amount -%}
+                <span x-text="creditValueDisplay"></span>
+            {%- endcapture -%}
+          <h2 class="qr-claim__preheading h6 h6--primary">
+            {{ section.settings.claimed_preheading }}
+          </h2>
+          <h3 class="qr-claim__title h2">
+            {{ section.settings.claimed_title | replace: '[AMOUNT]', credit_amount }}
+          </h3>
+          <p class="qr-claim__sub-text text-body-medium">
+            {{ section.settings.claimed_text }}
+          </p>
+
+            <div class="qr-claim__claimed-buttons">
+            
+              {%- if section.settings.claimed_cta_text != blank and section.settings.claimed_cta_url != blank -%}
+                <div>
+                  <a
+                    href="{{ section.settings.claimed_cta_url }}"
+                    class="button button--primary qr-claim__cta"
+                  >
+                    {{ section.settings.claimed_cta_text }}
+                  </a>
+                </div>
+              {%- endif -%}
+            
+              <div>
+                <button
+                class="button button--secondary qr-claim__cta"
+                @click="checkNewSerial"
+                >
+                  {{ section.settings.claim_another_cta }}
+                </button>
+              </div>
+
+          </div>
+
+        </div>
+
+        {%- render 'loyalty-qr-modal', section: section -%}
+      </div>
+    </div>
+
+    <p class="qr-claim__help-text text-center">
+      {{ section.settings.help_text }}
+    </p>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "QR Claim Page",
+  "tag": "section",
+  "class": "qr-claim-page",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "inner_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "Inner color scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "html",
+      "id": "svg_code",
+      "label": "SVG Code"
+    },
+    {
+      "type": "header",
+      "content": "Products collection"
+    },
+    {
+      "type": "collection",
+      "id": "products",
+      "label": "Products",
+      "info": "This should be a collection containing all products that will have QR codes"
+    },
+    {
+      "type": "header",
+      "content": "Promo text"
+    },
+    {
+      "type": "text",
+      "id": "promo_title",
+      "label": "Promo title",
+      "default": "Discover the perks"
+    },
+    {
+      "type": "url",
+      "id": "perks_link",
+      "label": "Perks link"
+    },
+    {
+      "type": "textarea",
+      "id": "perks_list",
+      "label": "Perks list",
+      "info": "Separate each perk with a double forward slash (//)",
+      "default": "2x credits// Free shipping// 10% off// Q&As with Tom Holland",
+      "placeholder": "2x credits// Free shipping// 10% off// Q&As with Tom Holland"
+    },
+    {
+      "type": "header",
+      "content": "Landing text"
+    },
+    {
+      "type": "text",
+      "id": "landing_title",
+      "label": "Preheading",
+      "default": "Claim your credits"
+    },
+    {
+      "type": "text",
+      "id": "serial_input_placeholder",
+      "label": "Input field placeholder",
+      "default": "Enter your 10-digit QR code"
+    },
+    {
+      "type": "text",
+      "id": "serial_input_case_below_msg",
+      "label": "Input field below message",
+      "default": "*Code is case sensitive"
+    },
+    {
+      "type": "text",
+      "id": "landing_cta_text",
+      "label": "CTA Text",
+      "default": "Check code"
+    },
+    {
+      "type": "header",
+      "content": "Landing Instructions"
+    },
+    {
+      "type": "html",
+      "id": "option_1_instructions_svg",
+      "label": "Option 1 SVG"
+    },
+    {
+      "type": "textarea",
+      "id": "option_1_instructions_text",
+      "label": "Option 1 Text",
+      "default": "SCAN THE QR CODE ON YOUR MOBILE DEVICE"
+    },
+    {
+      "type": "html",
+      "id": "option_1_instructions_qr_svg",
+      "label": "Options 1 QR SVG Icon"
+    },
+    {
+      "type": "text",
+      "id": "option_1_instructions_qr_code",
+      "label": "Option 1 QR Code",
+      "default": "zzxMDdDbsr"
+    },
+    {
+      "type": "html",
+      "id": "option_2_instructions_svg",
+      "label": "Option 2 SVG"
+    },
+    {
+      "type": "textarea",
+      "id": "option_2_instructions_text",
+      "label": "Option 2 Text",
+      "default": "OR ENTER THE CODE MANUALLY BELOW"
+    },
+    {
+      "type": "text",
+      "id": "instructions_help_cta_text",
+      "label": "Instructions Help CTA Text",
+      "default": "Where is my QR code?"
+    },
+    {
+      "type": "header",
+      "content": "Already claimed text"
+    },
+    {
+      "type": "text",
+      "id": "already_claimed_preheading",
+      "label": "Preheading",
+      "default": "Oops!"
+    },
+    {
+      "type": "text",
+      "id": "already_claimed_title",
+      "label": "Title",
+      "default": "This QR code has already been claimed!"
+    },
+    {
+      "type": "text",
+      "id": "already_claimed_text",
+      "label": "Text",
+      "default": "Have another code?"
+    },
+    {
+      "type": "text",
+      "id": "already_claimed_cta",
+      "label": "CTA",
+      "default": "Claim here"
+    },
+    {
+      "type": "header",
+      "content": "Unclaimed - Logged out"
+    },
+    {
+      "type": "text",
+      "id": "unclaimed_logged_out_preheading",
+      "label": "Preheading",
+      "default": "Congratulations!"
+    },
+    {
+      "type": "text",
+      "id": "unclaimed_logged_out_title",
+      "label": "Title",
+      "default": "[AMOUNT] credit awaits you.",
+      "info": "Use [AMOUNT] to display the amount of credit the user will receive"
+    },
+    {
+      "type": "header",
+      "content": "Claimed text"
+    },
+    {
+      "type": "text",
+      "id": "claimed_preheading",
+      "label": "Preheading",
+      "default": "Congratulations!"
+    },
+    {
+      "type": "text",
+      "id": "claimed_title",
+      "label": "Title",
+      "default": "You’ve earned [AMOUNT] in BERO credits!",
+      "info": "Use [AMOUNT] to display the amount of credit the user has earned"
+    },
+    {
+      "type": "text",
+      "id": "claimed_text",
+      "label": "Text",
+      "default": "You can redeem credits on your next order."
+    },
+    {
+      "type": "url",
+      "id": "claimed_cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "claimed_cta_text",
+      "label": "CTA text",
+      "default": "View my credits"
+    },
+    {
+      "type": "header",
+      "content": "Help text"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "help_text",
+      "label": "Help text",
+      "default": "Need help? Email us"
+    },
+    {
+      "type": "header",
+      "content": "Help Modal"
+    },
+    {
+      "type": "color_scheme",
+      "id": "help_modal_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "Help modal color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "text",
+      "id": "help_modal_title",
+      "label": "Help Modal Title",
+      "default": "Locate your QR code text"
+    },
+    {
+      "type": "html",
+      "id": "help_modal_svg",
+      "label": "Help Modal SVG"
+    },
+    {
+      "type": "text",
+      "id": "help_modal_serial",
+      "label": "Help Modal Serial",
+      "default": "zzxMDdDbsr"
+    },
+    {
+      "type": "richtext",
+      "id": "help_modal_text",
+      "label": "Help Modal Text",
+      "default": "<p>Look for the 10-digit string of letters under the QR code printed on your package. </p>"
+    },
+    {
+      "type": "header",
+      "content": "Loading gif"
+    },
+    {
+      "type": "image_picker",
+      "id": "loading_gif",
+      "label": "Loading gif"
+    },
+    {
+      "type": "header",
+      "content": "Error messages"
+    },
+    {
+      "type": "text",
+      "id": "error_message_title",
+      "label": "Error message title",
+      "default": "Oops!"
+    },
+    {
+      "type": "text",
+      "id": "error_cta",
+      "label": "Error CTA",
+      "default": "Try again"
+    },
+    {
+      "type": "text",
+      "id": "claim_code_cta",
+      "label": "Claim Code CTA Text",
+      "default": "Claim Now"
+    },
+    {
+      "type": "text",
+      "id": "claim_another_cta",
+      "label": "Claim Another Code CTA Text",
+      "default": "Enter New Code"
+    },
+    {
+      "type": "header",
+      "content": "Powerful form builder ID"
+    },
+    {
+      "type": "text",
+      "id": "powerful_form_builder_id",
+      "label": "Powerful form builder ID"
+    }
+  ],
+  "presets": [
+    {
+      "name": "QR Claim Page",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

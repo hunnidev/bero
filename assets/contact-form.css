@@ -1,0 +1,109 @@
+/* CUSTOM FORM */
+.globo-form-app.default-layout.gfb-style-material_filled.gfb-font-size-medium {
+    width: 100% !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+h3.title.globo-heading {
+    display: none !important;
+}
+
+.description.globo-description {
+    display: none !important;
+}
+
+.globo-formbuilder-wizard {
+    background-color: #333 !important;
+}
+
+.wizard__content {
+    background-color: #faf6ef !important;
+}
+
+select#\35 8943-select-1 {
+    background-color: #faf6ef !important;
+    border-radius: 0 !important;
+    padding-left: 0 !important;
+}
+
+.globo-form-control.layout-1-column.inpa {
+    background-color: #faf6ef !important;
+    border-bottom: 1px solid #000 !important;
+    border-radius: 0 !important;
+    padding-left: 0 !important;
+}
+
+.globo-form-control.layout-1-column.inpa[data-type="textarea"] {
+    border-bottom: none !important;
+    padding-right: 0;
+}
+
+.globo-form-control.layout-1-column.inpa input {
+    background-color: #faf6ef !important ;
+}
+
+.globo-form-control.layout-1-column.inpa textarea {
+    background-color: #faf6ef !important;
+}
+
+
+
+textarea#\35 8943-textarea {
+    border: 1px solid !important;
+}
+
+label.material_filled-label.globo-label.gfb__label-v2 {
+    color: #fff !important;
+    leading-trim: both;
+    text-edge: cap;
+
+/* Body Small/Emphasis* */
+    /* font-family: var(--Font-Family-Body, "ABC Whyte"); */
+    font-size: var(--Units-16, 16px) !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: normal !important;
+}
+
+label.material_filled-label.globo-label.gfb__label-v2 {
+    left: -7px !important;
+}
+
+.globo-form-control.layout-1-column.inpa [data-type="textarea"] {
+    border: 1px solid #000 !important;
+    border-bottom: 0 !important;
+}
+
+.globo-form-input {
+    border-radius: 0 !important;
+}
+
+button.action.next.submit.material_filled-button.wizard__submit {
+    max-width: 214px !important;
+    height: 64px;
+    background-color: #000;
+    border-radius: 0 !important;
+    color: var(--Background-secondary, #F9F6EF);
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+
+/* Button*/
+    Primary */
+font-family: var(--Font-Family-Body, "ABC Whyte");
+    font-size: var(--Units-18, 18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+    letter-spacing: 2.88px;
+    text-transform: uppercase;
+}
+
+.banner__box {
+    padding-top: 238px !important;
+}
+
+.globo-form-app.default-layout.gfb-style-material_filled.gfb-font-size-medium .header {
+    display: none;
+}

@@ -1,0 +1,30 @@
+{%- if collection.description != blank -%}
+  <div
+    class="collection__description accordion-item"
+    :class="{ 'accordion-item--open': show }"
+    x-data="{show: true}"
+    :aria-expanded="show.toString()"
+  >
+    <button
+      class="w-full"
+      @click="show = !show"
+      :aria-expanded="show.toString()"
+      role="button">
+      <h3
+        class="subtitle accordion-item__title"
+      >
+        {{ 'sections.collection_template.description_title' | t: collection_title: collection.title }}
+
+        {%- render 'icons', icon: 'minus' -%}
+        {%- render 'icons', icon: 'plus' -%}
+      </h3>
+    </button>
+    <div
+      class="rte accordion-item__content"
+      x-show="show"
+      x-collapse
+    >
+      {{ collection.description }}
+    </div>
+  </div>
+{%- endif -%}

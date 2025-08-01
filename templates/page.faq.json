@@ -1,0 +1,833 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_page_banner_FYpgM4": {
+      "type": "pbj-page-banner",
+      "settings": {
+        "transparent_header": true,
+        "show_back_button": false,
+        "back_button_text": "",
+        "back_button_url": "",
+        "image": "shopify://shop_images/Hero_Section.png",
+        "image_overlay_opacity": 20,
+        "image_aspect": "custom",
+        "desktop_height": 35,
+        "mobile_height": 35,
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "mobile_content_position": "bottom-left",
+        "mobile_content_alignment": "left",
+        "show_text_below": false,
+        "color_scheme": "scheme-2",
+        "image_behavior": "none"
+      }
+    },
+    "pbj_link_list_CJphGc": {
+      "type": "pbj-link-list",
+      "settings": {
+        "color_scheme": "",
+        "show_user_info": false,
+        "menu": "customer-support",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_collapsible_content_8FaULY": {
+      "type": "pbj-collapsible-content",
+      "blocks": {
+        "collapsible_row_nQDxCJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is there alcohol in BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Technically, yes, but just a touch below 0.5% ABV, which is considered to be the legal threshold for non-alcoholic beverages. For comparison, soy sauce is made through a natural brewing process similar to beer and typically contains 1.5-2% ABV, and no one’s calling that a cocktail.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_WVGMng": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I drink BERO if breastfeeding or pregnant?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Always consult your physician before consumption. That’s important in any health-related decision. While it’s unlikely that non-alcoholic beverages—in moderation—would pose a risk, there is no safe level of alcohol intake when pregnant or breastfeeding.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_ncqNhA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How many calories are in each beer?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>Kingston Golden Pils: 88 calories</li><li>Edge Hill Hazy IPA: 73 calories</li><li>Noon Wheat: 70 calories</li><li>Double Tasty West Coast Style IPA: 90 calories</li></ul>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_KL49AR": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How many carbs are in each beer?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>Kingston Golden Pils: 19 g per 12 fl. oz </li><li>Edge Hill Hazy IPA: 15 g per 12 fl. oz </li><li>Noon Wheat: 15 g per 12 fl. oz</li><li>Double Tasty West Coast Style IPA: 18 g per 12 fl. oz </li></ul>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_TA9YKc": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How is BERO made?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>For the beer aficionados out there, we start with the same foundational steps as a full-strength beer by creating a “mash” with our high-quality malts. From this mash, our solution of sugars, called wort, is obtained. By brewing at higher temperatures, we obtain a blend that’s intentionally lighter on alcohol but big on flavor. We start our wort at 5-6%—versus the usual heavy-hitting 12-13% for a regular beer. Next, we introduce a special maltose-negative yeast. Fancy name, but here’s what matters: this yeast doesn't consume the malt sugar (maltose), but it works its magic on simpler sugars like glucose. To put it simply, we brew in a way where we don’t need to remove the alcohol because we aren’t creating any alcohol to remove. Our beer then goes through a natural fermentation process. No tricks, no shortcuts. What really makes BERO stand out is our malts—giving every sip a rich, full-bodied taste with unmistakable character that sets our brews apart.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_9Q6zG6": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What ingredients are in BERO’s beer?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>Kingston Golden Pils: Water, malted barley, hops, yeast</li><li>Edge Hill Hazy IPA: Water, malted barley, malted wheat, malted oats, hops, yeast</li><li>Noon Wheat: Water, malted barley, malted wheat, malted oats, hops, yeast, and other natural flavors</li><li>Double Tasty West Coast Style IPA: Water, malt, hops, yeast, and other natural hop flavors</li></ul>",
+            "page": "",
+            "anchor": "ingredients-faq"
+          }
+        },
+        "collapsible_row_7KGqDG": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I am diabetic, can I drink BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Always consult your physician before consumption. That’s important in any health-related decision. The product does have carbohydrate content.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_4WBLCJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What allergens are contained in BERO products?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Wheat.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_98j7Rf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Does BERO contain yeast, wheat, gluten, or dairy?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Yes, our beers contain yeast, gluten (because of the malts), and wheat. This is part of the natural brewing process. However, our beer is dairy-free.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_fABMeW": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Does BERO contain any added sugar?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>None. We believe in letting the natural flavors shine.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_yAeyxA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is BERO certified Kosher?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Not at the moment. Keep an eye out for updates on our website. </p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_qNhweE": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is BERO vegan?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>BERO is not currently “vegan certified”, but it could be considered vegan. We do not use any animal-derived ingredients in our recipes, including honey, nor do we use any animal-based finings or filter aids  in our beers.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_FyLMqV": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you have a regenerative agriculture certification?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Not at the moment; however, we are considering it. Keep an eye out for updates on our website.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_Y9izGM": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is the expiration date of a BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Your BERO’s “best by” date can be found on the bottom of every can and on the carton. In some cases, you may see a batch number instead of a “best by” date, in which case the expiration date is 365 days from that date.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_9ECmBL": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How should I store my beer?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Whenever possible, store your beer cold / cool—below 50 degrees Fahrenheit is the sweet spot. Never expose your beer to hot temperatures or heat sources.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_JmHMgL": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is the optimal drinking temperature?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>BERO is best enjoyed between 36–40 degrees Fahrenheit.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_nQDxCJ",
+        "collapsible_row_WVGMng",
+        "collapsible_row_ncqNhA",
+        "collapsible_row_KL49AR",
+        "collapsible_row_TA9YKc",
+        "collapsible_row_9Q6zG6",
+        "collapsible_row_7KGqDG",
+        "collapsible_row_4WBLCJ",
+        "collapsible_row_98j7Rf",
+        "collapsible_row_fABMeW",
+        "collapsible_row_yAeyxA",
+        "collapsible_row_qNhweE",
+        "collapsible_row_FyLMqV",
+        "collapsible_row_Y9izGM",
+        "collapsible_row_9ECmBL",
+        "collapsible_row_JmHMgL"
+      ],
+      "settings": {
+        "show_page_title": true,
+        "page_title_caption": "CUSTOMER SUPPORT",
+        "page_title_heading_size": "h1",
+        "page_title_font": "var(--font-body-family)",
+        "page_title_transform": "uppercase",
+        "collapsible_margin_top": 0,
+        "collapsible_margin_bottom": 52,
+        "caption": "",
+        "heading": "Product",
+        "heading_size": "h4",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_collapsible_content_pJNJbM": {
+      "type": "pbj-collapsible-content",
+      "blocks": {
+        "collapsible_row_9QcNjA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where else can I buy BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>We want to make it easy for people to find and enjoy BERO. We will continue working hard to add more locations to our <a href=\"/pages/where-to-find-us\" target=\"_blank\" title=\"Where to find us\">store locator</a>, so our consumers are able to purchase BERO at their favorite stores, restaurants, and bars. Keep an eye out for updates on our website and social (<a href=\"https://instagram.com/berobrewing\" target=\"_blank\"><span style=\"text-decoration:underline\">@berobrewing</span></a>).</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_bNUNcC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is BERO available in restaurants / venues?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>We want to make it easy for people to find and enjoy BERO. We will continue working hard to add more locations to our <a href=\"/pages/where-to-find-us\" target=\"_blank\" title=\"Where to find us\">store locator</a>, so our consumers are able to purchase BERO at their favorite restaurants and bars. Keep an eye out for updates on our website and social (<a href=\"https://instagram.com/berobrewing\" target=\"_blank\"><span style=\"text-decoration:underline\">@berobrewing</span></a>).</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_bGK7z9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is BERO available internationally?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>We are currently available in the US and UK. Keep an eye out for updates on our website and social (<a href=\"https://instagram.com/berobrewing\" target=\"_blank\"><span style=\"text-decoration:underline\">@berobrewing</span></a>) for future markets.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_Y7jhAe": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will I have to show ID when buying BERO in stores?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>This varies widely and will depend on your state's legislation. Some states have laws restricting the purchase of non-alcoholic beer to people 21 and older. For example, Ohio requires people to be at least 18 years old to buy non-alcoholic beer. Oregon, West Virginia, and Wyoming have similar laws for drinks with at least 0.5% ABV. Georgia considers NA beer as beer. Some retailers may also ask you for your ID.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_9QcNjA",
+        "collapsible_row_bNUNcC",
+        "collapsible_row_bGK7z9",
+        "collapsible_row_Y7jhAe"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "page_title_caption": "",
+        "page_title_heading_size": "h2",
+        "page_title_font": "var(--font-heading-family)",
+        "page_title_transform": "none",
+        "collapsible_margin_top": 0,
+        "collapsible_margin_bottom": 52,
+        "caption": "",
+        "heading": "Retail",
+        "heading_size": "h4",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_collapsible_content_N49mm6": {
+      "type": "pbj-collapsible-content",
+      "blocks": {
+        "collapsible_row_BiDpXg": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I join Club BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>You can sign up as a Free Member with as little as your name, email, and address, or join our BEROMASTER tier for a $55 annual membership fee. Visit our Club BERO page to <a href=\"/pages/loyalty\" target=\"_blank\" title=\"Loyalty\"><span style=\"text-decoration:underline\">sign up</span>.</a></p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_diUe3Q": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I earn credits?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>By purchasing any BERO 6-pack or Variety Pack online or in-store. Club BERO Free Members receive $0.25 credit for each 6-pack purchased. BEROMASTER members receive double the credit at $0.50 credit for each 6-pack purchase. </li><li>By purchasing BERO Collection items online. Club BERO Free Members receive a $1 credit for every $30 of BERO Collection items purchased. BEROMASTER members receive double the credit at $2 credit for every $30 of BERO Collection items purchased. </li><li>There are other ways to earn credits if you are a Club BERO member—such as referrals, reviews, social follows, and more. Members can see a full list of credit-earning actions in their dashboard.</li></ul>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_WbRMkh": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I get credits from products purchased in stores?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>We value our customers and their loyalty, no matter where they choose to shop. Our industry-leading loyalty program rewards you for every BERO pack purchase, wherever you buy. Once you join Club BERO (with either a <a href=\"/pages/loyalty\" target=\"_blank\" title=\"Loyalty\"><span style=\"text-decoration:underline\">free or paid membership</span></a>), simply scan the unique QR code inside any BERO 6-pack or Variety Pack. You'll earn credits on every purchase, which you can redeem on your next <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com</span></a> purchase.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_RYUCQJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I redeem my credits in-store?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>What matters most to us is making it easy for you to find BERO and be rewarded for your loyalty. We're actively working on ways to help our loyal customers redeem their BERO credits wherever it’s most convenient. Stay tuned for updates on our website and social channels (<a href=\"https://instagram.com/berobrewing\" target=\"_blank\"><span style=\"text-decoration:underline\">@berobrewing</span></a>), and in the meantime, don’t hesitate to redeem your credits on <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com</span></a>.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_8BV8gU": {
+          "type": "collapsible_row",
+          "disabled": true,
+          "settings": {
+            "heading": "Where can I find my code?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>On the inside of any BERO 6-pack or Variety Pack, you will find a sticker that looks like this:</li></ul><p></p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_Amga6K": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long does it take for credits to appear in my account?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Credits will appear in your Club BERO account immediately and automatically. The best part is you can use them on your next order.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_TXMMpc": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What rewards can I get?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Rewards depend on your membership tier. For more information on membership tiers and benefits, <a href=\"/pages/loyalty\" target=\"_blank\" title=\"Loyalty\">check out Club BERO here.</a></p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_A8e8Gf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I track my credits?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>You can see your Club BERO credit balance at any time by logging in to your account dashboard. <a href=\"/pages/account-club-bero\" target=\"_blank\">Sign in here.</a></p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_ewpf6U": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I claim my credits for my offline BERO purchases?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Here are the steps to claim your credits and add them to your account:</p><ul><li>Scan the QR code or <a href=\"/pages/qr-claim\">enter your QR code manually here.</a></li><li>Login to or create your Club BERO account (you don’t have to be a paid member to claim credits). <a href=\"/pages/account-club-bero\">Sign in or sign up here.</a></li><li>If the code has not been claimed already, your credits will be automatically added to your account.</li></ul><p>You use and redeem your credits immediately on <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com.</span></a></p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_t86jrP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I redeem my credits?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Here are the steps to redeem your credits:</p><ul><li>Log in to your Club BERO account dashboard (you don’t have to be a paid member to redeem credits). <a href=\"/pages/account-club-bero\" target=\"_blank\">Sign in here.</a></li><li>Click on “redeem credits”.</li><li>Enter the amount of credits you want to redeem from your available credit balance.</li><li>A unique discount code for that amount will be generated and can be automatically applied to your cart if you choose to do so</li><li>Fill your cart with all your favorite BERO beers and BERO Collection items and checkout with your savings applied.</li></ul>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_nLU6hd": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do my Club BERO credits and status expire?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>Free Membership is for life and does not expire. </li><li>BEROMASTER membership is a one-year membership that will auto-renew.</li><li>Credits will remain active for 12 months from earning them. But, don’t worry. All members will be notified of credit expiration timelines in advance.</li></ul>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_ULtDTg": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I lose my credits if I cancel my Club BERO membership?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Your credits are yours. You will maintain access to your earned credits even if you don’t have an active membership or have canceled your membership. Your credits will remain active for 12 months from earning them.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_3FmD8g": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What happens to my credits if I cancel a BERO order or return BERO Collection items?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>If you placed an order on <a href=\"https://www.berobrewing.com\">www.berobrewing.com</a> and:</li><li><strong>Cancel the order</strong> OR <strong>get a full refund for your order</strong>, your Club BERO credits earned for that specific order will no longer be applied to your account (applicable for beer and BERO collection items). </li><li><strong>Get a partial refund for your order</strong>, only the equivalent Club BERO credits will be deducted from your account.</li></ul><p>Please reach out to our customer service team at <a href=\"mailto:support@bero.com\" target=\"_blank\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>. if you have any questions. </p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_y3QYB8": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is Club BERO the same as a subscription?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>No, Club BERO is not the same as a subscription program. Club BERO is a membership loyalty program that gives you instant rewards and exclusive access to a range of benefits and savings. You don’t need to commit to a specific purchase frequency to be part of Club BERO! <a href=\"/pages/loyalty\" target=\"_blank\" title=\"Loyalty\"><span style=\"text-decoration:underline\">Learn more about Club BERO.</span></a></p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_e7qgFm": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will my BEROMASTER membership renew automatically?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Yes, your BEROMASTER membership will renew automatically on an annual basis.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_dTPV8H": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I cancel my annual membership?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>While BEROMASTER memberships are non-refundable—given the immediate value you receive upon purchase—you can cancel at any time by emailing <a href=\"mailto:cancelmembership@bero.com\" target=\"_blank\"><span style=\"text-decoration:underline\">cancelmembership@berobrewing.com</span></a>, so your membership does not renew. Access to your BEROMASTER benefits will remain active until the end of the billing cycle.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_BiDpXg",
+        "collapsible_row_diUe3Q",
+        "collapsible_row_WbRMkh",
+        "collapsible_row_RYUCQJ",
+        "collapsible_row_8BV8gU",
+        "collapsible_row_Amga6K",
+        "collapsible_row_TXMMpc",
+        "collapsible_row_A8e8Gf",
+        "collapsible_row_ewpf6U",
+        "collapsible_row_t86jrP",
+        "collapsible_row_nLU6hd",
+        "collapsible_row_ULtDTg",
+        "collapsible_row_3FmD8g",
+        "collapsible_row_y3QYB8",
+        "collapsible_row_e7qgFm",
+        "collapsible_row_dTPV8H"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "page_title_caption": "",
+        "page_title_heading_size": "h2",
+        "page_title_font": "var(--font-heading-family)",
+        "page_title_transform": "none",
+        "collapsible_margin_top": 0,
+        "collapsible_margin_bottom": 52,
+        "caption": "",
+        "heading": "Loyalty",
+        "heading_size": "h4",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_collapsible_content_WybYU4": {
+      "type": "pbj-collapsible-content",
+      "blocks": {
+        "collapsible_row_9HxfRY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I unsubscribe from BERO newsletter and texts?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>The last thing we want to do is be a bother and we work hard to limit the number of messages we send. However, if you do wish to unsubscribe, you can use the “unsubscribe” link at the bottom of our emails at any time, reply “STOP” to any SMS, or login to your account and adjust your communication preferences.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_BRxqP7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I refer a friend?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<ul><li>If you are a Club BERO member (free or paid), you can email someone your unique referral code directly from the referral page in your account dashboard—or manually copy and paste your link and share. This will unlock an immediate credit reward for the member! </li></ul><p>If you are not a Club BERO member, you can visit <a href=\"http://www.berobrewing.com/pages/referrals\" target=\"_blank\"><span style=\"text-decoration:underline\">www.berobrewing.com/pages/referrals</span></a> to create your own referral smart link to send to someone.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_XWgwMk": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I use a gift card?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Cheers on receiving a BERO gift card. To use it, enter the unique code associated with your gift card in the discount field at checkout. If the balance available on your gift card is greater than or equal to your order total, then you can complete your order. If the balance available on your gift card is less than your order total, you will need to enter an additional payment method for the balance of the order value before you can complete checkout. This includes adding another gift card.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_c6rXkp": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do gift cards expire?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Our BERO gift cards expire 5 years from the date of purchase. We encourage you to use your gift card within this timeframe to ensure you can enjoy everything BERO has to offer. If you have any questions or need assistance, feel free to reach out to <a href=\"mailto:support@bero.com\" target=\"_blank\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_9HxfRY",
+        "collapsible_row_BRxqP7",
+        "collapsible_row_XWgwMk",
+        "collapsible_row_c6rXkp"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "page_title_caption": "",
+        "page_title_heading_size": "h2",
+        "page_title_font": "var(--font-heading-family)",
+        "page_title_transform": "none",
+        "collapsible_margin_top": 0,
+        "collapsible_margin_bottom": 52,
+        "caption": "",
+        "heading": "Account, Referral, Gift Card",
+        "heading_size": "h4",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_collapsible_content_r4Pg7L": {
+      "type": "pbj-collapsible-content",
+      "blocks": {
+        "collapsible_row_6R4eGK": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do you say BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Say it how you like! We go with “Beer-oh” around here.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_bRyd8p": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What’s with the fish?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>It’s a trout. The symbol is inspired by the crest of Tom’s hometown, Kingston upon Thames. The trout swims its own path, and it’s a perfect symbol of how we—and you—do things differently.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_9a3pPG": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is Tom Holland involved in BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Absolutely. Tom has been involved in everything from the inception of BERO to overseeing our branding to the crafting of each beer. His vision and passion for the brand continue to shine through in every aspect of our work, as he remains actively engaged in strategic decisions and the day-to-day.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_6R4eGK",
+        "collapsible_row_bRyd8p",
+        "collapsible_row_9a3pPG"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "page_title_caption": "",
+        "page_title_heading_size": "h2",
+        "page_title_font": "var(--font-heading-family)",
+        "page_title_transform": "none",
+        "collapsible_margin_top": 0,
+        "collapsible_margin_bottom": 52,
+        "caption": "",
+        "heading": "Brand",
+        "heading_size": "h4",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_collapsible_content_PKf76R": {
+      "type": "pbj-collapsible-content",
+      "blocks": {
+        "collapsible_row_DU3Vze": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I want to sell or serve BERO at an on-premise or off-premise location.",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Thank you for your interest in BERO! We're grateful for your consideration and welcome all applications. Please <a href=\"/pages/retail-partners-wholesale\" target=\"_blank\" title=\"Offer BERO\">fill out our request form</a>, and our team will get back to you as soon as possible. </p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_8eg9cL": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I have a media request or press inquiry.",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Please reach out to <a href=\"mailto:press@bero.com\" target=\"_blank\"><span style=\"text-decoration:underline\">press@berobrewing.com</span></a>, and our team will get back to you as soon as possible.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_V3yw9X": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I am a brand. How can I partner with BERO?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Please reach out to <a href=\"mailto:partnerships@bero.com\"><span style=\"text-decoration:underline\">partnerships@berobrewing.com</span></a>, and our team will get back to you as soon as possible.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_j4kEa8": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What does it mean to become an ambassador?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>BERO Ambassadors are more than just brand envoys; they are tastemakers and cultural catalysts who introduce BERO to their community. They curate culture, build community, and bring the party to life. If you think you have the BERO touch, <a href=\"/pages/ambassador\" target=\"_blank\">visit our Ambassador page</a> for more information.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_PWhxjF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I become an ambassador?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p><a href=\"/pages/ambassador\" target=\"_blank\" title=\"Ambassador\">Fill out the form here</a> and tell us about yourself and your vision for BERO in your community.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        },
+        "collapsible_row_6CndUD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you have a taproom?",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Not yet, but subscribe to our newsletter and <a href=\"/pages/loyalty\" target=\"_blank\" title=\"Loyalty\"><span style=\"text-decoration:underline\">join Club BERO</span></a> to be the first to know where BERO’s being poured.</p>",
+            "page": "",
+            "anchor": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_DU3Vze",
+        "collapsible_row_8eg9cL",
+        "collapsible_row_V3yw9X",
+        "collapsible_row_j4kEa8",
+        "collapsible_row_PWhxjF",
+        "collapsible_row_6CndUD"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "page_title_caption": "",
+        "page_title_heading_size": "h2",
+        "page_title_font": "var(--font-heading-family)",
+        "page_title_transform": "none",
+        "collapsible_margin_top": 0,
+        "collapsible_margin_bottom": 52,
+        "caption": "",
+        "heading": "Company",
+        "heading_size": "h4",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_cta_button_wtYzpB": {
+      "type": "pbj-cta-button",
+      "settings": {
+        "transparent_header": true,
+        "show_back_button": false,
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "mobile_content_alignment": "mobile-left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "button_label": "Contact Us",
+        "button_link": "shopify://pages/contact",
+        "button_style_secondary": false
+      }
+    },
+    "main": {
+      "type": "pbj-custom-page-content",
+      "settings": {
+        "show_page_title": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_page_banner_FYpgM4",
+    "pbj_link_list_CJphGc",
+    "pbj_collapsible_content_8FaULY",
+    "pbj_collapsible_content_pJNJbM",
+    "pbj_collapsible_content_N49mm6",
+    "pbj_collapsible_content_WybYU4",
+    "pbj_collapsible_content_r4Pg7L",
+    "pbj_collapsible_content_PKf76R",
+    "pbj_cta_button_wtYzpB",
+    "main"
+  ]
+}

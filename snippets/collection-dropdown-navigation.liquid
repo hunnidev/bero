@@ -1,0 +1,95 @@
+{% comment %}
+  Renders collection dropdown navigation
+
+  Accepts:
+  - section: {Object} section object.
+  - collection: {Object} current collection object.
+  - class: {String} additional classes to add to the element.
+
+
+  Usage:
+  {% render 'collection-dropdown-navigation',
+    section: section,
+    collection: collection,
+    class: 'additional-class'
+  %}
+{% endcomment %}
+<div
+  class="collection__dropdown-nav{% if class %} {{ class }}{% endif %}"
+  :class="{ 'collection__dropdown-nav--open': open }"
+  x-data="{ open: false }"
+>
+  <h2
+    class="collection__dropdown-nav-title h4"
+    {% if section.settings.collections_dropdown.size > 1 %}
+      @click="open = !open"
+    {% endif %}
+  >
+    {{ collection.title }}
+
+    {% if section.settings.collections_dropdown.size > 1 %}
+      {%- render 'icons', icon: 'chevron-down-large' -%}
+    {% endif %}
+  </h2>
+  <div
+    class="collection__dropdown-nav-list-wrapper hidden lg:block"
+    x-cloak
+    x-show="open"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+  >
+    <ul
+      class="collection__dropdown-nav-list"
+    >
+      <li class="collection__dropdown-nav-list-item">
+        <button
+          class="collection__dropdown-nav-list-title h4"
+          @click="open = !open"
+        >
+          {{ collection.title }}
+          {%- render 'icons', icon: 'chevron-down-large' -%}
+        </button>
+      </li>
+
+      {% for nav_collection in section.settings.collections_dropdown %}
+        {% if nav_collection.handle != collection.handle %}
+          <li class="collection__dropdown-nav-list-item">
+            <a
+              href="{{ nav_collection.url }}"
+              class="collection__dropdown-nav-link h4{% if nav_collection.handle == collection.handle %} collection__dropdown-nav-link--active{% endif %}"
+            >
+              {{ nav_collection.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div
+    class="collection__dropdown-nav-list-wrapper lg:hidden"
+    x-cloak
+    x-show="open"
+    x-collapse
+  >
+    <ul
+      class="collection__dropdown-nav-list"
+    >
+      {%- for nav_collection in section.settings.collections_dropdown -%}
+        <li class="collection__dropdown-nav-list-item">
+          {% if nav_collection.handle != collection.handle %}
+            <a
+              href="{{ nav_collection.url }}"
+              class="collection__dropdown-nav-link h4{% if nav_collection.handle == collection.handle %} collection__dropdown-nav-link--active{% endif %}"
+            >
+              {{ nav_collection.title }}
+            </a>
+          {% endif %}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>

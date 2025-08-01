@@ -1,0 +1,125 @@
+{% comment %}
+  Renders collection hero
+
+  Accepts:
+  - section: {Object} section object.
+  - collection: {Object} current collection object.
+
+
+  Usage:
+  {% render 'collection-hero',
+    section: section,
+    collection: collection
+  %}
+{% endcomment %}
+
+{% style %}
+  {% if collection.handle == "our-merch" %}
+    .hero_overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url({% liquid
+      assign desktop_image_class = ''
+      if section.settings.header_image_mobile != blank
+        assign desktop_image_class = 'hidden md:block'
+      endif
+      echo section.settings.mearch | image_url: width: 2880
+      if section.settings.header_image_mobile != blank
+        echo section.settings.header_image_mobile | image_url: width: 780
+      endif
+    %}) lightgray 50% / cover no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+    {% else %}
+    .hero_overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url({% liquid
+      assign desktop_image_class = ''
+      if section.settings.header_image_mobile != blank
+        assign desktop_image_class = 'hidden md:block'
+      endif
+      echo section.settings.header_image_desktop | image_url: width: 2880
+      if section.settings.header_image_mobile != blank
+        echo section.settings.header_image_mobile | image_url: width: 780
+      endif
+    %}) lightgray 50% / cover no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+    {% endif %}
+  
+main ~ section.shopify-section-group-footer-group {
+    background-color: #faf6ef !important;
+}
+
+  .page-width.scroll-trigger.animate--slide-in.app-section {
+    margin-bottom: -123px !important;
+    margin-top: 60px;
+}
+  
+
+  @media only screen and (min-width: 600px) {
+  .collection-hero {
+    position: relative;
+}
+
+         .collection-main {
+    margin-top: -523px;
+}
+
+  .collection-hero>.page-width {
+    padding-top: 150px;
+}
+    .collection-wrapper {
+        padding-bottom: 120px;
+    }
+
+    
+}
+{% if collection.handle == "our-merch" %}
+  @media only screen and (min-width: 600px) {
+      .collection-main {
+        margin-top: -400px;
+    }
+  }
+  {% endif %}
+  {% endstyle %}
+
+{%- if section.settings.header_image_desktop != blank -%}
+  <div class="collection-hero ">
+    <div class="hero_overlay">
+    </div>
+    {% if collection.handle == "our-merch" %}
+      {% liquid
+      assign desktop_image_class = ''
+      if section.settings.header_image_mobile != blank
+        assign desktop_image_class = 'hidden md:block'
+      endif
+      echo section.settings.mearch | image_url: width: 2880 | image_tag: preload: true, class: desktop_image_class
+      if section.settings.header_image_mobile != blank
+        echo section.settings.header_image_mobile | image_url: width: 780 | image_tag: preload: true, class: 'md:hidden'
+      endif
+    %}
+    {% else %}
+    {% liquid
+      assign desktop_image_class = ''
+      if section.settings.header_image_mobile != blank
+        assign desktop_image_class = 'hidden md:block'
+      endif
+      echo section.settings.header_image_desktop | image_url: width: 2880 | image_tag: preload: true, class: desktop_image_class
+      if section.settings.header_image_mobile != blank
+        echo section.settings.header_image_mobile | image_url: width: 780 | image_tag: preload: true, class: 'md:hidden'
+      endif
+    %}
+      {% endif %}
+    <div class="page-width text-wheat">
+      <h1 class="collection-hero__title h6 {% if section.settings.hidden_title %}visually-hidden{% endif %}">
+        {% if collection.handle == "our-merch" %}
+        
+        {% else %}
+        {{ section.settings.page_title | default: collection.title }}
+        {% endif %}
+      </h1>
+    </div>
+  </div>
+{%- endif -%}

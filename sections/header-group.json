@@ -1,0 +1,146 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "New Product Drop:",
+            "offset_text": "<strong>Edge Hill Hazy IPA</strong>",
+            "second_line_text": "",
+            "right_text": "<a href=\"/products/edge-hill-hazy-ipa\" title=\"edge hill hazy ipa\">Shop Now</a>",
+            "customer_status": "all"
+          }
+        },
+        "announcement_iYb6Ji": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Exclusive Event:",
+            "offset_text": "<strong>PARTY AT TOM’s HOUSE</strong>",
+            "second_line_text": "",
+            "right_text": "<a href=\"#\" title=\"#\">LEARN MORE</a>",
+            "customer_status": "logged_in"
+          }
+        },
+        "announcement_7qV3zp": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Welcome to our store",
+            "offset_text": "",
+            "second_line_text": "",
+            "right_text": "",
+            "customer_status": "all"
+          }
+        },
+        "announcement_9wD46h": {
+          "type": "announcement",
+          "settings": {
+            "text": "<a href=\"/products/variety-pack\" title=\"/products/variety-pack\"><strong>Free shipping on orders $50+</strong></a>",
+            "offset_text": "",
+            "second_line_text": "",
+            "right_text": "",
+            "customer_status": "all"
+          }
+        },
+        "announcement_8qdHk6": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "<a href=\"/pages/bero-specials\" title=\"BERO Specials\"><strong>2x Club BERO credits on every order</strong></a>",
+            "offset_text": "",
+            "second_line_text": "",
+            "right_text": "",
+            "customer_status": "all"
+          }
+        },
+        "announcement_pA4eYJ": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "<strong>Shipping delays due to weather</strong>",
+            "offset_text": "",
+            "second_line_text": "",
+            "right_text": "",
+            "customer_status": "all"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0",
+        "announcement_iYb6Ji",
+        "announcement_7qV3zp",
+        "announcement_9wD46h",
+        "announcement_8qdHk6",
+        "announcement_pA4eYJ"
+      ],
+      "settings": {
+        "color_scheme": "scheme-d21175b1-69b0-4730-806c-910a903a89a3",
+        "color_scheme_logged_in": "scheme-d21175b1-69b0-4730-806c-910a903a89a3",
+        "show_line_separator": false,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_carousel": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "popular_search_FXDRMc": {
+          "type": "popular_search",
+          "settings": {
+            "title": "Beers"
+          }
+        },
+        "popular_search_nxDUPm": {
+          "type": "popular_search",
+          "settings": {
+            "title": "Merch"
+          }
+        }
+      },
+      "block_order": [
+        "popular_search_FXDRMc",
+        "popular_search_nxDUPm"
+      ],
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": false,
+        "color_scheme": "scheme-4",
+        "color_scheme_alt": "scheme-d21175b1-69b0-4730-806c-910a903a89a3",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

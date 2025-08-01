@@ -1,0 +1,62 @@
+{%- liquid
+  assign is_paid_member = false
+  if customer.has_account
+    if customer.tags contains 'vip'
+      assign is_paid_member = true
+    endif
+  endif
+
+  assign order_credit_value = 0
+  assign merch_order_value = 0
+  for line in cart.items
+    if line.product.metafields.custom.loyalty_credit_value
+      assign item_credit_value = 0
+      if line.variant.title contains '6-pack'
+        assign item_credit_value = 0.25
+      elsif line.variant.title contains '12-pack'
+        assign item_credit_value = 0.5
+      elsif line.variant.title contains '18-pack'
+        assign item_credit_value = 0.75
+      elsif line.variant.title contains '24-pack'
+        assign item_credit_value = 1
+      else
+        assign item_credit_value = line.product.metafields.custom.loyalty_credit_value | plus: 0.0
+      endif
+
+      assign item_credit_value = item_credit_value | times: line.quantity
+
+      assign item_credit_value = item_credit_value | times: 2
+
+      assign order_credit_value = order_credit_value | plus: item_credit_value
+    endif
+
+    if line.product.tags contains 'merch'
+      assign merch_order_value = merch_order_value | plus: line.line_price
+    endif
+  endfor
+
+  assign merch_order_value = merch_order_value | divided_by: 100.0
+  assign merch_credits = merch_order_value | divided_by: 30 | floor
+  assign merch_credits = merch_credits | times: settings.merch_products_base_credit_amount
+
+  assign global_multiplier = settings.loyalty_credits_multiplier | times: 1.0
+  assign merch_credits = merch_credits | times: 2
+
+  assign order_credit_value = order_credit_value | plus: merch_credits
+
+  assign order_credit_value_money = order_credit_value | times: global_multiplier | times: 100.0 | money_without_trailing_zeros
+-%}
+
+{% if localization.market.handle == 'us' %}
+  <p class="cart__credit-value">
+    {%- if order_credit_value > 0 -%}
+      {%- if is_paid_member -%}
+        This order will earn you {{ order_credit_value_money }} credits.
+      {%- else -%}
+        This order could earn you {{ order_credit_value_money }} credits.
+        <br>
+        <a href="{{ settings.loyalty_landing_page }}">Learn more</a>
+      {%- endif -%}
+    {%- endif -%}
+  </p>
+{% endif %}

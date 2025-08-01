@@ -1,0 +1,202 @@
+<div style="display: none;" class="customer-dashboard-container {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div>
+    <h1 class="h3 account-page-title">{{ 'customer.dashboard.title' | t }}</h1>
+  </div>
+
+  <div class="ad-container">
+    <div class="ad-section {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {% render 'pbj-account-dashboard-loyalty'
+        , section: section %}
+    </div>
+    {% comment %} ORDERS SECTION {% endcomment %}
+    <div class="ad-section {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h2 class="h5 ad-section-title uppercase">{{ 'customer.dashboard.recent_orders' | t }}</h2>
+      {%- if customer.orders.size > 0 -%}
+        <a class="ad-see-more-link" href="/account?view=orders">
+          {{- 'customer.dashboard.view_all' | t }} ({{ customer.orders.size }})</a>
+      {%- endif -%}
+
+      <div class="ad-section-content">
+        {%- if customer.orders.size > 0 -%}
+          {%- for order in customer.orders -%}
+            {%- if forloop.index > 2 -%}
+              {% break %}
+            {%- endif -%}
+
+            <div class="order-status flex justify-between items-center">
+              <p>
+                {% if order.cancelled %}
+                  Order Status: Canceled
+                {% else %}
+                  {%- if order.fulfillment_status == "fulfilled" -%}
+                    Order Status: Complete
+                  {%- elsif order.fulfillment_status == "partial" -%}
+                    Order Status: Processing
+                  {%- elsif order.fulfillment_status == "unfulfilled" -%}
+                    Order Status: Processing
+                  {% endif %}
+                {% endif %}
+              </p>
+
+              <div x-data="
+                  reorder({
+                    oosErrorMsg: '{{ 'customer.dashboard.reorder_oos_error' | t }}',
+                    orderDetails: [
+                      {% for item in order.line_items %}
+                        { id: {{ item.variant_id }}, quantity: {{ item.quantity }}, title: '{{ item.title | escape }}' }{% unless forloop.last %},{% endunless %}
+                      {% endfor %}
+                    ]
+                  })
+                " class="account__reorder-cta-wrapper">
+                <button
+                  class="account__reorder-cta"
+                  @click="reorder"
+                  :disabled="loading">
+                  <span x-show="!loading">{{ 'customer.dashboard.reorder' | t }}</span>
+                  <span x-show="loading">{{ 'customer.dashboard.reordering' | t }}...</span>
+                </button>
+              </div>
+
+              <a
+                href="{{ order.customer_url }}"
+                aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
+                class="account__view-order-cta">
+                {{ 'customer.dashboard.view_order' | t }}
+              </a>
+            </div>
+
+            <div class="order-details">
+              <div class="step">
+                <p>{{ 'customer.dashboard.order_number' | t }}</p>
+                <p>{{ order.name }}</p>
+              </div>
+
+              <div class="step">
+                <p>{{ 'customer.dashboard.order_placed' | t }}</p>
+                <p>{{ order.created_at | date: '%b.%d, %Y' }}</p>
+              </div>
+
+              <div class="step">
+                <p>{{ 'customer.dashboard.order_total' | t }}</p>
+                <p>{% render 'order-line-item-net-total', order: order %}</p>
+              </div>
+            </div>
+
+            <div class="order-imgs">
+              <p>
+                {{ order.item_count }}
+                {{ 'customer.dashboard.order_items' | t }}
+              </p>
+
+              <div class="img-block">
+                {%- for line_item in order.line_items -%}
+                  {%- if forloop.index <= 3 -%}
+                    <a href="{{ line_item.url }}" class="img-container">
+                      {{ line_item.image | image_url: height: 120 | image_tag }}
+                    </a>
+                  {%- else -%}
+                    {%- assign remaining_items = order.item_count | minus: forloop.index | plus: 1 -%}
+                    <a href="{{ order.customer_url }}" class="img-container blank">
+                      +{{ remaining_items }}</a>
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+
+        {%- else -%}
+          <p>{{ 'customer.orders.none' | t }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+    {% comment %} END ORDERS SECTION {% endcomment %}
+
+    {% comment %} ADDRESS SECTION {% endcomment %}
+    <div class="ad-section {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h2 class="h5 ad-section-title uppercase">{{ 'customer.dashboard.address_book' | t }}</h2>
+      {%- if customer.addresses_count > 0 -%}
+        <a class="ad-see-more-link" href="{{ routes.account_addresses_url }}">View All ({{ customer.addresses_count }})</a>
+      {%- endif -%}
+
+      <div class="ad-section-content address-block-container">
+        {%- if customer.addresses_count > 0 -%}
+          {%- for address in customer.addresses -%}
+            {%- if forloop.index > 2 -%}
+              {% break %}
+            {%- endif -%}
+            <div class="address-block">
+              {%- if address == customer.default_address -%}
+                <p class="primary-address">{{ 'customer.addresses.primary_address' | t }}</p>
+              {%- endif -%}
+
+              <div class="address-details">
+                {{ address | format_address }}
+                <p>{{ address.phone }}</p>
+              </div>
+
+              <div class="address-cta">
+                <a href="{{ routes.account_addresses_url }}?edit={{ address.id }}" aria-label="{{ 'customer.addresses.edit' | t }} {{ forloop.index }}">
+                  {{ 'customer.addresses.edit' | t }}
+                </a>
+
+                <a
+                  onclick="handleDeleteButtonClick(event)"
+                  href="javascript:void(0)"
+                  aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+                  data-target="{{ address.url }}"
+                  data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+                  {{ 'customer.addresses.delete' | t }}
+                </a>
+              </div>
+            </div>
+          {%- endfor -%}
+
+        {%- else -%}
+          <a href="{{ routes.account_addresses_url }}">
+            {{ 'customer.addresses.add_new' | t }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+    {% comment %} END ADDRESS SECTION {% endcomment %}
+
+    {% comment %} NEWSLETTER SECTION {% endcomment %}
+    {% if section.settings.show_newsletter_account %}
+      <div class="ad-section {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <h2 class="h5 ad-section-title uppercase">{{ 'customer.dashboard.newsletter' | t }}</h2>
+
+        <div class="ad-section-content nl-block">
+          <p class="nl-copy">{{ 'customer.dashboard.newsletter_copy' | t }}</p>
+          <button onclick="klaviyoSubscribeToList()" class="nl-btn uppercase">
+            {{ 'customer.dashboard.newsletter_btn' | t }}
+          </button>
+        </div>
+
+        <form id="kl_subscribe_list">
+          <input
+            name="user_email"
+            type="hidden"
+            value="{{ customer.email }}">
+          <input
+            name="user_zip"
+            type="hidden"
+            value="{{ customer.default_address.zip }}">
+          <input
+            name="kl_list"
+            type="hidden"
+            value="U2sGSq">
+          <p class="h5 error hidden {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"></p>
+          <p class="h5 success hidden {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ 'customer.dashboard.newsletter_success' | t }}
+          </p>
+        </form>
+      </div>
+    {% endif %}
+    {% comment %} END NEWSLETTER SECTION {% endcomment %}
+
+    <div class="sign-out-container md:hidden">
+      <a href="{{ routes.account_logout_url }}">{{ 'customer.dashboard.sign_out' | t }}</a>
+    </div>
+  </div>
+</div>

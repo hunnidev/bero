@@ -1,0 +1,1 @@
+!function(){"use strict";setTimeout((function(){!function(){var e=document.querySelector(".junip-review-carousel-title");if(e){var t=e.classList,n=e.innerHTML,i=document.createElement("h2");i.classList=t,i.innerHTML=n,e.insertAdjacentElement("afterend",i),e.remove()}}()}),3e3)}();

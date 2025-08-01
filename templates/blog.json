@@ -1,0 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_featured_blog_mUUHHX": {
+      "type": "pbj-featured-blog",
+      "settings": {
+        "condensed_style": false,
+        "customer_status": "all",
+        "heading": "Articles",
+        "heading_size": "h1",
+        "title_h1": true,
+        "subheading": "FEATURED",
+        "show_title_eyebrow": false,
+        "left_eyebrow": false,
+        "blog": "articles",
+        "post_limit": 4,
+        "columns_desktop": 2,
+        "enable_desktop_slider": true,
+        "slider_visual": "dots",
+        "color_scheme": "scheme-4",
+        "show_image": true,
+        "show_tag": false,
+        "show_date": true,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_view_all": false,
+        "view_all_text": "See all articles",
+        "show_read_more": false,
+        "read_more_txt": "",
+        "show_breadcrumbs": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "pbj-main-blog",
+      "settings": {
+        "color_scheme": "scheme-8fd69a3a-d798-4adb-b422-327891d7e931",
+        "layout": "stacked",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "read_more": "READ NOW",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "footer_newsletter_background_4kHjBn": {
+      "type": "footer-newsletter-background",
+      "settings": {
+        "background_color": "#004f3c",
+        "padding": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_featured_blog_mUUHHX",
+    "main",
+    "footer_newsletter_background_4kHjBn"
+  ]
+}

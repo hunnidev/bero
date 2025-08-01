@@ -1,0 +1,516 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_KWmBVx": {
+      "type": "image-banner",
+      "blocks": {
+        "text_BQqMHV": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "CLUB BERO BENEFITS",
+            "text_style": "body"
+          }
+        },
+        "heading_G8XTR9": {
+          "type": "heading",
+          "settings": {
+            "heading": "CLUB BERO BENEFITS",
+            "heading_size": "h5",
+            "enable_h1": true
+          }
+        },
+        "buttons_YFPMR6": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Apply now",
+            "button_link_1": "#form-embed-section",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_BQqMHV",
+        "heading_G8XTR9",
+        "buttons_YFPMR6"
+      ],
+      "custom_css": [
+        ".banner__box {max-width: 100%;}",
+        "@media only screen and (min-width: 768px) {.banner__box {padding-bottom: 0 !important; }}",
+        "h1 {font-size: 1.6rem; letter-spacing: 3.2px;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/partnership-collage.png",
+        "image_overlay_opacity": 30,
+        "transparent_header": true,
+        "back_btn": false,
+        "image_height": "medium",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-82fb5f77-222b-4fda-a126-b28c605ec2fd",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "mobile_vertical_content_alignment": "banner-content-bottom-mobile",
+        "stack_images_on_mobile": true,
+        "show_text_below": false,
+        "mobile_image_height": 50,
+        "custom_mobile_image_height": false
+      }
+    },
+    "pbj_rich_text_Wc7NHf": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_PAzkKb": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h3",
+            "heading": "YOUR LOYALTY BENEFITS, ALL IN ONE PLACE.",
+            "heading_size": "h3",
+            "show_title_eyebrow": true,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_yzQLJn": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_PAzkKb",
+        "text_yzQLJn"
+      ],
+      "custom_css": [
+        ".rich-text__text {max-width: 908px; margin: 0 auto;}"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": false,
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "ambasadot_point_GLMaMn": {
+      "type": "ambasadot_point",
+      "name": "Benefits summary",
+      "settings": {
+        "customer_status": "all",
+        "title": "Featured: BLADE",
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "text1": "<ul><li>All members can find BERO in all Blade lounges.</li><li>All members have a chance to win a fridge stocked with BERO! Keep an eye out for a QR code in every Blade lounge.</li></ul>",
+        "text2": "<ul><li><strong>BEROMASTERS</strong> will receive a complimentary, branded Blade x BERO tote on their first ride.</li><li><strong>BEROMASTERS</strong> get 15% off rides to the airport all summer. Offer ends May 1, 2026.</li></ul>"
+      }
+    },
+    "pbj_image_with_text_rmbmNY": {
+      "type": "pbj-image-with-text",
+      "blocks": {
+        "heading_LRf34E": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT BLADE",
+            "heading_size": "h3"
+          }
+        },
+        "text_LktfQY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>BLADE is a technology-powered, global urban air mobility platform committed to reducing travel friction by enabling cost-effective air transportation alternatives to some of the most congested ground routes in the U.S. and abroad. No company flies more people in and out of city centers than BLADE. </p><p>With BLADE, you can book by-the-seat on scheduled flights between Manhattan and JFK or Newark airports, between Manhattan and Hamptons destinations, and between Nice and Monaco in Europe. </p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LRf34E",
+        "text_LktfQY"
+      ],
+      "custom_css": [],
+      "settings": {
+        "customer_status": "all",
+        "image": "shopify://shop_images/blade.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "no_page_width": true,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "ambasadot_point_aUNXm7": {
+      "type": "ambasadot_point",
+      "name": "Benefits summary",
+      "settings": {
+        "customer_status": "all",
+        "title": "Featured: RANDOM GOLF CLUB",
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "text1": "<ul><li>Winners of RGC events will get a free BEROMASTER membership.</li><li>All RGC members get 10% off 18-packs and larger on berobrewing.com. </li></ul>",
+        "text2": "<ul><li><strong>Free Club BERO members</strong> receive 10% off Mad Scramble Tour tickets.</li><li><strong>BEROMASTERS</strong> receive 10% off Mad Scramble Tour and the Classics tickets.</li></ul>"
+      }
+    },
+    "pbj_image_with_text_hMpAkf": {
+      "type": "pbj-image-with-text",
+      "blocks": {
+        "heading_3RzBRk": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT RANDOM GOLF CLUB",
+            "heading_size": "h3"
+          }
+        },
+        "text_eqnCHM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Random Golf Club is more than a golf club; it's a worldwide network of golf enthusiasts with the ambition to build the biggest, most inclusive golf club in the world.<br/><br/>At RGC's core is the belief in the power of camaraderie and friendship - and uniting golfers from all walks of life in local communities, yet connected globally. With shared values rooted in community and a life enriched, this partnership was a gimme.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3RzBRk",
+        "text_eqnCHM"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "image": "shopify://shop_images/rgc.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "no_page_width": true,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_featured_blog_nFYYQc": {
+      "type": "pbj-featured-blog",
+      "name": "Blog Posts - pbj",
+      "settings": {
+        "condensed_style": false,
+        "customer_status": "all",
+        "heading": "Sports & leisure",
+        "heading_size": "h3",
+        "title_h1": false,
+        "subheading": "",
+        "show_title_eyebrow": false,
+        "left_eyebrow": false,
+        "blog": "",
+        "post_limit": 4,
+        "columns_desktop": 2,
+        "enable_desktop_slider": true,
+        "slider_visual": "counter",
+        "color_scheme": "",
+        "show_image": true,
+        "show_tag": true,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": true,
+        "show_view_all": true,
+        "view_all_text": "",
+        "show_read_more": true,
+        "read_more_txt": "",
+        "show_breadcrumbs": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "pbj_featured_blog_R3qAJP": {
+      "type": "pbj-featured-blog",
+      "name": "Blog Posts - pbj",
+      "settings": {
+        "condensed_style": false,
+        "customer_status": "all",
+        "heading": "travel",
+        "heading_size": "h3",
+        "title_h1": false,
+        "subheading": "",
+        "show_title_eyebrow": false,
+        "left_eyebrow": false,
+        "blog": "",
+        "post_limit": 4,
+        "columns_desktop": 2,
+        "enable_desktop_slider": true,
+        "slider_visual": "counter",
+        "color_scheme": "scheme-2",
+        "show_image": true,
+        "show_tag": true,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": true,
+        "show_view_all": true,
+        "view_all_text": "",
+        "show_read_more": true,
+        "read_more_txt": "",
+        "show_breadcrumbs": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_E8aQcT": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/Hero_Section_4.jpg",
+        "image_overlay_opacity": 0,
+        "transparent_header": false,
+        "back_btn": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "mobile_vertical_content_alignment": "",
+        "stack_images_on_mobile": true,
+        "show_text_below": false,
+        "mobile_image_height": 29,
+        "custom_mobile_image_height": true
+      }
+    },
+    "pbj_rich_text_4KyPym": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_yiFjWG": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h3",
+            "heading": "This Role Is Yours if You:",
+            "heading_size": "h3",
+            "show_title_eyebrow": true,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_yiFjWG"
+      ],
+      "disabled": true,
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_multicolumn_TbMRiV": {
+      "type": "pbj-multicolumn",
+      "blocks": {
+        "column_KG9NKK": {
+          "type": "column",
+          "settings": {
+            "title": "headline",
+            "text": "<p>Know your way around the local food, dining, and events scene, with connections that count.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_cwhdLD": {
+          "type": "column",
+          "settings": {
+            "title": "headline",
+            "text": "<p>Are all about those clubs and activities—whether it’s book club, tennis, or a proper Sunday roast, you’re in the mix.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_BNrDnr": {
+          "type": "column",
+          "settings": {
+            "title": "headline",
+            "text": "<p>Live and breathe a balanced, premium lifestyle, and can’t wait to share it with others.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_6Vmjij": {
+          "type": "column",
+          "settings": {
+            "title": "Headline",
+            "text": "<p>Have a knack for building a community and bringing people together, no forced small talk required.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_KG9NKK",
+        "column_cwhdLD",
+        "column_BNrDnr",
+        "column_6Vmjij"
+      ],
+      "disabled": true,
+      "settings": {
+        "loyalty_style": false,
+        "title": "",
+        "heading_size": "h1",
+        "add_title_eyebrow": false,
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "counter": false,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "show_divider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "pbj_featured_blog_Jq4gHD": {
+      "type": "pbj-featured-blog",
+      "blocks": {
+        "article_LWDQ47": {
+          "type": "article",
+          "settings": {
+            "article": "news/this-is-the-title-to-a-blog-article-or-a-news-article"
+          }
+        },
+        "article_hnX9Yp": {
+          "type": "article",
+          "settings": {
+            "article": "events/beer-party-at-tom-s-house-admission-is-not-free-though-1"
+          }
+        }
+      },
+      "block_order": [
+        "article_LWDQ47",
+        "article_hnX9Yp"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.featured-blog__view-all {display: none; }}"
+      ],
+      "settings": {
+        "condensed_style": false,
+        "customer_status": "all",
+        "heading": "AMBASSADOR SPOTLIGHT",
+        "heading_size": "h3",
+        "title_h1": false,
+        "subheading": "",
+        "show_title_eyebrow": true,
+        "left_eyebrow": true,
+        "blog": "articles",
+        "post_limit": 4,
+        "columns_desktop": 2,
+        "enable_desktop_slider": true,
+        "slider_visual": "dots",
+        "color_scheme": "",
+        "show_image": true,
+        "show_tag": true,
+        "show_date": true,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_view_all": true,
+        "view_all_text": "See all articles",
+        "show_read_more": true,
+        "read_more_txt": "",
+        "show_breadcrumbs": false,
+        "padding_top": 68,
+        "padding_bottom": 36
+      }
+    },
+    "pbj_collapsible_content_xfjghC": {
+      "type": "pbj-collapsible-content",
+      "blocks": {
+        "collapsible_row_cxn9EM": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum",
+            "open_collapsible": false,
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>",
+            "page": "",
+            "anchor": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_cxn9EM"
+      ],
+      "custom_css": [
+        ".grid--flex {max-width: 125rem; padding-left: 1rem; padding-right: 1rem; margin: 0 auto; --shopify-editor-color-scheme-scheme-2-setting-text: #eae5da; --shopify-editor-color-scheme-scheme-3-setting-text: #d3b890;}"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "page_title_caption": "",
+        "page_title_heading_size": "h2",
+        "page_title_font": "var(--font-heading-family)",
+        "page_title_transform": "none",
+        "collapsible_margin_top": 0,
+        "collapsible_margin_bottom": 0,
+        "caption": "",
+        "heading": "GOT QUESTIONS?",
+        "heading_size": "h3",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_KWmBVx",
+    "pbj_rich_text_Wc7NHf",
+    "ambasadot_point_GLMaMn",
+    "pbj_image_with_text_rmbmNY",
+    "ambasadot_point_aUNXm7",
+    "pbj_image_with_text_hMpAkf",
+    "pbj_featured_blog_nFYYQc",
+    "pbj_featured_blog_R3qAJP",
+    "image_banner_E8aQcT",
+    "pbj_rich_text_4KyPym",
+    "pbj_multicolumn_TbMRiV",
+    "pbj_featured_blog_Jq4gHD",
+    "pbj_collapsible_content_xfjghC"
+  ]
+}

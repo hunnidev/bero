@@ -1,0 +1,163 @@
+{%- liquid
+  assign show_section = false
+  if section.settings.customer_status == 'all'
+    assign show_section = true
+  elsif section.settings.customer_status == 'logged_in' and customer
+    assign show_section = true
+  elsif section.settings.customer_status == 'not_logged_in' and customer == blank
+    assign show_section = true
+  endif
+-%}
+
+{%- if show_section -%}
+  <div class="color-{{ section.settings.color_scheme }} loyalty-banner">
+    <div class="loyalty-banner__content">
+      {%- if section.settings.pre_title != blank -%}
+        <h2 class="loyalty-banner__title hidden md:block">
+          {{ section.settings.pre_title }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.title_svg != blank -%}
+        {{ section.settings.title_svg }}
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <h3 class="loyalty-banner__title loyalty-banner__title--secondary">
+          {{ section.settings.subtitle }}
+        </h3>
+      {%- endif -%}
+      {%- if section.settings.benefits != blank -%}
+        <ul class="loyalty-banner__benefits">
+          {%- assign benefits = section.settings.benefits | split: ',' -%}
+          {%- for benefit in benefits -%}
+            <li class="loyalty-banner__benefit">
+              {{ benefit }}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if section.settings.cta_url != blank and section.settings.cta_text != blank -%}
+        <a href="{{ section.settings.cta_url }}" class="loyalty-banner__cta button button--secondary">
+          {{ section.settings.cta_text }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div>
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1440
+          | image_tag: loading: 'lazy', width: 720, height: 800, class: 'hidden md:block'
+        }}
+      {%- endif -%}
+      {%- if section.settings.image_mobile != blank -%}
+        {{
+          section.settings.image_mobile
+          | image_url: width: 780
+          | image_tag: loading: 'lazy', width: 390, height: 210, class: 'md:hidden'
+        }}
+      {%- endif -%}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Loyalty Banner",
+  "tag": "section",
+  "class": "loyalty-banner-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "customer_status",
+      "label": "Customer status",
+      "options": [
+        {
+          "value": "logged_in",
+          "label": "Logged in"
+        },
+        {
+          "value": "not_logged_in",
+          "label": "Not logged in"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        }
+      ],
+      "default": "all",
+      "info": "Display this section to all customers, logged in customers, or not logged in customers."
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "Pre-Title",
+      "default": "Exclusive"
+    },
+    {
+      "type": "html",
+      "id": "title_svg",
+      "label": "Title SVG Code",
+      "info": "Paste the SVG code for the title here"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Loyalty program"
+    },
+    {
+      "type": "textarea",
+      "id": "benefits",
+      "label": "Benefits",
+      "info": "Separate each benefit with a comma",
+      "default": "Interviews, savings, events"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Loyalty Banner",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

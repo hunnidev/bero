@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "pbj_cta_button_3T3fJy": {
+      "type": "pbj-cta-button",
+      "settings": {
+        "transparent_header": false,
+        "show_back_button": true,
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "mobile_content_alignment": "mobile-left",
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "full_width": false,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "button_label": "Back",
+        "button_link": "",
+        "button_style_secondary": false
+      }
+    },
+    "pbj_link_list_LxRQ3c": {
+      "type": "pbj-link-list",
+      "settings": {
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "show_user_info": true,
+        "menu": "account-dashboard",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "pbj-account-addresses",
+      "settings": {
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_cta_button_3T3fJy",
+    "pbj_link_list_LxRQ3c",
+    "main"
+  ]
+}

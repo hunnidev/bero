@@ -1,0 +1,64 @@
+{%- if customer -%}
+  {%- unless customer.tags contains 'vip' -%}
+    {%- liquid
+      assign membership = all_products[settings.loyalty_paid_membership_product]
+      assign filteredSellingPlanGroups = membership.selling_plan_groups | where: 'app_id', 'super-simple-subscriptions'
+      assign membership_selling_plan_id = filteredSellingPlanGroups.first.selling_plans.first.id
+      assign membership_id = membership.selected_or_first_available_variant.id
+
+      assign cart_contains_paid_membership = false
+      assign paid_membership_product = settings.loyalty_paid_membership_product
+      assign cart_contains_paid_membership = cart.items | where: 'product_id', paid_membership_product.id
+      if cart_contains_paid_membership.size > 0
+        assign cart_contains_paid_membership = true
+      else
+        assign cart_contains_paid_membership = false
+      endif
+    -%}
+
+    {%- if cart_contains_paid_membership -%}
+      <script>
+        window.location = '{{ routes.cart_url }}';
+      </script>
+    {%- else -%}
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const payload = {
+                items: [
+                    {
+                      id: {{ membership_id }},
+                      quantity: 1,
+                      selling_plan: {{ membership_selling_plan_id }}
+                    }
+                ]
+            }
+
+            fetch('/cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data)
+                window.location.href = '/cart'
+          })
+            .catch(error => {
+              console.error('Error:', error)
+            });
+        });
+      </script>
+    {%- endif -%}
+
+  {%- else -%}
+    <script>
+      window.location = '{{ routes.account_url }}';
+    </script>
+  {%- endunless -%}
+{%- else -%}
+  <script>
+    window.location = '{{ routes.account_login_url }}?view=beromaster';
+  </script>
+{%- endif -%}

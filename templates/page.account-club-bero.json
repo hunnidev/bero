@@ -1,0 +1,154 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_cta_button_zB4qjJ": {
+      "type": "pbj-cta-button",
+      "settings": {
+        "transparent_header": false,
+        "show_back_button": true,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "mobile_content_alignment": "mobile-center",
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "full_width": false,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "button_label": "Back",
+        "button_link": "",
+        "button_style_secondary": false
+      }
+    },
+    "pbj_link_list_YPK6t6": {
+      "type": "pbj-link-list",
+      "settings": {
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "show_user_info": true,
+        "menu": "account-dashboard",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "172787485205c5c45f": {
+      "type": "apps",
+      "blocks": {
+        "rivo_loyalty_referrals_lp_customer_account_8AjPdC": {
+          "type": "shopify://apps/rivo-loyalty-rewards-referrals/blocks/lp-customer-account/580e9665-b2cd-4dbc-b6ba-6445ac9e6871",
+          "settings": {
+            "account_card_enabled": true,
+            "account_card_background_color": "",
+            "account_card_font_color": "#eae5da",
+            "referral_block_enabled": false,
+            "referral_block_background_color": "",
+            "referral_block_font_color": "#eae5da",
+            "activity_block_enabled": true,
+            "activity_block_background_color": "",
+            "activity_block_font_color": "",
+            "activity_header_background_color": "",
+            "activity_header_font_color": "",
+            "rewards_block_enabled": false,
+            "rewards_progress_enabled": true,
+            "unused_rewards_enabled": false,
+            "rewards_arrow_icon_enabled": false,
+            "rewards_progress_bar_color": "#000000",
+            "vip_tier_block_enabled": false
+          }
+        },
+        "rivo_loyalty_rewards_referrals_lp_how_it_works_qeLcic": {
+          "type": "shopify://apps/rivo-loyalty-rewards-referrals/blocks/lp-how-it-works/580e9665-b2cd-4dbc-b6ba-6445ac9e6871",
+          "settings": {
+            "background_color": "",
+            "section_title_font_color": "",
+            "section_subtitle_font_color": "",
+            "step_number_title_font_size": 26,
+            "step_number_subtitle_font_size": 16,
+            "step_font_color": "",
+            "step_number_type": "border",
+            "step_image_height": 200
+          }
+        },
+        "rivo_loyalty_rewards_referrals_lp_ways_to_earn_9MfDUW": {
+          "type": "shopify://apps/rivo-loyalty-rewards-referrals/blocks/lp-ways-to-earn/580e9665-b2cd-4dbc-b6ba-6445ac9e6871",
+          "settings": {
+            "background_color": "",
+            "section_title_font_color": "",
+            "section_subtitle_font_color": ""
+          }
+        },
+        "rivo_loyalty_referrals_lp_customer_account_extras_qDaneG": {
+          "type": "shopify://apps/rivo-loyalty-rewards-referrals/blocks/lp-customer-account-extras/580e9665-b2cd-4dbc-b6ba-6445ac9e6871",
+          "settings": {
+            "account_dashboard_max_width": 1600,
+            "title_font_style": "inherit",
+            "title_font_family": "",
+            "subtitle_font_family": "",
+            "block_background_color": "",
+            "block_font_color": "#eae5da",
+            "block_title_font_size": 18,
+            "block_title_font_weight": 400,
+            "block_body_font_size": 18,
+            "block_subtitle_font_weight": 400,
+            "corner_type": "square",
+            "block_border": "2px solid #D3B890",
+            "modal_background_color": "#ffffff",
+            "modal_font_color": "#eae5da",
+            "modal_icon_color": "#000000",
+            "modal_icon_position_top": 15,
+            "modal_icon_position_right": 15,
+            "modal_login_title_font_size": 22,
+            "modal_title_font_size": 22,
+            "modal_subtitle_font_size": 16,
+            "modal_body_font_size": 16,
+            "modal_icon_size": 44,
+            "custom_css": "/* :root { --rivo-title-font-family: 'Arial'; } */"
+          }
+        }
+      },
+      "block_order": [
+        "rivo_loyalty_referrals_lp_customer_account_8AjPdC",
+        "rivo_loyalty_rewards_referrals_lp_how_it_works_qeLcic",
+        "rivo_loyalty_rewards_referrals_lp_ways_to_earn_9MfDUW",
+        "rivo_loyalty_referrals_lp_customer_account_extras_qDaneG"
+      ],
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "manage-subscription": {
+      "type": "manage-subscription",
+      "disabled": true,
+      "settings": {
+        "cta_text": "Manage Membership",
+        "cta_url": "https://berobrewing.com/apps/my-subscriptions",
+        "color_scheme": "scheme-3"
+      }
+    },
+    "pbj_novel_section_gALp7N": {
+      "type": "pbj-novel-section",
+      "settings": {
+        "novel_app_color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "novel_app_title": "Unlock your Club BERO wallet pass",
+        "novel_app_description": "Access your credits anytime, anywhere—and stay ready for the unexpected delights ahead.",
+        "novel_app_btn_img": "shopify://shop_images/add-to-wallet-novel.png",
+        "novel_app_btn_link": "https://berobrewing.novel.com/",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "pbj_cta_button_zB4qjJ",
+    "pbj_link_list_YPK6t6",
+    "172787485205c5c45f",
+    "manage-subscription",
+    "pbj_novel_section_gALp7N"
+  ]
+}

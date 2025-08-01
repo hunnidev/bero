@@ -1,0 +1,284 @@
+{%- liquid
+  assign show_section = false
+  if section.settings.customer_status == 'all'
+    assign show_section = true
+  elsif section.settings.customer_status == 'logged_in' and customer
+    assign show_section = true
+  elsif section.settings.customer_status == 'not_logged_in' and customer == blank
+    assign show_section = true
+  endif
+-%}
+
+{%- if show_section -%}
+  {%- style -%}
+    .pbj-image-banner {
+      --negative-top: -{{ section.settings.space_negative_top_mobile }}px;
+    }
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 769px) {
+      .pbj-image-banner {
+      --negative-top: -{{ section.settings.space_negative_top }}px;
+      }
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+    .pbj-image-banner__content .button--primary.cust {
+      color: #000000;
+    }
+  {%- endstyle -%}
+
+  <div
+    class="section-{{ section.id }}-padding pbj-image-banner__wrapper {% if section.settings.hide_bg_color %}hide-background{% endif %}{% if section.settings.add_shrink_effect %} expandable-section{% endif %} color-{{ section.settings.color_scheme }}"
+    {% if section.settings.add_shrink_effect %}
+      x-data="handleScroll"
+      x-init="offset = 50; init()"
+      :class="{'expandable-section--expanded': hasScrolledPast}"
+    {% endif %}
+  >
+    <div class="{% unless section.settings.full_width %} page-width{% endunless %}">
+      <div class="pbj-image-banner">
+        {%- liquid
+          if section.settings.desktop_image != blank
+            assign desktop_image_classes = ''
+            if section.settings.mobile_image != blank
+              assign desktop_image_classes = desktop_image_classes | append: 'hidden md:block'
+            endif
+            echo section.settings.desktop_image | image_url: width: 1312 | image_tag: loading: 'lazy', class: desktop_image_classes, height: 650, width: 1312
+          endif
+          if section.settings.mobile_image != blank
+            assign mobile_image_classes = 'background-image md:hidden'
+            echo section.settings.mobile_image | image_url: width: 780 | image_tag: loading: 'lazy', class: mobile_image_classes, height: 650, width: 390
+          endif
+        -%}
+
+        <div class="pbj-image-banner__content color-scheme-2">
+          {%- if section.settings.title != blank -%}
+            <h2 class="pbj-image-banner__title">
+              {{ section.settings.title | remove: '<p>' | remove: '</p>' | replace: 'strong>', 'button>' }}
+            </h2>
+          {%- endif -%}
+
+          {%- if section.blocks.size > 0 -%}
+            <div class="pbj-image-banner__text-blocks">
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+          {%- when 'Text' -%}
+                <p class="pbj-image-banner__text-block h6">
+                  {{ block.settings.text }}
+                </p>
+                {%- unless forloop.last -%}
+                  <div class="separator separator--sm separator--off-white"></div>
+                {%- endunless -%}
+
+                  {% endcase %}
+              {%- endfor -%}
+            </div>
+            {% for block in section.blocks %}
+              {%- case block.type -%}
+              {% when 'button' %}
+                  <a href="{{ block.settings.link }}" class="button button--primary cust">
+                      {{ block.settings.text }}
+                    </a>
+                {% endcase %}
+              {% endfor %}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% style %}
+    section#shopify-section-{{ section.id }} .pbj-image-banner__content {
+      background-color: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.00 }});
+    }
+  {% endstyle %}
+
+  {%- comment -%}
+    Add transparent header class to body if the section has transparent header enabled
+  {%- endcomment -%}
+  {% if section.settings.transparent_header %}
+    <script>
+      document.body.classList.add('transparent-header');
+    </script>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Image Banner",
+  "tag": "section",
+  "class": "pbj-image-banner-section text-wheat",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "add_shrink_effect",
+      "label": "Enable shrink effect",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "customer_status",
+      "label": "Customer status",
+      "options": [
+        {
+          "value": "logged_in",
+          "label": "Logged in"
+        },
+        {
+          "value": "not_logged_in",
+          "label": "Not logged in"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        }
+      ],
+      "default": "all",
+      "info": "Display this section to all customers, logged in customers, or not logged in customers."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_bg_color",
+      "label": "Hide Background color",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Transparent Header",
+      "info": "Makes the header transparent when the user is on top of the page. Works only if this section is the first section of the page.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "range",
+      "id": "space_negative_top",
+      "min": 0,
+      "max": 400,
+      "step": 5,
+      "unit": "px",
+      "label": "Negative Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "space_negative_top_mobile",
+      "min": 0,
+      "max": 400,
+      "step": 5,
+      "unit": "px",
+      "label": "Negative Margin Top Mobile",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "name": "text",
+      "type": "Text",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "button",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Banner",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

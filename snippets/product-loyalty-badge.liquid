@@ -1,0 +1,47 @@
+{%- liquid
+  assign potential_credit = 0
+  if product.tags contains settings.qr_products_tag
+    if product.selected_or_first_available_variant.title contains '6-pack'
+      assign potential_credit = settings.qr_products_base_credit_amount
+    elsif product.selected_or_first_available_variant.title contains '12-pack'
+      assign potential_credit = settings.qr_products_base_credit_amount | times: 2
+    elsif product.selected_or_first_available_variant.title contains '18-pack'
+      assign potential_credit = settings.qr_products_base_credit_amount | times: 3
+    elsif product.selected_or_first_available_variant.title contains '24-pack'
+      assign potential_credit = settings.qr_products_base_credit_amount | times: 4
+    endif
+  endif
+
+  # if customer and customer.tags contains settings.loyalty_paid_membership_customer_tag
+  # assign potential_credit = potential_credit | times: settings.loyalty_paid_membership_credits_multiplier
+  # endif
+  assign global_multiplier = settings.loyalty_credits_multiplier | times: 1.0
+
+  assign potential_credit = potential_credit | times: settings.loyalty_paid_membership_credits_multiplier
+
+
+  assign potential_credit_money = potential_credit | times: global_multiplier | times: 100 | money_without_trailing_zeros
+-%}
+
+{%- capture potential_credit_money -%}
+    <span data-loyalty-potential-credit>{{ potential_credit_money }}</span>
+  {%- endcapture -%}
+
+{% if localization.market.handle == 'us' %}
+  {%- if customer and customer.tags contains settings.loyalty_paid_membership_customer_tag -%}
+    {% comment %} pb+j beromaster code is now automatically added through custom app extension {% endcomment %}
+    {% comment %} <button
+      class="product__loyalty-badge"
+      onclick="toggleClubBeroTab()"
+    >
+      {{ block.settings.loyalty_paid_member_text | replace: '[CODE]', settings.loyalty_paid_membership_discount_code }}
+    </button> {% endcomment %}
+  {%- elsif potential_credit != 0 -%}
+    <button
+      class="product__loyalty-badge"
+      onclick="toggleClubBeroTab()"
+    >
+      {{ block.settings.loyalty_credits_text | replace: '[AMOUNT]', potential_credit_money }}
+    </button>
+  {%- endif -%}
+{% endif %}

@@ -1,0 +1,213 @@
+<div
+  class="memberships-banner color-{{ section.settings.color_scheme }}"
+  id="{{ section.settings.section_id }}"
+>
+  <div class="memberships-banner__content">
+    {%- if section.settings.title != blank -%}
+      <h2 class="h3 title-eyebrow title-eyebrow--left mb-[24px]{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.title }}
+      </h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="text-body-medium{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.text }}
+      </p>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      <div id="{{ block.settings.custom_id }}" class="memberships-banner__membership{% if forloop.first %} gradient{% endif %} color-{{ block.settings.color_scheme }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="memberships-banner__membership-grid">
+          <div class="memberships-banner__membership-title-block">
+            <h3 class="memberships-banner__membership-title">
+              {{ block.settings.title }}
+            </h3>
+            <p class="text-product-name font-normal">
+              {{ block.settings.price | times: 100 | money_without_trailing_zeros }}
+              {%- if block.settings.price_label -%}
+                <span>
+                  {{ block.settings.price_label }}
+                </span>
+              {%- endif -%}
+            </p>
+            <p class="text-body-tiny">
+              {{ block.settings.subtitle }}
+            </p>
+          </div>
+          <ul>
+            {%- assign perks = block.settings.perks | split: '//' -%}
+            {%- for perk in perks -%}
+              <li class="memberships-banner__membership-perk">
+                {%- render 'icons', icon: 'tick-small', fill: block.settings.color_scheme.settings.text -%}
+                {{ perk }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        <a
+          href="{{ block.settings.cta_url }}"
+          class="button button--primary button--full-width"
+        >
+          {{ block.settings.cta_text }}
+        </a>
+        {%- if block.settings.footer_text != blank -%}
+          <p class="text-body-tiny mt-[10px]">
+            {{ block.settings.footer_text }}
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+
+    {%- if section.settings.cta_url != blank and section.settings.cta_text != blank -%}
+      <div class="text-center mt-[32px] hidden md:block">
+        <a
+          href="{{ section.settings.cta_url }}"
+          class="underline"
+        >
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="memberships-banner__image{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1440 | image_tag: width: 720, loading: 'lazy' }}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Memberships Banner",
+  "tag": "section",
+  "class": "section-memberships-banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "membership-banner",
+      "info": "Used for linking to this section"
+    },
+
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Memberships with more"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "Choose your membership tier"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Compare all tiers and perks"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Membership",
+      "type": "membership",
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "info": "t:sections.all.colors.has_cards_info",
+          "default": "scheme-1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "custom_id",
+          "label": "Custom ID",
+          "info": "Used to create anchor links for the card"
+        },
+        {
+          "type": "number",
+          "id": "price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "price_label",
+          "label": "Price label",
+          "default": "/year"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "perks",
+          "label": "Perks",
+          "info": "Separate each perk with a double slash (//)",
+          "default": "$5 credit for signing up//Free shipping over $50//Earn credits on every purchase//And more...",
+          "placeholder": "$5 credit for signing up//Free shipping over $50//Earn credits on every purchase//And more..."
+        },
+        {
+          "type": "text",
+          "id": "footer_text",
+          "label": "Footer Text"
+        },
+        {
+          "type": "header",
+          "content": "CTA"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text",
+          "default": "Join now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Memberships Banner",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

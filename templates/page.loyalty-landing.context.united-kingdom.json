@@ -1,0 +1,193 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.loyalty-landing.json",
+  "context": {
+    "market": "united-kingdom"
+  },
+  "sections": {
+    "pbj_multicolumn_BVVEq8": {
+      "settings": {},
+      "blocks": {
+        "column_MtzLXD": {
+          "disabled": true,
+          "settings": {}
+        },
+        "column_zbwmTU": {
+          "settings": {
+            "text": "<p>Earn credits on every purchase (credits are earned in USD*), redeem instantly</p>"
+          }
+        },
+        "column_TRKAYJ": {
+          "settings": {
+            "title": "Complimentary Shipping"
+          }
+        }
+      }
+    },
+    "pbj_rich_text_iMtHyi": {
+      "disabled": false,
+      "custom_css": [
+        ".rich-text__heading {border: 1px solid #d3b890; width: max-content; margin-left: auto; margin-right: auto; padding: 5px 20px;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true
+      },
+      "blocks": {
+        "heading_jC6BKr": {
+          "settings": {
+            "heading": "*Loyalty credits are earned in USD and will be converted to your local currency at checkout.",
+            "show_trout_icon": true
+          }
+        }
+      }
+    },
+    "loyalty_memberships_banner_TcfqJX": {
+      "settings": {},
+      "blocks": {
+        "membership_wrzcJh": {
+          "settings": {
+            "perks": "$5 welcome bonus//Free shipping over £50//Earn credits with every purchase//And more..."
+          }
+        },
+        "membership_9PJKby": {
+          "settings": {
+            "price": 55,
+            "perks": "Exclusive Q&As with Tom Holland//Earn 2x credits with every purchase//Free shipping, always//10% off every purchase//And more…"
+          }
+        }
+      }
+    },
+    "loyalty_price_comparison_eheKA4": {
+      "settings": {
+        "text": "<p>Calculate your savings at every membership level—encompassing shipping, credits, and exclusive discounts. With Club BERO, the rewards truly add up, making it a smart investment that pays for itself!</p><p>Don’t forget, you’ll also unlock a range of exclusive benefits, including Q&A sessions with Tom Holland, access to member-only events, VIP support, and so much more!</p>"
+      },
+      "blocks": {
+        "membership_9L67nq": {
+          "settings": {
+            "cta_text": "Join £55/Year"
+          }
+        }
+      }
+    },
+    "loyalty_membership_comparison_zEAnYT": {
+      "settings": {
+        "tier_2_cta_text": "Join £55/Year"
+      },
+      "blocks": {
+        "benefits_gnnpRR": {
+          "settings": {
+            "tier_1_text": "£0/yr",
+            "tier_2_text": "£55/yr"
+          }
+        },
+        "benefits_GqbPJw": {
+          "settings": {
+            "tier_1_text": "£50 minimum"
+          }
+        },
+        "benefits_fwkqzn": {
+          "settings": {
+            "title": "Earn Credits on Purchases (in USD)",
+            "tier_2_text": "2x credits on every purchase"
+          }
+        },
+        "benefits_7RCgT4": {
+          "disabled": true,
+          "settings": {
+            "tier_1_text": "BERO tote with £50+ order",
+            "tier_2_text": "BERO tote with £29+ order"
+          }
+        },
+        "benefits_Yqgkhe": {
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "benefits_gnnpRR",
+        "benefits_mh4Qnj",
+        "benefits_GqbPJw",
+        "benefits_fwkqzn",
+        "benefits_QygrHC",
+        "benefits_7RCgT4",
+        "benefits_6zeVcb",
+        "benefits_g7HKn3",
+        "benefits_Yqgkhe",
+        "benefits_BtmeVk",
+        "benefits_Parydj",
+        "benefits_Kr8aLc",
+        "benefits_LxnrPC",
+        "benefits_MzFJXN"
+      ]
+    },
+    "loyalty_faqs_9hUjyK": {
+      "settings": {},
+      "blocks": {
+        "faq_ecCJqT": {
+          "settings": {
+            "text": "<p>You can sign up as a Free Member with as little as your name, email, and address, or join our BEROMASTER tier for a £55 annual membership fee. Visit our Club BERO page to <a href=\"https://berobrewing.com/account/register\"><span style=\"text-decoration:underline\">sign up</span></a>.</p>"
+          }
+        },
+        "faq_AiHKdt": {
+          "settings": {
+            "text": "<ul><li>All credits are earned in USD.</li><li>When credits are redeemed, they will be against the current conversion rate.</li><li>By purchasing any BERO 6-pack or Variety Pack online or in-store. Club BERO Free Members receive $0.25 credit for each 6-pack purchased. BEROMASTER members receive double the credit at $0.50 credit for each 6-pack purchase. </li><li>There are other ways to earn credits if you are a Club BERO member—such as referrals, reviews, social follows, and more. Members can see a full list of credit-earning actions in their dashboard.</li></ul>"
+          }
+        },
+        "faq_LmbX9a": {
+          "disabled": true,
+          "settings": {}
+        },
+        "faq_cwbHY": {
+          "type": "faq",
+          "disabled": false,
+          "settings": {
+            "title": "What rewards can I get?",
+            "text": "<ul><li>Rewards depend on your membership tier. For more information on membership tiers and benefits, check out Club BERO <span style=\"text-decoration:underline\">here</span>.</li></ul>"
+          }
+        },
+        "faq_NEwExN": {
+          "settings": {
+            "text": "<ul><li>Here are the steps to redeem your credits:</li><li>Log in to your Club BERO account dashboard <a href=\"/pages/account-club-bero\" title=\"Account Club Bero\"><span style=\"text-decoration:underline\">here</span></a> (you don’t have to be a paid member to redeem credits)</li><li>Click on “redeem credits”</li><li>Enter the amount of credits you want to redeem from your available credit balance</li><li>A unique discount code for that amount will be generated and can be automatically applied to your cart if you choose to do so</li><li>Fill your cart with all your favorite BERO beers and check out with your savings applied</li></ul>"
+          }
+        },
+        "faq_UNKjTf": {
+          "settings": {
+            "text": "<p>If you placed an order on <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com</span></a> and:</p><ul><li><strong>Cancel the order</strong> OR <strong>get a full refund for your order</strong>, your Club BERO credits earned for that specific order will no longer be applied to your account. </li><li><strong>Get a partial refund for your order</strong>, only the equivalent Club BERO credits will be deducted from your account.</li></ul><p>Please reach out to our customer service team at <a href=\"mailto:support@berobrewing.com\">support@berobrewing.com</a> if you have any questions. </p>"
+          }
+        },
+        "faq_fdmAqe": {
+          "settings": {
+            "text": "<p>While BEROMASTER memberships are non-refundable—given the immediate value you receive upon purchase—you can cancel at any time by emailing <a href=\"mailto:cancelmembership@berobrewing.com\">cancelmembership@berobrewing.com</a>, so your membership does not renew. Access to your BEROMASTER benefits will remain active until the end of the billing cycle.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_ecCJqT",
+        "faq_AiHKdt",
+        "faq_dWkLbD",
+        "faq_iBgMFM",
+        "faq_LmbX9a",
+        "faq_FwPYHE",
+        "faq_cwbHY",
+        "faq_hMD4Vz",
+        "faq_cnenig",
+        "faq_NEwExN",
+        "faq_b86Cnj",
+        "faq_Ch33mg",
+        "faq_UNKjTf",
+        "faq_k7Uyk3",
+        "faq_Vdp8wq",
+        "faq_fdmAqe"
+      ]
+    }
+  }
+}

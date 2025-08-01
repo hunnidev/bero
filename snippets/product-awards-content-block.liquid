@@ -1,0 +1,5 @@
+{% for award in awards %}
+    <div class="awards-item">
+        {{ award.award_title }} - {{ award.award_information | metafield_tag }}
+    </div>
+{% endfor %}

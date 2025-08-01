@@ -1,0 +1,98 @@
+{%- if customer -%}
+  <div class="customer-hero color-{{ section.settings.color_scheme }}">
+    {% liquid
+      if section.settings.desktop_image != blank
+        assign desktop_image_class = 'desktop'
+        if section.settings.mobile_image != blank
+          assign desktop_image_class = 'hidden md:block desktop'
+        endif
+        echo section.settings.desktop_image | image_url: width: 2880 | image_tag: preload: true, class: desktop_image_class
+        if section.settings.mobile_image != blank
+          echo section.settings.mobile_image | image_url: width: 780 | image_tag: preload: true, class: 'md:hidden'
+        endif
+      endif
+    %}
+
+    <div class="customer-hero__content">
+      <div class="page-width w-full customer-hero__content-inner">
+        {%- if section.settings.title -%}
+          <h2 class="h6">
+            {{ section.settings.title }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.personalised_title -%}
+          <h2 class="h1">
+            {{ section.settings.personalised_title | replace: '[FIRST_NAME]', customer.first_name }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.enable_account_link -%}
+          <a
+            href="{{ routes.account_url }}"
+
+            class="button button--primary"
+          >
+            {{ section.settings.account_link_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Customer Hero",
+  "tag": "section",
+  "class": "customer-hero-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Welcome back"
+    },
+    {
+      "type": "text",
+      "id": "personalised_title",
+      "label": "Personalised Title",
+      "default": "Oi, [FIRST_NAME]!",
+      "info": "Use [FIRST_NAME] to insert the customer's first name"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_account_link",
+      "label": "Enable account link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "account_link_text",
+      "label": "Account link text",
+      "default": "Your account"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Hero",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

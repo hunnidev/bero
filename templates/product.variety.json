@@ -1,0 +1,299 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs_8ADkyk": {
+          "type": "breadcrumbs",
+          "settings": {}
+        },
+        "badges_F6tJy8": {
+          "type": "badges",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "loyalty_credits_text": "Earn up to [AMOUNT] credits",
+            "loyalty_paid_member_text": "USE CODE [CODE]"
+          }
+        },
+        "junip_product_reviews_ugc_junip_product_summary_f6AyeL": {
+          "type": "shopify://apps/junip/blocks/junip-product-summary/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "text_KRFKVL": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.description | metafield_tag }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "preorder_P8NGwC": {
+          "type": "preorder",
+          "settings": {
+            "preorder_text": "Pre-order: this item will ship as soon as it becomes available",
+            "hide_if_metafield_is_empty": false
+          }
+        },
+        "quantity_selector_ABfQhr": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "shipping_8mRaiF": {
+          "type": "shipping",
+          "settings": {
+            "image": "shopify://shop_images/Group_42594.svg",
+            "border_color": "#d7cab4",
+            "text_heading": "<strong>Free shipping on $50+</strong>",
+            "text": "And a $5 welcome credit when you create a <a href=\"/account/register\"><span style=\"text-decoration:underline\">free Club BERO account</span></a>. Already a member? <a href=\"/account/login\"><span style=\"text-decoration:underline\">Sign in</span></a> here.",
+            "cta": "More info",
+            "cta_link": ""
+          }
+        },
+        "collapsible_tab_qRPbYL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "{{ product.metafields.custom.tasting_notes_title.value }}",
+            "reviews_tab": false,
+            "loyalty_tab": false,
+            "icon": "none",
+            "content": "<p>Ingredients</p>{{ product.metafields.custom.variety_ingredients | metafield_tag }}",
+            "page": "",
+            "awards_content_metafield": false,
+            "variant_details_metafield": false,
+            "nutrition_metafield": false,
+            "default_open": true
+          }
+        },
+        "collapsible_tab_UHGCVt": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Club Bero",
+            "reviews_tab": false,
+            "loyalty_tab": true,
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "awards_content_metafield": false,
+            "variant_details_metafield": false,
+            "nutrition_metafield": false,
+            "default_open": false
+          }
+        },
+        "collapsible_tab_QcxaKU": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Awards",
+            "reviews_tab": false,
+            "loyalty_tab": false,
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "awards_content_metafield": true,
+            "variant_details_metafield": false,
+            "nutrition_metafield": false,
+            "default_open": false
+          }
+        },
+        "collapsible_tab_JKrYpB": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "{{ product.metafields.custom.nutrition_facts_title.value }}",
+            "reviews_tab": false,
+            "loyalty_tab": false,
+            "icon": "none",
+            "content": "{{ product.metafields.custom.tasting_notes | metafield_tag }}",
+            "page": "",
+            "awards_content_metafield": false,
+            "variant_details_metafield": false,
+            "nutrition_metafield": false,
+            "default_open": false
+          }
+        },
+        "collapsible_tab_yEHmtq": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "DETAILS",
+            "reviews_tab": false,
+            "loyalty_tab": false,
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "awards_content_metafield": false,
+            "variant_details_metafield": true,
+            "nutrition_metafield": false,
+            "default_open": false
+          }
+        },
+        "collapsible_tab_j4hKTr": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Reviews",
+            "reviews_tab": true,
+            "loyalty_tab": false,
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "awards_content_metafield": false,
+            "variant_details_metafield": false,
+            "nutrition_metafield": false,
+            "default_open": false
+          }
+        },
+        "junip_product_reviews_ugc_junip_product_review_KR6VQa": {
+          "type": "shopify://apps/junip/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "loyalty_tab_CUxLkV": {
+          "type": "loyalty_tab",
+          "settings": {
+            "color_scheme": "",
+            "logo_svg": "<svg width=\"99\" height=\"72\" viewbox=\"0 0 99 72\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_3006_200957)\">\n<path d=\"M31.2384 23.0412L31.1908 23.6114C33.7015 23.6114 34.9335 25.4177 34.9335 27.6995C34.9335 32.7854 28.0164 38.0148 21.7619 38.0148C18.2089 38.0148 16.503 36.3989 16.503 32.5959C16.503 28.793 18.2557 24.5624 20.9094 20.5691C22.1414 20.8542 23.2314 20.9489 24.6054 20.9489C34.081 20.9489 46.874 14.2462 46.874 7.40087C46.874 5.45204 45.3579 4.07342 42.5629 4.07342C36.2141 4.07342 25.9328 11.156 19.5363 19.3799C16.1254 18.2395 14.6092 15.8621 14.6092 12.8197C14.6092 7.68598 18.9203 3.02772 26.7853 1.07797L26.6909 0.412109C18.1622 2.40877 13.093 8.11272 13.093 13.1517C13.093 16.527 15.1775 19.0461 18.9203 20.1874C15.7459 24.2754 13.7558 28.6964 13.7558 32.5941C13.7558 37.1098 17.0246 38.7735 21.8573 38.7735C28.3959 38.7735 36.2132 33.0696 36.2132 27.7455C36.2132 24.7509 34.1754 23.0394 31.2384 23.0394V23.0412ZM42.562 4.7402C44.6465 4.7402 45.5944 5.69116 45.5944 7.40179C45.5944 13.6769 33.9389 20.1414 24.6999 20.1414C23.5632 20.1414 22.4733 20.0936 21.4778 19.8085C27.1629 11.8228 36.5441 4.73928 42.5611 4.73928L42.562 4.7402ZM82.4077 9.0177C77.8876 9.0177 74.8259 13.3301 70.9439 19.2171C67.4743 18.9072 64.5455 17.6214 63.7884 16.8618L63.4098 17.1469C64.0331 17.981 66.9545 19.4369 70.5735 19.7818C70.2609 20.2573 69.9419 20.742 69.6165 21.2349L63.319 30.7492C61.724 32.7385 57.6614 37.8731 55.9243 37.8731C55.3083 37.8731 55.0241 37.588 55.0241 37.0178C55.0241 35.9721 55.7345 34.7361 58.4827 30.6958L63.8837 22.7101H61.515L56.114 30.8384C54.7876 32.6447 50.9028 37.8741 48.7229 37.8741C47.5863 37.8741 47.1124 37.4464 47.3012 36.3529C47.4909 35.3072 48.3911 34.2137 49.2913 32.9307L53.2714 27.4162C53.9351 26.3705 54.2193 25.5152 54.2193 24.5164C54.2193 23.2325 53.4612 22.3294 52.3245 22.2825C50.3821 22.2825 48.4864 24.0887 46.8759 26.4183H47.5863C49.3866 24.1366 50.8084 22.9483 51.9927 22.9483C52.4666 22.9961 52.7508 23.3282 52.7508 23.8515C52.7508 24.6121 52.1824 25.6577 51.0925 27.1789L47.4442 32.1701C46.544 33.5009 45.8804 34.737 45.8804 36.0209C45.8804 37.875 46.9226 38.6825 48.2023 38.6825C50.6663 38.6825 52.3245 36.4954 53.6986 34.8317C53.5565 35.3072 53.4621 36.02 53.4621 36.4476C53.4621 37.7315 54.4099 38.7294 55.4999 38.7294C57.1233 38.7294 58.8915 37.1457 60.5415 35.2483C60.4086 35.6337 60.3325 36.0209 60.3325 36.3998C60.3802 37.7306 61.0906 38.6815 62.6068 38.6815C66.7758 38.6815 72.6507 32.1214 74.0248 29.6501C76.3934 25.6099 75.4933 22.425 73.219 22.425C72.3381 22.425 71.2069 22.9281 70.1161 23.7668L71.7973 21.2368C72.1163 20.7576 72.4252 20.295 72.7249 19.8471C78.1131 19.6549 84.5829 16.9041 85.6793 12.8703C86.4374 10.0661 84.6847 9.01954 82.4104 9.01954L82.4077 9.0177ZM73.0274 23.2785C73.8799 23.2785 74.1174 23.754 74.1174 24.372C74.1174 25.6559 73.4069 27.0336 72.2226 28.9834C70.8009 31.3599 65.9214 37.9679 62.9359 37.9679C62.0357 37.9679 61.7515 37.6349 61.7515 37.0647C61.7039 36.3041 62.3199 35.401 63.3621 33.9276L68.7704 25.7883C69.886 24.3435 71.8844 23.2794 73.0274 23.2794V23.2785ZM85.0614 12.9163C84.164 16.2925 78.1681 19.0286 73.109 19.2686C77.4045 12.874 79.7301 9.87393 82.8816 9.87393C84.1613 9.87393 85.6765 10.5398 85.0614 12.9163ZM42.3255 35.0202H43.0836C41.6619 36.9691 40.0036 38.6806 38.1565 38.6806C37.0666 38.6806 36.3562 37.7297 36.3085 36.3989C36.3085 35.4957 36.7348 34.5448 37.3508 33.6894L53.5547 9.30372H55.7345L39.3418 33.9267C38.2995 35.4001 37.6835 36.3032 37.7312 37.0638C37.7312 37.634 38.0154 37.9669 38.5837 37.9669C39.768 37.9669 41.2842 36.4936 42.3264 35.0193L42.3255 35.0202ZM85.6023 43.1255C77.3092 43.1255 72.3097 49.6149 72.3097 57.0994C72.3097 65.0612 77.6667 71.1128 85.6023 71.1128C93.5379 71.1128 98.9746 64.9425 98.9746 57.0994C98.9746 49.9331 94.2529 43.1255 85.6023 43.1255ZM85.6023 68.4843C79.5312 68.4843 76.2376 63.3487 76.2376 57.0984C76.2376 50.8482 79.6504 45.7522 85.6023 45.7522C91.9117 45.7522 95.0852 51.0469 95.0852 57.0984C95.0852 63.6274 91.5533 68.4843 85.6023 68.4843ZM60.4856 57.4571C61.3986 57.298 62.1915 57.0194 63.0248 56.7011C65.8417 55.5865 67.4294 53.3571 67.4294 50.5704C67.4294 45.9527 63.3025 43.6038 58.0647 43.6038H48.7404V43.6838C49.2564 44.3607 49.5736 45.0771 49.7322 45.9931C49.8908 46.9091 49.9705 48.1029 49.9705 49.5763V64.5848C49.9705 66.1372 49.8908 67.3319 49.7322 68.1679C49.5736 69.0839 49.2564 69.8004 48.7404 70.5564V70.6364H54.6923V70.5564C54.2954 69.8004 53.9782 69.083 53.8196 68.1679C53.5813 67.3319 53.4621 66.1372 53.4621 64.5848V57.7772H56.3982L66.8739 70.6364H71.437V70.5564L60.4856 57.459V57.4571ZM53.4621 55.2278V46.0713H57.39C60.8028 46.0713 63.6591 47.186 63.6591 50.6495C63.6591 54.1131 60.6836 55.2278 57.39 55.2278H53.4621ZM24.9327 70.5545C25.4094 69.8776 25.7659 69.0812 25.9245 68.2452C26.1629 67.3291 26.2417 66.2945 26.2417 64.8211V49.5735C26.2417 48.1002 26.1619 46.9064 26.0034 45.9904C25.765 45.0744 25.4084 44.3579 24.9318 43.681V43.601H43.7005V47.9401H43.4622C42.9461 47.3028 42.3118 46.7859 41.3988 46.5468C40.5261 46.2286 39.2959 46.1486 37.59 46.1486H29.7333V55.225H35.7649C37.2334 55.225 38.3839 55.145 39.2171 54.9068C40.0109 54.6677 40.6856 54.3495 41.1614 53.8722H41.3199V59.2469H41.1614C40.6856 58.6895 40.0109 58.3713 39.2969 58.0926C38.4636 57.8535 37.2334 57.7744 35.7649 57.7744H29.7333V68.0851H38.0658C39.6929 68.0851 40.923 67.926 41.8351 67.6078C42.7875 67.2491 43.541 66.6127 44.0177 65.6967H44.1763V70.6336H24.9318V70.5536L24.9327 70.5545ZM18.505 58.8505C17.196 57.6162 15.2912 56.8602 13.0289 56.5411V56.382C16.2427 55.6656 19.0605 53.5558 19.0605 50.0922C19.0605 45.3944 14.6954 43.6028 9.77561 43.6028H-0.0253906V43.6829C0.450359 44.4388 0.807859 45.1562 0.966443 46.0713C1.12503 46.9873 1.20478 48.102 1.20478 49.5744V64.6629C1.20478 66.1363 1.12503 67.251 0.966443 68.1661C0.807859 69.0821 0.450359 69.7985 -0.0253906 70.5545V70.6345H10.6483C15.4892 70.6345 20.4493 68.3656 20.4493 63.1896C20.4493 61.4376 19.814 60.0442 18.505 58.8505ZM4.69636 46.0713H9.17978C12.433 46.0713 15.2903 47.3055 15.2903 50.4904C15.2903 54.0736 12.5522 55.3078 9.17978 55.3078H4.69636V46.0722V46.0713ZM9.53728 68.1661H4.69636V57.7753H9.25953C13.0289 57.7753 16.6799 58.97 16.6799 62.9109C16.6799 66.8518 13.4661 68.1661 9.53728 68.1661Z\" fill=\"#D3B890\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_3006_200957\">\n<rect width=\"99\" height=\"71.1127\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
+            "title": "DISCOVER THE Benefits",
+            "perks_list": "Q&As with Tom Holland//Earn Credits//Complimentary Shipping//Member Pricing",
+            "product_price_benefit_text": "Get this product for as low as [PRICE]",
+            "product_credit_benefit_text": "And earn up to [CREDITS] in credits",
+            "explore_cta_url": "shopify://pages/loyalty",
+            "explore_cta_text": "Explore memberships",
+            "paid_member_badge_text": "MEMBER PRICING",
+            "paid_member_pricing_text": "Regular price: [PRICE]",
+            "paid_member_benefit_text": "BEROMASTER members save [SAVING] and earn [CREDITS] in credits",
+            "free_member_text": "Club BERO Members earn [CREDITS] in credits.",
+            "member_only_title": "Exclusive product for Club Bero members",
+            "member_only_text": "Members can buy and earn up to [CREDITS] in credits"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_8ADkyk",
+        "badges_F6tJy8",
+        "title",
+        "price",
+        "junip_product_reviews_ugc_junip_product_summary_f6AyeL",
+        "text_KRFKVL",
+        "variant_picker",
+        "preorder_P8NGwC",
+        "quantity_selector_ABfQhr",
+        "buy_buttons",
+        "shipping_8mRaiF",
+        "collapsible_tab_qRPbYL",
+        "collapsible_tab_UHGCVt",
+        "collapsible_tab_QcxaKU",
+        "collapsible_tab_JKrYpB",
+        "collapsible_tab_yEHmtq",
+        "collapsible_tab_j4hKTr",
+        "junip_product_reviews_ugc_junip_product_review_KR6VQa",
+        "loyalty_tab_CUxLkV"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "title_top_mobile": true,
+        "sticky_color_scheme": "",
+        "color_scheme": "scheme-d21175b1-69b0-4730-806c-910a903a89a3",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_text_extended_D7RbHK": {
+      "type": "image-text-extended",
+      "blocks": {
+        "content_block_QYDerh": {
+          "type": "content_block",
+          "repeater": "{{ product.metafields.custom.product_content_section.value }}",
+          "settings": {
+            "pre_heading": "{{ block.repeater.pre_heading.value }}",
+            "title": "{{ block.repeater.title.value }}",
+            "text": "{{ block.repeater.text | metafield_tag }}",
+            "image": "{{ block.repeater.image.value }}",
+            "image_caption": "{{ block.repeater.image_caption | metafield_tag }}",
+            "color_scheme": "scheme-d21175b1-69b0-4730-806c-910a903a89a3"
+          }
+        }
+      },
+      "block_order": [
+        "content_block_QYDerh"
+      ],
+      "settings": {}
+    },
+    "loyalty_banner_YBR33d": {
+      "type": "loyalty-banner",
+      "settings": {
+        "customer_status": "not_logged_in",
+        "image": "shopify://shop_images/Frame_48097273.png",
+        "image_mobile": "shopify://shop_images/Frame_48097273mb.png",
+        "pre_title": "Exclusive",
+        "title_svg": "<svg width=\"196\" height=\"142\" viewbox=\"0 0 196 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_844_80247)\">\n<path d=\"M61.8453 45.8924L61.7509 47.0213C66.7217 47.0213 69.1608 50.5973 69.1608 55.1148C69.1608 65.1838 55.4662 75.537 43.0837 75.537C36.0495 75.537 32.6721 72.3378 32.6721 64.8088C32.6721 57.2797 36.1421 48.904 41.396 40.998C43.8351 41.5625 45.9929 41.75 48.7133 41.75C67.473 41.75 92.8006 28.4799 92.8006 14.9277C92.8006 11.0694 89.7989 8.33996 84.2655 8.33996C71.6961 8.33996 51.3411 22.362 38.6774 38.6437C31.9244 36.3859 28.9227 31.6791 28.9227 25.6559C28.9227 15.4921 37.4578 6.26969 53.0289 2.40958L52.842 1.09131C35.957 5.04429 25.921 16.337 25.921 26.3132C25.921 32.9956 30.0479 37.9828 37.4578 40.2424C31.1731 48.3359 27.2331 57.0885 27.2331 64.8051C27.2331 73.7453 33.7048 77.0391 43.2725 77.0391C56.2176 77.0391 71.6943 65.7465 71.6943 55.2058C71.6943 49.2772 67.66 45.8887 61.8453 45.8887V45.8924ZM84.2637 9.66004C88.3906 9.66004 90.2671 11.5428 90.2671 14.9295C90.2671 27.3529 67.1917 40.1513 48.9002 40.1513C46.6498 40.1513 44.492 40.0567 42.5211 39.4922C53.7766 23.6821 72.3494 9.65822 84.2619 9.65822L84.2637 9.66004ZM163.15 18.1286C154.201 18.1286 148.14 26.6664 140.454 38.3214C133.585 37.7078 127.787 35.1623 126.288 33.6583L125.538 34.2228C126.772 35.8743 132.556 38.7566 139.721 39.4394C139.102 40.3808 138.47 41.3403 137.826 42.3163L125.358 61.1526C122.201 65.091 114.157 75.2566 110.718 75.2566C109.499 75.2566 108.936 74.6921 108.936 73.5632C108.936 71.493 110.343 69.0458 115.783 61.047L126.476 45.2369H121.787L111.094 61.3292C108.468 64.9053 100.777 75.2584 96.4611 75.2584C94.2107 75.2584 93.2724 74.4117 93.6463 72.2468C94.022 70.1765 95.8041 68.0116 97.5863 65.4715L105.466 54.554C106.78 52.4837 107.343 50.7903 107.343 48.8129C107.343 46.2711 105.842 44.483 103.591 44.3902C99.7459 44.3902 95.9928 47.9663 92.8042 52.5784H94.2107C97.775 48.0609 100.59 45.7085 102.935 45.7085C103.873 45.8031 104.435 46.4604 104.435 47.4965C104.435 49.0023 103.31 51.0726 101.152 54.0842L93.9294 63.9657C92.1473 66.6004 90.8333 69.0476 90.8333 71.5895C90.8333 75.2602 92.8968 76.8589 95.4303 76.8589C100.308 76.8589 103.591 72.529 106.312 69.2352C106.031 70.1765 105.844 71.5876 105.844 72.4343C105.844 74.9762 107.72 76.9517 109.878 76.9517C113.092 76.9517 116.593 73.8163 119.859 70.06C119.596 70.8229 119.446 71.5895 119.446 72.3396C119.54 74.9743 120.947 76.8571 123.948 76.8571C132.202 76.8571 143.833 63.8692 146.554 58.9767C151.243 50.9779 149.461 44.6724 144.958 44.6724C143.214 44.6724 140.975 45.6684 138.815 47.329L142.144 42.3199C142.775 41.3713 143.387 40.4554 143.98 39.5687C154.648 39.1881 167.457 33.7421 169.627 25.756C171.128 20.2044 167.658 18.1323 163.156 18.1323L163.15 18.1286ZM144.579 46.3621C146.267 46.3621 146.737 47.3035 146.737 48.5271C146.737 51.0689 145.33 53.7965 142.986 57.6566C140.171 62.3616 130.511 75.4441 124.6 75.4441C122.818 75.4441 122.255 74.785 122.255 73.6561C122.161 72.1503 123.38 70.3622 125.444 67.4453L136.151 51.3311C138.36 48.4706 142.316 46.3639 144.579 46.3639V46.3621ZM168.404 25.847C166.627 32.5312 154.757 37.9482 144.741 38.4234C153.245 25.7633 157.849 19.8238 164.088 19.8238C166.622 19.8238 169.622 21.1421 168.404 25.847ZM83.7955 69.6084H85.2963C82.4816 73.4667 79.1986 76.8552 75.5417 76.8552C73.3839 76.8552 71.9774 74.9725 71.883 72.3378C71.883 70.5498 72.7269 68.6671 73.9465 66.9737L106.027 18.6949H110.343L77.8883 67.4435C75.8248 70.3604 74.6053 72.1485 74.6996 73.6543C74.6996 74.7832 75.2622 75.4423 76.3874 75.4423C78.7321 75.4423 81.7338 72.5254 83.7973 69.6066L83.7955 69.6084ZM169.475 85.6552C153.056 85.6552 143.158 98.5029 143.158 113.321C143.158 129.083 153.764 141.064 169.475 141.064C185.186 141.064 195.949 128.848 195.949 113.321C195.949 99.1329 186.601 85.6552 169.475 85.6552ZM169.475 135.86C157.455 135.86 150.935 125.693 150.935 113.319C150.935 100.945 157.691 90.8555 169.475 90.8555C181.966 90.8555 188.249 101.338 188.249 113.319C188.249 126.245 181.256 135.86 169.475 135.86ZM119.749 114.029C121.556 113.714 123.126 113.162 124.776 112.532C130.353 110.325 133.496 105.912 133.496 100.395C133.496 91.2524 125.326 86.602 114.956 86.602H96.4956V86.7605C97.5173 88.1006 98.1452 89.519 98.4592 91.3325C98.7732 93.146 98.931 95.5095 98.931 98.4264V128.14C98.931 131.214 98.7732 133.579 98.4592 135.234C98.1452 137.048 97.5173 138.466 96.4956 139.963V140.121H108.279V139.963C107.493 138.466 106.865 137.046 106.551 135.234C106.08 133.579 105.844 131.214 105.844 128.14V114.663H111.657L132.396 140.121H141.43V139.963L119.749 114.033V114.029ZM105.844 109.615V91.4873H113.62C120.377 91.4873 126.032 93.6941 126.032 100.551C126.032 107.408 120.141 109.615 113.62 109.615H105.844ZM49.3612 139.959C50.3049 138.619 51.0108 137.042 51.3248 135.387C51.7967 133.574 51.9527 131.525 51.9527 128.608V98.4209C51.9527 95.504 51.7948 93.1406 51.4809 91.327C51.009 89.5135 50.3031 88.0951 49.3594 86.755V86.5966H86.5177V95.1872H86.0458C85.0241 93.9253 83.7683 92.902 81.9607 92.4286C80.233 91.7986 77.7975 91.6402 74.4201 91.6402H58.8654V109.61H70.8068C73.7142 109.61 75.9918 109.451 77.6414 108.98C79.2131 108.506 80.5488 107.876 81.4907 106.931H81.8046V117.572H81.4907C80.5488 116.469 79.2131 115.839 77.7993 115.287C76.1497 114.814 73.7142 114.657 70.8068 114.657H58.8654V135.07H75.362C78.5833 135.07 81.0188 134.755 82.8246 134.125C84.7101 133.415 86.2019 132.155 87.1456 130.342H87.4596V140.116H49.3594V139.957L49.3612 139.959ZM36.6357 116.787C34.0441 114.344 30.273 112.847 25.794 112.215V111.9C32.1567 110.482 37.7355 106.305 37.7355 99.4479C37.7355 90.1472 29.0933 86.6002 19.3532 86.6002H-0.0507812V86.7586C0.891108 88.2553 1.59889 89.6756 1.91285 91.4873C2.22681 93.3008 2.3847 95.5076 2.3847 98.4227V128.295C2.3847 131.212 2.22681 133.419 1.91285 135.23C1.59889 137.044 0.891108 138.462 -0.0507812 139.959V140.117H21.0809C30.665 140.117 40.4849 135.626 40.4849 125.378C40.4849 121.909 39.2273 119.151 36.6357 116.787ZM9.29733 91.4873H18.1736C24.6144 91.4873 30.2711 93.9308 30.2711 100.236C30.2711 107.33 24.8503 109.774 18.1736 109.774H9.29733V91.4891V91.4873ZM18.8814 135.23H9.29733V114.659H18.3315C25.794 114.659 33.0224 117.024 33.0224 124.826C33.0224 132.628 26.6597 135.23 18.8814 135.23Z\" fill=\"#D3B890\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_844_80247\">\n<rect width=\"196\" height=\"140.789\" fill=\"white\" transform=\"translate(0 0.273682)\"></rect>\n</clippath>\n</defs>\n</svg>",
+        "subtitle": "LOYALTY PROGRAM",
+        "benefits": "EXCLUSIVE ACCESS, savings, events",
+        "cta_url": "https://berobrewing.com/account/register",
+        "cta_text": "Sign up now",
+        "color_scheme": "scheme-3"
+      }
+    },
+    "related-products": {
+      "type": "pbj-related-products",
+      "settings": {
+        "view_all_link": "shopify://collections/all",
+        "view_all_link_text": "Shop all products",
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 6,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_text_extended_D7RbHK",
+    "loyalty_banner_YBR33d",
+    "related-products"
+  ]
+}

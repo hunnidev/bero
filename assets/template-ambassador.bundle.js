@@ -1,0 +1,1 @@
+!function(){"use strict";setTimeout((function(){var t=document.querySelector(".globo-form-control.instagram-tiktok-url input"),o=document.querySelector(".globo-form-control.instagram-tiktok-url label");t.addEventListener("click",(function(){t.value="https://www.",o.classList.add("gfb__label__filled")}))}),2e3)}();

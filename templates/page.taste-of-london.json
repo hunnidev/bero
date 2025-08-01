@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "pbj_page_banner_DmJbQY": {
+      "type": "pbj-page-banner",
+      "settings": {
+        "transparent_header": true,
+        "show_back_button": false,
+        "back_button_text": "Back",
+        "back_button_url": "",
+        "image": "shopify://shop_images/Hero_Section_e2b33dc5-7565-4dfe-8349-2f09c3b59576.jpg",
+        "image_mobile": "shopify://shop_images/Hero_Section-1_b61aab4d-3591-49cb-8281-c026b2d5221a.jpg",
+        "image_overlay_opacity": 0,
+        "image_aspect": "custom",
+        "desktop_height": 40,
+        "mobile_height": 25,
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "mobile_content_position": "middle-center",
+        "mobile_content_alignment": "center",
+        "show_text_below": false,
+        "color_scheme": "",
+        "image_behavior": "none"
+      }
+    },
+    "custom_liquid_EtVF8A": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"klaviyo-form-TCXJwb\"></div>\n<style>\n.custom-klaviyo-footer-form{\ndisplay: none;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "pbj_page_banner_DmJbQY",
+    "custom_liquid_EtVF8A"
+  ]
+}

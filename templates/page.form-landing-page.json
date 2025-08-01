@@ -1,0 +1,232 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_page_banner_JyrNTX": {
+      "type": "pbj-page-banner",
+      "blocks": {
+        "text_t6rKrJ": {
+          "type": "text",
+          "settings": {
+            "text": "BEROMASTER",
+            "text_style": "body",
+            "show_as_page_title": false
+          }
+        },
+        "heading_ChpNBX": {
+          "type": "heading",
+          "settings": {
+            "heading": "EVENTS",
+            "heading_size": "h1",
+            "show_as_page_title": false
+          }
+        }
+      },
+      "block_order": [
+        "text_t6rKrJ",
+        "heading_ChpNBX"
+      ],
+      "settings": {
+        "transparent_header": true,
+        "show_back_button": false,
+        "back_button_text": "Back",
+        "back_button_url": "",
+        "image": "shopify://shop_images/Hero_Section_3.jpg",
+        "image_overlay_opacity": 30,
+        "image_aspect": "custom",
+        "desktop_height": 50,
+        "mobile_height": 50,
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "mobile_content_position": "bottom-left",
+        "mobile_content_alignment": "left",
+        "show_text_below": false,
+        "color_scheme": "scheme-2",
+        "image_behavior": "none"
+      }
+    },
+    "pbj_rich_text_LV7wTY": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_eaPLEf": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h3",
+            "heading": "Chat with us",
+            "heading_size": "h1",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false
+          }
+        },
+        "button_bFDrcW": {
+          "type": "button",
+          "settings": {
+            "button_label": "CHAT NOW",
+            "button_link": "#nolink",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_eaPLEf",
+        "button_bFDrcW"
+      ],
+      "disabled": true,
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_rich_text_DBVgNE": {
+      "type": "pbj-rich-text",
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "pbj-custom-page-content",
+      "disabled": true,
+      "custom_css": [
+        ".gfb-style-material_filled .message.success .gfb__content-title:empty {margin-bottom: 0 !important;}"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_section_divider_C4Le4z": {
+      "type": "pbj-section-divider",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "full_width": true,
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "divider_width": 100,
+        "divider_height": 2,
+        "divider_border_radius": 50,
+        "divider_color": "#eae5da"
+      }
+    },
+    "pbj_rich_text_h4wkyU": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_x8i384": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h3",
+            "heading": "OTHER INQUIRIES",
+            "heading_size": "h4",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false
+          }
+        },
+        "text_bnn4Yr": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Press Inquiries</strong></p><p>press@berobrewing.com</p><p></p><p><strong>Partnership Inquiries</strong></p><p>partnerships@berobrewing.com</p><p></p><p><strong>Sales Inquiries</strong></p><p>sales@berobrewing.com</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_x8i384",
+        "text_bnn4Yr"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "strong {display: block; margin-top: 30px; font-weight: 500;}",
+        "p {color: #000;}"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_form_embed_DcwBfM": {
+      "type": "pbj-form-embed",
+      "blocks": {
+        "image_QA9eP8": {
+          "type": "image",
+          "settings": {}
+        },
+        "heading_9Cwher": {
+          "type": "heading",
+          "settings": {
+            "heading": "Q&A with TOM HOLLAND",
+            "heading_size": "h1",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false
+          }
+        },
+        "text_MmeqJk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>INSERT DATE & TIME</p>"
+          }
+        },
+        "text_hVeNjk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Confirm your attendance, and if you like, ask any questions ahead of the event.</p>"
+          }
+        },
+        "form_embed_QacBHM": {
+          "type": "form_embed",
+          "settings": {
+            "form_code": "<div class=\"globo-formbuilder\" data-id=\"Njc1NzY\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "image_QA9eP8",
+        "heading_9Cwher",
+        "text_MmeqJk",
+        "text_hVeNjk",
+        "form_embed_QacBHM"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "section_background": "",
+        "text_alignment": "text-center",
+        "overlap_section": false
+      }
+    }
+  },
+  "order": [
+    "pbj_page_banner_JyrNTX",
+    "pbj_rich_text_LV7wTY",
+    "pbj_rich_text_DBVgNE",
+    "main",
+    "pbj_section_divider_C4Le4z",
+    "pbj_rich_text_h4wkyU",
+    "pbj_form_embed_DcwBfM"
+  ]
+}

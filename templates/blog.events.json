@@ -1,0 +1,69 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_featured_blog_mUUHHX": {
+      "type": "pbj-featured-blog",
+      "settings": {
+        "condensed_style": false,
+        "customer_status": "all",
+        "heading": "Events",
+        "heading_size": "h1",
+        "subheading": "FEATURED",
+        "show_title_eyebrow": false,
+        "left_eyebrow": false,
+        "blog": "events",
+        "post_limit": 4,
+        "columns_desktop": 2,
+        "enable_desktop_slider": true,
+        "slider_visual": "dots",
+        "color_scheme": "scheme-4",
+        "show_image": true,
+        "show_tag": true,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_view_all": false,
+        "view_all_text": "See all articles",
+        "show_read_more": true,
+        "read_more_txt": "see details",
+        "show_breadcrumbs": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "pbj-main-blog",
+      "settings": {
+        "color_scheme": "scheme-2680043e-b7cc-41b4-9361-87cd51f3b8e8",
+        "layout": "stacked",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "read_more": "SEE DETAILS",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "footer_newsletter_background_iTCrx7": {
+      "type": "footer-newsletter-background",
+      "settings": {
+        "background_color": "#004f3c",
+        "padding": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_featured_blog_mUUHHX",
+    "main",
+    "footer_newsletter_background_iTCrx7"
+  ]
+}

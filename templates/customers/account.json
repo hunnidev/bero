@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_cta_button_zB4qjJ": {
+      "type": "pbj-cta-button",
+      "settings": {
+        "transparent_header": false,
+        "show_back_button": true,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "mobile_content_alignment": "mobile-center",
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "full_width": false,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "button_label": "Back",
+        "button_link": "",
+        "button_style_secondary": false
+      }
+    },
+    "pbj_link_list_YPK6t6": {
+      "type": "pbj-link-list",
+      "settings": {
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "show_user_info": true,
+        "menu": "account-dashboard",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "pbj-account-dashboard",
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "loyalty_color_scheme": "",
+        "loyalty_icon": "",
+        "loyalty_redeem_button_text": "Redeem credits",
+        "loyalty_membership_title": "Membership Tier",
+        "loyalty_view_account_text": "View account",
+        "loyalty_view_account_url": "",
+        "novel_app_color_scheme": "scheme-bd3deb63-35f2-4b8f-bfe1-17f2acd282cd",
+        "novel_app_title": "Unlock your Club BERO wallet pass",
+        "novel_app_description": "Access your credits anytime, anywhere—and stay ready for the unexpected delights ahead.",
+        "novel_app_btn_img": "shopify://shop_images/add-to-wallet-novel.png",
+        "novel_app_btn_link": "https://berobrewing.novel.com/",
+        "show_newsletter_account": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_cta_button_zB4qjJ",
+    "pbj_link_list_YPK6t6",
+    "main"
+  ]
+}

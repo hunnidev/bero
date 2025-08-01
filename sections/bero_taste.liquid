@@ -1,0 +1,248 @@
+{%- liquid
+  assign show_section = false
+  if section.settings.customer_status == 'all'
+    assign show_section = true
+  elsif section.settings.customer_status == 'logged_in' and customer
+    assign show_section = true
+  elsif section.settings.customer_status == 'not_logged_in' and customer == blank
+    assign show_section = true
+  endif
+-%}
+
+{%- if show_section -%}
+  <style>
+    .bero-taste {
+      display: block;
+      position: relative;
+    }
+
+    .bero_taste_inner, .tate_image  {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tate_image {
+      position: relative;
+      height: 100%;
+      width: 40%;
+    }
+
+    @media screen and (min-width: 990px) {
+      .bero_taste_inner, .tate_image  {
+        min-height: 838px;
+      }
+    }
+
+    @media screen and (min-width: 1440px) {
+      .bero_taste_inner, .tate_image  {
+        min-height: 738px;
+      }
+    }
+
+    .taste_text {
+      width: 61%;
+      padding-top: 116px;
+      padding-bottom: 40px;
+      padding-right: 100px;
+    }
+
+    .taste_text blockquote:before {
+      content: '“';
+      leading-trim: both;
+      text-edge: cap;
+      -webkit-text-stroke-width: 1;
+      -webkit-text-stroke-color: var(--Text-Icon-secondary, #EAE5DA);
+      font-family: "ABC Arizona Flare";
+      font-size: 218px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 0%; /* 0px */
+      letter-spacing: -6.54px;
+      -webkit-text-stroke: 1px #EAE5DA;
+      color: #000000;
+      position: absolute;
+    }
+
+    .taste_text blockquote {
+      /* margin-bottom: 38px; */
+      border: none;
+    }
+
+    .bottom_taste {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .taste_text blockquote footer {
+      margin-top: 38px;
+      color: var(--Text-Icon-tertiary-on-image, #D3B890);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+    }
+
+    .overlay_taste {
+      background: url({{ section.settings.img | img_url: "master" }}) lightgray 50% / cover no-repeat;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: block !important;
+    }
+
+    .overlay_taste::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 75.43%, #000 100%);
+      pointer-events: none;
+    }
+
+    @media screen and (max-width: 990px) {
+      .bero_taste_inner {
+        flex-direction: column;
+      }
+
+      .bottom_taste {
+        flex-direction: column;
+      }
+
+      .bero_taste_inner {
+        height: auto;
+      }
+
+      .tate_image {
+        height: 548px;
+        max-height: 50vh;
+        width: 100%;
+      }
+
+      .taste_text {
+        width: 100%;
+        padding: 62px 32px 40px 32px;
+      }
+
+      .overlay_taste {
+        background: url({{ section.settings.img | img_url: "master" }});
+        background-size: cover;
+        background-position: 100% 20%;
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .overlay_taste::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(187deg, rgba(0, 0, 0, 0.00) 75.48%, #000 89.3%);
+        pointer-events: none;
+      }
+
+      .bero-taste {
+        margin-top: 16px;
+      }
+    }
+  </style>
+
+  <div class="bero-taste color-{{ section.settings.color_scheme }} " style="margin-top:{{ section.settings.margin }}px">
+    <div class="bero_taste_inner">
+      <div class="tate_image">
+        <div class="overlay_taste"></div>
+      </div>
+      <div class="taste_text">
+        <blockquote class="h2">{{ section.settings.text }}
+          <footer class="h6">{{ section.settings.author }}</footer>
+        </blockquote>
+        <div class="bottom_taste">
+          <div class="signature">
+            {{ section.settings.signature }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Bero taste",
+  "tag": "section",
+  "class": "bero-taste",
+  "settings": [
+    {
+      "type": "select",
+      "id": "customer_status",
+      "label": "Customer status",
+      "options": [
+        {
+          "value": "logged_in",
+          "label": "Logged in"
+        },
+        {
+          "value": "not_logged_in",
+          "label": "Not logged in"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        }
+      ],
+      "default": "all",
+      "info": "Display this section to all customers, logged in customers, or not logged in customers."
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image",
+      "info": "Image"
+    },
+    {
+      "type": "html",
+      "id": "signature",
+      "label": "Signature"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Main text",
+      "default": "BERO delivers the taste and experience of a great brew, and never asks you to settle for less."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author",
+      "default": "Tom Holland"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "margin",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bero taste"
+    }
+  ]
+}
+{% endschema %}

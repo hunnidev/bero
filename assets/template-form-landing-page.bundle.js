@@ -1,0 +1,1 @@
+!function(){"use strict";setTimeout((function(){var e=document.querySelector(".globo-form-control.website-url input"),t=document.querySelector(".globo-form-control.website-url label");e.addEventListener("click",(function(){e.value="https://www.",t.classList.add("gfb__label__filled")}))}),2e3)}();

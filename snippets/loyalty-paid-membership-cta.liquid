@@ -1,0 +1,17 @@
+{% assign earn_amount = cart.total_price | divided_by: 100.0 %}
+{% assign earn_amount = earn_amount
+  | times: settings.loyalty_credits_per_dollar
+  | times: settings.loyalty_paid_membership_credits_multiplier
+  | money_without_trailing_zeros
+%}
+
+<div class="loyalty-membership-added gradient color-{{ settings.loyalty_paid_membership_added_color_scheme }}">
+  {%- if settings.loyalty_paid_membership_added_text != blank -%}
+    <div class="loyalty-membership-added__title rte">
+      {{ settings.loyalty_paid_membership_added_text | replace: '[EARN-AMOUNT]', earn_amount }}
+    </div>
+  {%- endif -%}
+  <button class="button button--secondary button--full-width pointer-events-none">
+    {{ settings.loyalty_paid_membership_added_button_text }}
+  </button>
+</div>

@@ -1,0 +1,1 @@
+!function(){"use strict";var e=window.location.search,t=new URLSearchParams(e).get("scroll");t&&document.querySelector(".pbj-rich-text").scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"});setTimeout((function(){t&&document.querySelector(".pbj-rich-text").scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"})}),2e3)}();

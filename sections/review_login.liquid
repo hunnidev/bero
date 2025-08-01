@@ -1,0 +1,179 @@
+{%- liquid
+  assign show_section = false
+  if section.settings.customer_status == 'all'
+    assign show_section = true
+  elsif section.settings.customer_status == 'logged_in' and customer
+    assign show_section = true
+  elsif section.settings.customer_status == 'not_logged_in' and customer == blank
+    assign show_section = true
+  endif
+-%}
+
+{{ 'reviw-login.css' | asset_url | stylesheet_tag }}
+
+{% assign product_list_excluded = section.settings.product_list_excluded | map: 'id' %}
+{% assign latest_order = null %}
+{% assign latest_item = null %}
+
+
+{% for order in customer.orders %}
+  {% unless latest_item %}
+    {% for lime_item in order.line_items %}
+      {% unless product_list_excluded contains lime_item.product.id %}
+        {% assign latest_order = order %}
+        {% assign latest_item = lime_item.product %}
+      {% endunless %}
+    {% endfor %}
+  {% endunless %}
+{% endfor %}
+
+{%- if show_section -%}
+
+  {% if latest_item %}
+    {% assign product = latest_item %}
+
+    <div
+      class="latest-purchase-section"
+      style="margin-top: {{ section.settings.margin }}px; margin-bottom: {{ section.settings.marginbottom }}px;"
+    >
+      <div class="page-width latest-purchase-section-inner">
+        <div class="latest_heading">
+          <h2 class="h2">{{ section.settings.title }}</h2>
+          <a href="{{ section.settings.morelink }}">{{ section.settings.more }}</a>
+        </div>
+
+        <div class="main_latest">
+          <div class="product_card">
+            {% if product.featured_image %}
+              <div class="img_wrap">
+                <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt }}">
+              </div>
+            {% else %}
+              <img src="{{ product | img_url: 'master' }}" alt="{{ product.title }}">
+            {% endif %}
+
+            <span>Purchased on {{ latest_order.created_at | date: '%m/%d/%Y' }}</span>
+            <h3 class="h3">{{ product.title }}</h3>
+            <p>{{ product.price | money }}</p>
+          </div>
+
+          <div class="right_side">
+            <div class="coupon">
+              <p>{{ section.settings.coupon }}</p>
+            </div>
+            <h4>{{ section.settings.title2 }}</h4>
+            <a
+              href="https://junip.co/forms/bero"
+              class="button button--primary"
+            >
+              {{ section.settings.linktext }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "Review",
+  "tag": "section",
+  "class": "bero-taste",
+  "settings": [
+    {
+      "type": "select",
+      "id": "customer_status",
+      "label": "Customer status",
+      "options": [
+        {
+          "value": "logged_in",
+          "label": "Logged in"
+        },
+        {
+          "value": "not_logged_in",
+          "label": "Not logged in"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        }
+      ],
+      "default": "all",
+      "info": "Display this section to all customers, logged in customers, or not logged in customers."
+    },
+    {
+      "type": "product_list",
+      "id": "product_list_excluded",
+      "label": "Excluded products",
+      "info": "Select products that should be excluded from the product review prompt."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main title",
+      "default": "How’d we get on?"
+    },
+    {
+      "type": "text",
+      "id": "more",
+      "label": "More Items text",
+      "default": "see ALL PAST oRDERS"
+    },
+    {
+      "type": "url",
+      "id": "morelink",
+      "label": "More Items Link"
+    },
+    {
+      "type": "text",
+      "id": "coupon",
+      "label": "Coupon message",
+      "default": "Review and earn $1 credit"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Review message",
+      "default": "Review your purchase and earn credits"
+    },
+    {
+      "type": "text",
+      "id": "linktext",
+      "label": "Button text",
+      "default": "Submit a review"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "margin",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "marginbottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review"
+    }
+  ]
+}
+{% endschema %}

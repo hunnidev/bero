@@ -1,0 +1,114 @@
+{% liquid
+    assign isUk = false
+    if localization.market.handle == 'united-kingdom'
+        assign isUk = true
+    endif
+%}
+
+<div class="main-wrapper page-width">
+    <div class="shopify-app-block--klaviyo scroll-trigger animate--slide-in color-{{ section.settings.color_scheme }} form-wrapper">
+        {% if section.settings.us_subtitle != blank %}
+            <h2 class="h5 subtitle">{{ section.settings.us_subtitle }}</h2>
+        {% endif %}
+
+        {% if section.settings.us_title != blank %}
+            <h3 class="h3">{{ section.settings.us_title }}</h3>
+        {% endif %}
+
+        <form action="" class="custom-kl-footer-form{% if isUk %} uk{% endif %}" data-list-id="{{ section.settings.us_list }}" data-list-id-international="{{ section.settings.international_list }}">
+            <!-- Real fields -->
+            <label for="emailctft">Your E-mail</label>
+            <input type="text" id="emailctft" name="emailctft" placeholder="Email*" pattern=".*@.*" required>
+            <label for="zipctft">Zip Code</label>
+            <input type="text" id="zipctft" name="zipctft" {% if isUk %}placeholder="Postcode*" {% else %}placeholder="Zip Code*" {% endif %} required>
+            
+                
+            <!-- H o n e y p o t -->
+            <label class="ohnohoney" tabindex="-1" for="name"></label>
+            <input class="ohnohoney" tabindex="-1" autocomplete="off" type="text" id="name" name="name" placeholder="Your name here">
+            <label class="ohnohoney" tabindex="-1" for="email"></label>
+            <input class="ohnohoney" tabindex="-1" autocomplete="off" type="email" id="email" name="email" placeholder="Your e-mail here">
+
+            <!-- Submit -->
+
+            <button class="kl-custom-footer-submit button" type="submit">SUBMIT</button>
+        </form>
+
+    </div>
+
+      {% comment %} Thank you {% endcomment %}
+
+    <div class="shopify-app-block--klaviyo scroll-trigger animate--slide-in color-{{ section.settings.color_scheme }} form-wrapper thankyou" style="display: none;">
+        
+        {% if section.settings.us_title2 != blank %}
+            <h3 class="h3">{{ section.settings.us_title2 }}</h3>
+        {% endif %}
+        
+        {% if section.settings.us_text2 != blank %}
+            <p class="thankyou-text">{{ section.settings.us_text2 }}</>
+        {% endif %}
+
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Klaviyo footer form",
+    "class": "section custom-klaviyo-footer-form",
+    "tag": "aside",
+    "enabled_on": {
+        "groups": ["footer"]
+    },
+    "settings": [
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "Color scheme",
+            "default": "scheme-1"
+        },
+        {
+            "type": "text",
+            "id": "us_list",
+            "label": "Klaviyo List ID",
+            "info": "Can be obtained by viewing the url upon visiting the list on Klaviyo"
+        },
+        {
+            "type": "text",
+            "id": "international_list",
+            "label": "Klaviyo International List ID",
+            "info": "Can be obtained by viewing the url upon visiting the list on Klaviyo",
+            "default": "Vxj5XK"
+        },
+        {
+            "type": "inline_richtext",
+            "id": "us_title",
+            "label": "Title",
+            "default": "US Title"
+        },
+        {
+            "type": "inline_richtext",
+            "id": "us_subtitle",
+            "label": "Subtitle",
+            "default": "US Subtitle"
+        },
+        {
+            "type": "inline_richtext",
+            "id": "us_title2",
+            "label": "Step 2 Title",
+            "default": "US Title"
+        },
+        {
+            "type": "inline_richtext",
+            "id": "us_text2",
+            "label": "Step 2 Text",
+            "default": "US Text"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Custom Klaviyo footer form",
+            "settings": {}
+        }
+    ]
+}
+{% endschema %}

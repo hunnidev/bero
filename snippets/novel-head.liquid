@@ -1,0 +1,15 @@
+<link rel="preload" href="/a/novel/js/novel-storefront.js?shop={{ shop.permanent_domain }}" as="script">
+<script type="text/javascript" async fetchpriority="high" src="/a/novel/js/novel-storefront.js?shop={{ shop.permanent_domain }}"></script>
+{% if request and request.origin %}
+    {% assign fullUrl = request.origin | append: request.path %}
+{% endif %}<script>
+    try {
+        {% if customer and customer.id %}
+            window.__shopifyCustomerIdFromGlobals__ = "{{ customer.id }}";
+        {% endif %}
+        localStorage.setItem("__novel-storefront-data__", JSON.stringify({
+            validUntil: Date.now() + 1000 * 60 * 60,
+            value: {"version":1,"storefrontName":"BERO","shopifyDomain":"berobrewing.com","storefrontAccessToken":null,"customerAccountsEnabled":true,"authenticateWithShopifyCustomerAccount":false,"integrations":["rivo"],"tokenProducts":[],"gatedExperiences":[],"novelPassUnauthedLink":"https://berobrewing.novel.com"}
+        }));
+    } catch (e) {}
+</script>

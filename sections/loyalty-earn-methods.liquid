@@ -1,0 +1,138 @@
+<div class="color-{{ section.settings.color_scheme }}">
+  <div class="page-width earn-methods">
+    {%- if section.settings.title != blank -%}
+      <div class="earn-methods__title-wrapper">
+        <h2 class="earn-methods__title hidden md:block">
+          {{ section.settings.title }}
+        </h2>
+        <h2 class="earn-methods__title md:hidden text-center">
+          {{ section.settings.mobile_title }}
+        </h2>
+      </div>
+    {%- endif -%}
+    <div class="earn-methods__ticker">
+      <div
+        class="inner"
+        style="--desktop-animation-duration: {{ section.settings.animation_duration }}s; --mobile-animation-duration: {{ section.settings.animation_duration_mobile }}s;"
+      >
+        {%- for block in section.blocks -%}
+          <div class="earn-methods__method">
+            <div class="earn-methods__method-icon">
+              {%- if block.settings.svg_icon != blank -%}
+                {{ block.settings.svg_icon }}
+              {%- elsif block.settings.icon != blank -%}
+                {{ block.settings.icon | image_url: width: 48, height: 48 | image_tag: width: 20, loading: 'lazy' }}
+              {%- endif -%}
+            </div>
+            {{ block.settings.title }}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="earn-methods__pause">
+      <button
+        class="earn-methods__pause-button"
+        aria-label="Pause"
+      >
+        ||
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const ticker = document.querySelector('.earn-methods__ticker .inner');
+    const clone = ticker.cloneNode(true);
+    ticker.parentElement.appendChild(clone);
+
+    const pauseButton = document.querySelector('.earn-methods__pause-button');
+    let isPaused = false;
+
+    pauseButton.addEventListener('click', function () {
+      const innerElements = document.querySelectorAll('.earn-methods__ticker .inner');
+
+      innerElements.forEach((inner) => {
+        if (isPaused) {
+          inner.style.animationPlayState = 'running';
+        } else {
+          inner.style.animationPlayState = 'paused';
+        }
+      });
+
+      pauseButton.textContent = isPaused ? '||' : '▶';
+      isPaused = !isPaused;
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Ways to earn",
+  "tag": "section",
+  "class": "section-earn-methods",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "mobile_title",
+      "label": "Mobile title",
+      "default": "More ways to earn",
+      "info": "Title displayed on mobile devices"
+    },
+    {
+      "type": "number",
+      "id": "animation_duration",
+      "label": "Animation duration (s)",
+      "default": 10
+    },
+    {
+      "type": "number",
+      "id": "animation_duration_mobile",
+      "label": "Mobile Animation duration (s)",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Earn method",
+      "type": "earn_method",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "Icon SVG",
+          "info": "Recommended over image uploads for page speed"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ways to earn",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,93 @@
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'component-modal-video.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+    assign poster = block.settings.cover_image
+    assign video_id = block.settings.video_url.id
+    assign video_alt = block.settings.description
+    assign loop = ''
+
+    if block.settings.enable_video_looping
+    assign loop = '&loop=1&playlist=' | append: video_id
+    endif
+
+    assign alt = 'sections.video.load_video' | t: description: video_alt | escape
+-%}
+
+<div class="collection__cta-card grid__item gradient color-{{ block.settings.color_scheme }} {% unless block.settings.display_mobile %}max-md:hidden{% endunless %}">
+  {%- if block.settings.image != blank -%}
+    {{
+      block.settings.image
+      | image_url: width: 832
+      | image_tag: loading: 'lazy', width: 416, height: 520, class: 'background-image'
+    }}
+  {%- endif -%}
+
+  {%- if block.settings.pre_heading != blank -%}
+    <h3 class="h6">
+      {{ block.settings.pre_heading }}
+    </h3>
+  {%- endif -%}
+
+  {%- if block.settings.title != blank -%}
+    <h4 class="{{ block.settings.title_size }} normal-case">
+      {{ block.settings.title }}
+    </h4>
+  {%- endif -%}
+
+  {%- if block.settings.cta_text != blank -%}
+    <modal-opener
+    data-modal="#PopupModal-{{ block.id }}"
+    >
+        <button
+        class="button button--primary"
+        >
+        {{ block.settings.cta_text }}
+        </button>
+    </modal-opener>
+    <modal-dialog
+        id="PopupModal-{{ block.id }}"
+        class="modal-video media-modal"
+        >
+        <div
+            class="modal-video__content"
+            role="dialog"
+            aria-label="{{ block.settings.description | escape }}"
+            aria-modal="true"
+            tabindex="-1"
+        >
+            <button
+            id="ModalClose-{{ block.id }}"
+            type="button"
+            class="modal-video__toggle"
+            aria-label="{{ 'accessibility.close' | t }}"
+            >
+            {% render 'icon-close' %}
+            </button>
+            <div class="modal-video__content-info">
+                <deferred-media class="modal-video__video template-popup">
+                    <template>
+                    {%- if block.settings.video_url.type == 'youtube' -%}
+                        <iframe
+                        src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+                        class="js-youtube"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen
+                        title="{{ section.settings.description | escape }}"
+                        ></iframe>
+                    {%- else -%}
+                        <iframe
+                        src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+                        class="js-vimeo"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen
+                        title="{{ section.settings.description | escape }}"
+                        ></iframe>
+                    {%- endif -%}
+                    </template>
+                </deferred-media>
+            </div>
+        </div>
+    </modal-dialog>
+  {%- endif -%}
+</div>

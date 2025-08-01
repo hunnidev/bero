@@ -1,0 +1,59 @@
+{%- for tag in product.tags -%}
+  {%- if tag contains 'badge:' -%}
+    {%- assign badge_text = tag | split: 'badge:' | last -%}
+    {% assign badge_img = false %}
+    {% assign png_img = badge_text | handleize | append: '.png' %}
+    {% assign png_img = images[png_img] %}
+    
+    {% assign jpg_img = badge_text | handleize | append: '.jpg' %}
+    {% assign jpg_img = images[jpg_img] %}
+
+    {% if png_img != blank %}
+      {% assign badge_img = png_img %}
+    {% endif %}
+    {% if jpg_img != blank %}
+      {% assign badge_img = jpg_img %}
+    {% endif %}
+
+    <span class="badge">
+      {% if badge_img and badge_img != blank %}
+        <img class="badge-img" src="{{ badge_img | image_url: width: 100 }}">
+      {% endif %}
+      {{ badge_text }}
+    </span>
+  {%- endif -%}
+{%- endfor -%}
+
+{% if localization.country.iso_code == 'GB' %}
+
+    <span class="badge js-preorder-badge preorder-badge{% if product.selected_or_first_available_variant.metafields.custom.uk_preorder != true %} hide{% endif %}"> {{ 'products.product.preorder_badge' | t }} </span>
+
+{% else %}
+
+    <span class="badge js-preorder-badge preorder-badge{% if product.selected_or_first_available_variant.metafields.custom.preorder != true %} hide{% endif %}"> {{ 'products.product.preorder_badge' | t }} </span>
+
+{% endif %}
+    
+
+{%- if product.tags contains 'member-only' -%}
+  <span class="member-only-badge badge">
+    {{ 'products.product.members_only' | t }}
+  </span>
+{%- endif -%}
+{% comment %}
+  {%- if product.available == false -%}
+    <span
+      id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}"
+      class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+    >
+      {{- 'products.product.sold_out' | t -}}
+    </span>
+  {%- elsif product.compare_at_price > product.price and product.available -%}
+    <span
+      id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}"
+      class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+    >
+      {{- 'products.product.on_sale' | t -}}
+    </span>
+  {%- endif -%}
+{% endcomment %}

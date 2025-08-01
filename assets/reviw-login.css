@@ -1,0 +1,240 @@
+ .latest_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.latest_heading a {
+    display: flex;
+    min-height: 34.56px;
+    justify-content: center;
+    align-items: center;
+    gap: 5.76px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.latest_heading {
+    margin-bottom: 40px;
+}
+
+.main_latest {
+    background-color: #F9F6EF;
+    display: flex;
+    gap: 64px;
+    padding: 24px 40px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main_latest img {
+    max-width: 416px;
+    max-height: 416px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.right_side,
+.product_card {
+    width: 100%;
+}
+
+.product_card p {
+    font-size: 16px;
+}
+
+.product_card span {
+    background-color: #EAE5DA;
+    padding: 6px 9px;
+    color: var(--Text-Icon-primary, #000);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 135%; /* 18.9px */
+    display: inline-block;
+}
+
+.product_card h3 {
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.latest-purchase-section {
+    padding: 40px 16px 16px;
+    background-color: #EAE5DA;
+}
+
+.coupon {
+    margin-bottom: 24px;
+}
+
+.coupon p {
+    background-color: #004F3C;
+    padding: 8px;
+    color: var(--Brand-Colors-Wheat, #EAE5DA);
+    font-size: var(--Units-16, 16px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 235px;
+}
+
+.right_side h4 {
+    margin-bottom: 24px;
+    color: var(--Text-Icon-primary, #000);
+    font-family: var(--Font-Family-Secondary-Heading, "ABC Whyte");
+    font-size: var(--Units-32, 32px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%; /* 40px */
+    text-transform: uppercase;
+}
+
+.img_wrap {
+    background-color: #EAE5DA;
+    justify-content: center;
+    margin-bottom: 16px;
+    align-items: center;
+    aspect-ratio: 1;
+    display: flex;
+}
+
+.img_wrap img {
+    padding: 10px;
+}
+
+.latest-purchase-section h4,
+.latest-purchase-section .product_card h3 {
+    font-weight: 500;
+    font-family: var(--font-body-family);
+    letter-spacing: normal;
+}
+
+.latest-purchase-section .product_card h3 {
+    margin-bottom: 5px;
+    font-size: 28px;
+}
+
+.latest-purchase-section .latest_heading {
+    text-underline-offset: 5px;
+}
+
+@media only screen and (max-width: 699px) {
+    .latest_heading {
+        flex-direction: column;
+        align-items: baseline;
+        gap: 24px;
+    }
+
+    .main_latest {
+        flex-direction: column;
+    }
+
+    .main_latest img {
+        max-width: 120px;
+    }
+
+    .latest-purchase-section.container {
+        padding: 40px 16px 16px 16px;
+    }
+
+    .main_latest {
+        padding: 24px 16px;
+    }
+
+    .product_card {
+        width: 100%;
+    }
+
+    .right_side {
+        width: 100%;
+    }
+    .right_side .button {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .latest-purchase-section-inner {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 450px) {
+    .main_latest img {
+        max-width: 160px;
+    }
+}
+
+
+@media (min-width: 800px) {
+    .latest-purchase-section {
+        padding: 64px 16px;
+    }
+
+    .main_latest {
+        flex-direction: row;
+    }
+
+    .latest-purchase-section .right_side {
+        flex: 1;
+    }
+
+    .right_side,
+    .product_card {
+        width: auto;
+    }
+
+    .img_wrap {
+        width: 100%;
+        height: 100%;
+        min-width: 316px;
+        max-width: 316px;
+        max-height: 316px;
+        padding: 0;
+        aspect-ratio: 1;
+    }
+
+    .img_wrap img {
+        object-fit: contain;
+        padding: 40px;
+        height: auto;
+        width: 100%;
+    }
+
+    .latest-purchase-section .main_latest {
+        margin-bottom: 40px;
+    }
+
+    .img_wrap {
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        max-height: 300px;
+        padding: 0;
+    }
+}
+
+
+@media (min-width: 1050px) {
+    .latest-purchase-section .main_latest {
+        gap: 104px;
+    }
+
+    .right_side {
+        margin-bottom: 40px;
+    }
+
+    .img_wrap {
+        max-width: 416px;
+        max-height: 416px;
+        min-width: 416px;
+        padding: 0;
+    }
+
+    .img_wrap img {
+        max-width: 140px;
+        padding: 0;
+    }
+}

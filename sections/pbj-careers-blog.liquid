@@ -1,0 +1,225 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- assign pagination_count = 4 -%}
+
+{%- paginate blog.articles by pagination_count -%}
+  <div class="main-blog pbj-careers-blog color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding" x-data="
+      loadMore({
+        nextPageUrl: '{{ paginate.next.url }}',
+        visibleItemCount: {{ pagination_count | at_most: paginate.items }},
+        totalItems: {{ paginate.items }}
+      })
+    ">
+    <div class="page-width">
+      <div class="flex justify-between md:items-center max-md:flex-col">
+        <h2 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} careers-title">
+          JOB OPENINGS
+        </h2>
+        <p>{{ blog.articles_count }} listings</p>
+      </div>
+
+      {% comment %} Commenting in case filtering is needed in the future {% endcomment %}
+
+      <!--
+        <select name="tag" id="articles-filter">    <option value="" disabled selected>--Filter by Tags--</option>
+          <option value="all">All Articles</option>
+          {% for tag in blog.all_tags %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endfor %}
+        </select>
+      -->
+      <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %} {% if section.settings.layout == 'stacked' %}blog-articles--stacked{% endif %}" data-load-more-grid>
+        {%- for article in blog.articles -%}
+          <div
+            class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+            {% endif %}>
+            {% if section.settings.layout == 'stacked' %}
+              {% render 'simple-career-article-card'
+                , article: article
+                , show_date: section.settings.show_date
+                , show_author: section.settings.show_author
+                , read_more_txt: section.settings.read_more_txt
+              %}
+            {% else %}
+              {%- render 'article-card'
+                , article: article
+                , media_height: section.settings.image_height
+                , media_aspect_ratio: article.image.aspect_ratio
+                , show_image: section.settings.show_image
+                , show_date: section.settings.show_date
+                , show_author: section.settings.show_author
+                , show_excerpt: true,
+                read_more_txt: section.settings.read_more_txt
+              -%}
+            {% endif %}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- render 'pagination'
+        , paginate: paginate -%}
+    </div>
+  </div>
+{%- endpaginate -%}
+
+{% comment %} Commenting in case filtering is needed in the future {% endcomment %}
+
+{% comment %}
+  <script>
+  //Initialize selected tag
+
+  if (window.location.pathname.includes("/tagged/")) {
+  const selectedTag = window.location.pathname.split("/")[4];
+  document.querySelector(".selected-tag").innerHTML = selectedTag.replace("-", " ");
+  }
+
+  //Filter articles by tag
+
+  const articlesFilter = document.getElementById("articles-filter");
+  articlesFilter.addEventListener("change", function(e) {
+  const selectedTag = this.value;
+  if (selectedTag === "all") {
+  window.location = "/blogs/{{ blog.handle }}";
+  } else {
+  window.location = `/blogs/{{ blog.handle }}/tagged/${selectedTag}`;
+  }
+  });
+  </script>
+{% endcomment %}
+
+{% schema %}
+  {
+    "name": "PBJ - Careers Blog",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "info": "t:sections.all.colors.has_cards_info",
+        "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.main-blog.settings.header.content"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "options": [
+          {
+            "value": "grid",
+            "label": "t:sections.main-blog.settings.layout.options__1.label"
+          },
+          {
+            "value": "collage",
+            "label": "t:sections.main-blog.settings.layout.options__2.label"
+          },
+          {
+            "value": "stacked",
+            "label": "Simple Stack"
+          }
+        ],
+        "default": "collage",
+        "label": "t:sections.main-blog.settings.layout.label",
+        "info": "t:sections.main-blog.settings.layout.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_image",
+        "default": true,
+        "label": "t:sections.main-blog.settings.show_image.label"
+      },
+      {
+        "type": "select",
+        "id": "image_height",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "t:sections.main-blog.settings.image_height.options__1.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.main-blog.settings.image_height.options__2.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.main-blog.settings.image_height.options__3.label"
+          },
+          {
+            "value": "large",
+            "label": "t:sections.main-blog.settings.image_height.options__4.label"
+          }
+        ],
+        "default": "medium",
+        "label": "t:sections.main-blog.settings.image_height.label",
+        "info": "t:sections.main-blog.settings.image_height.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_date",
+        "default": true,
+        "label": "t:sections.main-blog.settings.show_date.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "default": false,
+        "label": "t:sections.main-blog.settings.show_author.label"
+      },
+      {
+        "type": "text",
+        "id": "read_more_txt",
+        "label": "Read more text"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:sections.main-blog.settings.paragraph.content"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ]
+  }
+{% endschema %}

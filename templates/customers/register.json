@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_image_Uit87t": {
+      "type": "pbj-image",
+      "custom_css": [
+        "img {margin-bottom: -20px;}",
+        "@media only screen and (max-width: 768px) {img {padding-top: 3rem; }}"
+      ],
+      "name": "Image - pbj",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "image": "shopify://shop_images/Club_BERO_full_logo.png",
+        "image_width": 25,
+        "display": ""
+      }
+    },
+    "main": {
+      "type": "main-register",
+      "settings": {
+        "color_scheme": "scheme-3c04087a-847f-465e-a462-a2d28c439f38",
+        "descriptive_text": "Create a free Club BERO account to instantly unlock free shipping on all orders $50+, $5 in welcome credits, credits with every purchase, and so much more.",
+        "password_text": "",
+        "legal_text": "By creating an account, you agree to our <a href=\"/pages/privacy-policy\" target=\"_blank\">privacy policy</a> and <a href=\"https://berobrewing.com/pages/us-laws-compliance\" target=\"_blank\">terms of use</a>.",
+        "beromaster_text": "It's pretty simple, really. Sign up, check out, cheers, you're in! Three steps to instantly access your BEROMASTER benefits.",
+        "novel_text": "Sign up and download your exclusive Club BERO wallet pass.",
+        "padding_top": 36,
+        "padding_bottom": 100
+      }
+    },
+    "footer_newsletter_background_hdtzE8": {
+      "type": "footer-newsletter-background",
+      "settings": {
+        "background_color": "#eae5da",
+        "padding": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_image_Uit87t",
+    "main",
+    "footer_newsletter_background_hdtzE8"
+  ]
+}

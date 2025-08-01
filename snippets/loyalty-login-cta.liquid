@@ -1,0 +1,23 @@
+<div class="loyalty-login-cta gradient color-{{ settings.loyalty_login_cta_color_scheme }}">
+  <div>
+    {%- if settings.loyalty_login_cta_title -%}
+      <h3 class="loyalty-login-cta__title">
+        {{ settings.loyalty_login_cta_title |  replace: '$', cart.currency.symbol }}        
+      </h3>
+    {%- endif -%}
+    {%- if settings.loyalty_login_cta_text -%}
+      <div class="rte">
+        <p>
+          {{ settings.loyalty_login_cta_text }}
+        </p>
+      </div>
+    {%- endif -%}
+    {%- if settings.loyalty_login_cta_small -%}
+      <div class="rte loyalty-login-cta__small">
+        <p class="text-small">
+          {{ settings.loyalty_login_cta_small }}
+        </p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

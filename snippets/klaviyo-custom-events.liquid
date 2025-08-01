@@ -1,0 +1,50 @@
+{% if customer %}
+  {% assign region = localization.country.iso_code %}
+  {% assign customer_email = customer.email %}
+  {% assign current_url = request.host | append: request.path %}
+  <script>
+    let klaviyoRegion = '{{ region }}';
+    let klaviyoUser = {
+      'email' : '{{ customer_email }}',
+    }
+    if (klaviyoRegion.includes('US')) {
+      klaviyoUser.sign_up_source = 'US';
+    } else if(klaviyoRegion.includes('UK')) {
+      klaviyoUser.sign_up_source = 'GB';
+    } else {
+      klaviyoUser.sign_up_source = 'INT';
+    }
+    console.log('klaviyoUser: ', klaviyoUser)
+  </script>
+  {% if template contains 'index' %}
+  {% elsif template == 'collection' %}
+  {% elsif template == 'product' %}
+    {{ customer.email }}
+    {% assign compare_price = '$0.00' %}
+    {% assign product_compare_at_price = product.compare_at_price | plus: 0 %}
+    {% assign product_price = product.price | plus: 0 %}
+    {% if product_compare_at_price > product_price %}
+      {% assign compare_price = product_compare_at_price %}
+    {% endif %}
+    <script>
+      let klaviyoEvent = `${klaviyoRegion} Viewed Product`
+      let klaviyoProduct = {
+        'Name': '{{ product.title }}',
+        'ProductID': '{{ product.id }}',
+        'ImageURL': 'https://{{ product.featured_image }}',
+        'URL': 'https://{{ current_url }}',
+        'Brand': '{{ product.vendor }}',
+        'Price': '{{ product.price | money }}',
+        'Value': '{{ product.price | money_without_currency }}',
+        'CompareAtPrice': '{{ compare_price | money }}'
+      }
+      console.log(klaviyoEvent, klaviyoProduct)
+      // Pushing custom klaviyo event
+      klaviyo.identify(klaviyoUser, klaviyo.track(klaviyoEvent, klaviyoProduct)).then(() => { 
+        console.log(`--> ${klaviyoEvent} | ${klaviyoUser.email}`);
+      });
+    </script>
+  {% endif %}
+{% else %}
+  <h1>not signed in</h1>
+{% endif %}

@@ -1,0 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.shipping.json",
+  "context": {
+    "market": "united-kingdom"
+  },
+  "sections": {
+    "pbj_rich_text_gLcBbH": {
+      "settings": {},
+      "blocks": {
+        "text_9UADmF": {
+          "settings": {
+            "text": "<p>Once you place an order through our website, you’ll receive an order confirmation email as well as regular email updates about your order status. You can always log in to your BERO account and view your orders and their associated statuses and tracking number. If you have the Shop app, you can also track your order status in the app.</p>"
+          }
+        },
+        "heading_RFUarN": {
+          "disabled": true,
+          "settings": {}
+        },
+        "text_43GfVc": {
+          "disabled": true,
+          "settings": {}
+        },
+        "text_GHmX9c": {
+          "settings": {
+            "text": "<ul><li>As you can imagine, shipping beverages can be quite costly due to weight and we've done our best to absorb most of the costs. Depending on your Club BERO enrollment, we offer three shipping tiers:</li><li>Non-members: complimentary ground shipping with any purchase above £65 </li><li>Club BERO Free Members: complimentary ground shipping for any purchase above £50 </li><li>Club BERO BEROMASTERS: complimentary ground shipping on all orders with no minimum</li></ul><p>For orders under our complimentary shipping thresholds, we charge a £5 flat fee.</p>"
+          }
+        },
+        "text_LmHpPV": {
+          "settings": {
+            "text": "<p>You can expect your order to arrive within 2-3 business days. Orders of more than 24 beers will be shipped in split shipments. Please check the tracking information contained in your order notifications (email/SMS) for additional packages under the same tracking number.</p>"
+          }
+        },
+        "text_KbdkdY": {
+          "settings": {
+            "text": "<p>We do not accept returns for our beer because we cannot guarantee the quality of the liquid when the product travels back and forth. If you experience any issues or the beer does not meet your expectations, please reach out to <a href=\"mailto:support@bero.com\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>. We are committed to ensuring our consumers are happy and will work with you to find a solution.</p>"
+          }
+        },
+        "heading_V3n8Nh": {
+          "disabled": true,
+          "settings": {}
+        },
+        "text_hwLPtH": {
+          "disabled": true,
+          "settings": {}
+        },
+        "text_VrqtRE": {
+          "settings": {
+            "text": "<ul><li>If you would like to change or cancel your order, please contact <a href=\"mailto:support@bero.com\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>. Be sure to change or cancel your order before it has shipped.</li><li>If you would like to cancel a gift card order, please contact <a href=\"mailto:support@berobrewing.com\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a> order within 14 days of purchase or scheduled send to recipient (whichever is later). The gift card must be unused in order to cancel.</li></ul>"
+          }
+        }
+      }
+    }
+  }
+}

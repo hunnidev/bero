@@ -1,0 +1,22 @@
+{%- assign svgs = section.blocks | where: 'type', 'svg' -%}
+
+{%- if svgs.size > 0 -%}
+  <div class="collection-footer">
+    {%- for block in svgs -%}
+      {%- if block.settings.svg_code_desktop != blank -%}
+        <div
+          {% if block.settings.svg_code_mobile != blank %}
+            class="hidden md:block"
+          {% endif %}
+        >
+          {{ block.settings.svg_code_desktop }}
+        </div>
+      {%- endif -%}
+      {% if block.settings.svg_code_mobile != blank %}
+        <div class="md:hidden">
+          {{ block.settings.svg_code_mobile }}
+        </div>
+      {% endif %}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

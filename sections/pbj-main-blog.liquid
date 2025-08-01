@@ -1,0 +1,340 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .select-wrapper:after {
+    background-image: url({{ 'icon-chevron--white.svg' | asset_url }});
+  }
+{%- endstyle -%}
+
+{%- assign pagination_count = 5 -%}
+
+{%- paginate blog.articles by pagination_count -%}
+  <div
+    class="main-blog pbj-main-blog color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding"
+    x-data="
+      loadMore({
+        nextPageUrl: '{{ paginate.next.url }}',
+        visibleItemCount: {{ pagination_count | at_most: paginate.items }},
+        totalItems: {{ paginate.items }}
+      })
+    "
+  >
+    <div class="page-width">
+      <h2 class="selected-tag">All</h2>
+
+      <div class="select-wrapper">
+        <label for="articles-filter" class="hidden">Filter by tags</label>
+        <select name="tag" id="articles-filter" onkeypress="if(event.key === 'Enter') {this.focus(); this.dispatchEvent(new MouseEvent('mousedown')); }">
+          <option value="" disabled selected>--Filter by Tags--</option>
+          <option value="all">All</option>
+          {% for tag in blog.all_tags %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% if template.suffix == 'events' %}
+        <div class="select-wrapper">
+        <label for="location-filter" class="hidden">Filter by location</label>
+          <select id="location-filter" class="md:ml-8">
+            <option value="" disabled selected>--Filter by Location--</option>
+            <option value="all">All</option>
+          </select>
+        </div>
+      {% endif %}
+
+      <div
+        class="blog-articles js-blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %} {% if section.settings.layout == 'stacked' %}blog-articles--stacked{% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        data-load-more-grid
+      >
+        {%- for article in blog.articles -%}
+          <div
+            class="blog-articles__article article"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            {% if section.settings.layout == 'stacked' %}
+              {% render 'simple-article-card',
+                article: article,
+                show_date: section.settings.show_date,
+                show_author: section.settings.show_author,
+                read_more_txt: section.settings.read_more
+              %}
+            {% else %}
+              {%- render 'article-card',
+                article: article,
+                media_height: section.settings.image_height,
+                media_aspect_ratio: article.image.aspect_ratio,
+                show_image: section.settings.show_image,
+                show_date: section.settings.show_date,
+                show_author: section.settings.show_author,
+                show_excerpt: true
+              -%}
+            {% endif %}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- render 'pagination', paginate: paginate -%}
+    </div>
+  </div>
+{%- endpaginate -%}
+
+<script>
+  //Initialize selected tag
+
+  if (window.location.pathname.includes('/tagged/')) {
+  const articlesFilter = document.getElementById('articles-filter');
+  const selectedTag = window.location.pathname.split('/')[4];
+    articlesFilter.value = selectedTag;
+    document.querySelector('.selected-tag').innerHTML = selectedTag.replace('-', ' ');
+  }
+
+  //Filter articles by tag
+  const articlesFilter = document.getElementById('articles-filter');
+  articlesFilter.addEventListener('change', function (e) {
+    const selectedTag = this.value;
+    const url = `/blogs/{{ blog.handle }}${selectedTag !== 'all' ? `/tagged/${selectedTag}`: ''}`
+
+    window.history.pushState({}, null, url);
+
+    fetch(url)
+    .then(res => res.text())
+    .then(responseText => {
+      const html = new DOMParser().parseFromString(responseText, 'text/html');
+
+      document.querySelector('.js-blog-articles').innerHTML = html.querySelector('.js-blog-articles').innerHTML
+      document.querySelector('title').innerHTML = html.querySelector('title').innerHTML
+
+      {% if template.suffix == 'events' %}
+        getLocations();
+      {% endif %}
+    })
+  });
+
+  {% if template.suffix == 'events' %}
+    //Filter articles by location
+
+    const locationFilter = document.getElementById('location-filter');
+
+    // Get all locations from currently displayed events
+
+    function getLocations() {
+      let events = document.querySelectorAll('.blog-articles__article');
+      let locations = [];
+
+      events.forEach(event => {
+        const location = event.querySelector('.location').innerHTML.split(',')[0];
+        if (!locations.includes(location)) {
+          locations.push(location);
+        }
+      })
+  
+  
+      // Add locations to location filter
+
+      let currentOptionsEls = locationFilter.querySelectorAll('option');
+      currentOptionsEls.forEach((option, i) => {
+        if (i > 1) option.remove();
+      })
+
+      for (let i = 0; i < locations.length; i++) {
+
+        const location = locations[i];
+
+        const option = document.createElement('option');
+        option.value = location;
+        option.textContent = location;
+        locationFilter.appendChild(option);
+      }
+    }
+
+    getLocations();
+
+
+    //Filter
+
+    function filterEvents(e){
+      let events = document.querySelectorAll('.blog-articles__article');
+
+      if (this.value == 'all') {
+          events.forEach(evt => {
+            evt.style.display = 'block';
+        })
+       } else {
+        events.forEach(evt => {
+          if (evt.querySelector('.location').innerText.includes(this.value)) {
+            evt.style.display = 'block';
+          } else {
+            evt.style.display = 'none';
+          }
+        })
+       }
+  
+       localStorage.setItem('filter-location', this.value);
+    }
+      
+    locationFilter.addEventListener('change', filterEvents);
+
+    //Initialize selected location
+
+  let events = document.querySelectorAll('.blog-articles__article');
+
+  let currentLocations = Array.from(locationFilter.querySelectorAll('option')).map(option => option.value);
+
+  let filterLocation = localStorage.getItem('filter-location');
+  if (filterLocation && currentLocations.includes(filterLocation)) {
+    let locationFilter = document.querySelector('#location-filter');
+    locationFilter.value = filterLocation;
+
+    if (locationFilter.value == 'all') {
+        events.forEach(evt => {
+          evt.style.display = 'block';
+      })
+     } else {
+      events.forEach(evt => {
+        if (evt.querySelector('.location').innerText.includes(locationFilter.value)) {
+          evt.style.display = 'block';
+        } else {
+          evt.style.display = 'none';
+        }
+      })
+     }
+
+  }
+  {% endif %}
+</script>
+
+{% schema %}
+{
+  "name": "PBJ - Main Blog",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        },
+        {
+          "value": "stacked",
+          "label": "Simple Stack"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label",
+      "info": "t:sections.main-blog.settings.layout.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label",
+      "info": "t:sections.main-blog.settings.image_height.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "text",
+      "id": "read_more",
+      "default": "READ NOW",
+      "label": "Read More Text"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

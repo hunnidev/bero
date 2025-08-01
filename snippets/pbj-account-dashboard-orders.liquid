@@ -1,0 +1,159 @@
+<div style="display: none;" class="customer-orders-container {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div>
+    <h1 class="h3 account-page-title">{{ 'customer.orders.dashboard_title' | t }}</h1>
+  </div>
+
+  <div class="ad-container">
+    <div class="ad-section {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="ad-section-content">
+        {%- if customer.orders.size > 0 -%}
+          {%- for order in customer.orders -%}
+            <div class="order-status flex justify-between items-center">
+              <p class="max-md:mr-4">
+                {% if order.cancelled %}
+                  Order Status: Canceled
+                {% else %}
+                  {%- if order.fulfillment_status == "fulfilled" -%}
+                    Order Status: Complete
+                  {%- elsif order.fulfillment_status == "partial" -%}
+                    Order Status: Processing
+                  {%- elsif order.fulfillment_status == "unfulfilled" -%}
+                    Order Status: Processing
+                  {% endif %}
+                {% endif %}
+              </p>
+              {% liquid
+                assign stock_threshold = settings.stock_threshold
+                if localization.country.iso_code == 'GB'
+                  assign stock_threshold = settings.stock_threshold_uk
+                endif
+              %}
+               {% capture order_details %}
+                 {% for item in order.line_items %}
+                  {% liquid
+                    assign ordered_product = all_products[item.product.handle]
+                    assign assign is_sold_out = false
+                    for variant in ordered_product.variants
+                      if item.variant_id == variant.id
+                        if variant.inventory_quantity < stock_threshold or variant.metafields.custom.sold_out == true
+                          assign assign is_sold_out = true
+                        endif
+                      endif
+                    endfor
+                  %}
+                  {% unless is_sold_out %}{ id: {{ item.variant_id }}, quantity: {{ item.quantity }}, title: '{{ item.title | escape }}' }{% unless forloop.last %},{% endunless %}{% endunless %}
+                {% endfor %}
+               {% endcapture %}
+              <div x-data="
+                  reorder({
+                    oosErrorMsg: '{{ 'customer.dashboard.reorder_oos_error' | t }}',
+                    orderDetails: [{{ order_details }}]})
+                    " class="account__reorder-cta-wrapper">
+                    {% comment %} {% for item in order.line_items %}
+                      { id: {{ item.variant_id }}, quantity: {{ item.quantity }}, title: '{{ item.title | escape }}' }{% unless forloop.last %},{% endunless %}
+                    {% endfor %} {% endcomment %}
+                <button
+                  class="account__reorder-cta"
+                  @click="reorder"
+                  :disabled="loading">
+                  <span x-show="!loading">{{ 'customer.dashboard.reorder' | t }}</span>
+                  <span x-show="loading">{{ 'customer.dashboard.reordering' | t }}...</span>
+                </button>
+                {% comment %}
+                <div data-test="alex">
+                  {% for item in order.line_items %}
+                    {% assign ordered_product = all_products[item.product.handle] %}
+                    {% for variant in ordered_product.variants %}
+                      {% if item.variant_id == variant.id %}
+                        <div
+                          data-product-id="{{ variant.id }}"
+                          data-product-title="{{ item.title }}"
+                          data-metafield-sold-out="{{ variant.metafields.custom.sold_out }}"
+                          data-inventory-quantity="{{ variant.inventory_quantity }}"
+                          data-stock-threshold="{{ stock_threshold }}"
+                        >
+                          {% if variant.inventory_quantity < stock_threshold %}SO{% else %}AV{% endif %}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+                {% endcomment %}
+              </div>
+
+              <a
+                href="{{ order.customer_url }}"
+                aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
+                class="account__view-order-cta">
+                {{ 'customer.dashboard.view_order' | t }}
+              </a>
+            </div>
+
+            <div class="order-details">
+              <div class="step">
+                <p>{{ 'customer.dashboard.order_number' | t }}</p>
+                <p>{{ order.name }}</p>
+              </div>
+
+              <div class="step">
+                <p>{{ 'customer.dashboard.order_placed' | t }}</p>
+                <p>{{ order.created_at | date: '%b.%d, %Y' }}</p>
+              </div>
+
+              <div class="step">
+                <p>{{ 'customer.dashboard.order_total' | t }}</p>
+                <p>{% render 'order-line-item-net-total', order: order %}</p>
+              </div>
+            </div>
+
+            <div class="order-imgs">
+              <p>
+                {{ order.item_count }}
+                {{ 'customer.dashboard.order_items' | t }}
+              </p>
+              
+              <div class="img-block">
+                {%- for line_item in order.line_items -%}
+                  {% liquid
+                    assign ordered_product = all_products[line_item.product.handle]
+                    assign assign item_sold_out = false
+                    for variant in ordered_product.variants
+                      if line_item.variant_id == variant.id
+                        if variant.inventory_quantity < stock_threshold or variant.metafields.custom.sold_out == true
+                          assign assign item_sold_out = true
+                        endif
+                      endif
+                    endfor
+                  %}
+                  {%- if forloop.index <= 3 -%}
+                    <a href="{{ line_item.url }}" 
+                      class="img-container{% if item_sold_out == true %} variant-item__sold-out{% endif %}"
+                      {% if item_sold_out == true %}
+                        title="{{ line_item.title }} is out of stock"
+                      {% endif %}
+                    >
+                      {{ line_item.image | image_url: height: 120 | image_tag }}
+                    </a>
+                  {%- else -%}
+                    {%- assign remaining_items = order.item_count | minus: forloop.index | plus: 1 -%}
+                    <a href="{{ order.customer_url }}" 
+                      class="img-container blank{% if item_sold_out == true %} variant-item__sold-out{% endif %}"
+                      {% if item_sold_out == true %}
+                        title="{{ line_item.title }} is out of stock"
+                      {% endif %}
+                    >
+                      +{{ remaining_items }}</a>
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+
+        {%- else -%}
+          <p>{{ 'customer.orders.none' | t }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

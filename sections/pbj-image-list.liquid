@@ -1,0 +1,405 @@
+{%- liquid
+  assign show_section = false
+  if section.settings.customer_status == 'all'
+    assign show_section = true
+  elsif section.settings.customer_status == 'logged_in' and customer
+    assign show_section = true
+  elsif section.settings.customer_status == 'not_logged_in' and customer == blank
+    assign show_section = true
+  endif
+
+  assign item_eval = section.blocks.size | modulo: 2
+  if item_eval != 0
+    assign last_item = 'last-item-odd'
+  else
+    assign last_item = 'last-item-even'
+  endif
+-%}
+
+{%- if show_section -%}
+  {%- if section.blocks.size > 0 -%}
+    {%- style -%}
+      #shopify-section-{{ section.id }} {
+        --image-list-items-per-row: {{ 2 | at_most: section.blocks.size }};
+        --image-list-item-border-color: {{ section.settings.image_item_border.rgb }};
+        --image-list-gap-row: {{ section.settings.gap_row_mobile }}rem;
+        --image-list-gap-column: {{ section.settings.gap_column_mobile }}rem;
+        --image-list-items-max-width: {{ section.settings.image_max_width }}px;
+      }
+
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+      }
+
+      @media screen and (min-width: 769px) {
+
+        #shopify-section-{{ section.id }} {
+          --image-list-items-per-row: {{ section.settings.items_per_row | at_most: section.blocks.size }};
+          --image-list-gap-row: {{ section.settings.gap_row }}rem;
+          --image-list-gap-column: {{ section.settings.gap_column }}rem;
+          --image-list-items-max-width: {{ section.settings.image_max_width }}px;
+        }
+
+        .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+      }
+    {%- endstyle -%}
+
+    <div class="section-{{ section.id }}-padding content-container color-{{ section.settings.color_scheme }} gradient {% unless section.settings.full_width %} page-width{% endunless %}">
+      <div class="container {{ section.settings.content_alignment }}">
+        {%- if section.settings.preheading != blank -%}
+          {% if section.settings.h2_preheading %}
+            <h2
+          {% else %}
+            <p
+          {% endif %}
+            class="mb-16 h6 h6--primary {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: 1;"
+            {% endif %}
+          >
+            {{ section.settings.preheading }}
+          {% if section.settings.h2_preheading %}
+            </h2>
+          {% else %}
+            </p>
+          {% endif %}
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2
+            class="h4 {% if section.settings.show_title_eyebrow %} title-eyebrow{% endif %} {% if section.settings.left_eyebrow %} left-eyebrow{% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: 2;"
+            {% endif %}
+          >
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        <div class="image-list {% if section.settings.use_flex_container %}flex-container{% endif %}">
+          {%- for block in section.blocks -%}
+            {%- capture block_content -%}
+              {%- if block.settings.image != blank -%}
+                <picture {% if section.settings.gray_img %}class="grayscale"{% endif %}>
+                  {%- assign sizes = '(max-width: 699px) 100vw, 50vw' -%}
+                  {{- block.settings.image | image_url: width: 600 | image_tag: sizes: sizes, reveal-on-scroll: section.settings.reveal_on_scroll -}}
+                </picture>
+              {%- else -%}
+                {{- 'image' | placeholder_svg_tag: 'placeholder' -}}
+              {%- endif -%}
+            {%- endcapture -%}
+
+            {%- if block.settings.link != blank -%}
+              <a {% if block.settings.open_in_new_tab %}target="_blank"{% endif %} class="image-list__item {% if forloop.last %}{{ last_item }}{% endif %}" style="scale: {{ block.settings.scale | divided_by: 10.0 }};" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                {{- block_content -}}
+                {%- if block.settings.title != blank -%}
+                  <h3 class="{{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>
+                    {{ block.settings.title }}
+                  </h3>
+                {%- endif -%}
+              </a>
+            {%- else -%}
+              <div class="image-list__item {% if forloop.last %}{{ last_item }}{% endif %}" style="scale: {{ block.settings.scale | divided_by: 10.0 }};" {{ block.shopify_attributes }}>
+                {{- block_content -}}
+                {%- if block.settings.title != blank -%}
+                  <h3 class="{{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>
+                    {{ block.settings.title }}
+                  </h3>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Image list - pbj",
+  "class": "section shopify-section--image-list",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "customer_status",
+      "label": "Customer status",
+      "options": [
+        {
+          "value": "logged_in",
+          "label": "Logged in"
+        },
+        {
+          "value": "not_logged_in",
+          "label": "Not logged in"
+        },
+        {
+          "value": "all",
+          "label": "All"
+        }
+      ],
+      "default": "all",
+      "info": "Display this section to all customers, logged in customers, or not logged in customers."
+    },
+
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "preheading",
+      "label": "Preheading"
+    },
+    {
+      "type": "checkbox",
+      "id": "h2_preheading",
+      "label": "Preheading as h2",
+      "default": false
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Logo list"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_flex_container",
+      "default": false,
+      "label": "Use flex container",
+      "info": "Mainly for developers, this enables a different way to style."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title_eyebrow",
+      "default": false,
+      "label": "Show title eyebrow"
+    },
+    {
+      "type": "checkbox",
+      "id": "left_eyebrow",
+      "default": false,
+      "label": "Align eyebrow to the left"
+    },
+    {
+      "type": "range",
+      "id": "items_per_row",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Items per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "image_max_width",
+      "min": 50,
+      "max": 990,
+      "unit": "px",
+      "step": 10,
+      "label": "Image max width",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "gap_column_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem",
+      "label": "Gap Column Mobile",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "gap_row_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem",
+      "label": "Gap Row Mobile",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "gap_column",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem",
+      "label": "Gap Column Desktop",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "gap_row",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem",
+      "label": "Gap Row Desktop",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "gray_img",
+      "default": false,
+      "label": "Turn all images to grayscale"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image file"
+        },
+        {
+          "type": "range",
+          "id": "scale",
+          "label": "Scale",
+          "min": 1,
+          "max": 10,
+          "default": 10,
+          "step": 1,
+          "unit": "x"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Style (Heading tag)",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h4"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "Open link in new tab",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image list - pbj",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

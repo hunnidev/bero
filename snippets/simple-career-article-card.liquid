@@ -1,0 +1,44 @@
+{% liquid
+  assign metafields = article.metafields.custom
+%}
+
+<div class="simple-article-card">
+  <div class="main-info">
+    {% for tag in article.tags %}
+      <span class="uppercase article-tag article-card-tag">{{ tag }}</span>
+    {% endfor %}
+    <div class="job-post-title__wrapper">
+      <div class="top-info">
+        {% if metafields.job_post_location.value != blank %}
+          <p class="location">
+            <span class="icon">
+              {% render 'icon-location' %}
+            </span>
+            {{ metafields.job_post_location.value }}
+          </p>
+        {% endif %}
+        {% if show_date %}
+          <p class="published-date">
+            <span class="icon">
+              {% render 'icon-clock' %}
+            </span>
+            Posted on:&nbsp;<span class="circle-divider">{{ article.published_at | date: '%m/%d/%Y' }}</span>
+          </p>
+        {% endif %}
+      </div>
+      <h3 class="h3">{{ article.title }}</h3>
+    </div>
+
+    {% if article.excerpt != blank %}
+      <p class="article-excerpt">{{ article.excerpt }}</p>
+    {% endif %}
+
+  </div>
+
+    <a
+      class="link underlined-link apply-btn"
+      href="{{ article.url }}"
+      >{{ read_more_txt | default: 'READ THE JOB DETAILS' }}</a>
+
+
+</div>

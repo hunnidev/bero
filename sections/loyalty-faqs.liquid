@@ -1,0 +1,124 @@
+<div id="membership-faqs" class="color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="loyalty-faqs">
+      <div class="inner">
+        <div
+          class="
+            loyalty-faqs__intro{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+            {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+          "
+        >
+          {%- if section.settings.svg != blank -%}
+            {{ section.settings.svg }}
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h2 class="h3 title-eyebrow">
+              {{ section.settings.title }}
+            </h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="rte text-body-medium">
+              {{ section.settings.text }}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- for block in section.blocks -%}
+  <div
+    class="loyalty-faqs__faq accordion-item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    {% if settings.animations_reveal_on_scroll %}
+      data-cascade style="--animation-order: {{ forloop.index }};"
+    {% endif %}
+    x-data="{ open: false }"
+    :class="{'accordion-item--open': open}"
+  >
+    <h3 class="loyalty-faqs__faq-title">
+      <button
+        class="accordion-trigger flex justify-between w-full text-left"
+        @click="open = !open"
+        aria-expanded="false"
+        :aria-expanded="open"
+        aria-controls="accordion-panel-{{ forloop.index }}"
+        id="accordion-trigger-{{ forloop.index }}"
+        role="button"
+      >
+        {{ block.settings.title }}
+        {%- render 'icons', icon: 'chevron-down', fill: section.settings.color_scheme.settings.text -%}
+      </button>
+    </h3>
+    <div
+      id="accordion-panel-{{ forloop.index }}"
+      class="loyalty-faqs__faq-content accordion-item__content rte"
+      x-show="open"
+      x-collapse
+      role="region"
+      aria-labelledby="accordion-trigger-{{ forloop.index }}"
+    >
+      <div class="loyalty-faqs__faq-content-inner">
+        {{ block.settings.text }}
+      </div>
+    </div>
+  </div>
+{%- endfor -%}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Loyalty FAQs",
+  "tag": "section",
+  "class": "section-loyalty-faqs",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    },
+    {
+      "type": "html",
+      "id": "svg",
+      "label": "SVG Code"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Membership FAQs"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "FAQ",
+      "type": "faq",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Loyalty FAQs",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,53 @@
+<div
+  class="sticky-product-bar gradient color-{{ section.settings.sticky_color_scheme }}"
+  x-data="handleScroll"
+  x-init="targetElement = '.product-form__buttons'; fullyOutOfView = true; init()"
+  :class="{'sticky-product-bar--show': hasScrolledPast}"
+>
+  <div class="page-width sticky-product-bar__inner">
+    <div class="sticky-product-bar__info sticky-product-bar__block">
+      <h2 class="sticky-product-bar__product-title text-product-name">{{ product.title }}</h2>
+      {%- unless product.has_only_default_variant -%}
+        <p class="text-body-medium uppercase variant-value">
+          {{ product.selected_or_first_available_variant.title }}
+        </p>
+      {%- endunless -%}
+    </div>
+
+    <div class="sticky-product-bar__actions sticky-product-bar__block">
+      {% if product.variants.size > 1%}
+      <button
+        class="sticky-product-bar__scroll-cta"
+        onclick="scrollToTitle()"
+        onfocus="stickyCartVisibleOnFocus()"
+      >
+        {{ 'products.product.sticky_bar.scroll_up' | t }}
+      </button>
+      {% endif %}
+      <button
+        class="sticky-product-bar__cta button button--primary button--narrow"
+        onclick="document.querySelector('.product-form__submit.true-pdp-submit').click()"
+        {% if product.selected_or_first_available_variant.available == false
+          or quantity_rule_soldout
+          or product.selected_or_first_available_variant == null
+        %}
+          disabled
+        {% endif %}
+      >
+      {%- if product.selected_or_first_available_variant == null -%}
+        {{ 'products.product.unavailable' | t }}
+      {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+        {{ 'products.product.sold_out' | t }}
+      {%- elsif product.selected_or_first_available_variant.metafields.custom.preorder -%}
+        {{ 'products.product.pre_order_cta' | t }}
+      {%- elsif localization.country.iso_code == 'GB' and product.selected_or_first_available_variant.metafields.custom.uk_preorder -%}
+        {{ 'products.product.pre_order_cta' | t }}
+      {%- else -%}
+        {{ 'products.product.add_to_cart' | t }}
+      {%- endif -%}
+      - 
+      <span class="price-item">{{ product.selected_or_first_available_variant.price | money }}</span>
+      </button>
+    </div>
+  </div>
+</div>

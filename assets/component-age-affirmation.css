@@ -1,0 +1,12 @@
+.aa-container {
+  margin-top: 16px;
+}
+
+.aa-container input {
+  accent-color: #004F3C;
+}
+
+.no_aa {
+  pointer-events: none;
+  opacity: 0.5;
+}

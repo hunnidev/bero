@@ -1,0 +1,12 @@
+{{ 'component-age-affirmation.css' | asset_url | stylesheet_tag }}
+
+{% comment %} {% if localization.market.handle != 'united-kingdom' %}
+  <div class="aa-container">
+    <label>
+      <input type="checkbox" class="age_affirmation">
+      <span>{{ 'sections.cart.age_affirmation_checkbox' | t}}</span>
+    </label>
+  </div>
+
+  <cart-check-age></cart-check-age>
+{% endif %} {% endcomment %}

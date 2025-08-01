@@ -1,0 +1,1 @@
+.page-width--narrow{max-width:var(--page-width)}@media(min-width:769px){.page-width--narrow{max-width:130rem;padding-left:0;padding-right:0;padding-top:calc(var(--header-height) + 4rem)!important}}h1{font-family:var(--font-heading-family)!important}.rte p{margin:revert}

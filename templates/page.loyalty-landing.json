@@ -1,0 +1,658 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "loyalty_hero_8WzT36": {
+      "type": "loyalty-hero",
+      "blocks": {
+        "cta_CRLmkQ": {
+          "type": "cta",
+          "settings": {
+            "url": "#membership-comparison",
+            "text": "EXPLORE MEMBERSHIP",
+            "style": "button button--primary",
+            "display_h1": true,
+            "iphone_fix": true
+          }
+        }
+      },
+      "block_order": [
+        "cta_CRLmkQ"
+      ],
+      "settings": {
+        "color_scheme": "scheme-82fb5f77-222b-4fda-a126-b28c605ec2fd",
+        "image_desktop": "shopify://shop_images/Loyalty_LP.jpg",
+        "image_mobile": "shopify://shop_images/Loyalty-LP-M.jpg",
+        "svg": "<svg width=\"340\" height=\"356\" viewbox=\"0 0 340 356\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M136.772 32.3252C138.638 30.5138 139.303 28.5939 139.303 27.3941C139.321 26.8105 139.221 26.2294 139.009 25.6856C138.796 25.1418 138.476 24.6464 138.068 24.2293C137.659 23.8122 137.171 23.4818 136.632 23.2581C136.092 23.0344 135.513 22.9219 134.93 22.9274C131.779 22.9274 130.324 25.7374 128.783 28.7255C127.243 31.7136 125.447 35.1817 121.576 35.6926C121.144 35.742 120.71 35.7679 120.275 35.7701C121.6 36.0898 122.954 36.2663 124.316 36.2965C131.044 36.49 134.806 34.2605 136.772 32.3485V32.3252Z\" fill=\"#D3B890\"></path>\n<path d=\"M106.442 28.0289C106.011 28.4364 105.44 28.6635 104.847 28.6637H104.777C104.161 28.6637 103.571 28.419 103.135 27.9834C102.7 27.5479 102.455 26.9572 102.455 26.3413C102.456 26.0525 102.515 25.7668 102.628 25.501C102.741 25.2352 102.906 24.9945 103.113 24.7931C103.336 24.582 103.598 24.4172 103.885 24.3082C104.172 24.1993 104.478 24.1483 104.785 24.1583C105.401 24.1583 105.992 24.4029 106.427 24.8385C106.863 25.274 107.107 25.8647 107.107 26.4806C107.106 26.7695 107.048 27.0553 106.935 27.3212C106.822 27.5871 106.657 27.8277 106.449 28.0289H106.442ZM199.631 19.7225C188.452 16.5486 177.893 13.5296 168.542 13.2819C151.991 12.7576 135.444 14.4604 119.346 18.3446C120.428 19.276 121.307 20.4196 121.929 21.7046C122.551 22.9896 122.902 24.3886 122.961 25.8149C122.961 28.5243 121.614 30.9783 119.091 32.9058L118.371 31.9537C120.608 30.2584 121.793 28.1373 121.793 25.8072C121.793 23.2758 120.368 20.636 117.961 18.7007C102.796 22.5713 92.8481 27.5025 89.9838 29.91H103.446L105.49 32.573C107.471 32.5759 109.444 32.3155 111.357 31.7989C110.198 30.513 109.345 28.9803 108.865 27.3167L108.756 26.9373L116.234 21.1005L116.606 21.4333C117.41 22.0803 118.028 22.9297 118.395 23.8943C118.762 24.8589 118.866 25.9039 118.696 26.9219C118.255 29.1668 116.374 31.0867 113.54 32.3407C113.61 32.4027 113.687 32.4723 113.819 32.573L113.997 32.7278L114.075 32.7897C115.778 34.0748 118.959 34.8102 121.483 34.5005C124.734 34.098 126.221 31.226 127.784 28.1914C129.418 25.0253 131.113 21.7508 134.991 21.7508C135.73 21.7506 136.461 21.8976 137.142 22.1832C137.823 22.4688 138.44 22.8873 138.958 23.4141C139.475 23.9409 139.882 24.5656 140.156 25.2516C140.429 25.9376 140.563 26.6713 140.55 27.4096C140.55 29.252 139.443 31.466 137.662 33.2C135.618 35.1818 131.81 37.4964 125.183 37.4964H124.339C120.362 37.4752 116.5 36.1571 113.339 33.7419L113.277 33.6877L113.014 33.4709C112.735 33.231 112.511 33.0297 112.302 32.8285C110.388 33.4117 108.403 33.732 106.403 33.7806H85.1533L85.1998 36.8771C98.445 37.3106 109.399 38.6731 119.989 39.9736C129.743 41.189 138.955 42.2959 149.026 42.6211C166.01 43.1165 183.196 40.2368 199.816 37.4654C213.557 35.1431 226.547 33.0065 237.47 33.2232V27.3244C224.774 26.8677 212.009 23.2448 199.646 19.7303L199.631 19.7225Z\" fill=\"#D3B890\"></path>\n<path d=\"M104.777 25.3583H104.739C104.451 25.3537 104.173 25.4621 103.964 25.6602C103.87 25.7512 103.795 25.8607 103.744 25.9819C103.694 26.1031 103.668 26.2333 103.67 26.3646C103.68 26.6583 103.803 26.9368 104.014 27.1417C104.225 27.3466 104.507 27.462 104.8 27.4639C104.943 27.4687 105.085 27.4444 105.219 27.3925C105.352 27.3406 105.473 27.2622 105.575 27.162C105.669 27.0709 105.744 26.9614 105.795 26.8403C105.845 26.7191 105.871 26.5888 105.869 26.4575C105.859 26.1703 105.741 25.8974 105.539 25.6935C105.336 25.4896 105.064 25.3698 104.777 25.3583Z\" fill=\"#D3B890\"></path>\n<path d=\"M117.472 26.7128C117.599 25.9814 117.541 25.23 117.303 24.527C117.065 23.8239 116.655 23.1915 116.11 22.6874L110.072 27.4018C110.587 28.9076 111.43 30.28 112.541 31.4195C115.289 30.3744 117.078 28.6713 117.472 26.7128Z\" fill=\"#D3B890\"></path>\n<path d=\"M184.589 14.4738L181.167 10.4406L177.792 13.0804C180.014 13.4597 182.282 13.9397 184.597 14.4738H184.589Z\" fill=\"#D3B890\"></path>\n<path d=\"M176.181 12.8175L180.392 9.53527L178.472 7.26709L172.008 12.3066C173.376 12.4305 174.767 12.6008 176.181 12.8175Z\" fill=\"#D3B890\"></path>\n<path d=\"M163.687 12.0121L175.004 3.18712L173.077 0.918945L158.802 12.0508C160.404 12.0508 162.038 12.0044 163.687 12.0508V12.0121Z\" fill=\"#D3B890\"></path>\n<path d=\"M168.55 12.0897C169.115 12.0897 169.68 12.1361 170.245 12.1671L177.7 6.35344L175.772 4.09302L165.569 12.0278C166.553 12.0278 167.536 12.0277 168.527 12.0897H168.55Z\" fill=\"#D3B890\"></path>\n<path d=\"M222.22 24.2359L218.915 20.3653L215.741 22.8425C217.893 23.3585 220.053 23.8308 222.22 24.2591V24.2359Z\" fill=\"#D3B890\"></path>\n<path d=\"M209.174 21.1469L215.444 16.2622L213.516 13.9941L205.597 20.187C206.789 20.4967 207.981 20.8296 209.174 21.1469Z\" fill=\"#D3B890\"></path>\n<path d=\"M214.261 22.4631L218.131 19.4362L216.204 17.1681L210.607 21.5341C211.838 21.8515 213.045 22.1612 214.261 22.4631Z\" fill=\"#D3B890\"></path>\n<path d=\"M238.62 29.7706V31.2027C241.221 31.6362 245.471 32.1084 251.432 32.5187C251.322 31.2308 251.322 29.9359 251.432 28.6481C245.456 28.9964 241.221 29.4222 238.636 29.8093L238.62 29.7706Z\" fill=\"#D3B890\"></path>\n<path d=\"M251.556 33.7265C245.1 33.2852 241.105 32.8362 238.62 32.4182V33.4401C241.539 34.8877 246.431 36.3585 252.376 37.4887C252.008 36.2542 251.731 34.9941 251.548 33.7187L251.556 33.7265Z\" fill=\"#D3B890\"></path>\n<path d=\"M237.908 26.1323C242.29 24.0344 249.706 22.7494 252.795 22.2617C253.391 20.5987 254.134 18.9924 255.017 17.4621C249.706 18.3446 238.342 21.5494 234.293 25.9155C235.501 26.0239 236.701 26.1323 237.908 26.1323Z\" fill=\"#D3B890\"></path>\n<path d=\"M237.934 34.4152C236.843 34.4152 235.72 34.4152 234.582 34.4152C238.832 38.8587 249.763 42.5126 254.996 43.666C254.128 42.1076 253.392 40.4787 252.797 38.7968C249.577 38.2007 242.285 36.6679 237.934 34.4307V34.4152Z\" fill=\"#D3B890\"></path>\n<path d=\"M238.62 27.123V28.5783C241.454 28.1396 245.763 27.75 251.548 27.4094C251.722 26.0987 252.001 24.8042 252.384 23.5388C247.213 24.3671 241.848 25.6444 238.62 27.123Z\" fill=\"#D3B890\"></path>\n<path d=\"M220.291 35.507C215.112 36.1573 209.678 37.0166 204.104 37.9455C205.567 41.042 209.469 46.4609 218.936 46.7937C217.681 44.2251 217.492 41.2646 218.41 38.5571C218.795 37.4077 219.441 36.3636 220.299 35.507H220.291Z\" fill=\"#D3B890\"></path>\n<path d=\"M158.858 43.7282C156.861 43.8134 154.856 43.8521 152.859 43.8521C151.55 43.8521 150.25 43.8521 148.949 43.7979L147.912 43.7592C148.592 45.7723 149.882 47.5241 151.601 48.7723C153.321 50.0205 155.386 50.7033 157.511 50.7263C157.231 49.6172 157.179 48.4626 157.358 47.3328C157.538 46.2029 157.945 45.1214 158.556 44.154C158.649 43.9837 158.757 43.8598 158.858 43.7282Z\" fill=\"#D3B890\"></path>\n<path d=\"M107.61 154.414L107.447 156.365C116.036 156.365 120.251 162.545 120.251 170.351C120.251 187.751 96.5867 205.641 75.1895 205.641C63.0343 205.641 57.1981 200.113 57.1981 187.102C57.1981 174.092 63.1942 159.619 72.273 145.957C76.4879 146.932 80.2166 147.256 84.9175 147.256C117.335 147.256 161.101 124.326 161.101 100.907C161.101 94.2397 155.914 89.5233 146.352 89.5233C124.632 89.5233 89.4585 113.754 67.5752 141.889C55.9061 137.987 50.7191 129.854 50.7191 119.445C50.7191 101.882 65.4678 85.9459 92.375 79.2755L92.052 76.9975C62.8744 83.8283 45.5321 103.342 45.5321 120.581C45.5321 132.129 52.6634 140.747 65.4678 144.651C54.6078 158.637 47.7994 173.762 47.7994 187.096C47.7994 202.545 58.9825 208.237 75.5157 208.237C97.885 208.237 124.629 188.723 124.629 170.508C124.629 160.264 117.658 154.408 107.61 154.408V154.414ZM146.349 91.8044C153.481 91.8044 156.723 95.0578 156.723 100.91C156.723 122.378 116.849 144.494 85.2405 144.494C81.3518 144.494 77.6231 144.33 74.2174 143.355C93.667 116.035 125.761 91.8013 146.346 91.8013L146.349 91.8044ZM282.666 106.438C267.202 106.438 256.728 121.192 243.447 141.332C231.577 140.271 221.558 135.873 218.967 133.274L217.672 134.249C219.804 137.103 229.799 142.084 242.18 143.264C241.111 144.89 240.019 146.549 238.906 148.235L217.362 180.784C211.905 187.59 198.006 205.156 192.063 205.156C189.956 205.156 188.984 204.181 188.984 202.23C188.984 198.653 191.414 194.424 200.816 180.602L219.293 153.282H211.19L192.712 181.09C188.174 187.269 174.884 205.16 167.426 205.16C163.538 205.16 161.917 203.696 162.563 199.955C163.212 196.378 166.291 192.637 169.371 188.248L182.987 169.382C185.258 165.804 186.23 162.878 186.23 159.461C186.23 155.069 183.637 151.979 179.748 151.819C173.103 151.819 166.617 157.998 161.107 165.968H163.538C169.697 158.162 174.561 154.097 178.613 154.097C180.234 154.26 181.206 155.396 181.206 157.186C181.206 159.789 179.262 163.366 175.533 168.57L163.052 185.646C159.972 190.198 157.702 194.427 157.702 198.82C157.702 205.163 161.267 207.925 165.645 207.925C174.075 207.925 179.748 200.443 184.449 194.751C183.963 196.378 183.64 198.816 183.64 200.279C183.64 204.672 186.882 208.086 190.611 208.086C196.165 208.086 202.215 202.668 207.859 196.177C207.405 197.495 207.144 198.82 207.144 200.116C207.307 204.669 209.738 207.922 214.925 207.922C229.188 207.922 249.286 185.479 253.987 177.024C262.091 163.202 259.011 152.306 251.231 152.306C248.217 152.306 244.347 154.027 240.615 156.897L246.367 148.241C247.458 146.602 248.515 145.019 249.54 143.487C267.974 142.829 290.108 133.419 293.859 119.619C296.452 110.025 290.456 106.445 282.676 106.445L282.666 106.438ZM250.575 155.226C253.492 155.226 254.304 156.853 254.304 158.967C254.304 163.36 251.874 168.073 247.822 174.743C242.958 182.874 226.265 205.48 216.051 205.48C212.971 205.48 211.999 204.341 211.999 202.391C211.836 199.789 213.943 196.699 217.509 191.658L236.012 163.813C239.828 158.87 246.665 155.229 250.575 155.229V155.226ZM291.745 119.776C288.675 131.326 268.162 140.687 250.854 141.508C265.55 119.631 273.506 109.368 284.288 109.368C288.665 109.368 293.849 111.646 291.745 119.776ZM145.54 195.396H148.134C143.27 202.063 137.597 207.919 131.277 207.919C127.549 207.919 125.118 204.666 124.955 200.113C124.955 197.023 126.413 193.77 128.521 190.843L183.957 107.417H191.414L135.332 191.655C131.767 196.696 129.659 199.785 129.822 202.388C129.822 204.338 130.795 205.477 132.739 205.477C136.791 205.477 141.978 200.437 145.543 195.393L145.54 195.396ZM293.595 223.125C265.224 223.125 248.12 245.326 248.12 270.932C248.12 298.17 266.447 318.873 293.595 318.873C320.744 318.873 339.344 297.764 339.344 270.932C339.344 246.415 323.19 223.125 293.595 223.125ZM293.595 309.881C272.825 309.881 261.558 292.311 261.558 270.929C261.558 249.546 273.233 232.112 293.595 232.112C315.181 232.112 326.038 250.225 326.038 270.929C326.038 293.265 313.954 309.881 293.595 309.881ZM207.668 272.156C210.792 271.611 213.504 270.658 216.355 269.569C225.992 265.756 231.424 258.129 231.424 248.595C231.424 232.797 217.305 224.762 199.386 224.762H167.486V225.035C169.252 227.351 170.337 229.802 170.879 232.936C171.422 236.07 171.695 240.154 171.695 245.194V296.54C171.695 301.851 171.422 305.938 170.879 308.799C170.337 311.932 169.252 314.383 167.486 316.97V317.243H187.848V316.97C186.49 314.383 185.405 311.929 184.863 308.799C184.047 305.938 183.64 301.851 183.64 296.54V273.251H193.684L229.523 317.243H245.134V316.97L207.668 272.162V272.156ZM183.64 264.529V233.203H197.078C208.753 233.203 218.525 237.017 218.525 248.866C218.525 260.715 208.345 264.529 197.078 264.529H183.64ZM86.0371 316.963C87.6678 314.648 88.8877 311.923 89.4303 309.063C90.2456 305.929 90.5153 302.389 90.5153 297.349V245.185C90.5153 240.144 90.2425 236.06 89.7 232.926C88.8846 229.793 87.6647 227.342 86.0339 225.026V224.752H150.244V239.597H149.429C147.663 237.416 145.493 235.648 142.37 234.83C139.384 233.741 135.176 233.468 129.339 233.468H102.46V264.519H123.096C128.119 264.519 132.055 264.246 134.906 263.431C137.622 262.613 139.93 261.524 141.557 259.891H142.1V278.279H141.557C139.93 276.372 137.622 275.283 135.179 274.33C132.328 273.512 128.119 273.241 123.096 273.241H102.46V308.515H130.967C136.533 308.515 140.742 307.971 143.862 306.882C147.121 305.655 149.699 303.478 151.329 300.344H151.872V317.234H86.0339V316.96L86.0371 316.963ZM64.0472 276.922C59.569 272.7 53.0523 270.114 45.3126 269.022V268.478C56.3075 266.026 65.9476 258.809 65.9476 246.959C65.9476 230.888 51.0139 224.758 34.1828 224.758H0.652344V225.032C2.27994 227.618 3.503 230.073 4.04553 233.203C4.58806 236.337 4.8609 240.151 4.8609 245.188V296.808C4.8609 301.848 4.58806 305.662 4.04553 308.792C3.503 311.926 2.27994 314.377 0.652344 316.963V317.237H37.1683C53.7297 317.237 70.6987 309.475 70.6987 291.767C70.6987 285.773 68.5255 281.007 64.0472 276.922ZM16.806 233.203H32.1444C43.2741 233.203 53.0492 237.426 53.0492 248.322C53.0492 260.58 43.6818 264.803 32.1444 264.803H16.806V233.203ZM33.3674 308.792H16.806V273.244H32.4172C45.3126 273.244 57.8034 277.331 57.8034 290.814C57.8034 304.296 46.8085 308.792 33.3674 308.792Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M10.9702 355.121H2.76706V343.521H10.9702V345.045H4.42427V348.36H9.26331V349.868H4.42427V353.596H10.9702V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M17.2105 355.121H15.2053L19.4975 349.072L15.5533 343.521H17.6082L19.2489 345.891C19.8786 346.785 20.2101 347.249 20.5581 347.73C20.8729 347.249 21.1878 346.819 21.801 345.94L23.4748 343.521H25.4468L21.5524 349.006L25.8611 355.121H23.7731L21.7678 352.171C21.2872 351.459 20.8729 350.862 20.4918 350.348C20.1272 350.862 19.6798 351.525 19.2157 352.171L17.2105 355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M35.2902 355.353C31.661 355.353 29.606 352.619 29.606 349.221C29.606 345.841 31.9095 343.289 35.2902 343.289C38.2566 343.289 39.8973 345.095 40.3779 346.719L38.7207 347.316C38.3892 346.288 37.5109 344.797 35.2902 344.797C32.9536 344.797 31.3792 346.454 31.3792 349.205C31.3792 351.956 32.937 353.845 35.2902 353.845C37.4778 353.845 38.3395 352.586 38.7704 351.194L40.3944 351.823C39.831 353.729 38.1406 355.353 35.2902 355.353Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M53.8726 355.121H45.9677V343.521H47.6249V353.563H53.8726V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M63.0594 355.353C60.2919 355.353 58.5353 353.845 58.5353 350.647V343.521H60.1925V350.398C60.1925 352.503 61.0874 353.812 63.0594 353.812C65.0481 353.812 65.9264 352.47 65.9264 350.398V343.521H67.5836V350.647C67.5836 353.646 65.9927 355.353 63.0594 355.353Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M77.6691 355.353C75.0839 355.353 73.5096 353.961 72.9627 352.138L74.5702 351.409C74.9845 352.735 75.9456 353.862 77.7686 353.862C79.3595 353.862 80.2212 353.099 80.2212 352.006C80.2212 351.044 79.5418 350.464 78.1166 350.166L76.5754 349.818C74.769 349.437 73.5427 348.559 73.5427 346.587C73.5427 344.714 75.1336 343.289 77.5863 343.289C80.1384 343.289 81.431 344.863 81.779 346.023L80.2212 346.736C79.9561 345.957 79.2601 344.78 77.4371 344.78C75.9954 344.78 75.1999 345.509 75.1999 346.504C75.1999 347.448 75.7799 347.912 77.0394 348.194L78.6303 348.542C80.5693 348.956 81.9613 350.05 81.9613 351.856C81.9613 353.878 80.4698 355.353 77.6691 355.353Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M89.3852 355.121H87.728V343.521H89.3852V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M101.032 355.121H98.5794L94.8342 343.521H96.6737L99.0435 351.177C99.5572 352.818 99.6732 353.232 99.8058 353.663L100.585 351.194L102.988 343.521H104.811L101.032 355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M118.436 355.121H110.233V343.521H118.436V345.045H111.89V348.36H116.729V349.868H111.89V353.596H118.436V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M139.656 355.121H131.751V343.521H133.408V353.563H139.656V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M149.295 355.353C145.947 355.353 143.461 352.934 143.461 349.321C143.461 345.725 145.964 343.289 149.295 343.289C152.626 343.289 155.078 345.725 155.078 349.321C155.078 352.934 152.626 355.353 149.295 355.353ZM149.278 353.845C151.814 353.845 153.322 351.906 153.322 349.321C153.322 346.736 151.814 344.797 149.278 344.797C146.743 344.797 145.234 346.736 145.234 349.321C145.234 351.906 146.743 353.845 149.278 353.845Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M164.882 355.121H163.225V350.266L159.015 343.521H161.004L163.092 346.984C163.506 347.68 163.904 348.343 164.07 348.641C164.252 348.343 164.633 347.664 165.031 346.984L166.987 343.521H168.959L164.882 350.199V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M182.781 355.121H180.925L179.847 352.055H174.743L173.649 355.121H171.86L176.218 343.521H178.505L182.781 355.121ZM176.417 347.382L175.29 350.531H179.301L178.19 347.382C177.743 346.073 177.494 345.377 177.312 344.896C177.13 345.377 176.864 346.156 176.417 347.382Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M195.946 355.121H188.041V343.521H189.698V353.563H195.946V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M203.512 355.121H201.855V345.045H197.745V343.521H207.738V345.045H203.512V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M217.433 355.121H215.776V350.266L211.567 343.521H213.556L215.644 346.984C216.058 347.68 216.456 348.343 216.621 348.641C216.804 348.343 217.185 347.664 217.583 346.984L219.538 343.521H221.51L217.433 350.199V355.121Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M235.517 355.121H233.86V343.521H238.566C241.019 343.521 242.428 344.962 242.428 347.051C242.428 349.155 241.002 350.597 238.55 350.597H235.517V355.121ZM235.517 345.045V349.155H238.251C239.876 349.155 240.688 348.26 240.688 347.051C240.688 345.857 239.909 345.045 238.251 345.045H235.517Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M249.577 355.121H247.92V343.521H252.875C255.278 343.521 256.621 344.896 256.621 346.669C256.621 348.459 255.361 349.47 253.853 349.768C255.411 350.017 255.974 350.796 256.256 352.204L256.836 355.121H255.03L254.566 352.354C254.3 350.879 253.538 350.332 251.98 350.332H249.577V355.121ZM249.577 345.045V348.84H252.627C253.919 348.84 254.88 348.244 254.88 346.935C254.88 345.625 253.919 345.045 252.627 345.045H249.577Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M267.665 355.353C264.317 355.353 261.832 352.934 261.832 349.321C261.832 345.725 264.334 343.289 267.665 343.289C270.996 343.289 273.449 345.725 273.449 349.321C273.449 352.934 270.996 355.353 267.665 355.353ZM267.648 353.845C270.184 353.845 271.692 351.906 271.692 349.321C271.692 346.736 270.184 344.797 267.648 344.797C265.113 344.797 263.605 346.736 263.605 349.321C263.605 351.906 265.113 353.845 267.648 353.845Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M283.935 355.353C280.604 355.353 278.449 353.033 278.449 349.321C278.449 345.758 281.084 343.289 284.266 343.289C287.216 343.289 288.89 345.012 289.486 346.769L287.796 347.448C287.233 345.924 286.189 344.83 284.233 344.83C282.195 344.83 280.223 346.354 280.223 349.304C280.223 352.188 281.847 353.845 284.167 353.845C286.404 353.845 287.647 352.32 287.746 350.928H283.736V349.404H289.453V355.121H287.846V353.099C287.431 353.928 286.371 355.353 283.935 355.353Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M297.164 355.121H295.507V343.521H300.462C302.865 343.521 304.207 344.896 304.207 346.669C304.207 348.459 302.947 349.47 301.439 349.768C302.997 350.017 303.561 350.796 303.842 352.204L304.422 355.121H302.616L302.152 352.354C301.887 350.879 301.125 350.332 299.567 350.332H297.164V355.121ZM297.164 345.045V348.84H300.213C301.506 348.84 302.467 348.244 302.467 346.935C302.467 345.625 301.506 345.045 300.213 345.045H297.164Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M319.775 355.121H317.919L316.842 352.055H311.738L310.644 355.121H308.854L313.213 343.521H315.5L319.775 355.121ZM313.412 347.382L312.285 350.531H316.295L315.185 347.382C314.737 346.073 314.489 345.377 314.306 344.896C314.124 345.377 313.859 346.156 313.412 347.382Z\" fill=\"#F9F6EF\"></path>\n<path d=\"M326.693 355.121H325.035V343.521H327.737L330.405 350.166C330.968 351.608 331.167 352.072 331.283 352.354C331.399 352.072 331.598 351.591 332.161 350.166L334.763 343.521H337.398V355.121H335.741V345.211L331.83 355.121H330.653L326.693 345.211V355.121Z\" fill=\"#F9F6EF\"></path>\n</svg>"
+      }
+    },
+    "pbj_multicolumn_BVVEq8": {
+      "type": "pbj-multicolumn",
+      "blocks": {
+        "column_Y3MVb6": {
+          "type": "column",
+          "settings": {
+            "title": "tom holland q&a",
+            "text": "<p>Exclusive Q&As with Tom Holland</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_rtUUXC": {
+          "type": "column",
+          "settings": {
+            "title": "member pricing",
+            "text": "<p>Unlock savings on every online purchase</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_UiFyVM": {
+          "type": "column",
+          "settings": {
+            "title": "EXCLUSIVE ACCESS",
+            "text": "<p>Insider updates and VIP access to product launches and premier BERO events</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_MtzLXD": {
+          "type": "column",
+          "settings": {
+            "title": "EXCLUSIVE PRODUCTS",
+            "text": "<p>Access member-only products and limited-edition releases</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_zbwmTU": {
+          "type": "column",
+          "settings": {
+            "title": "Shop Anywhere, Earn Everywhere",
+            "text": "<p>Earn credits on every purchase (online or in-store), redeem instantly</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_TRKAYJ": {
+          "type": "column",
+          "settings": {
+            "title": "Complimentary Shipping",
+            "text": "<p>Every purchase ships free, no exceptions, no minimums</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_Y3MVb6",
+        "column_rtUUXC",
+        "column_UiFyVM",
+        "column_MtzLXD",
+        "column_zbwmTU",
+        "column_TRKAYJ"
+      ],
+      "settings": {
+        "loyalty_style": true,
+        "title": "You can enjoy benefits like...",
+        "heading_size": "h3",
+        "add_title_eyebrow": true,
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "counter": false,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Compare tiers and benefits",
+        "button_link": "#membership-comparison",
+        "color_scheme": "scheme-2",
+        "show_divider": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 64,
+        "padding_bottom": 40
+      }
+    },
+    "pbj_rich_text_iMtHyi": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_jC6BKr": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "*Please note: credits are converted at checkout to your local currency",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jC6BKr"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".rich-text__heading {border: 1px solid #d3b890;}"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": false,
+        "padding_top": 32,
+        "padding_bottom": 8
+      }
+    },
+    "loyalty_memberships_banner_TcfqJX": {
+      "type": "loyalty-memberships-banner",
+      "blocks": {
+        "membership_wrzcJh": {
+          "type": "membership",
+          "settings": {
+            "color_scheme": "scheme-9ccc9f4a-4aa7-4d60-a8f7-bd8e8025dae6",
+            "title": "FREE MEMBER",
+            "custom_id": "",
+            "price": 0,
+            "price_label": "",
+            "subtitle": "",
+            "perks": "$5 welcome bonus//Free shipping over $50//Earn credits with every purchase//And more...",
+            "footer_text": "",
+            "cta_url": "/account/register",
+            "cta_text": "Join now"
+          }
+        },
+        "membership_9PJKby": {
+          "type": "membership",
+          "settings": {
+            "color_scheme": "scheme-3322bc20-2684-4450-aacb-7532c6abb648",
+            "title": "BEROMASTER",
+            "custom_id": "beromaster-membership",
+            "price": 55,
+            "price_label": "/year",
+            "subtitle": "Cancel anytime",
+            "perks": "Exclusive Q&As with Tom Holland//Earn 2x credits with every purchase//Free shipping, always//10% off every purchase//And more…",
+            "footer_text": "BEROMASTER membership requires account creation and checkout",
+            "cta_url": "/account/register?view=beromaster",
+            "cta_text": "Join now"
+          }
+        }
+      },
+      "block_order": [
+        "membership_wrzcJh",
+        "membership_9PJKby"
+      ],
+      "settings": {
+        "section_id": "membership-banner",
+        "color_scheme": "scheme-262b0a58-3a3c-4f15-b62e-b68f7370d43d",
+        "title": "Membership with more",
+        "text": "Choose your Club BERO membership tier.",
+        "cta_url": "#membership-comparison",
+        "cta_text": "Compare all tiers and benefits",
+        "image": "shopify://shop_images/Loyalty-poker.jpg"
+      }
+    },
+    "loyalty_price_comparison_eheKA4": {
+      "type": "loyalty-price-comparison",
+      "blocks": {
+        "membership_cjiGRT": {
+          "type": "Membership",
+          "settings": {
+            "title": "FREE MEMBER",
+            "price": 0,
+            "deduct_membership_fee": true,
+            "credits_multiplier": 1,
+            "free_shipping": false,
+            "product_discount": 0,
+            "cta_url": "/account/register",
+            "cta_text": "Join for free"
+          }
+        },
+        "membership_9L67nq": {
+          "type": "Membership",
+          "settings": {
+            "title": "BEROMASTER",
+            "price": 55,
+            "deduct_membership_fee": true,
+            "credits_multiplier": 2,
+            "free_shipping": true,
+            "product_discount": 10,
+            "cta_url": "/account/register?view=beromaster",
+            "cta_text": "Join $55/Year"
+          }
+        }
+      },
+      "block_order": [
+        "membership_cjiGRT",
+        "membership_9L67nq"
+      ],
+      "settings": {
+        "section_id": "membership-price-comparison",
+        "color_scheme": "scheme-db801223-416b-4e57-98e1-c15e18ea334d",
+        "title": "<p>Save big.<br/>Become a member.</p>",
+        "text": "<p>Calculate your savings at every membership level—encompassing shipping, credits, and exclusive discounts. With Club BERO, the rewards truly add up, making it a smart investment that pays for itself!</p><p>Don’t forget, you’ll also unlock a range of exclusive benefits, including Q&A sessions with Tom Holland, access to member-only products and events, VIP support, and so much more!</p>",
+        "drag_icon": "shopify://shop_images/fish-slider-2.svg",
+        "mobile_drag_icon": "shopify://shop_images/svgviewer-png-output.png",
+        "drag_title": "How many 6-packs would you drink per month?",
+        "drag_steps": 6,
+        "shipping_price": 10,
+        "comparison_product": "kingston-golden-pils",
+        "credit_per_product_purchase": "0.25"
+      }
+    },
+    "loyalty_membership_comparison_zEAnYT": {
+      "type": "loyalty-membership-comparison",
+      "blocks": {
+        "benefits_gnnpRR": {
+          "type": "benefits",
+          "settings": {
+            "title": "Fee",
+            "tier_1_text": "$0/yr",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "$55/yr",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": false,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_mh4Qnj": {
+          "type": "benefits",
+          "settings": {
+            "title": "Credit Lifespan",
+            "tier_1_text": "12 months",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "12 months",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": false,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_GqbPJw": {
+          "type": "benefits",
+          "settings": {
+            "title": "Free Shipping",
+            "tier_1_text": "$50 minimum",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_QygrHC": {
+          "type": "benefits",
+          "settings": {
+            "title": "Instant Welcome Gift",
+            "tier_1_text": "$5 welcome credit",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "$10 welcome credit",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": false,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_7RCgT4": {
+          "type": "benefits",
+          "settings": {
+            "title": "First Order Welcome Gift",
+            "tier_1_text": "BERO tote with $50+ order",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "BERO tote with $29+ order",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": false,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_6zeVcb": {
+          "type": "benefits",
+          "settings": {
+            "title": "VIP Customer Support",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": true,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_g7HKn3": {
+          "type": "benefits",
+          "settings": {
+            "title": "Exclusive Events",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": true,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_fwkqzn": {
+          "type": "benefits",
+          "settings": {
+            "title": "Earn Credits on Purchases",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": true,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "2x credits on every purchase",
+            "tier_2_text_mobile": "2x credits",
+            "tier_2_tick": false,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_Yqgkhe": {
+          "type": "benefits",
+          "settings": {
+            "title": "Member-exclusive Products",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": true,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_BtmeVk": {
+          "type": "benefits",
+          "settings": {
+            "title": "Exclusive Q&As with Tom Holland",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_Parydj": {
+          "type": "benefits",
+          "settings": {
+            "title": "Member Pricing",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "10% or more off every purchase",
+            "tier_2_text_mobile": "10% off",
+            "tier_2_tick": false,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_Kr8aLc": {
+          "type": "benefits",
+          "settings": {
+            "title": "Surprise Giveaways",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_LxnrPC": {
+          "type": "benefits",
+          "settings": {
+            "title": "Lifetime Markers",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        },
+        "benefits_MzFJXN": {
+          "type": "benefits",
+          "settings": {
+            "title": "Priority Access to New Releases",
+            "tier_1_text": "",
+            "tier_1_text_mobile": "",
+            "tier_1_tick": false,
+            "tier_1_tick_mobile": false,
+            "tier_2_text": "",
+            "tier_2_text_mobile": "",
+            "tier_2_tick": true,
+            "tier_2_tick_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "benefits_gnnpRR",
+        "benefits_mh4Qnj",
+        "benefits_GqbPJw",
+        "benefits_QygrHC",
+        "benefits_7RCgT4",
+        "benefits_6zeVcb",
+        "benefits_g7HKn3",
+        "benefits_fwkqzn",
+        "benefits_Yqgkhe",
+        "benefits_BtmeVk",
+        "benefits_Parydj",
+        "benefits_Kr8aLc",
+        "benefits_LxnrPC",
+        "benefits_MzFJXN"
+      ],
+      "custom_css": [
+        ".membership-comparison__table > .membership-comparison__table-cta:nth-last-child(2),.membership-comparison__table > div:nth-last-child(3) {background: none;}"
+      ],
+      "settings": {
+        "section_id": "membership-comparison",
+        "color_scheme": "",
+        "preferred_membership_color_scheme": "scheme-3322bc20-2684-4450-aacb-7532c6abb648",
+        "title": "Brilliant benefits. Bar none.",
+        "background_image": "shopify://shop_images/Wood-loyalty-bg.png",
+        "tier_1_title": "FREE MEMBER",
+        "tier_1_title_mobile": "",
+        "tier_1_cta_text": "Join for free",
+        "tier_1_cta_url": "/account/register",
+        "tier_2_title": "BEROMASTER",
+        "tier_2_title_mobile": "BERO-MASTER",
+        "tier_2_cta_text": "Join $55/Year",
+        "tier_2_cta_url": "/account/register?view=beromaster"
+      }
+    },
+    "pbj_image_banner_TTcHYX": {
+      "type": "pbj-image-banner",
+      "settings": {
+        "add_shrink_effect": false,
+        "customer_status": "all",
+        "color_scheme": "",
+        "desktop_image": "shopify://shop_images/aHero_Section_c00dee88-9533-42c0-bbb5-6f41215a2596.jpg",
+        "mobile_image": "shopify://shop_images/mbHero_Section.jpg",
+        "overlay_opacity": 50,
+        "hide_bg_color": true,
+        "transparent_header": false,
+        "title": "",
+        "space_negative_top": 0,
+        "space_negative_top_mobile": 0,
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "loyalty_faqs_9hUjyK": {
+      "type": "loyalty-faqs",
+      "blocks": {
+        "faq_ecCJqT": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I join Club BERO?",
+            "text": "<p>You can sign up as a Free Member with as little as your name, email, and address, or join our BEROMASTER tier for a $55 annual membership fee.</p>"
+          }
+        },
+        "faq_AiHKdt": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I earn credits?",
+            "text": "<ul><li>By purchasing any BERO 6-pack or Variety Pack online or in-store. Club BERO Free Members receive $0.25 credit for each 6-pack purchased. BEROMASTER members receive double the credit at $0.50 credit for each 6-pack purchase. </li><li>By purchasing BERO Collection items online. Club BERO Free Members receive a $1 credit for every $30 of BERO Collection items purchased. BEROMASTER members receive double the credit at $2 credit for every $30 of BERO Collection items purchased. </li><li>There are other ways to earn credits if you are a Club BERO member—such as referrals, reviews, social follows, and more. Members can see a full list of credit-earning actions in their dashboard.</li></ul>"
+          }
+        },
+        "faq_dWkLbD": {
+          "type": "faq",
+          "settings": {
+            "title": "Do I get credits from products purchased in stores?",
+            "text": "<p>We value our customers and their loyalty, no matter where they choose to shop. Our industry-leading loyalty program rewards you for every BERO pack purchase, wherever you buy. Once you join Club BERO (with either a free or paid membership), simply scan the unique QR code inside any BERO 6-pack or Variety Pack. You'll earn credits on every purchase, which you can redeem on your next <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com</span></a> purchase.</p>"
+          }
+        },
+        "faq_iBgMFM": {
+          "type": "faq",
+          "settings": {
+            "title": "Can I redeem my credits in-store?",
+            "text": "<p>What matters most to us is making it easy for you to find BERO and be rewarded for your loyalty. We're actively working on ways to help our loyal customers redeem their BERO credits wherever it’s most convenient. Stay tuned for updates on our website and social channels (<a href=\"https://instagram.com/berobrewing\" target=\"_blank\"><span style=\"text-decoration:underline\">@berobrewing</span></a>), and in the meantime, don’t hesitate to redeem your credits on <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com</span></a>.</p>"
+          }
+        },
+        "faq_LmbX9a": {
+          "type": "faq",
+          "disabled": true,
+          "settings": {
+            "title": "Where can I find my code?",
+            "text": "<p>On the inside of any BERO 6-pack or Variety Pack, you will find a sticker that looks like this:</p>"
+          }
+        },
+        "faq_FwPYHE": {
+          "type": "faq",
+          "settings": {
+            "title": "How long does it take for credits to appear in my account?",
+            "text": "<p>Credits will appear in your Club BERO account immediately and automatically. The best part is you can use them on your next order.</p>"
+          }
+        },
+        "faq_hMD4Vz": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I track my credits?",
+            "text": "<p>You can see your Club BERO credit balance at any time by logging in to your account dashboard. <a href=\"/pages/account-club-bero\">Sign in here.</a></p>"
+          }
+        },
+        "faq_cnenig": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I claim my credits for my offline BERO purchases?",
+            "text": "<ul><li>Here are the steps to claim your credits and add them to your account:</li><li>Scan the QR code or <a href=\"/pages/qr-claim\">enter your QR code manually here</a></li><li>Login to or create your Club BERO account (you don’t have to be a paid member to claim credits). <a href=\"/pages/account-club-bero\">Sign in or sign up here.</a></li><li>If the code has not been claimed already, your credits will be automatically added to your account</li></ul><p>You use and redeem your credits immediately on <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com</span></a></p>"
+          }
+        },
+        "faq_NEwExN": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I redeem my credits?",
+            "text": "<ul><li>Here are the steps to redeem your credits:</li><li>Log in to your Club BERO account dashboard (you don’t have to be a paid member to redeem credits). <a href=\"/pages/account-club-bero\">Sign in here</a></li><li>Click on “redeem credits”</li><li>Enter the amount of credits you want to redeem from your available credit balance</li><li>A unique discount code for that amount will be generated and can be automatically applied to your cart if you choose to do so</li><li>Fill your cart with all your favorite BERO beers and BERO Collection items and checkout with your savings applied</li></ul>"
+          }
+        },
+        "faq_b86Cnj": {
+          "type": "faq",
+          "settings": {
+            "title": "Do my Club BERO credits and status expire?",
+            "text": "<ul><li>Free membership is for life and does not expire. </li><li>BEROMASTER membership is a one-year membership that will auto-renew.</li><li>Credits will remain active for 12 months from earning them. But, don’t worry. All members will be notified of credit expiration timelines in advance.</li></ul>"
+          }
+        },
+        "faq_Ch33mg": {
+          "type": "faq",
+          "settings": {
+            "title": "Do I lose my credits if I cancel my Club BERO membership?",
+            "text": "<p>Your credits are yours. You will maintain access to your earned credits even if you don’t have an active membership or have canceled your membership. Your credits will remain active for 12 months from earning them.</p>"
+          }
+        },
+        "faq_UNKjTf": {
+          "type": "faq",
+          "settings": {
+            "title": "What happens to my credits if I cancel a BERO order or return BERO Collection items?",
+            "text": "<p>If you placed an order on <a href=\"http://www.berobrewing.com\"><span style=\"text-decoration:underline\">www.berobrewing.com</span></a> and:</p><ul><li><strong>Cancel the order</strong> OR <strong>get a full refund for your order</strong>, your Club BERO credits earned for that specific order will no longer be applied to your account (applicable for beer and BERO collection items). </li><li><strong>Get a partial refund for your order</strong>, only the equivalent Club BERO credits will be deducted from your account.</li></ul><p>Please reach out to our customer service team at <a href=\"mailto:support@bero.com\" target=\"_blank\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>. if you have any questions. </p>"
+          }
+        },
+        "faq_k7Uyk3": {
+          "type": "faq",
+          "settings": {
+            "title": "Is Club BERO the same as a subscription?",
+            "text": "<p>No, Club BERO is not the same as a subscription program. Club BERO is a membership loyalty program that gives you instant rewards and exclusive access to a range of benefits and savings. You don’t need to commit to a specific purchase frequency to be part of Club BERO!</p>"
+          }
+        },
+        "faq_Vdp8wq": {
+          "type": "faq",
+          "settings": {
+            "title": "Will my BEROMASTER membership renew automatically?",
+            "text": "<p>Yes, your BEROMASTER membership will renew automatically on an annual basis. You can cancel at any time in your account dashboard if you don’t wish for your membership to renew.</p>"
+          }
+        },
+        "faq_fdmAqe": {
+          "type": "faq",
+          "settings": {
+            "title": "Can I cancel my annual membership?",
+            "text": "<p>While BEROMASTER memberships are non-refundable—given the immediate value you receive upon purchase—you can cancel at any time by contacting support. Access to your BEROMASTER benefits will remain active until the end of the billing cycle.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_ecCJqT",
+        "faq_AiHKdt",
+        "faq_dWkLbD",
+        "faq_iBgMFM",
+        "faq_LmbX9a",
+        "faq_FwPYHE",
+        "faq_hMD4Vz",
+        "faq_cnenig",
+        "faq_NEwExN",
+        "faq_b86Cnj",
+        "faq_Ch33mg",
+        "faq_UNKjTf",
+        "faq_k7Uyk3",
+        "faq_Vdp8wq",
+        "faq_fdmAqe"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "svg": "<svg width=\"184\" height=\"54\" viewbox=\"0 0 184 54\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M56.1111 34.0626C58.1211 32.111 58.8383 30.0426 58.8383 28.7499C58.8574 28.1212 58.7494 27.4951 58.5206 26.9092C58.2919 26.3233 57.9471 25.7896 57.507 25.3402C57.067 24.8908 56.5407 24.5349 55.9598 24.2939C55.3788 24.0529 54.7551 23.9316 54.1261 23.9376C50.7317 23.9376 49.1638 26.965 47.5041 30.1844C45.8444 33.4037 43.9095 37.1401 39.7395 37.6905C39.2743 37.7438 38.8065 37.7716 38.3383 37.774C39.765 38.1185 41.2246 38.3086 42.6919 38.3411C49.9394 38.5496 53.9927 36.1477 56.1111 34.0876V34.0626Z\" fill=\"#D3B890\"></path>\n<path d=\"M23.4339 29.4339C22.9696 29.8729 22.3548 30.1176 21.7158 30.1178H21.6408C20.9772 30.1178 20.3408 29.8542 19.8716 29.3849C19.4024 28.9157 19.1387 28.2793 19.1387 27.6157C19.1402 27.3046 19.2037 26.9968 19.3254 26.7104C19.4472 26.424 19.6247 26.1648 19.8477 25.9477C20.0878 25.7203 20.3707 25.5428 20.6799 25.4254C20.9891 25.308 21.3185 25.2531 21.6491 25.2638C22.3127 25.2638 22.9491 25.5274 23.4183 25.9966C23.8875 26.4659 24.1511 27.1023 24.1511 27.7659C24.1501 28.0771 24.0869 28.385 23.9651 28.6715C23.8434 28.9579 23.6656 29.2171 23.4423 29.4339H23.4339ZM123.832 20.4848C111.789 17.0653 100.413 13.8127 90.3383 13.5458C72.5066 12.9809 54.6798 14.8155 37.3369 19.0003C38.5024 20.0038 39.4495 21.2359 40.1195 22.6203C40.7894 24.0047 41.168 25.5119 41.2317 27.0486C41.2317 29.9677 39.7805 32.6115 37.0617 34.6882L36.286 33.6624C38.6963 31.8359 39.9724 29.5507 39.9724 27.0403C39.9724 24.313 38.4378 21.469 35.844 19.384C19.5057 23.5541 8.78866 28.8668 5.70282 31.4606H20.2063L22.4081 34.3296C24.543 34.3327 26.6688 34.0522 28.7299 33.4956C27.4803 32.1102 26.5621 30.459 26.0444 28.6666L25.9276 28.2579L33.9842 21.9694L34.3845 22.328C35.2509 23.025 35.9162 23.9402 36.312 24.9794C36.7077 26.0186 36.8197 27.1445 36.6363 28.2413C36.1609 30.6599 34.1343 32.7283 31.0818 34.0794C31.1568 34.1461 31.2403 34.2212 31.3821 34.3296L31.5739 34.4964L31.6572 34.5631C33.4921 35.9476 36.9199 36.7399 39.6387 36.4063C43.1416 35.9726 44.7429 32.8784 46.4276 29.609C48.1874 26.1979 50.0138 22.67 54.1922 22.67C54.9878 22.6699 55.7755 22.8282 56.5091 23.1359C57.2428 23.4436 57.9078 23.8945 58.4653 24.4621C59.0228 25.0297 59.4616 25.7026 59.7561 26.4417C60.0506 27.1808 60.1948 27.9712 60.1804 28.7667C60.1804 30.7517 58.9878 33.137 57.0696 35.0052C54.8678 37.1403 50.7645 39.634 43.6253 39.634H42.7162C38.4309 39.6112 34.27 38.191 30.865 35.589L30.7982 35.5306L30.5146 35.297C30.2144 35.0385 29.9726 34.8217 29.7474 34.6048C27.6853 35.2332 25.5473 35.5783 23.3922 35.6307H0.498596L0.548635 38.9668C14.8186 39.4338 26.6198 40.9017 38.0291 42.3028C48.5376 43.6123 58.4624 44.8049 69.3129 45.1552C87.6111 45.6889 106.126 42.5864 124.032 39.6006C138.836 37.0986 152.831 34.7966 164.599 35.0302V28.6749C150.921 28.1828 137.168 24.2796 123.849 20.4932L123.832 20.4848Z\" fill=\"#D3B890\"></path>\n<path d=\"M21.635 26.5569H21.5933C21.2835 26.5521 20.9841 26.6688 20.7593 26.8822C20.6574 26.9803 20.5767 27.0983 20.5222 27.2288C20.4676 27.3594 20.4405 27.4997 20.4424 27.6411C20.4531 27.9576 20.5859 28.2576 20.8129 28.4784C21.0399 28.6991 21.3434 28.8235 21.6601 28.8254C21.8139 28.8306 21.9671 28.8045 22.1105 28.7486C22.2539 28.6927 22.3844 28.6082 22.4941 28.5002C22.596 28.4021 22.6767 28.2841 22.7312 28.1536C22.7857 28.0231 22.8129 27.8827 22.811 27.7412C22.8007 27.4318 22.6738 27.1378 22.4556 26.9181C22.2375 26.6984 21.9443 26.5694 21.635 26.5569Z\" fill=\"#D3B890\"></path>\n<path d=\"M35.3097 28.0157C35.446 27.2277 35.3831 26.4182 35.1267 25.6607C34.8704 24.9033 34.4287 24.2219 33.8418 23.6787L27.3365 28.7579C27.8914 30.3803 28.8002 31.8588 29.997 33.0865C32.9578 31.9606 34.8843 30.1257 35.3097 28.0157Z\" fill=\"#D3B890\"></path>\n<path d=\"M107.625 14.8299L103.938 10.4847L100.302 13.3287C102.696 13.7374 105.139 14.2545 107.633 14.8299H107.625Z\" fill=\"#D3B890\"></path>\n<path d=\"M98.5573 13.0458L103.094 9.5096L101.026 7.06593L94.0619 12.4954C95.5353 12.6289 97.0338 12.8123 98.5573 13.0458Z\" fill=\"#D3B890\"></path>\n<path d=\"M85.1119 12.1781L97.3052 2.67024L95.2285 0.226562L79.8493 12.2198C81.5757 12.2198 83.3355 12.1697 85.1119 12.2198V12.1781Z\" fill=\"#D3B890\"></path>\n<path d=\"M90.3544 12.2615C90.9632 12.2615 91.572 12.3115 92.1808 12.3449L100.212 6.08138L98.1357 3.64606L87.1434 12.1948C88.2026 12.1948 89.2618 12.1947 90.3294 12.2615H90.3544Z\" fill=\"#D3B890\"></path>\n<path d=\"M148.176 25.3475L144.614 21.1774L141.195 23.8463C143.514 24.4023 145.84 24.9111 148.176 25.3726V25.3475Z\" fill=\"#D3B890\"></path>\n<path d=\"M134.119 22.0198L140.875 16.7571L138.798 14.3135L130.266 20.9856C131.55 21.3192 132.835 21.6779 134.119 22.0198Z\" fill=\"#D3B890\"></path>\n<path d=\"M139.594 23.4381L143.764 20.177L141.688 17.7333L135.658 22.4372C136.984 22.7792 138.285 23.1128 139.594 23.4381Z\" fill=\"#D3B890\"></path>\n<path d=\"M165.84 31.3106V32.8535C168.642 33.3205 173.221 33.8293 179.643 34.2713C179.524 32.8838 179.524 31.4887 179.643 30.1012C173.204 30.4765 168.642 30.9352 165.857 31.3523L165.84 31.3106Z\" fill=\"#D3B890\"></path>\n<path d=\"M179.776 35.5728C172.821 35.0974 168.517 34.6136 165.84 34.1633V35.2642C168.984 36.8238 174.255 38.4084 180.66 39.6261C180.263 38.2961 179.965 36.9385 179.768 35.5644L179.776 35.5728Z\" fill=\"#D3B890\"></path>\n<path d=\"M165.07 27.3905C169.79 25.1304 177.78 23.7459 181.108 23.2204C181.75 21.4288 182.551 19.6983 183.501 18.0495C177.78 19.0003 165.537 22.4531 161.175 27.157C162.476 27.2738 163.769 27.3905 165.07 27.3905Z\" fill=\"#D3B890\"></path>\n<path d=\"M165.089 36.3151C163.913 36.3151 162.704 36.3151 161.478 36.3151C166.057 41.1024 177.833 45.0389 183.471 46.2816C182.535 44.6026 181.743 42.8477 181.102 41.0356C177.633 40.3934 169.776 38.742 165.089 36.3317V36.3151Z\" fill=\"#D3B890\"></path>\n<path d=\"M165.84 28.4581V30.026C168.892 29.5534 173.535 29.1336 179.768 28.7667C179.955 27.3545 180.256 25.9599 180.669 24.5966C175.097 25.489 169.318 26.8651 165.84 28.4581Z\" fill=\"#D3B890\"></path>\n<path d=\"M146.094 37.4911C140.514 38.1917 134.659 39.1175 128.654 40.1183C130.231 43.4544 134.434 49.2925 144.634 49.6512C143.282 46.8837 143.078 43.6942 144.067 40.7772C144.481 39.5389 145.178 38.4139 146.102 37.4911H146.094Z\" fill=\"#D3B890\"></path>\n<path d=\"M79.9014 46.3486C77.7496 46.4404 75.5896 46.4821 73.4378 46.4821C72.0283 46.4821 70.6272 46.4821 69.2261 46.4237L68.1085 46.382C68.8415 48.5509 70.2305 50.4383 72.0832 51.7831C73.936 53.1278 76.161 53.8635 78.4502 53.8882C78.1481 52.6933 78.092 51.4494 78.2856 50.2321C78.4792 49.0148 78.9182 47.8497 79.5761 46.8074C79.6762 46.6239 79.793 46.4904 79.9014 46.3486Z\" fill=\"#D3B890\"></path>\n</svg>",
+        "title": "Membership FAQs",
+        "text": "<p>Level up a new tier and enjoy a wealth of rewards and benefits that only the most dedicated members can access.</p>"
+      }
+    },
+    "footer_newsletter_background_wPUQtA": {
+      "type": "footer-newsletter-background",
+      "settings": {
+        "background_color": "#004f3c",
+        "padding": 0
+      }
+    }
+  },
+  "order": [
+    "loyalty_hero_8WzT36",
+    "pbj_multicolumn_BVVEq8",
+    "pbj_rich_text_iMtHyi",
+    "loyalty_memberships_banner_TcfqJX",
+    "loyalty_price_comparison_eheKA4",
+    "loyalty_membership_comparison_zEAnYT",
+    "pbj_image_banner_TTcHYX",
+    "loyalty_faqs_9hUjyK",
+    "footer_newsletter_background_wPUQtA"
+  ]
+}

@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_page_banner_rPHDpF": {
+      "type": "pbj-page-banner",
+      "settings": {
+        "transparent_header": true,
+        "show_back_button": false,
+        "back_button_text": "",
+        "back_button_url": "",
+        "image": "shopify://shop_images/Hero_Section.png",
+        "image_mobile": "shopify://shop_images/Hero_Section.png",
+        "image_overlay_opacity": 20,
+        "image_aspect": "custom",
+        "desktop_height": 35,
+        "mobile_height": 35,
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "mobile_content_position": "bottom-left",
+        "mobile_content_alignment": "left",
+        "show_text_below": false,
+        "color_scheme": "scheme-2",
+        "image_behavior": "none"
+      }
+    },
+    "pbj_link_list_CJphGc": {
+      "type": "pbj-link-list",
+      "settings": {
+        "color_scheme": "",
+        "show_user_info": false,
+        "menu": "customer-support",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_section_divider_U8Mp3k": {
+      "type": "pbj-section-divider",
+      "settings": {
+        "show_page_title": true,
+        "page_title_caption": "CUSTOMER SUPPORT",
+        "page_title_heading_size": "h2",
+        "page_title_font": "var(--font-body-family)",
+        "page_title_transform": "uppercase",
+        "full_width": true,
+        "margin_top": 0,
+        "margin_bottom": 48,
+        "divider_width": 100,
+        "divider_height": 2,
+        "divider_border_radius": 50,
+        "divider_color": "#eae5da"
+      }
+    },
+    "pbj_rich_text_gLcBbH": {
+      "type": "pbj-rich-text",
+      "blocks": {
+        "heading_Q8QXRX": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "Where can I find the status of my order?",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_9UADmF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Once you place an order through our website, you’ll receive an order confirmation email as well as regular email updates about your order status. If you opt in to SMS communication, you will also receive updates on your mobile phone. You can always log in to your BERO account and view your orders and their associated statuses and tracking number. If you have the Shop app, you can also track your order status in the app.</p>"
+          }
+        },
+        "heading_LxCMVH": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "Can I change or cancel my order?",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_VrqtRE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you would like to change or cancel your order, please contact <a href=\"mailto:support@bero.com\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>. Be sure to change or cancel your order before it has shipped.</p>"
+          }
+        },
+        "heading_RFUarN": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "Which states do you ship to?",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_43GfVc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We currently ship to all US states, except Georgia, Idaho, Kansas, Michigan, Mississippi, Nebraska, and South Carolina, due to local regulations.</p>"
+          }
+        },
+        "heading_AFLJFi": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "What are your shipping fees?",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_GHmX9c": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>As you can imagine, shipping beverages can be quite costly due to weight and we've done our best to absorb most of the costs. Depending on your Club BERO enrollment, we offer three shipping tiers:</li><li>Non-members: complimentary shipping with any purchase above $65 </li><li>Club BERO Free Members: complimentary shipping for any purchase above $50 </li><li>Club BERO BEROMASTERS: complimentary shipping on all orders with no minimum</li></ul><p>For orders under our complimentary shipping thresholds, we charge a $5 flat fee (except Alaska and Hawaii, where we add a $15 surcharge).</p>"
+          }
+        },
+        "heading_xwdb7x": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "How long will it take for my order to arrive?",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_LmHpPV": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You can expect your order to arrive within 5-8 business days in all contiguous US states. Orders to Hawaii and Alaska ship with USPS Ground Advantage and arrive within 2-10 business days.<br/></p><p>Orders of more than 24 beers will be shipped in split shipments. Please check the tracking information contained in your order notifications (email/SMS) for additional packages under the same tracking number.</p>"
+          }
+        },
+        "heading_VcaefM": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h3",
+            "heading": "My order is damaged, wrong, or never arrived.",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_UUEwwy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our goal is to make sure you are happy with your BERO experience. In the unlikely event that you encounter an issue and your BERO products are damaged or do not meet your expectations, please take a picture and reach out to <a href=\"mailto:support@bero.com\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a> and we will happily work with you.</p>"
+          }
+        },
+        "heading_8BkHPA": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "Do you accept returns?",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_KbdkdY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>BERO Collection items: We accept returns for our BERO Collection items within 30 days of purchase. Please contact <a href=\"mailto:support@bero.com\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a> if you would like to initiate a BERO Collection item return. </p><p>Beer: We do not accept returns for our beer because we cannot guarantee the quality of the liquid when the product travels back and forth. If you experience any issues or the beer does not meet your expectations, please reach out to <a href=\"mailto:support@bero.com\"><span style=\"text-decoration:underline\">support@berobrewing.com</span></a>. We are committed to ensuring our consumers are happy and will work with you to find a solution.</p>"
+          }
+        },
+        "heading_V3n8Nh": {
+          "type": "heading",
+          "settings": {
+            "show_heading_as": "h2",
+            "heading": "Can I use a PO Box for my delivery address?",
+            "heading_size": "h5",
+            "show_title_eyebrow": false,
+            "left_eyebrow": false,
+            "show_trout_icon": false
+          }
+        },
+        "text_hwLPtH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We do not currently ship to PO boxes.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Q8QXRX",
+        "text_9UADmF",
+        "heading_LxCMVH",
+        "text_VrqtRE",
+        "heading_RFUarN",
+        "text_43GfVc",
+        "heading_AFLJFi",
+        "text_GHmX9c",
+        "heading_xwdb7x",
+        "text_LmHpPV",
+        "heading_VcaefM",
+        "text_UUEwwy",
+        "heading_8BkHPA",
+        "text_KbdkdY",
+        "heading_V3n8Nh",
+        "text_hwLPtH"
+      ],
+      "custom_css": [
+        "h2 {text-transform: uppercase;}"
+      ],
+      "settings": {
+        "customer_status": "all",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "pbj_cta_button_PebUCG": {
+      "type": "pbj-cta-button",
+      "settings": {
+        "transparent_header": true,
+        "show_back_button": false,
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "mobile_content_alignment": "mobile-left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "button_label": "Contact Us",
+        "button_link": "shopify://pages/contact",
+        "button_style_secondary": false
+      }
+    },
+    "main": {
+      "type": "pbj-custom-page-content",
+      "settings": {
+        "show_page_title": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_page_banner_rPHDpF",
+    "pbj_link_list_CJphGc",
+    "pbj_section_divider_U8Mp3k",
+    "pbj_rich_text_gLcBbH",
+    "pbj_cta_button_PebUCG",
+    "main"
+  ]
+}

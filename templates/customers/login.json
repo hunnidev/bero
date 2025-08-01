@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pbj_image_4rcaDg": {
+      "type": "pbj-image",
+      "custom_css": [
+        "img {margin-bottom: -20px;}",
+        "@media only screen and (max-width: 768px) {img {padding-top: 3rem; }}"
+      ],
+      "name": "Image - pbj",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "image": "shopify://shop_images/Club_BERO_full_logo.png",
+        "image_width": 25,
+        "display": ""
+      }
+    },
+    "main": {
+      "type": "main-login",
+      "settings": {
+        "enable_shop_login_button": true,
+        "color_scheme": "scheme-3c04087a-847f-465e-a462-a2d28c439f38",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "footer_newsletter_background_grLmBf": {
+      "type": "footer-newsletter-background",
+      "settings": {
+        "background_color": "#f9f6ef",
+        "padding": 0
+      }
+    }
+  },
+  "order": [
+    "pbj_image_4rcaDg",
+    "main",
+    "footer_newsletter_background_grLmBf"
+  ]
+}

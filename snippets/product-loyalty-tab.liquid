@@ -1,0 +1,167 @@
+{%- liquid
+  # Check if the customer is a paid member
+  assign customer_is_paid_member = false
+  if customer and customer.tags contains settings.loyalty_paid_membership_customer_tag
+    assign customer_is_paid_member = true
+  endif
+
+  assign global_multiplier = settings.loyalty_credits_multiplier | times: 1.0
+
+-%}
+
+{%- assign perks = block.settings.perks_list | split: '//' -%}
+{% for variant in product.variants %}
+  {% liquid
+    # If the product is a QR product, start potential credit calculation
+    assign potential_credit = 0
+    if product.tags contains settings.qr_products_tag
+      if variant.title contains '6-pack'
+        assign potential_credit = settings.qr_products_base_credit_amount
+      elsif variant.title contains '12-pack'
+        assign potential_credit = settings.qr_products_base_credit_amount | times: 2
+      elsif variant.title contains '18-pack'
+        assign potential_credit = settings.qr_products_base_credit_amount | times: 3
+      elsif variant.title contains '24-pack'
+        assign potential_credit = settings.qr_products_base_credit_amount | times: 4
+      endif
+
+      assign potential_credit = potential_credit | times: settings.loyalty_paid_membership_credits_multiplier
+    endif
+
+    assign potential_price_discount_amount = variant.price | divided_by: 100.0 | times: settings.loyalty_paid_membership_percentage_discount
+    assign potential_price = variant.price | minus: potential_price_discount_amount | money_without_trailing_zeros
+
+    # If the product is a merch product, start potential credit calculation
+    if product.tags contains settings.merch_products_tag
+      assign potential_credit = variant.price | divided_by: 100.0
+      assign potential_credit = potential_credit | divided_by: 30 | floor
+
+      # multiply by merch base credit amount
+      assign potential_credit = potential_credit | times: settings.merch_products_base_credit_amount
+
+      # multiply by BEROMASTER credits per $30 merch spend
+      assign potential_credit = potential_credit | times: settings.loyalty_paid_membership_credits_multiplier
+    endif
+
+    assign potential_credit_money = potential_credit | times: global_multiplier | times: 100 | money_without_currency |  prepend: '$'
+
+    assign original_price = variant.price | money_without_trailing_zeros
+  %}
+  <div
+    class=" {{ potential_credit_money }} a{{ global_multiplier }}
+      variant-details
+      product__loyalty-tab{% if customer_is_paid_member or product.tags contains 'member-only' %} product__loyalty-tab--vip{% endif %} gradient color-{{ block.settings.color_scheme }}
+      {% unless variant.id == product.selected_or_first_available_variant.id %}hide{% endunless %}
+    "
+    data-variant-id="{{ variant.id }}"
+  >
+    <div class="flex justify-between">
+      {{ block.settings.logo_svg }}
+      <div>
+        <h3 class="text-center h6 text-gold">
+          {{ block.settings.title }}
+        </h3>
+        {%- if perks.size > 0 -%}
+          <ul class="flex flex-wrap text-gold space-between">
+            {%- for perk in perks -%}
+              <li class="flex-1 text-center">
+                {%- render 'icons', icon: 'tick-2' -%}
+                {{ perk }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if product.tags contains 'member-only' -%}
+      <p class="product__loyalty-tab-text--largest">
+        {{ block.settings.member_only_title }}
+      </p>
+      <div class="flex justify-between items-end">
+        <div>
+          <p>
+            {{ block.settings.member_only_text | split: 'and' | first | replace: '[PRICE]', potential_price }}
+          </p>
+          <p>
+            {{
+              block.settings.member_only_text
+              | split: 'and'
+              | last
+              | replace: '[CREDITS]', potential_credit_money
+              | prepend: 'And'
+            }}
+          </p>
+        </div>
+        {%- unless customer_is_paid_member -%}
+          <a
+            href="{{ block.settings.explore_cta_url }}"
+            class="underline text-cream"
+          >
+            {{ block.settings.explore_cta_text }}
+          </a>
+        {%- endunless -%}
+      </div>
+    {%- else -%}
+      <div class="flex justify-between items-end">
+        <div
+          class="variant-details {% unless variant.id == product.selected_or_first_available_variant.id %}hide{% endunless %}"
+          data-variant-id="{{ variant.id }}"
+        >
+          <p class="product__loyalty-tab-text--large">
+            {{ block.settings.product_price_benefit_text | replace: '[PRICE]', potential_price }}
+          </p>
+          {%- if potential_credit != 0 -%}
+            <p>
+              {{ block.settings.product_credit_benefit_text | replace: '[CREDITS]', potential_credit_money }}
+            </p>
+          {%- endif -%}
+        </div>
+
+        {%- unless customer_is_paid_member -%}
+          <a
+            href="{{ block.settings.explore_cta_url }}"
+            class="underline text-cream"
+          >
+            {{ block.settings.explore_cta_text }}
+          </a>
+        {%- endunless -%}
+      </div>
+      {% comment %}
+        {%- if customer_is_paid_member -%}
+          <div class="flex justify-start gap-[16px]">
+            <div class="product__loyalty-badge product__loyalty-badge--vip">
+              {{ block.settings.paid_member_badge_text }}
+            </div>
+            <p>
+              {{ block.settings.paid_member_pricing_text | replace: '[PRICE]', original_price }}
+            </p>
+          </div>
+          <p>
+            {{
+              block.settings.paid_member_benefit_text
+              | replace: '[SAVING]', potential_price_discount_amount_money
+              | replace: '[CREDITS]', potential_credit_money_two
+            }}
+          </p>
+        </div>
+        <p>
+          {{
+            block.settings.paid_member_benefit_text
+            | replace: '[SAVING]', potential_price_discount_amount_money
+            | replace: '[CREDITS]', potential_credit_money_two
+          }}
+        </p>
+
+        {%- else -%}
+          {%- if customer -%}
+            <p>
+              {{ block.settings.free_member_text | replace: '[CREDITS]', potential_credit_money }}
+            </p>
+          {%- else -%}
+          {%- endif -%}
+        {%- endif -%}
+      {% endcomment %}
+    {%- endif -%}
+  </div>
+{% endfor %}

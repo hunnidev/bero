@@ -1,0 +1,167 @@
+{% style %}
+  .loyalty-hero__ctas-{{ section.id }} {
+    bottom: {{ section.settings.buttons_positioning }}rem;
+  }
+  @media only screen and (max-width: 768px) {
+    .loyalty-hero__ctas-{{ section.id }} {
+      bottom: {{ section.settings.buttons_positioning_mobile }}%;
+    }
+  }
+{% endstyle %}
+
+<div class="loyalty-hero color-{{ section.settings.color_scheme }}">
+  {% liquid
+    if section.settings.image_desktop != blank
+      assign image_desktop_class = ''
+      if section.settings.image_mobile != blank
+        assign image_desktop_class = 'hidden md:block'
+      endif
+      echo section.settings.image_desktop | image_url: width: 2880 | image_tag: preload: true, class: image_desktop_class
+      if section.settings.image_mobile != blank
+        echo section.settings.image_mobile | image_url: width: 780 | image_tag: preload: true, class: 'md:hidden'
+      endif
+    endif
+  %}
+
+  <div class="loyalty-hero__content">
+    {%- if section.settings.svg != blank -%}
+      <div class="loyalty-hero__svg{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.svg }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="loyalty-hero__ctas{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} {% if section.settings.stacked_buttons %}stacked-buttons{% endif %} loyalty-hero__ctas-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {% if block.settings.display_h1 %}
+            <h1>
+          {% endif %}
+          <a href="{{ block.settings.url }}" class="{{ block.settings.style }}" {% if block.settings.iphone_fix %}onclick="scrollToSection('{{ block.settings.url }}')"{% endif %}>
+            {{ block.settings.text }}
+          </a>
+          {% if block.settings.display_h1 %}
+            </h1>
+          {% endif %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Loyalty hero",
+  "tag": "section",
+  "class": "section-loyalty-hero",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "stacked_buttons",
+      "label": "Stack buttons vertically",
+      "default": false,
+      "info": "If enabled, buttons will be stacked vertically instead of horizontally."
+    },
+    {
+      "type": "range",
+      "id": "buttons_positioning",
+      "label": "Buttons positioning (desktop)",
+      "default": 5,
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "rem",
+      "info": "Adjust the vertical positioning of the buttons on desktop."
+    },
+    {
+      "type": "range",
+      "id": "buttons_positioning_mobile",
+      "label": "Buttons positioning (mobile)",
+      "default": 24,
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "unit": "%",
+      "info": "Adjust the vertical positioning of the buttons on mobile."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "html",
+      "id": "svg",
+      "label": "SVG Code",
+      "info": "Paste your SVG code here"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "CTA",
+      "type": "cta",
+      "settings": [
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Label"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            {
+              "value": "button button--primary",
+              "label": "Filled"
+            },
+            {
+              "value": "button button--secondary",
+              "label": "Outlined"
+            },
+            {
+              "value": "underlined-cta",
+              "label": "Underlined"
+            }
+          ],
+          "default": "button button--primary"
+        },
+        {
+          "type": "checkbox",
+          "id": "display_h1",
+          "label": "Display as H1",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "iphone_fix",
+          "label": "Include anchor links fix for iPhones",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Loyalty hero",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

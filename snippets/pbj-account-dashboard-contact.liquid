@@ -1,0 +1,21 @@
+<div
+  style="display: none;"
+  class="customer-contact-preferences {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+>
+  {% if localization.market.handle == 'united-kingdom' %}
+    <div class="klaviyo-form-SK3J9K"></div>
+  {% else %}
+    <div class="klaviyo-form-WiRbif"></div>
+  {% endif %}
+
+  <div class="unsubscribe {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <p>
+      {{ 'customer.dashboard.unsubscribe_copy' | t }}
+      <span
+        ><a target="_blank" href="http://manage.kmail-lists.com/subscriptions/unsubscribe?cy=UYwKnY">
+          {{- 'customer.dashboard.unsubscribe_click' | t -}}
+        </a></span
+      >
+    </p>
+  </div>
+</div>

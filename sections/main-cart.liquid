@@ -1,0 +1,70 @@
+{%- assign customer_rivo_data = customer.metafields.custom.rivo.value -%}
+{%- assign credits_balance = customer_rivo_data.credits_balance | plus: 0.0 -%}
+
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+
+<div class="gradient color-{{ section.settings.color_scheme }} isolate">
+  <div
+    class="cart__grid page-width{% if cart == empty %} is-empty{% endif %}"
+    x-data="
+      rivo({
+        customerId: '{{ customer.id }}',
+        availableCredits: {{ credits_balance }},
+        cartUrl: '{{ routes.cart_url }}'
+      })
+    "
+    x-init="init"
+  >
+    {%- render 'cart-main-items', section: section -%}
+    {%- render 'cart-main-footer', section: section -%}
+
+    {%- render 'loyalty-credits-redeem-modal' -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "ymal_title",
+      "label": "You may also like title",
+      "default": "You may also like"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}
