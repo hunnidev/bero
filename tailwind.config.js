@@ -6,10 +6,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: "Bero Body Font",
-        accent: "Bero Accent Font",
-        heading: "Bero Primary Heading Font",
-        "secondary-heading": "Bero Secondary Heading Font",
+        body: "ABCWhyteRegular, sans-serif",
+        "body-bold": "ABCWhyte, sans-serif",
+        arizona: "ABCArizonaFlare, sans-serif",
       },
       colors: {
         smoke: "#E6E8E7",

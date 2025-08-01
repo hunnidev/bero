@@ -1066,6 +1066,10 @@ html {
   text-align: right;
 }
 
+.font-body-bold {
+  font-family: ABCWhyte, sans-serif;
+}
+
 .text-\[16px\] {
   font-size: 16px;
 }
@@ -1280,4 +1284,7 @@ html {
     flex-direction: row-reverse;
   }
 }
+
+
+
 
