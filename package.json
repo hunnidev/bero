@@ -1,0 +1,18 @@
+{
+  "name": "bero",
+  "version": "1.0.0",
+  "repository": "git@github.com:hunnidev/bero.git",
+  "scripts": {
+    "dev": "shopify theme dev --store shop-bero --port 9292 & npx tailwindcss -i ./tailwind.style.css -o ./assets/tailwind.style.css --watch",
+    "dev:legacy": "shopify theme serve & npx tailwindcss -i ./tailwind.style.css -o ./assets/tailwind.style.css --watch",
+    "build": "npx tailwindcss -i ./tailwind.style.css -o ./assets/tailwind.style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Hunni Dev <d@hunni.dev>",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {}
+}
