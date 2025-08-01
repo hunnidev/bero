@@ -6,55 +6,42 @@ if (!customElements.get("quick-add-modal")) {
         super();
         this.modalContent = this.querySelector('[id^="QuickAddInfo-"]');
         this.previousActiveElement;
-
-        this.addEventListener("product-info:loaded", ({ target }) => {
-          // target.addPreProcessCallback(this.preprocessHTML.bind(this));
-        });
       }
 
       hide(preventFocus = false) {
-        console.log('Hiding quick add modal');
-        const cartNotification =
-          document.querySelector("cart-notification") ||
-          document.querySelector("cart-drawer");
+        console.log("Hiding quick add modal");
+        const cartNotification = document.querySelector("cart-notification") || document.querySelector("cart-drawer");
         if (cartNotification) cartNotification.setActiveElement(this.openedBy);
 
         setTimeout(() => {
           this.modalContent.innerHTML = "";
         }, 1000);
 
-
         if (preventFocus) this.openedBy = null;
         super.hide();
       }
 
       show(opener) {
-        console.log('Opening quick add modal for:', opener);
+        console.log("Opening quick add modal for:", opener);
         this.previousActiveElement = opener;
         opener.setAttribute("aria-disabled", true);
         opener.classList.add("loading");
         opener.querySelector(".loading__spinner").classList.remove("hidden");
-      
+
         fetch(opener.getAttribute("data-product-url"))
           .then((response) => response.text())
           .then((responseText) => {
-            const responseHTML = new DOMParser().parseFromString(
-              responseText,
-              "text/html"
-            );
+            const responseHTML = new DOMParser().parseFromString(responseText, "text/html");
             const productElement = responseHTML.querySelector("product-info");
-      
+
             this.preprocessHTML(productElement);
-            HTMLUpdateUtility.setInnerHTML(
-              this.modalContent,
-              productElement.outerHTML
-            );
-      
+            HTMLUpdateUtility.setInnerHTML(this.modalContent, productElement.outerHTML);
+
             /*
               Query quick-add__return outside the dynamic content
             */
-            const modalQuickAddReturn = this.closest('quick-add-modal').querySelector('.quick-add__return');
-            const modalInfoWrapper = this.modalContent.querySelector('.product__info-wrapper');
+            const modalQuickAddReturn = this.closest("quick-add-modal").querySelector(".quick-add__return");
+            const modalInfoWrapper = this.modalContent.querySelector(".product__info-wrapper");
             const modalInfoContent = this.modalContent;
 
             /*
@@ -63,17 +50,16 @@ if (!customElements.get("quick-add-modal")) {
             if (modalQuickAddReturn && modalInfoWrapper) {
               const clonedQuickAddReturn = modalQuickAddReturn.cloneNode(true);
 
-              modalQuickAddReturn.classList.add('hidden');
-              clonedQuickAddReturn.classList.remove('hidden');
+              modalQuickAddReturn.classList.add("hidden");
+              clonedQuickAddReturn.classList.remove("hidden");
 
               modalInfoContent.appendChild(modalInfoWrapper);
-              modalInfoContent.querySelector('product-info .product__info-container').prepend(clonedQuickAddReturn)
-
+              modalInfoContent.querySelector("product-info .product__info-container").prepend(clonedQuickAddReturn);
 
               /*
                 Trigger the original button's click event when the clone is clicked
               */
-              clonedQuickAddReturn.addEventListener("click", function() {
+              clonedQuickAddReturn.addEventListener("click", function () {
                 modalQuickAddReturn.click();
               });
             }
@@ -82,7 +68,7 @@ if (!customElements.get("quick-add-modal")) {
               Shopify.PaymentButton.init();
             }
             if (window.ProductModel) window.ProductModel.loadShopifyXR();
-      
+
             super.show(opener);
           })
           .finally(() => {
@@ -109,11 +95,9 @@ if (!customElements.get("quick-add-modal")) {
       }
 
       removeDOMElements(productElement) {
-        const pickupAvailability = productElement.querySelector(
-          "pickup-availability"
-        );
+        const pickupAvailability = productElement.querySelector("pickup-availability");
 
-        const productTitle = productElement.querySelector('#product-title');
+        const productTitle = productElement.querySelector("#product-title");
         if (productTitle) productTitle.remove();
 
         if (pickupAvailability) pickupAvailability.remove();
@@ -130,16 +114,10 @@ if (!customElements.get("quick-add-modal")) {
 
         const oldId = sectionId;
         const newId = `quickadd-${sectionId}`;
-        productElement.innerHTML = productElement.innerHTML.replaceAll(
-          oldId,
-          newId
-        );
+        productElement.innerHTML = productElement.innerHTML.replaceAll(oldId, newId);
         Array.from(productElement.attributes).forEach((attribute) => {
           if (attribute.value.includes(oldId)) {
-            productElement.setAttribute(
-              attribute.name,
-              attribute.value.replace(oldId, newId)
-            );
+            productElement.setAttribute(attribute.name, attribute.value.replace(oldId, newId));
           }
         });
 
@@ -147,15 +125,11 @@ if (!customElements.get("quick-add-modal")) {
       }
 
       removeGalleryListSemantic(productElement) {
-        const galleryList = productElement.querySelector(
-          '[id^="Slider-Gallery"]'
-        );
+        const galleryList = productElement.querySelector('[id^="Slider-Gallery"]');
         if (!galleryList) return;
 
         galleryList.setAttribute("role", "presentation");
-        galleryList
-          .querySelectorAll('[id^="Slide-"]')
-          .forEach((li) => li.setAttribute("role", "presentation"));
+        galleryList.querySelectorAll('[id^="Slide-"]').forEach((li) => li.setAttribute("role", "presentation"));
       }
 
       updateImageSizes(productElement) {
@@ -175,9 +149,7 @@ if (!customElements.get("quick-add-modal")) {
           mediaImageSizes = mediaImageSizes.replace("715px", "495px");
         }
 
-        mediaImages.forEach((img) =>
-          img.setAttribute("sizes", mediaImageSizes)
-        );
+        mediaImages.forEach((img) => img.setAttribute("sizes", mediaImageSizes));
       }
     }
   );
